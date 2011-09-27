@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.9.14)  27 SEP 2011 16:07
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.9.14)  27 SEP 2011 16:20
 entering extended mode
  %&-line parsing enabled.
-**test
+**dvro
 (./dvro.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -332,22 +332,21 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count104
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen115
 \Gin@req@width=\dimen116
 )
-\c@Def=\count105
-\c@Axi=\count106
-\c@Conj=\count107
-\c@Lem=\count108
-\c@Theo=\count109
-\c@Prop=\count110
-\c@Cor=\count111
+\c@Def=\count104
+\c@Axi=\count105
+\c@Conj=\count106
+\c@Lem=\count107
+\c@Theo=\count108
+\c@Prop=\count109
+\c@Cor=\count110
 )
 (/usr/share/texmf-texlive/tex/latex/mh/mathtools.sty
 Package: mathtools 2008/08/01 v1.06 mathematical typesetting tools (MH)
@@ -355,7 +354,7 @@ Package: mathtools 2008/08/01 v1.06 mathematical typesetting tools (MH)
 (/usr/share/texmf-texlive/tex/latex/mh/mhsetup.sty
 Package: mhsetup 2007/12/03 v1.2 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count112
+\g_MT_multlinerow_int=\count111
 \l_MT_multwidth_dim=\dimen117
 )
 (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
@@ -363,7 +362,7 @@ Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode detected.
+Package ifpdf Info: pdfTeX in pdf mode not detected.
 )
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
@@ -380,8 +379,8 @@ O)
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen118
-\Hy@linkcounter=\count113
-\Hy@pagecounter=\count114
+\Hy@linkcounter=\count112
+\Hy@pagecounter=\count113
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -441,7 +440,7 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count115
+\Fld@menulength=\count114
 \Field@Width=\dimen119
 \Fld@charsize=\dimen120
 \Field@toks=\toks28
@@ -456,42 +455,50 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count116
-\c@Item=\count117
-\c@Hfootnote=\count118
+\Hy@abspage=\count115
+\c@Item=\count116
+\c@Hfootnote=\count117
 )
-*hyperref using default driver hpdftex*
-(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count119
-)
+*hyperref using default driver hdvips*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2009/10/09 v6.79a Hyperref driver for dvips
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2009/10/09 v6.79a Hyperref definitions for pdfmark specials
+\pdf@docset=\toks29
+\pdf@box=\box28
+\pdf@toks=\toks30
+\pdf@defaulttoks=\toks31
+\Fld@listcount=\count118
+))
 (/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
 (/usr/share/texmf-texlive/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count120
-\float@exts=\toks29
-\float@box=\box28
-\@float@everytoks=\toks30
-\@floatcapt=\box29
+\c@float@type=\count119
+\float@exts=\toks32
+\float@box=\box29
+\@float@everytoks=\toks33
+\@floatcapt=\box30
 )
-\@float@every@algorithm=\toks31
-\c@algorithm=\count121
+\@float@every@algorithm=\toks34
+\c@algorithm=\count120
 )
 (/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count122
-\c@ALC@line=\count123
-\c@ALC@rem=\count124
-\c@ALC@depth=\count125
+\c@ALC@unique=\count121
+\c@ALC@line=\count122
+\c@ALC@rem=\count123
+\c@ALC@depth=\count124
 \ALC@tlm=\skip52
 \algorithmicindent=\skip53
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 12.
-
-No file dvro.aux.
+ (./dvro.aux
+(./introducao/introducao.aux) (./capitulo-1/capitulo-1.aux)
+(./capitulo-2/capitulo-2.aux) (./conclusao/conclusao.aux))
 \openout1 = `dvro.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
@@ -508,6 +515,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
 LaTeX Font Info:    ... okay on input line 30.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 30.
+
 (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
@@ -519,26 +527,17 @@ LaTeX Font Info:    Try loading font information for T1+ptm on input line 30.
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count126
-\scratchdimen=\dimen121
-\scratchbox=\box30
-\nofMPsegments=\count127
-\nofMParguments=\count128
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count129
-\MPscratchDim=\dimen122
-\MPnumerator=\count130
-\everyMPtoPDFconversion=\toks33
-) (/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
 (/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 130.
-)
+Package color Info: Driver file: dvips.def on input line 130.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
 Package hyperref Info: Link coloring ON on input line 30.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
@@ -547,40 +546,24 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count131
+\c@section@level=\count125
 )
 LaTeX Info: Redefining \ref on input line 30.
 LaTeX Info: Redefining \pageref on input line 30.
+ (./dvro.out)
+(./dvro.out)
 \@outlinefile=\write3
 \openout3 = `dvro.out'.
 
 \AtBeginShipoutBox=\box31
  (./ufpelogo.tex
-
-! LaTeX Error: Unknown graphics extension: .eps.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1 \includegraphics{ufpelogo.eps}
-                                  
-? 
-)
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.34 \frontpage
-               
-? 
+File: ufpelogo.eps Graphic file (type eps)
+ <ufpelogo.eps>)
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 34.
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 34
 .
+
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
@@ -617,7 +600,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
@@ -636,15 +619,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--39
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 44.
+ (./outros/agradecimentos
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 1.
 
-
-! LaTeX Error: File `agradecimentos/agradecimentos.tex' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
-
-Enter file name: 
-[4
+(/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)) [4
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 47--47
@@ -660,19 +640,19 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 
 ] [7
 
-]
+] (./dvro.toc)
 \tf@toc=\write4
 \openout4 = `dvro.toc'.
 
  [8
 
-]
+] (./dvro.lof)
 \tf@lof=\write5
 \openout5 = `dvro.lof'.
 
  [9
 
-]
+] (./dvro.lot)
 \tf@lot=\write6
 \openout6 = `dvro.lot'.
 
@@ -681,36 +661,39 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 ]
 \openout2 = `introducao/introducao.aux'.
 
- (./introducao/introducao.tex)
+
+(./introducao/introducao.tex)
 \openout2 = `capitulo-1/capitulo-1.aux'.
 
-
-(./capitulo-1/capitulo-1.tex)
+ (./capitulo-1/capitulo-1.tex)
 \openout2 = `capitulo-2/capitulo-2.aux'.
 
- (./capitulo-2/capitulo-2.tex)
+
+(./capitulo-2/capitulo-2.tex)
 \openout2 = `conclusao/conclusao.aux'.
 
+ (./conclusao/conclusao.tex) (./dvro.bbl [1
 
-No file conclusao/conclusao.tex.
-No file dvro.bbl.
-(./dvro.aux (./introducao/introducao.aux) (./capitulo-1/capitulo-1.aux)
+
+
+
+
+
+
+
+
+
+
+])
+[2] (./dvro.aux (./introducao/introducao.aux) (./capitulo-1/capitulo-1.aux)
 (./capitulo-2/capitulo-2.aux) (./conclusao/conclusao.aux)) ) 
 Here is how much of TeX's memory you used:
- 7139 strings out of 495061
- 99322 string characters out of 1182621
- 165112 words of memory out of 3000000
- 10108 multiletter control sequences out of 15000+50000
- 45111 words of font info for 79 fonts, out of 3000000 for 9000
+ 7012 strings out of 495062
+ 98361 string characters out of 1182644
+ 165137 words of memory out of 3000000
+ 9976 multiletter control sequences out of 15000+50000
+ 40456 words of font info for 75 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,9n,26p,466b,367s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-t
-exlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw/ti
-mes/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr
-/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on dvro.pdf (10 pages, 52110 bytes).
-PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38i,9n,27p,466b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+Output written on dvro.dvi (12 pages, 19048 bytes).
