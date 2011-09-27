@@ -1,0 +1,92 @@
+% !TEX encoding = ISO-8859-1
+\documentclass[bsc,oneside]{ufpethesis}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\algsetup{linenosize=\small,linenodelimiter=.}
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+\usepackage{amsthm}
+
+% \university{<NOME DA UNIVERSIDADE>} default: UFPE
+% \address{<CIDADE DA IES>} default: UFPE
+\institute{Centro de Informática}
+% \department{<NOME DO DEPARTAMENTO>} não se aplica
+\program{Graduação em Engenharia da Computação}
+\majorfield{Engenharia da Computação}
+\title{Análise comparativa de técnicas de seleção de protótipos}
+\date{22 de novembro de 2011}
+
+\author{Dayvid Victor Rodrigues de Oliveira}
+\adviser{Prof. Dr. George Darmiton}
+% \coadviser{NOME DO(DA) CO-ORIENTADOR(A)} não se aplica
+
+%% Inicio do documento
+\begin{document}
+
+\frontmatter
+% Folha de rosto
+\frontpage
+% Portada (apresentação)
+\presentationpage
+
+% Dedicatória
+\begin{dedicatory}
+Eu dedico este trabalho a João Rodrigues de Silva, meu avô.
+\end{dedicatory}
+
+% Agradecimentos
+\acknowledgements
+\input{agradecimentos/agradecimentos}
+
+\begin{epigraph}[Boston, 2001]{Bono}
+What can I give back to God, for the blessings You pour out on me?
+\end{epigraph}
+
+% Resumo em Português
+% Se preferir, crie um arquivo à parte e o inclua via \include{}
+\resumo
+RESUMO
+% Palavras-chave do resumo em Português
+\begin{keywords}
+PORTUGUES
+\end{keywords}
+
+% Resumo em Inglês
+% Se preferir, crie um arquivo à parte e o inclua via \include{}
+\abstract
+ABSTRACT
+\begin{keywords}
+INGLES
+\end{keywords}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\include{introducao/introducao}
+\include{capitulo-1/capitulo-1}
+\include{capitulo-2/capitulo-2}
+\include{conclusao/conclusao}
+
+%% Parte pós-textual
+\backmatter
+
+\appendix
+% \include{apendice1}
+
+% Bibliografia
+\nocite{*}
+\bibliographystyle{alpha}
+\bibliography{bibliografia/bibliografia}
+
+% \colophon % UFPEThesis reference
+
+\end{document}
