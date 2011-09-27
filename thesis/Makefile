@@ -6,7 +6,7 @@ all:
 
 clean:
 	@rm *.log -R
-	@rm *.aux -R
+	# @rm *.aux -R
 	@rm *.bbl -R
 	@rm *.blg -R
 	@rm *.toc -R
