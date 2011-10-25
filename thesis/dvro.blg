@@ -6,58 +6,49 @@ A level-1 auxiliary file: capitulo-2/capitulo-2.aux
 A level-1 auxiliary file: conclusao/conclusao.aux
 The style file: alpha.bst
 Database file #1: bibliografia/bibliografia.bib
-Warning--entry type for "buscape.com.br" isn't style-file defined
---line 165 of file bibliografia/bibliografia.bib
-Warning--entry type for "americanas.com" isn't style-file defined
---line 177 of file bibliografia/bibliografia.bib
-Warning--entry type for "mercadolivre.com.br" isn't style-file defined
---line 187 of file bibliografia/bibliografia.bib
-Warning--entry type for "amazon.com" isn't style-file defined
---line 198 of file bibliografia/bibliografia.bib
-Warning--entry type for "BernersLee:1989" isn't style-file defined
---line 209 of file bibliografia/bibliografia.bib
-Warning--empty journal in leantap:1994
-Warning--empty journal in Heflin:2004
-Warning--empty journal in otter:1995
-You've used 19 entries,
+A bad cross reference---entry "csp:sgp"
+refers to entry "conf/ijcnn/2008", which doesn't exist
+A bad cross reference---entry "conf/icml/HulseKN07"
+refers to entry "conf/icml/2007", which doesn't exist
+You've used 12 entries,
             2543 wiz_defined-function locations,
-            661 strings with 6725 characters,
-and the built_in function-call counts, 6302 in all, are:
-= -- 589
-> -- 311
-< -- 12
-+ -- 105
-- -- 100
-* -- 399
-:= -- 1063
-add.period$ -- 53
-call.type$ -- 19
-change.case$ -- 109
-chr.to.int$ -- 19
-cite$ -- 22
-duplicate$ -- 264
-empty$ -- 472
-format.name$ -- 129
-if$ -- 1273
+            649 strings with 6313 characters,
+and the built_in function-call counts, 5002 in all, are:
+= -- 507
+> -- 201
+< -- 10
++ -- 70
+- -- 65
+* -- 349
+:= -- 804
+add.period$ -- 37
+call.type$ -- 12
+change.case$ -- 71
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 204
+empty$ -- 383
+format.name$ -- 81
+if$ -- 1053
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 17
-newline$ -- 93
-num.names$ -- 60
-pop$ -- 146
+missing$ -- 10
+newline$ -- 62
+num.names$ -- 38
+pop$ -- 58
 preamble$ -- 1
-purify$ -- 132
+purify$ -- 83
 quote$ -- 0
-skip$ -- 233
+skip$ -- 177
 stack$ -- 0
-substring$ -- 208
-swap$ -- 26
-text.length$ -- 11
-text.prefix$ -- 8
+substring$ -- 325
+swap$ -- 44
+text.length$ -- 10
+text.prefix$ -- 4
 top$ -- 0
-type$ -- 126
-warning$ -- 3
-while$ -- 52
-width$ -- 22
-write$ -- 224
-(There were 8 warnings)
+type$ -- 96
+warning$ -- 0
+while$ -- 47
+width$ -- 16
+write$ -- 159
+(There were 2 error messages)

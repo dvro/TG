@@ -1,103 +1,67 @@
-\newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{BCM{\etalchar{+}}03}
+\begin{thebibliography}{dSPC08}
 
-\bibitem[AH08]{Antoniou:2008}
-Grigoris Antoniou and Frank~van Harmelen.
-\newblock {\em A Semantic Web Primer, 2nd Edition (Cooperative Information
-  Systems)}.
-\newblock The MIT Press, 2 edition, 2008.
+\bibitem[CPZ11]{enn:2011}
+Ruiqin Chang, Zheng Pei, and Chao Zhang.
+\newblock A modified editing k-nearest neighbor rule.
+\newblock {\em JCP}, 6(7):1493--1500, 2011.
 
-\bibitem[BCM{\etalchar{+}}03]{dlhandbook:2003}
-Franz Baader, Diego Calvanese, Deborah McGuinness, Daniele Nardi, and Peter
-  Patel-Schneider, editors.
-\newblock {\em The Description Logic Handbook: Theory, Implementation and
-  Applications}.
-\newblock Cambridge University Press, Cambridge, 2003.
+\bibitem[dSPC08]{csp:sgp}
+Cristiano de~Santana~Pereira and George D.~C. Cavalcanti.
+\newblock Prototype selection: Combining self-generating prototypes and
+  gaussian mixtures for pattern classification.
+\newblock In {\em IJCNN}, pages 3505--3510. IEEE, 2008.
 
-\bibitem[Bez95]{amazon.com}
-Jeff Bezos.
-\newblock amazon.com, 1995.
+\bibitem[EJJ04]{journals/ci/EstabrooksJJ04}
+Andrew Estabrooks, Taeho Jo, and Nathalie Japkowicz.
+\newblock A multiple resampling method for learning from imbalanced data sets.
+\newblock {\em Computational Intelligence}, 20(1):18--36, 2004.
 
-\bibitem[BH93]{bibel:1993}
-W.~Bibel and S.~Hölldobler.
-\newblock {\em Deduction: automated logic}.
-\newblock Academic Press, 1993.
+\bibitem[FHA07]{fayed:sgp}
+Hatem~A. Fayed, Sherif Hashem, and Amir~F. Atiya.
+\newblock Self-generating prototypes for pattern classification.
+\newblock {\em Pattern Recognition}, 40(5):1498--1509, 2007.
 
-\bibitem[Bib82]{bibel:1982}
-W.~Bibel.
-\newblock {\em Automated theorem proving}.
-\newblock F. Vieweg, 1982.
+\bibitem[Har68]{cnn:1968}
+P.~E. Hart.
+\newblock The condensed nearest neighbor rule.
+\newblock {\em IEEE Transactions on Information Theory}, 14:515--516, 1968.
 
-\bibitem[BL89]{BernersLee:1989}
-Tim Berners-Lee.
-\newblock Information management: A proposal, 1989.
+\bibitem[HKN07]{conf/icml/HulseKN07}
+Jason~Van Hulse, Taghi~M. Khoshgoftaar, and Amri Napolitano.
+\newblock Experimental perspectives on learning from imbalanced data.
+\newblock In Zoubin Ghahramani, editor, {\em ICML}, volume 227 of {\em ACM
+  International Conference Proceeding Series}, pages 935--942. ACM, 2007.
 
-\bibitem[BM11]{DBLP:conf/tableaux/2011}
-Kai Br{\"u}nnler and George Metcalfe, editors.
-\newblock {\em Automated Reasoning with Analytic Tableaux and Related Methods -
-  20th International Conference, TABLEAUX 2011, Bern, Switzerland, July 4-8,
-  2011. Proceedings}, volume 6793 of {\em Lecture Notes in Computer Science}.
-  Springer, 2011.
+\bibitem[Koh86]{kohonen:lvqtr}
+Teuvo Kohonen.
+\newblock Learning vector quantization for pattern recognition.
+\newblock Report TKK-F-A601, Laboratory of Computer and Information Science,
+  Department of Technical Physics, Helsinki University of Technology, Helsinki,
+  Finland, 1986.
 
-\bibitem[BP94]{leantap:1994}
-B.~Beckert and J.~Posegga.
-\newblock Leantap : Lean tableau-based theorem proving.
-\newblock 1994.
+\bibitem[Koh88]{kohonen:lvq}
+Teuvo Kohonen.
+\newblock Learning vector quantization.
+\newblock {\em Neural Networks}, 1, Supplement 1:3--16, 1988.
 
-\bibitem[FSS10]{Freitas:2010}
-Fred Freitas, Anne Schlicht, and Heiner Stuckenschmidt.
-\newblock A connection method for reasoning with the description logic alc.
-\newblock Technical report, UFPE and University of Mannheim, 2010.
+\bibitem[PI69]{knnrule:1969}
+E.~A. Patrick and F.~P.~Fischer II.
+\newblock A generalization of the k-nearest neighbor rule.
+\newblock In {\em IJCAI}, pages 63--64, 1969.
 
-\bibitem[Gal99]{mercadolivre.com.br}
-Marcos Galperin.
-\newblock mercadolivre.com.br, 1999.
+\bibitem[TC67]{nnpc:1967}
+P.E.~Hart T.M.~Cover.
+\newblock Nearest neighbor pattern classification.
+\newblock {\em IEEE Transactions on Information Theory}, IT-13:21 -- 27, 1967.
 
-\bibitem[GHJV95]{Gamma:1995}
-Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides.
-\newblock {\em {Design patterns: elements of reusable object-oriented
-  software}}.
-\newblock Addison-Wesley Professional, 1995.
+\bibitem[Tom76]{cnn:1976}
+I.~Tomek.
+\newblock {Two Modifications of CNN}.
+\newblock {\em {IEEE Transactions on Systems, Man, and Cybernetics}},
+  7(2):679--772, 1976.
 
-\bibitem[Hef04]{Heflin:2004}
-Jeff Heflin.
-\newblock Owl web ontology language use cases and requirements.
-\newblock 2004.
-
-\bibitem[Mcc95]{otter:1995}
-W.~Mccune.
-\newblock The otter theorem prover.
-\newblock 1995.
-
-\bibitem[OB03]{Otten:2003}
-Jens Otten and Wolfgang Bibel.
-\newblock leancop: lean connection-based theorem proving.
-\newblock {\em J. Symb. Comput.}, 36(1-2):139--161, 2003.
-
-\bibitem[Ott11]{Otten:2011}
-Jens Otten.
-\newblock A non-clausal connection calculus.
-\newblock In Br{\"u}nnler and Metcalfe \cite{DBLP:conf/tableaux/2011}, pages
-  226--241.
-
-\bibitem[RBML99]{buscape.com.br}
-Romero Rodrigues, Rodrigo Borges, Ronaldo Morita, and Mario Letelier.
-\newblock buscape.com.br, 06 1999.
-
-\bibitem[RN02]{AIMA}
-Stuart Russell and Peter Norvig.
-\newblock {\em {Artificial Intelligence: A Modern Approach (2nd Edition)}}.
-\newblock Prentice Hall series in artificial intelligence. Prentice Hall, 2
-  edition, December 2002.
-
-\bibitem[Sic]{americanas.com}
-Carlos~Alberto Sicupira.
-\newblock americanas.com.
-
-\bibitem[Sut09]{SS98}
-G.~Sutcliffe.
-\newblock {The TPTP Problem Library and Associated Infrastructure: The FOF and
-  CNF Parts, v3.5.0}.
-\newblock {\em Journal of Automated Reasoning}, 43(4):337--362, 2009.
+\bibitem[WP01]{citeulike:1284148}
+G.~Weiss and F.~Provost.
+\newblock The effect of class distribution on classifier learning, 2001.
 
 \end{thebibliography}
