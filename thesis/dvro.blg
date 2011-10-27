@@ -1,18 +1,13 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: dvro.aux
 A level-1 auxiliary file: introducao/introducao.aux
-A level-1 auxiliary file: capitulo-1/capitulo-1.aux
 A level-1 auxiliary file: capitulo-2/capitulo-2.aux
 A level-1 auxiliary file: conclusao/conclusao.aux
 The style file: alpha.bst
 Database file #1: bibliografia/bibliografia.bib
-Warning--I didn't find a database entry for "BernersLee:1989"
-Warning--I didn't find a database entry for "Heflin:2004"
-Warning--I didn't find a database entry for "Antoniou:2008"
-Warning--I didn't find a database entry for "AIMA"
 You've used 12 entries,
             2543 wiz_defined-function locations,
-            655 strings with 6370 characters,
+            646 strings with 6259 characters,
 and the built_in function-call counts, 5002 in all, are:
 = -- 507
 > -- 201
@@ -51,4 +46,3 @@ warning$ -- 0
 while$ -- 47
 width$ -- 16
 write$ -- 159
-(There were 4 warnings)

@@ -1,14 +1,13 @@
 
-
 clean:
 	@rm *.pdf
+	@rm *.dvi -R
 	@rm *.log -R
 	@rm *.bbl -R
 	@rm *.blg -R
 	@rm *.toc -R
 	@rm *.lof -R
 	@rm *.lot -R
-	@rm *.dvi -R
 
 build:
 	@latex dvro
@@ -19,7 +18,11 @@ bib:
 	@latex dvro
 
 pdf:
-	@pdflatex dvro.tex
+	@dvipdfm dvro.dvi
 
 all:
-	clean build bib pdf
+	@make clean
+	@make build
+	@make bib
+	@make pdf
+

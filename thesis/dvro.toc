@@ -1,14 +1,21 @@
 \select@language {brazil}
-\contentsline {section}{\numberline {0.1}Web Sem\^antica}{1}{section.0.1}
-\contentsline {subsection}{\numberline {0.1.1}Aplica\c c\~oes}{2}{subsection.0.1.1}
-\contentsline {subsubsection}{\numberline {0.1.1.1}Gerenciamento de Conhecimento}{2}{subsubsection.0.1.1.1}
-\contentsline {subsubsection}{\numberline {0.1.1.2}Com\'ercio eletr\^onico \textit {Business to Consumer} (B2C)}{2}{subsubsection.0.1.1.2}
-\contentsline {subsubsection}{\numberline {0.1.1.3}Com\'ercio eletr\^onico \textit {Business to Business} (B2B) e agentes pessoais}{2}{subsubsection.0.1.1.3}
-\contentsline {subsection}{\numberline {0.1.2}Tecnologias}{3}{subsection.0.1.2}
-\contentsline {subsubsection}{\numberline {0.1.2.1}Metadados Expl\IeC {\'\i }citos}{3}{subsubsection.0.1.2.1}
-\contentsline {subsubsection}{\numberline {0.1.2.2}Ontologias}{4}{subsubsection.0.1.2.2}
-\contentsline {subsubsection}{\numberline {0.1.2.3}L\'ogica}{4}{subsubsection.0.1.2.3}
-\contentsline {subsubsection}{\numberline {0.1.2.4}Agentes}{5}{subsubsection.0.1.2.4}
-\contentsline {section}{\numberline {0.2}Organiza\c c\~ao da Monografia}{5}{section.0.2}
-\contentsline {chapter}{\numberline {1}Web Ontology Language: OWL}{6}{chapter.1}
-\contentsline {section}{\numberline {1.1}Definition 1 (First-order logic syntax).}{6}{section.1.1}
+\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motiva\c c\~ao e Contextualiza\c c\~ao}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Sele\c c\~ao de Prot\'otipos}{1}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Bases Desbalanceadas}{1}{subsection.1.1.2}
+\contentsline {section}{\numberline {1.2}Objetivo}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Estrutura do Trabalho}{1}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Sess\~oes}{1}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Metodologia Utilizada}{1}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Bases de dados}{1}{subsection.1.3.3}
+\contentsline {chapter}{\numberline {2}TDSDP}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}ENN}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Tomek Links}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}CNN}{2}{section.2.3}
+\contentsline {section}{\numberline {2.4}LVQ}{2}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}LVQ 1}{2}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}LVQ 2.1}{2}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}LVQ 3}{2}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}SGP}{2}{section.2.5}
+\contentsline {section}{\numberline {2.6}SGP 2}{2}{section.2.6}
+\contentsline {section}{\numberline {2.7}CCNN}{2}{section.2.7}
