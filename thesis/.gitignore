@@ -1,5 +1,5 @@
 
-
+*.swp
 *.log
 *.bbl
 *.blg
@@ -7,3 +7,5 @@
 *.lof
 *.lot
 *.dvi
+*.out
+*.toc
