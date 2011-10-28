@@ -117,7 +117,6 @@ Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipo
 Os Tomek Links representam elementos da região de fronteira e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. Segue abaixo o algoritmo da seleção de protótipos:
 
 
-
 \begin{algorithm}
 \caption{Tomek Links}
 \label{pseudocode_cnn}
@@ -137,14 +136,11 @@ Os Tomek Links representam elementos da região de fronteira e prováveis ruídos, 
 Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tomek Links remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
 
 
-
 %% TODO FIGURA PARA TOMEK LINKS
 %% EXPLICAR FIGURA
 
 
-
 Observa-se facilmente que os Tomek Links pode remove todas as instâncias da fronteira, inclusive as instâncias da classe minoritária, assim sendo, uma possível adaptação dos Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorreria uma separação entre as classes, mas apenas as instâncias da classe marjoritária seriam removidos, dimunuindo assim o nível de desbalanceamento. Segue abaixo o algoritmo desta adaptação:
-
 
 
 \begin{algorithm}
