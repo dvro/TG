@@ -31,9 +31,25 @@ Segue abaixo o algorítmo da execução do ENN e, logo após, alguns comentários sob
 
 O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se o valor de K=3. Tipicamente, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1.
 
+As figuras, obtidas de \cite{com.cs.mcgill.cs.godfried}, exemplificarão o funcionamento do ENN.
+
+%\begin{figure}
+%\includegraphics[scale=0.55]{imagens/enn1.png}
+%\caption{Base de dados com região de indecisão, K=1}
+%\label{fig:enn1}
+%\end{figure}
+
+%\begin{figure}
+%\includegraphics[scale=0.55]{imagens/enn2.png}
+%\caption{Base de dados com região de indecisão, K=3}
+%\label{fig:enn2}
+%\end{figure}
+
+Nas figuras acima, caso o ENN fosse aplicado, todas as instâncias permaneceriam, exceto a assinalada com uma interrogação, pois esta se encontra em uma região de indecisão. Na primeira figura, a instância, da classe $A$, está mais próxima de uma instância da classe $A$, assim, não seria removida caso o ENN fosse aplicado com K=1. Já na segunda figura, caso o ENN fosse aplicado com K=3, esta instância seria removida, pois a mesma foi classificada erroneamente pelos seus vizinhos.
+
 Uma vantagem do ENN é que ele independe da ordem que a base de dados foi apresentada, ou seja, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
 
-
+Os problemas do ENN é que esta técnica não remove os elementos que causam redundância. Nas figuras mostradas anteriormente, vemos que as instâncias da classe $B$ localizadas mais a direita poderiam ser eliminadas sem comprometer o resultado. Existem outras técnicas que resolvem este problema, elas serão vistas em próximas sessões.
 
 \section{Tomek Links}
 \section{CNN}

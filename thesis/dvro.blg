@@ -5,44 +5,48 @@ A level-1 auxiliary file: capitulo-2/capitulo-2.aux
 A level-1 auxiliary file: conclusao/conclusao.aux
 The style file: alpha.bst
 Database file #1: bibliografia/bibliografia.bib
-You've used 12 entries,
+Warning--entry type for "cgm.cs.mcgill.ca.godfried" isn't style-file defined
+--line 226 of file bibliografia/bibliografia.bib
+Warning--I didn't find a database entry for "com.cs.mcgill.cs.godfried"
+You've used 13 entries,
             2543 wiz_defined-function locations,
-            646 strings with 6259 characters,
-and the built_in function-call counts, 5002 in all, are:
-= -- 507
-> -- 201
-< -- 10
-+ -- 70
-- -- 65
-* -- 349
-:= -- 804
-add.period$ -- 37
-call.type$ -- 12
-change.case$ -- 71
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 204
-empty$ -- 383
-format.name$ -- 81
-if$ -- 1053
+            650 strings with 6350 characters,
+and the built_in function-call counts, 5254 in all, are:
+= -- 529
+> -- 209
+< -- 11
++ -- 72
+- -- 67
+* -- 359
+:= -- 842
+add.period$ -- 39
+call.type$ -- 13
+change.case$ -- 76
+chr.to.int$ -- 13
+cite$ -- 13
+duplicate$ -- 215
+empty$ -- 408
+format.name$ -- 85
+if$ -- 1106
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 10
-newline$ -- 62
-num.names$ -- 38
-pop$ -- 58
+newline$ -- 66
+num.names$ -- 41
+pop$ -- 69
 preamble$ -- 1
-purify$ -- 83
+purify$ -- 89
 quote$ -- 0
-skip$ -- 177
+skip$ -- 189
 stack$ -- 0
-substring$ -- 325
-swap$ -- 44
-text.length$ -- 10
-text.prefix$ -- 4
+substring$ -- 332
+swap$ -- 45
+text.length$ -- 11
+text.prefix$ -- 5
 top$ -- 0
-type$ -- 96
+type$ -- 104
 warning$ -- 0
-while$ -- 47
-width$ -- 16
-write$ -- 159
+while$ -- 49
+width$ -- 17
+write$ -- 168
+(There were 2 warnings)
