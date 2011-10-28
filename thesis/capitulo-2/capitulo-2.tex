@@ -1,16 +1,37 @@
 % !TEX encoding = ISO-8859-1
 \chapter{Técnicas de Seleção de Protótipos}
-% \label{ch:introducao}
+% \label{ch:tecnicasdeselecaodeprototipos}
 
 Neste capítulo, serão mostradas as técnicas de seleção de protótipos abordadas neste trabalho. Cada uma das sessões abaixo abordará uma técnica, será mostrado o conceito da técnica, assim como o pseudo-código e as caracterísicas de cada uma destas técnicas.
 
 \section{ENN}
 
-	Edited Nearest Neighbor Rule\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, ela elimina pontos na região de fronteira, região de alta susceptibilidade a erros, e com isso elimina ruídos.
-	Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidade de redução, deixando as instâncias que não se encontram na região de fronteira intactas, exceto pelos ruídos extremos.
-	Uma desvantagem desta técnica é que ela possui uma baixa capacidade de redução de elementos, visto que ela não elimina redundância.
+Edited Nearest Neighbor Rule\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, ela elimina pontos na região de fronteira, região de alta susceptibilidade a erros, e com isso elimina ruídos.\
 
-	Segue abaixo o algorítmo da execução do ENN e, logo após, alguns comentários sobre este algorítmo.
+Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidade de redução, deixando as instâncias que não se encontram na região de fronteira intactas, exceto pelos ruídos extremos.\
+
+Uma desvantagem desta técnica é que ela possui uma baixa capacidade de redução de elementos, visto que ela não elimina redundância.
+
+Segue abaixo o algorítmo da execução do ENN e, logo após, alguns comentários sobre este algorítmo.
+
+\begin{algorithm}
+\caption{ENN}
+\label{visitintersection}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+\FORALL {instância $e_i$ da base de dados original}
+\STATE Aplique o KNN sobre $e_i$
+\IF {$e_i$ foi classificado erroneamente}
+\STATE salve $e_i$ em $list$
+\ENDIF
+\ENDFOR
+\STATE Remova da base de dados todos os elementos que estão em $list$
+\end{algorithmic}
+\end{algorithm}
+
+O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se o valor de K=3. Tipicamente, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1.
+
+Uma vantagem do ENN é que ele independe da ordem que a base de dados foi apresentada, ou seja, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
 
 
 

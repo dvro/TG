@@ -10,12 +10,12 @@
 \contentsline {subsection}{\numberline {1.3.3}Bases de dados}{1}{subsection.1.3.3}
 \contentsline {chapter}{\numberline {2}T\'ecnicas de Sele\c c\~ao de Prot\'otipos}{2}{chapter.2}
 \contentsline {section}{\numberline {2.1}ENN}{2}{section.2.1}
-\contentsline {section}{\numberline {2.2}Tomek Links}{2}{section.2.2}
-\contentsline {section}{\numberline {2.3}CNN}{2}{section.2.3}
-\contentsline {section}{\numberline {2.4}LVQ}{2}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}LVQ 1}{2}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}LVQ 2.1}{2}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}LVQ 3}{2}{subsection.2.4.3}
-\contentsline {section}{\numberline {2.5}SGP}{2}{section.2.5}
-\contentsline {section}{\numberline {2.6}SGP 2}{2}{section.2.6}
-\contentsline {section}{\numberline {2.7}CCNN}{2}{section.2.7}
+\contentsline {section}{\numberline {2.2}Tomek Links}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}CNN}{3}{section.2.3}
+\contentsline {section}{\numberline {2.4}LVQ}{3}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}LVQ 1}{3}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}LVQ 2.1}{3}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}LVQ 3}{3}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}SGP}{3}{section.2.5}
+\contentsline {section}{\numberline {2.6}SGP 2}{3}{section.2.6}
+\contentsline {section}{\numberline {2.7}CCNN}{3}{section.2.7}
