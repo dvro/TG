@@ -2,7 +2,18 @@
 \chapter{Técnicas de Seleção de Protótipos}
 % \label{ch:introducao}
 
+Neste capítulo, serão mostradas as técnicas de seleção de protótipos abordadas neste trabalho. Cada uma das sessões abaixo abordará uma técnica, será mostrado o conceito da técnica, assim como o pseudo-código e as caracterísicas de cada uma destas técnicas.
+
 \section{ENN}
+
+	Edited Nearest Neighbor Rule\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, ela elimina pontos na região de fronteira, região de alta susceptibilidade a erros, e com isso elimina ruídos.
+	Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidade de redução, deixando as instâncias que não se encontram na região de fronteira intactas, exceto pelos ruídos extremos.
+	Uma desvantagem desta técnica é que ela possui uma baixa capacidade de redução de elementos, visto que ela não elimina redundância.
+
+	Segue abaixo o algorítmo da execução do ENN e, logo após, alguns comentários sobre este algorítmo.
+
+
+
 \section{Tomek Links}
 \section{CNN}
 \section{LVQ}
