@@ -12,7 +12,7 @@ Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidad
 
 Uma desvantagem desta técnica é que ela possui uma baixa capacidade de redução de elementos, visto que ela não elimina redundância.
 
-Segue abaixo o algorítmo da execução do ENN e, logo após, alguns comentários sobre este algorítmo.
+Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sobre este algoritmo.
 
 \begin{algorithm}
 \caption{ENN}
@@ -53,6 +53,14 @@ Os problemas do ENN é que esta técnica não remove os elementos que causam redund
 
 \section{Tomek Links}
 \section{CNN}
+
+Condensed Nearest Neighbor \cite{cnn:1968} é uma técnica de seleção de protótipos puramente seletiva que tem como objetivo eliminar informação redundante. Diferentemente do ENN \cite{enn:2011}, o CNN não elimina instâncias nas regiões de fronteira, a técnica mantém estes elementos pois estes que "são importantes" para distinguir entre duas classes.
+
+A ideia geral do CNN é encontrar o menor subconjunto da base de dados original que, utilizando o 1-NN, classifica todos os padrões da base de dados original corretamente. Fazendo isso, o algoritmo elimina os elementos mais afastados da região de indecisão, da fronteira de classificação.
+
+O algoritmo do CNN será mostrado abaixo
+
+
 \section{LVQ}
 \subsection{LVQ 1}
 \subsection{LVQ 2.1}
