@@ -7,10 +7,9 @@ The style file: alpha.bst
 Database file #1: bibliografia/bibliografia.bib
 Warning--entry type for "cgm.cs.mcgill.ca.godfried" isn't style-file defined
 --line 226 of file bibliografia/bibliografia.bib
-Warning--I didn't find a database entry for "com.cs.mcgill.cs.godfried"
 You've used 13 entries,
             2543 wiz_defined-function locations,
-            650 strings with 6350 characters,
+            649 strings with 6325 characters,
 and the built_in function-call counts, 5254 in all, are:
 = -- 529
 > -- 209
@@ -49,4 +48,4 @@ warning$ -- 0
 while$ -- 49
 width$ -- 17
 write$ -- 168
-(There were 2 warnings)
+(There was 1 warning)

@@ -16,7 +16,7 @@ Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sob
 
 \begin{algorithm}
 \caption{ENN}
-\label{visitintersection}
+\label{pseudocode_enn}
 \begin{algorithmic}[1]
 \REQUIRE {$list$: uma lista}
 \FORALL {instância $e_i$ da base de dados original}
@@ -31,7 +31,7 @@ Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sob
 
 O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se o valor de K=3. Tipicamente, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1.
 
-As figuras, obtidas de \cite{com.cs.mcgill.cs.godfried}, exemplificarão o funcionamento do ENN.
+%% As figuras, obtidas de \cite{com.cs.mcgill.cs.godfried}, exemplificarão o funcionamento do ENN.
 
 %\begin{figure}
 %\includegraphics[scale=0.55]{imagens/enn1.png}
@@ -45,11 +45,12 @@ As figuras, obtidas de \cite{com.cs.mcgill.cs.godfried}, exemplificarão o funcio
 %\label{fig:enn2}
 %\end{figure}
 
-Nas figuras acima, caso o ENN fosse aplicado, todas as instâncias permaneceriam, exceto a assinalada com uma interrogação, pois esta se encontra em uma região de indecisão. Na primeira figura, a instância, da classe $A$, está mais próxima de uma instância da classe $A$, assim, não seria removida caso o ENN fosse aplicado com K=1. Já na segunda figura, caso o ENN fosse aplicado com K=3, esta instância seria removida, pois a mesma foi classificada erroneamente pelos seus vizinhos.
+%% TODO COLOCAR ALGUMA FIGURA PARA EXEMPLIFICAR
+%% TODO EXPLICAR A FIGURA
 
 Uma vantagem do ENN é que ele independe da ordem que a base de dados foi apresentada, ou seja, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
 
-Os problemas do ENN é que esta técnica não remove os elementos que causam redundância. Nas figuras mostradas anteriormente, vemos que as instâncias da classe $B$ localizadas mais a direita poderiam ser eliminadas sem comprometer o resultado. Existem outras técnicas que resolvem este problema, elas serão vistas em próximas sessões.
+%% TODO CITAR DESVANTAGENS DO ENN 
 
 \section{Tomek Links}
 \section{CNN}
@@ -60,8 +61,49 @@ A ideia geral do CNN é encontrar o menor subconjunto da base de dados original q
 
 O algoritmo do CNN será mostrado abaixo, e logo após, comentários a respeito do mesmo.
 
+\begin{algorithm}
+\caption{CNN}
+\label{pseudocode_cnn}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+\STATE Escolha um elemento de cada classe $aleatoreamente$ e coloque-os em $list$
+\FORALL {instância $e_i$ da base de dados original}
+\STATE Aplique o KNN sobre $e_i$ utilizando os elementos em $list$ para treinamento
+\IF {$e_i$ foi classificado erroneamente}
+\STATE salve $e_i$ em $list$
+\ENDIF
+\ENDFOR
+\STATE Remova da base original todos os elementos que não estão em $list$
+\end{algorithmic}
+\end{algorithm}
 
+Podemos observar que este algoritmo possui uma abordagem diferente do ENN, por exemplo, pois ele começa com um conjunto mínimo de instâncias (uma de cada classe) e depois adiciona instâncias conforme a necessidade de mantê-las para que todos os elementos da base de dados original sejam classificados corretamente.
 
+Uma coisa que pode-se observar no algorítmo, é a palavra $aleatoriamente$, o que significa que o CNN aplicado numa mesma base de dados com um mesmo valor de K para o KNN, nem sempre resulta nos mesmos protótipos. O primeiro fato para que isso ocorra é a seleção aleatória dos protótipos iniciais. Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhidos utilizando técnicas como o SGP\cite{fayed:sgp} para obter as instâncias mais centrais. Modificações no CNN são muito comuns \cite{cnn:1976}, porém, mesmo com estas modificações, o CNN ainda não é determinístico, pois a ordem em que as instâncias são classificadas afeta o resultado final.
+
+%% TODO COLOCAR ALGUMA FIGURA PARA EXEMPLIFICAR
+%% TODO EXPLICAR A FIGURA
+
+Para o caso de estudo abordado neste trabalho, o CNN pode ser utilizado de forma adaptada. A adaptação consiste em manter todos os elementos da classe minoritária e o mínimo possível da classe marjoritária. O próprio CNN se encarrega de remover os elementos redundantes da classe marjoritária, assim, basta apenas selecionar todos os elementos da classe minoritária aos protótipos iniciais.
+Segue abaixo o algoritmo desta adaptação:
+
+\begin{algorithm}
+\caption{CNN para bases desbalanceadas}
+\label{pseudocode_cnn}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+\STATE Coloque todos os elementos da classe minoritária em $list$
+\FORALL {instância $e_i$ da base de dados original}
+\STATE Aplique o KNN sobre $e_i$ utilizando os elementos em $list$ para treinamento
+\IF {$e_i$ foi classificado erroneamente}
+\STATE salve $e_i$ em $list$
+\ENDIF
+\ENDFOR
+\STATE Remova da base original todos os elementos que não estão em $list$
+\end{algorithmic}
+\end{algorithm}
+
+Com o algorítmo citado acima, os elementos redundantes da classe marjoritária são removidos, e todos os elementos da classe minoritária são mantidos. Esta adaptação do CNN irá reduzir a base de dados, ocasionando as vantagens de redução, e ainda reduzirá o desbalenceamento da base.
 
 \section{LVQ}
 \subsection{LVQ 1}
