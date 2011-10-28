@@ -31,20 +31,6 @@ Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sob
 
 O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se o valor de K=3. Tipicamente, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1.
 
-%% As figuras, obtidas de \cite{com.cs.mcgill.cs.godfried}, exemplificarão o funcionamento do ENN.
-
-%\begin{figure}
-%\includegraphics[scale=0.55]{imagens/enn1.png}
-%\caption{Base de dados com região de indecisão, K=1}
-%\label{fig:enn1}
-%\end{figure}
-
-%\begin{figure}
-%\includegraphics[scale=0.55]{imagens/enn2.png}
-%\caption{Base de dados com região de indecisão, K=3}
-%\label{fig:enn2}
-%\end{figure}
-
 %% TODO COLOCAR ALGUMA FIGURA PARA EXEMPLIFICAR
 %% TODO EXPLICAR A FIGURA
 
@@ -52,7 +38,6 @@ Uma vantagem do ENN é que ele independe da ordem que a base de dados foi apresen
 
 %% TODO CITAR DESVANTAGENS DO ENN 
 
-\section{Tomek Links}
 \section{CNN}
 
 Condensed Nearest Neighbor \cite{cnn:1968} é uma técnica de seleção de protótipos puramente seletiva que tem como objetivo eliminar informação redundante. Diferentemente do ENN \cite{enn:2011}, o CNN não elimina instâncias nas regiões de fronteira, a técnica mantém estes elementos pois estes que "são importantes" para distinguir entre duas classes.
@@ -79,7 +64,7 @@ O algoritmo do CNN será mostrado abaixo, e logo após, comentários a respeito do 
 
 Podemos observar que este algoritmo possui uma abordagem diferente do ENN, por exemplo, pois ele começa com um conjunto mínimo de instâncias (uma de cada classe) e depois adiciona instâncias conforme a necessidade de mantê-las para que todos os elementos da base de dados original sejam classificados corretamente.
 
-Uma coisa que pode-se observar no algorítmo, é a palavra $aleatoriamente$, o que significa que o CNN aplicado numa mesma base de dados com um mesmo valor de K para o KNN, nem sempre resulta nos mesmos protótipos. O primeiro fato para que isso ocorra é a seleção aleatória dos protótipos iniciais. Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhidos utilizando técnicas como o SGP\cite{fayed:sgp} para obter as instâncias mais centrais. Modificações no CNN são muito comuns \cite{cnn:1976}, porém, mesmo com estas modificações, o CNN ainda não é determinístico, pois a ordem em que as instâncias são classificadas afeta o resultado final.
+Uma coisa que pode-se observar no algoritmo, é a palavra $aleatoriamente$, o que significa que o CNN aplicado numa mesma base de dados com um mesmo valor de K para o KNN, nem sempre resulta nos mesmos protótipos. O primeiro fato para que isso ocorra é a seleção aleatória dos protótipos iniciais. Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhidos utilizando técnicas como o SGP\cite{fayed:sgp} para obter as instâncias mais centrais. Modificações no CNN são muito comuns \cite{cnn:1976}, porém, mesmo com estas modificações, o CNN ainda não é determinístico, pois a ordem em que as instâncias são classificadas afeta o resultado final.
 
 %% TODO COLOCAR ALGUMA FIGURA PARA EXEMPLIFICAR
 %% TODO EXPLICAR A FIGURA
@@ -103,7 +88,88 @@ Segue abaixo o algoritmo desta adaptação:
 \end{algorithmic}
 \end{algorithm}
 
-Com o algorítmo citado acima, os elementos redundantes da classe marjoritária são removidos, e todos os elementos da classe minoritária são mantidos. Esta adaptação do CNN irá reduzir a base de dados, ocasionando as vantagens de redução, e ainda reduzirá o desbalenceamento da base.
+Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes da classe marjoritária são removidos, e todos os elementos da classe minoritária são mantidos. Esta adaptação do CNN irá reduzir a base de dados, ocasionando as vantagens de redução, e ainda reduzirá o desbalenceamento da base.
+
+
+\section{Tomek Links}
+
+Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de ser ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) < dist($e_i$,$e_k$)} e \textit{dist($e_i$,$e_j$) < dist($e_j$,$e_k$)}. Segue abaixo o algorítmo detalhado:
+
+\begin{algorithm}
+\caption{Seleciona Tomek Links}
+\label{pseudocode_cnn}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+	\FORALL {instância $e_i$ da base de dados original}
+		\STATE $e_j$ = instância mais próxima de $e_i$
+		\IF {instância mais p¿oxima de $e_j$ for $e_i$}
+			\IF {classe de $e_i$ for diferente da classe de $e_j$}
+				\STATE salve o par \textit{($e_i$, $e_j$)} em $list$
+			\ENDIF
+		\ENDIF
+	\ENDFOR
+	\STATE Retorne os pares em $list$, os Tomek Links
+\end{algorithmic}
+\end{algorithm}
+
+
+
+Os Tomek Links representam elementos da região de fronteira e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. Segue abaixo o algoritmo da seleção de protótipos:
+
+
+
+\begin{algorithm}
+\caption{Tomek Links}
+\label{pseudocode_cnn}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+\STATE $list$ = $Seleciona Tomek Links$ da base original
+	\FORALL {\textit{($e_i$, $e_j$)} em $list$}
+		\STATE remova $e_i$ da base original
+		\STATE remova $e_j$ da base original
+	\ENDFOR
+	\STATE Retorne a base original filtrada
+\end{algorithmic}
+\end{algorithm}
+
+
+
+Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tomek Links remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
+
+
+
+%% TODO FIGURA PARA TOMEK LINKS
+%% EXPLICAR FIGURA
+
+
+
+Observa-se facilmente que os Tomek Links pode remove todas as instâncias da fronteira, inclusive as instâncias da classe minoritária, assim sendo, uma possível adaptação dos Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorreria uma separação entre as classes, mas apenas as instâncias da classe marjoritária seriam removidos, dimunuindo assim o nível de desbalanceamento. Segue abaixo o algoritmo desta adaptação:
+
+
+
+\begin{algorithm}
+\caption{Tomek Links}
+\label{pseudocode_cnn}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+	\STATE $list$ = $Seleciona Tomek Links$ da base original
+	\FORALL {\textit{($e_i$, $e_j$)} em $list$}
+		\IF {$e_i$ for da classe marjoritária}
+			\STATE remova $e_i$ da base original
+		\ENDIF
+		\IF {$e_j$ for da classe marjoritária}
+			\STATE remova $e_j$ da base original
+		\ENDIF
+	\ENDFOR
+	\STATE Retorne a base original filtrada
+\end{algorithmic}
+\end{algorithm}
+
+
+
+Com esta adaptação, a classe minoritária é mantida, evitando o aumento do desbalanceamento ou a remoção por alta probabilidade de ruído.
+
+
 
 \section{LVQ}
 \subsection{LVQ 1}
