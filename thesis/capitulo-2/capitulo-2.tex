@@ -32,18 +32,18 @@ Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sob
 O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se o valor de K=3. Tipicamente, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1.
 
 \begin{figure}
-\label{fig:enn_exemple}
+\label{fig:enn}
 \includegraphics[scale=0.40]{imagens/enn.eps}
 \caption{ENN aplicado com K=3}
 \end{figure}
 
-Na figura \ref{fig:enn_example} pode-se observar uma base de dados com duas classes, no primeiro gráfico da figura, pode-se observar a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o \ref{alg:enn} com K=3 sobre a base de dados, os pontos pretos representam pontos que foram classificados errôneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos. Observa-se que o elemento 11 foi utilizado para eliminar 2 instâncias ruidosas, um próprio ruído poderia ser utilizado para eliminar outro ruído, apesar de ser improvável.
+Na figura \ref{fig:enn} pode-se observar uma base de dados com duas classes, no primeiro gráfico da figura, pode-se observar a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o \ref{alg:enn} com K=3 sobre a base de dados, os pontos pretos representam pontos que foram classificados erroneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos. Observa-se que o elemento 11 foi utilizado para eliminar 2 instâncias ruidosas, um próprio ruído poderia ser utilizado para eliminar outro ruído, apesar de ser improvável.
 
 O mais interessante do caso acima é que, após a aplicação do ENN, as classes ficaram bem separadas pelos quadrantes pontilhados, mostrando a eficiência do ENN para a base de dados acima.
 
 Uma vantagem do ENN é que ele independe da ordem que a base de dados foi apresentada, ou seja, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
 
-Porém, o ENN também apresenta desvantagens, ele possui uma baixa capacidade de redução, pois elimina apenas ruídos, mantendo instâncias que são desnecessárias, que apresentam apenas redundância de informação. No caso da \ref{fig:enn_example}, a base poderia ser representada por 4 instâncias bem posicionadas ou, por se tratar de uma técnica seletiva, com 8 instâncias, porém, o ENN manteve 13 instâncias, eliminando apenas 3.
+Porém, o ENN também apresenta desvantagens, ele possui uma baixa capacidade de redução, pois elimina apenas ruídos, mantendo instâncias que são desnecessárias, que apresentam apenas redundância de informação. No caso da \ref{fig:enn}, a base poderia ser representada por 4 instâncias bem posicionadas ou, por se tratar de uma técnica seletiva, com 8 instâncias, porém, o ENN manteve 13 instâncias, eliminando apenas 3.
 
 Pelas suas características, normalmente o ENN é utilizado como método de pré-processamento da base de dados, eliminando apenas instâncias que apresentam alta probabilidade de serem ruídos.
 
@@ -233,7 +233,7 @@ Os protótipos iniciais podem ser escolhidos de qualquer forma, a idéia é que sej
 
 \subsection{LVQ 1}
 
-LVQ1 é a primeira versão do Learning Vector Quantization proposto por Kohonen. O algoritmo do LVQ1 basicamente seleciona alguns protótipos iniciais e ajusta esses protótipos utilizando a base original. Quando uma instância da base original é classificada errôneamente pelos protótipos, afasta-se o protótipo mais próximo, e quando é classificada corretamente, aproxima-se. O algoritmo detalhado pode ser visto em \ref{alg:lvq1}.
+LVQ1 é a primeira versão do Learning Vector Quantization proposto por Kohonen. O algoritmo do LVQ1 basicamente seleciona alguns protótipos iniciais e ajusta esses protótipos utilizando a base original. Quando uma instância da base original é classificada erroneamente pelos protótipos, afasta-se o protótipo mais próximo, e quando é classificada corretamente, aproxima-se. O algoritmo detalhado pode ser visto em \ref{alg:lvq1}.
 
 
 \begin{algorithm}
@@ -246,7 +246,7 @@ LVQ1 é a primeira versão do Learning Vector Quantization proposto por Kohonen. O
 	\WHILE{$prototypes$ não estiver sub-ajustado}
 		\STATE $x$ = $ChooseOne$ (base original)
 		\STATE $e_i$ = $SelectNearestFrom$($prototypes$, $x$)
-		\IF {classe de $e_i$ != classe de $x$}
+		\IF {classe de $e_i$ $\neq$ classe de $x$}
 			\STATE $e_i = e_i + \alpha(t) \times [x - e_i]$
 		\ELSE
 			\STATE $e_i = e_i - \alpha(t) \times [x - e_i]$
@@ -259,15 +259,80 @@ LVQ1 é a primeira versão do Learning Vector Quantization proposto por Kohonen. O
 
 A vantagem do LVQ1 é que ele estabiliza durante o treinamento, porém, ele possui um grande número de passos. Para a maioria dos problemas, o LVQ 1 possui um resultado satisfatório, mas além da demora, é necessário escolher os parâmetros corretamente.
 
-Um dos parâmetros é o $\alpha(t)$, uma constante de ajuste, que serve para aproximar ou afastar os protótipos. Este afastamento ou aproximação é regulado pelo valor de $\alpha(t)$. Percebe-se que $\alpha(t)$ foi colocado como uma função. Normalmente, essa função é uma exponencial descrescente.
+Um dos parâmetros é o $\alpha(t)$, uma constante de ajuste, que serve para aproximar ou afastar os protótipos. Este afastamento ou aproximação é regulado pelo valor de $\alpha(t)$, sendo $0 < \alpha(t) < 1$. Percebe-se que $\alpha(t)$ foi colocado como uma função. Normalmente, essa função é uma exponencial descrescente, e o algoritmo termina quando $\alpha(t)$ se torna insignificante.
 
 Outra questão do LVQ1 é escolher a quantidade de protótipos iniciais adequada, visto que, esta quantidade não é alterada durante toda a execução do algoritmo.
 
 No caso de bases desbalanceadas, pode-se utilizar fatores de ajustes diferenciados para cada classe, ou escolher uma quantidade aproximada de cada classe para os protótipos iniciais. Fazendo estas adaptações, o LVQ1 poderá ter resultados melhores para bases desbalanceadas.
 
+\subsection{Optimized-learning-rate LVQ}
 
-\section{LVQ 2.1}
-\section{LVQ 3}
+Optimized-learning-rate LVQ [colocar referencia aqui http://www.springerlink.com/content/n72865x1t57q1877/] é uma versão otimizada do LVQ1, proposto para aumentar a velocidade de convergência do LVQ1. O modelo consiste basicamente em cada protótipo ter taxas de aprendizado individuais, a dinâmica da taxa de aprendizado consiste no aumento da mesma caso o protótipo esteja classificando corretamente e na diminuição, caso contrário.
+
+\begin{center}
+$\alpha(t) = \dfrac{\alpha(t-1)}{1 + s(t) \times \alpha(t-1)}$
+\item
+\item $s(t) = +1$, se $x$ é classificado corretamente
+\item $s(t) = -1$, se $x$ é classificado erroneamente
+\item $0 < \alpha(t) < 1$
+\item
+\end{center}
+
+Com esta alteração do valor de $\alpha(t)$ faz com que o LVQ convirja mais rapidamente, tornando o algoritmo OLVQ mais viável em termos de performace e mantendo as características do LVQ1.
+
+\subsection{LVQ 2.1}
+
+Kohonen propos duas novas versões melhoradas do LVQ, uma delas é o LVQ 2.1. Esta nova versão do LVQ faz atualização nos dois protótipos mais próximos desde que as condições de ajuste sejam atendidas.
+
+A ideia do LVQ 2.1 é ajustar apenas os protótipos próximos das fronteiras de classificação, região de indecisão. Para evitar uma divergência entre estes protótipos, foi introduzida a Regra da Janela.
+
+Diz-se que um elemento está na janela quando ele obedece a regra da janela, isso acontece quando um elemento está na região de indecisão.
+
+Dado um elemento $x$, diz-se que ele está na janela se:
+
+\begin{center}
+
+$\min{\frac{d_i}{d_j}}{\frac{d_j}{d_i}} > s$, onde $s = \dfrac{1 - w}{1 + w}$
+\item $e_i$ e $e_j$ são os protótipos mais próximos de $x$
+\item $d_i$ é a distância de $x$ para $e_i$
+\item $d_j$ é a distância de $x$ para $e_j$
+\item $w$ é a largura relativa
+\end{center}
+
+
+
+\begin{algorithm}
+\caption{LVQ 1}
+\label{alg:lvq21}
+\begin{algorithmic}[1]
+\REQUIRE {$prototypes$: uma lista para os protótipos}
+	\STATE $prototypes$ = $LVQ 1$ (base original)
+	\WHILE{$prototypes$ não estiver sub-ajustado}
+		\STATE $x$ = $ChooseOne$ (base original)
+		\STATE $e_i$, $e_j$ = $SelectNearestsFrom$($prototypes$, $x$)
+		\IF {$CaiuNaJanela(x,e_i,e_j)$}
+			\IF {$Classe(e_i) \ne Classe(e_j)$}
+				\IF {$Classe(e_i) = Classe(x)$}
+					\STATE $e_i = e_i + \alpha(t) \times [x - e_i]$
+					\STATE $e_j = e_j - \alpha(t) \times [x - e_i]$
+				\ELSE
+					\STATE $e_i = e_i - \alpha(t) \times [x - e_i]$
+					\STATE $e_j = e_j + \alpha(t) \times [x - e_i]$
+				\ENDIF
+			\ENDIF
+		\ENDIF
+	\ENDWHILE
+	\RETURN  $prototypes$
+\end{algorithmic}
+\end{algorithm}
+
+A algoritmo de LVQ 2.1 é aplicado depois do LVQ 1, mas ele ajusta dois protótipos a cada iteração. Esta técnica não faz ajustes de protótipos se $x$ não estiver na janela, se nenhum dos protótipos forem da classe de $x$ ou se os protótipos forem da mesma classe. Pode-se ver o algoritmo detalhado em \ref{alg:lvq21}.
+
+Enquanto o LVQ1 provoca o afastamento dos protótipos nas regiões de indecisão, o LVQ 2.1 reduz esse afastamento atuando apenas sobre protótipos vizinhos pertencentes a classes diferentes.
+
+Uma desvantagem do LVQ 2.1 é que além do custo ser maior, a aplicação do mesmo pode sobre-ajustar os protótipos nas regiões de indecisão. Para diminuir esse sobre-ajuste, foi criado o LVQ 3, abordado na próxima sessão.
+
+\subsection{LVQ 3}
 \section{SGP}
 \section{SGP 2}
 \section{CCNN}

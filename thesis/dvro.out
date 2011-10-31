@@ -14,8 +14,9 @@
 \BOOKMARK [1][-]{section.2.4}{OSS}{chapter.2}
 \BOOKMARK [1][-]{section.2.5}{LVQ}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.5.1}{LVQ 1}{section.2.5}
-\BOOKMARK [1][-]{section.2.6}{LVQ 2.1}{chapter.2}
-\BOOKMARK [1][-]{section.2.7}{LVQ 3}{chapter.2}
-\BOOKMARK [1][-]{section.2.8}{SGP}{chapter.2}
-\BOOKMARK [1][-]{section.2.9}{SGP 2}{chapter.2}
-\BOOKMARK [1][-]{section.2.10}{CCNN}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.5.2}{Optimized-learning-rate LVQ}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.3}{LVQ 2.1}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.4}{LVQ 3}{section.2.5}
+\BOOKMARK [1][-]{section.2.6}{SGP}{chapter.2}
+\BOOKMARK [1][-]{section.2.7}{SGP 2}{chapter.2}
+\BOOKMARK [1][-]{section.2.8}{CCNN}{chapter.2}

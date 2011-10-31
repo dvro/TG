@@ -15,8 +15,9 @@
 \contentsline {section}{\numberline {2.4}OSS}{7}{section.2.4}
 \contentsline {section}{\numberline {2.5}LVQ}{7}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}LVQ 1}{8}{subsection.2.5.1}
-\contentsline {section}{\numberline {2.6}LVQ 2.1}{9}{section.2.6}
-\contentsline {section}{\numberline {2.7}LVQ 3}{9}{section.2.7}
-\contentsline {section}{\numberline {2.8}SGP}{9}{section.2.8}
-\contentsline {section}{\numberline {2.9}SGP 2}{9}{section.2.9}
-\contentsline {section}{\numberline {2.10}CCNN}{9}{section.2.10}
+\contentsline {subsection}{\numberline {2.5.2}Optimized-learning-rate LVQ}{8}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}LVQ 2.1}{9}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}LVQ 3}{10}{subsection.2.5.4}
+\contentsline {section}{\numberline {2.6}SGP}{10}{section.2.6}
+\contentsline {section}{\numberline {2.7}SGP 2}{10}{section.2.7}
+\contentsline {section}{\numberline {2.8}CCNN}{10}{section.2.8}
