@@ -6,46 +6,46 @@ A level-1 auxiliary file: conclusao/conclusao.aux
 The style file: alpha.bst
 Database file #1: bibliografia/bibliografia.bib
 Warning--entry type for "cgm.cs.mcgill.ca.godfried" isn't style-file defined
---line 226 of file bibliografia/bibliografia.bib
-You've used 13 entries,
+--line 247 of file bibliografia/bibliografia.bib
+You've used 14 entries,
             2543 wiz_defined-function locations,
-            649 strings with 6325 characters,
-and the built_in function-call counts, 5254 in all, are:
-= -- 529
-> -- 209
-< -- 11
-+ -- 72
-- -- 67
-* -- 359
-:= -- 842
-add.period$ -- 39
-call.type$ -- 13
-change.case$ -- 76
-chr.to.int$ -- 13
-cite$ -- 13
-duplicate$ -- 215
-empty$ -- 408
-format.name$ -- 85
-if$ -- 1106
+            657 strings with 6507 characters,
+and the built_in function-call counts, 5814 in all, are:
+= -- 587
+> -- 232
+< -- 12
++ -- 79
+- -- 74
+* -- 393
+:= -- 925
+add.period$ -- 43
+call.type$ -- 14
+change.case$ -- 82
+chr.to.int$ -- 14
+cite$ -- 14
+duplicate$ -- 241
+empty$ -- 453
+format.name$ -- 93
+if$ -- 1235
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 10
-newline$ -- 66
-num.names$ -- 41
-pop$ -- 69
+missing$ -- 11
+newline$ -- 71
+num.names$ -- 46
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 89
+purify$ -- 96
 quote$ -- 0
-skip$ -- 189
+skip$ -- 214
 stack$ -- 0
-substring$ -- 332
-swap$ -- 45
-text.length$ -- 11
+substring$ -- 367
+swap$ -- 56
+text.length$ -- 12
 text.prefix$ -- 5
 top$ -- 0
-type$ -- 104
+type$ -- 112
 warning$ -- 0
-while$ -- 49
-width$ -- 17
-write$ -- 168
+while$ -- 55
+width$ -- 18
+write$ -- 182
 (There was 1 warning)

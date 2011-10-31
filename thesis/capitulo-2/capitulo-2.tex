@@ -16,7 +16,7 @@ Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sob
 
 \begin{algorithm}
 \caption{ENN}
-\label{pseudocode_enn}
+\label{alg:enn}
 \begin{algorithmic}[1]
 \REQUIRE {$list$: uma lista}
 \FORALL {instância $e_i$ da base de dados original}
@@ -31,12 +31,43 @@ Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sob
 
 O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se o valor de K=3. Tipicamente, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1.
 
-%% TODO COLOCAR ALGUMA FIGURA PARA EXEMPLIFICAR
-%% TODO EXPLICAR A FIGURA
+\begin{figure}
+\label{fig:enn_exemple}
+\includegraphics[scale=0.40]{imagens/enn.eps}
+\caption{ENN aplicado com K=3}
+\end{figure}
+
+Na figura \ref{fig:enn_example} pode-se observar uma base de dados com duas classes, no primeiro gráfico da figura, pode-se observar a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o \ref{alg:enn} com K=3 sobre a base de dados, os pontos pretos representam pontos que foram classificados errôneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos. Observa-se que o elemento 11 foi utilizado para eliminar 2 instâncias ruidosas, um próprio ruído poderia ser utilizado para eliminar outro ruído, apesar de ser improvável.
+
+O mais interessante do caso acima é que, após a aplicação do ENN, as classes ficaram bem separadas pelos quadrantes pontilhados, mostrando a eficiência do ENN para a base de dados acima.
 
 Uma vantagem do ENN é que ele independe da ordem que a base de dados foi apresentada, ou seja, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
 
-%% TODO CITAR DESVANTAGENS DO ENN 
+Porém, o ENN também apresenta desvantagens, ele possui uma baixa capacidade de redução, pois elimina apenas ruídos, mantendo instâncias que são desnecessárias, que apresentam apenas redundância de informação. No caso da \ref{fig:enn_example}, a base poderia ser representada por 4 instâncias bem posicionadas ou, por se tratar de uma técnica seletiva, com 8 instâncias, porém, o ENN manteve 13 instâncias, eliminando apenas 3.
+
+Pelas suas características, normalmente o ENN é utilizado como método de pré-processamento da base de dados, eliminando apenas instâncias que apresentam alta probabilidade de serem ruídos.
+
+
+No caso de bases desbalanceadas, o ENN pode tratar todas as instâncias da base minoritária como ruídos, caso a base seja altamente desbalanceada (isto será demonstrado posteriormente com exemplos). Uma possível adaptação para o ENN em bases altamente desbalanceadas é eliminar apenas os elementos que sejam da base de dados marjoritária. O algoritmo adaptado está demonstrado em \ref{alg:enn_for_unbalanced_datasets}.
+
+\begin{algorithm}
+\caption{ENN}
+\label{alg:enn_for_unbalanced_datasets}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+	\FORALL {instância $e_i$ da base de dados original}
+		\STATE Aplique o KNN sobre $e_i$
+		\IF {$e_i$ foi classificado erroneamente}
+			\IF {$e_i$ for da classe marjoritária}
+				\STATE salve $e_i$ em $list$
+			\ENDIF
+		\ENDIF
+	\ENDFOR
+	\STATE Remova da base de dados todos os elementos que estão em $list$
+\end{algorithmic}
+\end{algorithm}
+
+Com este algoritmo, as instâncias da classe minoritária seria mantida, e a região delimitada por ela seria mais bem definida.
 
 \section{CNN}
 
@@ -48,17 +79,17 @@ O algoritmo do CNN será mostrado abaixo, e logo após, comentários a respeito do 
 
 \begin{algorithm}
 \caption{CNN}
-\label{pseudocode_cnn}
+\label{alg:cnn}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-\STATE Escolha um elemento de cada classe $aleatoreamente$ e coloque-os em $list$
-\FORALL {instância $e_i$ da base de dados original}
-\STATE Aplique o KNN sobre $e_i$ utilizando os elementos em $list$ para treinamento
-\IF {$e_i$ foi classificado erroneamente}
-\STATE salve $e_i$ em $list$
-\ENDIF
-\ENDFOR
-\STATE Remova da base original todos os elementos que não estão em $list$
+	\REQUIRE {$list$: uma lista}
+	\STATE Escolha um elemento de cada classe $aleatoreamente$ e coloque-os em $list$
+	\FORALL {instância $e_i$ da base de dados original}
+		\STATE $KNN(e_i,list)$
+		\IF {$e_i$ foi classificado erroneamente}
+			\STATE salve $e_i$ em $list$
+		\ENDIF
+	\ENDFOR
+	\RETURN $list$, os protótipos
 \end{algorithmic}
 \end{algorithm}
 
@@ -74,17 +105,17 @@ Segue abaixo o algoritmo desta adaptação:
 
 \begin{algorithm}
 \caption{CNN para bases desbalanceadas}
-\label{pseudocode_cnn}
+\label{alg:cnn_unbalanced}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-\STATE Coloque todos os elementos da classe minoritária em $list$
-\FORALL {instância $e_i$ da base de dados original}
-\STATE Aplique o KNN sobre $e_i$ utilizando os elementos em $list$ para treinamento
-\IF {$e_i$ foi classificado erroneamente}
-\STATE salve $e_i$ em $list$
-\ENDIF
-\ENDFOR
-\STATE Remova da base original todos os elementos que não estão em $list$
+	\REQUIRE {$list$: uma lista}
+	\STATE Coloque todos os elementos da classe minoritária em $list$
+	\FORALL {instância $e_i$ da base de dados original}
+		\STATE Aplique o KNN sobre $e_i$ utilizando os elementos em $list$ para treinamento
+		\IF {$e_i$ foi classificado erroneamente}
+			\STATE salve $e_i$ em $list$
+		\ENDIF
+	\ENDFOR
+	\RETURN base original - $list$
 \end{algorithmic}
 \end{algorithm}
 
@@ -93,11 +124,11 @@ Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes
 
 \section{Tomek Links}
 
-Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de ser ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) < dist($e_i$,$e_k$)} e \textit{dist($e_i$,$e_j$) < dist($e_j$,$e_k$)}. Segue abaixo o algorítmo detalhado:
+Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de ser ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) < dist($e_i$,$e_k$)} e \textit{dist($e_i$,$e_j$) < dist($e_j$,$e_k$)}. Segue o algoritmo detalhado em \ref{alg:select_tomek_links}:
 
 \begin{algorithm}
 \caption{Seleciona Tomek Links}
-\label{pseudocode_cnn}
+\label{alg:select_tomek_links}
 \begin{algorithmic}[1]
 \REQUIRE {$list$: uma lista}
 	\FORALL {instância $e_i$ da base de dados original}
@@ -108,29 +139,28 @@ Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipo
 			\ENDIF
 		\ENDIF
 	\ENDFOR
-	\STATE Retorne os pares em $list$, os Tomek Links
+	\RETURN $list$, Tomek Links
 \end{algorithmic}
 \end{algorithm}
 
 
 
-Os Tomek Links representam elementos da região de fronteira e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. Segue abaixo o algoritmo da seleção de protótipos:
+Os Tomek Links representam elementos da região de fronteira e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo da seleção de protótipos Tomek Links é apresentado em \ref{alg:tomek_links}:
 
 
 \begin{algorithm}
 \caption{Tomek Links}
-\label{pseudocode_cnn}
+\label{alg:tomek_links}
 \begin{algorithmic}[1]
 \REQUIRE {$list$: uma lista}
-\STATE $list$ = $Seleciona Tomek Links$ da base original
+	\STATE $list$ = $Seleciona Tomek Links$ da base original
 	\FORALL {\textit{($e_i$, $e_j$)} em $list$}
 		\STATE remova $e_i$ da base original
 		\STATE remova $e_j$ da base original
 	\ENDFOR
-	\STATE Retorne a base original filtrada
+	\RETURN base original filtrada
 \end{algorithmic}
 \end{algorithm}
-
 
 
 Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tomek Links remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
@@ -145,7 +175,7 @@ Observa-se facilmente que os Tomek Links pode remove todas as instâncias da fron
 
 \begin{algorithm}
 \caption{Tomek Links}
-\label{pseudocode_cnn}
+\label{alg:tomek_links_for_unbalanced_datasets}
 \begin{algorithmic}[1]
 \REQUIRE {$list$: uma lista}
 	\STATE $list$ = $Seleciona Tomek Links$ da base original
@@ -157,7 +187,7 @@ Observa-se facilmente que os Tomek Links pode remove todas as instâncias da fron
 			\STATE remova $e_j$ da base original
 		\ENDIF
 	\ENDFOR
-	\STATE Retorne a base original filtrada
+	\RETURN base original - $list$
 \end{algorithmic}
 \end{algorithm}
 
@@ -165,12 +195,79 @@ Observa-se facilmente que os Tomek Links pode remove todas as instâncias da fron
 
 Com esta adaptação, a classe minoritária é mantida, evitando o aumento do desbalanceamento ou a remoção por alta probabilidade de ruído.
 
+\section{OSS}
+
+One-Sided Selection \cite{conf/icml/KubatM97} é um método seletivo de seleção de protótipos, surgido pela combinação das técnicas CNN e Tomek Links. O algoritmo consiste na aplicação do CNN e depois da aplicação do Tomek Links como um filtro. O One-Sided Selection combina características das duas técnicas. A aplicação do CNN é feita para eliminar instâncias desnecessárias, redundantes, ou seja, instâncias que estão longe da fronteira de classificação. Já a aplicação do Tomek Links tem a função de remover elementos na fronteira de classificação, fazendo uma aparente separação das classes e removendo ruídos.
+
+O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN, como monstrado no algoritmo \ref{alg:oss}.
+
+\begin{algorithm}
+\caption{One-Sided Selection}
+\label{alg:oss}
+\begin{algorithmic}[1]
+\REQUIRE {$list$: uma lista}
+\REQUIRE {$tomek_links_list$: uma lista}
+	\STATE $list$ = ${CNN para bases desbalanceadas}$ sobre a base original
+	\STATE $list$ = ${Tomek Links para bases desbalanceadas}$ sobre $list$
+	\RETURN $list$
+\end{algorithmic}
+\end{algorithm}
+
+
+Observando o algoritmo, é fácil concluir que o One-Sided Selection é uma técnica apropriada para bases desbalanceadas. A aplicação do CNN adaptado elimina as instâncias redundantes da base marjoritária, colaborando para, além de diminuir a quantidade de instâncias longe da fronteira de classificação, diminuir o nível de desbalanceamento entre as classes. Já a aplicação do Tomek Links adaptado, elimina instâncias da classe marjoritária na fronteira de classificação, colaborando para maior delimitação da classe minoritária.
+
+%%TODO colocar figura para exemplificar OSS
+%%TODO explicar figura do OSS
+
+Uma desvantagem do One-Sided Selection é que ele não é determinístico, o CNN é não-determinístico e como o One-Sided Selection faz a aplicação dele, torna o mesmo não-determinístico. O OSS poderia ser feito aplicando-se outro algoritmo no lugar do CNN, podendo assim, torna-lo determinístico. Este trabalho, porém, não abordará adaptações para o OSS, pois o mesmo já é apropriado para base de dados, e ser ou não determinístico, apesar de ser levado em consideração, não faz parte do escopo deste trabalho.
 
 
 \section{LVQ}
+
+Learning Vector Quantization proposto por Kohonen \cite{kohonen:lvq}. O Learning Vector quantization é um algoritmo supervisionado de síntese de protótipos, ou seja, cria novas instâncias baseadas em instâncias já existentes. A ideia básica do algoritmo é que dado um conjunto inicial de protótipos, o LVQ faz um ajuste dos protótipos, de forma a posicionar cada instância em um ponto que seja possível estabelecer uma função discriminante baseada nestes protótipos.
+
+Uma desvantagem do LVQ é que a ordem das instâncias altera o resultado, ou seja, o algoritmo não é deterministico. Outra desvantagem é que, conforme será mostrado, o LVQ possui vários parâmetros, sendo necessário uma análise empírica dos valores apropriados para esses parâmetros.
+
+Os protótipos iniciais podem ser escolhidos de qualquer forma, a idéia é que sejam protótipos que tenham boa representatividade da base de dados, mas também podem ser selecionados aleatoriamente, pois o próprio LVQ se encarrega de fazer os ajustes nestes protótipos.
+
+
 \subsection{LVQ 1}
-\subsection{LVQ 2.1}
-\subsection{LVQ 3}
+
+LVQ1 é a primeira versão do Learning Vector Quantization proposto por Kohonen. O algoritmo do LVQ1 basicamente seleciona alguns protótipos iniciais e ajusta esses protótipos utilizando a base original. Quando uma instância da base original é classificada errôneamente pelos protótipos, afasta-se o protótipo mais próximo, e quando é classificada corretamente, aproxima-se. O algoritmo detalhado pode ser visto em \ref{alg:lvq1}.
+
+
+\begin{algorithm}
+\caption{LVQ 1}
+\label{alg:lvq1}
+\begin{algorithmic}[1]
+\REQUIRE {$prototypes$: uma lista para os protótipos}
+\REQUIRE {$selection$: um algorítmo para seleção dos protótipos iniciais}
+	\STATE $prototypes$ = $selection$ (base original)
+	\WHILE{$prototypes$ não estiver sub-ajustado}
+		\STATE $x$ = $ChooseOne$ (base original)
+		\STATE $e_i$ = $SelectNearestFrom$($prototypes$, $x$)
+		\IF {classe de $e_i$ != classe de $x$}
+			\STATE $e_i = e_i + \alpha(t) \times [x - e_i]$
+		\ELSE
+			\STATE $e_i = e_i - \alpha(t) \times [x - e_i]$
+		\ENDIF
+	\ENDWHILE
+	\RETURN  $prototypes$
+\end{algorithmic}
+\end{algorithm}
+
+
+A vantagem do LVQ1 é que ele estabiliza durante o treinamento, porém, ele possui um grande número de passos. Para a maioria dos problemas, o LVQ 1 possui um resultado satisfatório, mas além da demora, é necessário escolher os parâmetros corretamente.
+
+Um dos parâmetros é o $\alpha(t)$, uma constante de ajuste, que serve para aproximar ou afastar os protótipos. Este afastamento ou aproximação é regulado pelo valor de $\alpha(t)$. Percebe-se que $\alpha(t)$ foi colocado como uma função. Normalmente, essa função é uma exponencial descrescente.
+
+Outra questão do LVQ1 é escolher a quantidade de protótipos iniciais adequada, visto que, esta quantidade não é alterada durante toda a execução do algoritmo.
+
+No caso de bases desbalanceadas, pode-se utilizar fatores de ajustes diferenciados para cada classe, ou escolher uma quantidade aproximada de cada classe para os protótipos iniciais. Fazendo estas adaptações, o LVQ1 poderá ter resultados melhores para bases desbalanceadas.
+
+
+\section{LVQ 2.1}
+\section{LVQ 3}
 \section{SGP}
 \section{SGP 2}
 \section{CCNN}

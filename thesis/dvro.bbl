@@ -32,6 +32,13 @@ Jason~Van Hulse, Taghi~M. Khoshgoftaar, and Amri Napolitano.
 \newblock In Zoubin Ghahramani, editor, {\em ICML}, volume 227 of {\em ACM
   International Conference Proceeding Series}, pages 935--942. ACM, 2007.
 
+\bibitem[KM97]{conf/icml/KubatM97}
+Miroslav Kubat and Stan Matwin.
+\newblock Addressing the curse of imbalanced training sets: One-sided
+  selection.
+\newblock In Douglas~H. Fisher, editor, {\em ICML}, pages 179--186. Morgan
+  Kaufmann, 1997.
+
 \bibitem[Koh86]{kohonen:lvqtr}
 Teuvo Kohonen.
 \newblock Learning vector quantization for pattern recognition.
