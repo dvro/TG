@@ -300,7 +300,7 @@ $\min{\frac{d_i}{d_j}}{\frac{d_j}{d_i}} > s$, onde $s = \dfrac{1 - w}{1 + w}$
 \end{center}
 
 \begin{algorithm}
-\caption{LVQ 1}
+\caption{LVQ 2.1}
 \label{alg:lvq21}
 \begin{algorithmic}[1]
 \REQUIRE {$prototypes$: uma lista para os protótipos}
@@ -331,6 +331,42 @@ Enquanto o LVQ1 provoca o afastamento dos protótipos nas regiões de indecisão, o
 Uma desvantagem do LVQ 2.1 é que além do custo ser maior, a aplicação do mesmo pode sobre-ajustar os protótipos nas regiões de indecisão. Para diminuir esse sobre-ajuste, foi criado o LVQ 3, abordado na próxima sessão.
 
 \subsection{LVQ 3}
+
+A segunda melhora proposta por Kohonen foi o LVQ 3. Este método tenta evitar o sobre-ajuste do LVQ 2.1 atuando também quando o elemento já está sendo classificado corretamente pelos dois protótipos mais próximos, aproximando ambos da instância utilizada para ajuste. Além disso, a terceira versão do LVQ introduz um fator de estabização $\epsilon$.
+
+\begin{algorithm}
+\caption{LVQ 3}
+\label{alg:lvq3}
+\begin{algorithmic}[1]
+\REQUIRE {$prototypes$: uma lista para os protótipos}
+	\STATE $prototypes$ = $LVQ 1$ (base original)
+	\WHILE{$prototypes$ não estiver sub-ajustado}
+		\STATE $x$ = $ChooseOne$ (base original)
+		\STATE $e_i$, $e_j$ = $SelectNearestsFrom$($prototypes$, $x$)
+		\IF {$CaiuNaJanela(x,e_i,e_j)$}
+			\IF {$Classe(e_i) \ne Classe(e_j)$}
+				\IF {$Classe(e_i) = Classe(x)$}
+					\STATE $e_i = e_i + \alpha(t) \times [x - e_i]$
+					\STATE $e_j = e_j - \alpha(t) \times [x - e_i]$
+				\ELSE
+					\STATE $e_i = e_i - \alpha(t) \times [x - e_i]$
+					\STATE $e_j = e_j + \alpha(t) \times [x - e_i]$
+				\ENDIF
+			\ELSIF {$Classe(e_i) = Classe(e_j) = Classe(x)$}
+				\STATE $e_i = e_i + \epsilon \times \alpha(t) \times [x - e_i]$
+				\STATE $e_j = e_j + \epsilon \times \alpha(t) \times [x - e_i]$
+			\ENDIF
+		\ENDIF
+	\ENDWHILE
+	\RETURN  $prototypes$
+\end{algorithmic}
+\end{algorithm}
+
+
+O fator de estabilização serve para suavizar o ajuste quando os protótipos já estão classificando corretamente $x$. O valor de $\epsilon$ deve ser tal que $0 < \epsilon < 1$.
+
+Assim como as outras versões do LVQ, o LVQ 3 é robusto, mas seu maior problema é determinar o valor de tantos parâmetros como $\alpha, \epsilon$ e $w$. Porém, a maior desvantagem é não ser possível saber com certeza quando os protótipos foram ou não sobre-ajustados.
+
 \section{SGP}
 \section{SGP 2}
 \section{CCNN}
