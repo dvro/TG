@@ -391,39 +391,45 @@ Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias d
 No final de cada iteração, o centróide de cada grupo é computado novamente. O processo se repete até que não haja alterações em mais nenhum grupo. Uma descrição mais formal do algoritmo é descrita em \ref{alg:sgp1}
 
 \begin{algorithm}
-\caption{SGP 1}
+\caption{SGPS 1}
 \label{alg:sgp1}
 \begin{algorithmic}[1]
-\REQUIRE {$prototypes$: uma lista para os representantes}
-\REQUIRE {$groups$: uma lista de grupos de instâncias}
+\REQUIRE {$PS$: uma lista para os representantes}
+\REQUIRE {$GS$: uma lista de grupos de instâncias}
+\REQUIRE {$T$: uma lista de duplas de instâncias}
 	\FORALL {classe $C$}
 		\STATE $G$ = $\bigcup$ instâncias da classe $C$
-		\STATE $Adicione(G, groups)$
-		\STATE $Adicione(Centroide(G),prototypes)$ 
+		\STATE $Adicione(G, GS)$
+		\STATE $Adicione(Centroide(G),PS)$ 
 	\ENDFOR
 	\STATE $count = 1$
 	\WHILE {$count \ne 0$}
-		\STATE $count$ = $Quantidade(groups)$
-		\FORALL {$G$ em $groups$}
+		\STATE $count$ = $Quantidade(GS)$
+		\STATE $Limpe(T)$
+		\FORALL {$G$ em $GS$} 
+			\STATE $P$ = Representante de $G$
 			\FORALL {$e_i$ em $group$}
-				\STATE Calcule $1NN(e_i, prototypes)$
+				\STATE $NearestP$ = $1NN(e_i, PS)$
+				\STATE $Adicione((e_i,NearestP), T)$
 			\ENDFOR
-			\IF {$\forall$ $e_i$ em $G$ o protótipo mais próximo é o representante do grupo}
+			\IF {$\forall$ $e_i, NearestP$ em $T$, $NearestPS$ = $P$}
 				\STATE $count$ = $count - 1$
-			\ELSIF {$\forall$ $e_i$ em $G$ a classe do protótipo mais próximo for diferente da do protótipo centróide} 
-				\STATE trace um  hiperplano que passa pelo centróide de $G$ e cujo vetor normal é a primeira componente principal.
-				\STATE divida $G$ em dois grupos, as instâncias que estão acima, e abaixo do hiperplano traçado.
-				\STATE calcule o centróide de cada grupo criado e atualize $G$ e $prototypes$.
-			\ELSIF {$\exists$ $e_i$ em $G$ tal que o protótipo mais próximo é o representante de outro grupo mas possui a mesma classes}
-				\STATE remova todo $e_i$ e inclua-os no grupo do protótipo mais próximo.
-				\STATE atualize os protótipos de cada grupo.
-			\ELSIF {$\exists$ $e_i$ em $G$ tal que o protótipo mais próximo é o representante de outro grupo mas possui classe diferente}
-				\STATE remova todo $e_i$ de $G$ e crie um novo grupo.
-				\STATE atualize $prototypes$ e $groups$
+			\ELSIF {$\forall$ $e_i, NearestP$ em $T$, a $Classe(NearestP) \ne Classe(P)$} 
+				\STATE $Vector = PrimeiraComponentePrincipal(G)$
+				\STATE $Hiperplano$ = hiperplano que passa pelo centróide de $G$ e cujo vetor normal é a $Vector$.
+				\STATE Divida $G$ em 2 grupos, instâncias acima e abaixo de $Hiperplano$
+				\STATE Atualize $GS$ e $PS$.
+			\ELSIF {$\exists$ $e_i, NearestP$ em $T$ tal que $NearestP \ne P$ e $Classe(NearestP) = Classe(P)$}
+				\STATE Remova $e_i$ de $G$ e adicione a grupo de $NearestP$.
+				\STATE Atualize $GPS$ e $PS$.
+			\ELSIF {$\exists$ $e_i, NearestP$ em $T$ tal que o $Classe(NearestP) != Classe(P)$}
+				\STATE Remova $e_i$ de $G$.
+				\STATE Crie um novo grupo contendo as instâncias removidas.
+				\STATE Atualize $PS$ e $GS$,
 			\ENDIF
 		\ENDFOR
 	\ENDWHILE
-	\RETURN  $prototypes$
+	\RETURN  $PS$
 \end{algorithmic}
 \end{algorithm}
 
