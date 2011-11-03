@@ -1,6 +1,7 @@
 
 
-
+artigos/*
+utils/*
 *.aux
 *.out
 
