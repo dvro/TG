@@ -368,6 +368,75 @@ O fator de estabilização serve para suavizar o ajuste quando os protótipos já es
 Assim como as outras versões do LVQ, o LVQ 3 é robusto, mas seu maior problema é determinar o valor de tantos parâmetros como $\alpha, \epsilon$ e $w$. Porém, a maior desvantagem é não ser possível saber com certeza quando os protótipos foram ou não sobre-ajustados.
 
 \section{SGP}
+
+Self-Generating Prototypes \cite{fayed:sgp} é uma técnica de síntese de protótipos muito completa. Sua maior vantagem é que, enquanto muitas técnicas de seleção de protótipos dependem da escolha correta do número de protótipos iniciais ou possuem muitos parâmetros, o SGP encontra a quantidade de protótipos e a localização de cada uma em sua fase de treinamento, sem supervisão humana.
+
+A ideia principal do SGP é formar um certo número de grupos e eleger representantes para esses grupos. Conforme necessário, o algorítmo divide os grupos ou move instâncias de um grupo para outro.
+
+Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias daquela classe. Com os grupos feitos, são obtidos os centróides de cada grupo e estes são chamados representantes do grupo. Depois, para cada grupo, faça os passos abaixo até que não haja mais alterações em nenhum grupo.
+
+\begin{figure}
+\label{fig:divisaogrupossgp}
+\includegraphics[scale=0.55]{imagens/SGP1.eps}
+\caption{Etapa da divisão de grupos. Figura obtida de \cite{csp:sgp}} 
+\end{figure}
+
+\begin{itemize}
+\item Se para todos os padrões de um grupo o protótipo mais próximo é o centróide do grupo, então nenhuma operação é realizada.
+\item Se para todos os padrões de um grupo o protótipo mais próximo é de uma classe diferente da do grupo, ele é dividido em dois subgrupos \ref{fig:divisaogrupossgp}. Essa divisão é feita separando os padrões pelo hiperplano que passa pelo centroide do grupo, e cujo vetor normal é a primeira componente principal gerada pelos padrões do grupo.
+\item Se para alguns padrões de um grupo o protótipo mais próximo é diferente do centróide, mas da mesma classe, esses padrões são deslocados do grupo original para o grupo do protótipo mais próximo
+\item Se para alguns padrões de um grupo o protótipo mais próximo não é o centróide e é de uma classe diferente, estes padrões são removidos do grupo original e formam um novo grupo, sendo o centróide computado como um novo protótipo.
+\end{itemize}
+
+No final de cada iteração, o centróide de cada grupo é computado novamente. O processo se repete até que não haja alterações em mais nenhum grupo. Uma descrição mais formal do algoritmo é descrita em \ref{alg:sgp1}
+
+\begin{algorithm}
+\caption{SGP 1}
+\label{alg:sgp1}
+\begin{algorithmic}[1]
+\REQUIRE {$prototypes$: uma lista para os representantes}
+\REQUIRE {$groups$: uma lista de grupos de instâncias}
+	\FORALL {classe $C$}
+		\STATE $G$ = $\bigcup$ instâncias da classe $C$
+		\STATE $Adicione(G, groups)$
+		\STATE $Adicione(Centroide(G),prototypes)$ 
+	\ENDFOR
+	\STATE $count = 1$
+	\WHILE {$count \ne 0$}
+		\STATE $count$ = $Quantidade(groups)$
+		\FORALL {$G$ em $groups$}
+			\FORALL {$e_i$ em $group$}
+				\STATE Calcule $1NN(e_i, prototypes)$
+			\ENDFOR
+			\IF {$\forall$ $e_i$ em $G$ o protótipo mais próximo é o representante do grupo}
+				\STATE $count$ = $count - 1$
+			\ELSIF {$\forall$ $e_i$ em $G$ a classe do protótipo mais próximo for diferente da do protótipo centróide} 
+				\STATE trace um  hiperplano que passa pelo centróide de $G$ e cujo vetor normal é a primeira componente principal.
+				\STATE divida $G$ em dois grupos, as instâncias que estão acima, e abaixo do hiperplano traçado.
+				\STATE calcule o centróide de cada grupo criado e atualize $G$ e $prototypes$.
+			\ELSIF {$\exists$ $e_i$ em $G$ tal que o protótipo mais próximo é o representante de outro grupo mas possui a mesma classes}
+				\STATE remova todo $e_i$ e inclua-os no grupo do protótipo mais próximo.
+				\STATE atualize os protótipos de cada grupo.
+			\ELSIF {$\exists$ $e_i$ em $G$ tal que o protótipo mais próximo é o representante de outro grupo mas possui classe diferente}
+				\STATE remova todo $e_i$ de $G$ e crie um novo grupo.
+				\STATE atualize $prototypes$ e $groups$
+			\ENDIF
+		\ENDFOR
+	\ENDWHILE
+	\RETURN  $prototypes$
+\end{algorithmic}
+\end{algorithm}
+
+Observando o algoritmo do SGP1 \ref{alg:sgp1}, percebe-se que apesar do conceito ser bem simples, esta técnica possui alguns passos complexos, sendo necessário conhecimentos sobre extração de características [REFERÊNCIA PCA AQUI]. Principal Component Analysis é a técnica utilizada para traçar o vetor perpendicular ao hiperplano \ref{fig:divisaogrupossgp}.
+
+A maior vantagem do SGP1 é que, conforme citado anteriormente, ele é não depende de parâmetros como quantidade de protótipos iniciais nem valores específicos. Por ser um algoritmo deterministico, o SGP1 executado numa mesma base de dados, sempre gerará os mesmos protótipos. Estes protótipos gerados possuem excelente representatividade do conjunto de treinamento, tanto que, utilizando-se os protótipos gerados como treinamento de um KNN, e classificando-se todas as instâncias de treinamento do SGP1, a taxa de acerto é de 100\%. Claro que o treinamento não pode ser utilizado para teste, mas isto mostra a boa representatividade das instâncias geradas pelo SGP1.
+
+Porém, o SGP1 também apresenta desvantagens. Uma delas é que o SGP1 é muito custoso, exigindo, em geral, um treinamento mais longo que outras técnicas.
+
+Outra desvantagem é que o SGP1 é sensível a ruídos, pois, se necessário, o algoritmo criará um grupo com apenas uma instância. No caso de um ruído, isto será muito desvantajoso, considerando que, em experimentos diversos, o SGP1 conseguiu reduzir em mais de 100 vezes o tamanho da base de dados.
+
+Apesar das desvantagens citadas, bases desbalanceadas podem ser beneficiadas com o SGP1, considerando que ele considera os agrupamentos de classes, e não a quantidade de instâncias em cada classe.
+
 \section{SGP 2}
 \section{CCNN}
 
