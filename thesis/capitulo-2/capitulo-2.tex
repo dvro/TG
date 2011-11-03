@@ -445,9 +445,10 @@ Apesar das desvantagens citadas, bases desbalanceadas podem ser beneficiadas com
 
 \section{SGP 2}
 
-Para reduzir ainda mais a quantidade de protótipos gerados pelo SGP1, foi criado uma nova versão, o SGP2. Basicamente, o SGP2 adiciona apenas 2 etapas ao SGP1. Estas etapas são prunning e merge.
 
-
+Após a execução do algoritmo acima, um passo de merging pode ser aplicado para reduzir o número de protótipos. Os Grupos A e B podem ser fundidos se ambos tiverem a mesma classe e se o segundo protótipo mais próximo dos padrões do grupo A for o protótipo (centróide) do grupo B (Pb), e o segundo protótipo mais próximo dos padrões do grupo B for o centróide do grupo A (Pa).
+	Um passo de prunnig (poda) também pode ser utilizado, se o segundo protótipo mais próximo de todos os padrões de um certo grupo possuem a mesma classe, o grupo e seu protótipo são removidos. O algoritmo SGP2 é o algoritmo SGP com as etapas de merging e prunnig. 
+	Para evitar o sobre-ajuste e perda de generalização introduziu-se [Fayed et al. 2007] dois parâmetros ao SGP chamados de Rmin e Rmis.	 O Rmin representa um limite para o tamanho relativo de um grupo em relação ao maior grupo. Por exemplo, se Rmin é 0.1 e o tamanho do maior grupo é 200, todos os grupos com tamanho menor que (0.1 ×200) são descartados. O segundo parâmetro Rmis é um limiar para a taxa de classificações incorretas de um grupo. Se o número de padrões classificados erroneamentes em um grupo dividido pelo tamanho do grupo é menor que Rmis, então o grupo permanece inalterado. Este parâmetros reduzem o número de protótipos e aumentam a capacidade de generalização. Como recomendado em [Pereira e Cavalcanti 2008] em nossos experimentos, os valores do parâmetros foram variados no intervalo [0.01, 0.2].
 
 \section{CCNN}
 
