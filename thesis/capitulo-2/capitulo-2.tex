@@ -2,15 +2,15 @@
 \chapter{Técnicas de Seleção de Protótipos}
 % \label{ch:tecnicasdeselecaodeprototipos}
 
-Neste capítulo, serão explicadas as técnicas de seleção de protótipos abordadas neste trabalho. Cada uma das sessões abaixo aborda conceitos basicos, algoritmo e características de cada técnica, assim como uma possível adaptação no algorítmo para tratar de bases desbalanceadas.
+Neste capítulo, serão explicadas as técnicas de seleção de protótipos analisadas neste trabalho. Cada uma das sessões abaixo aborda conceitos básicos, pseudo-código e características de cada técnica, assim como possíveis adaptações nos seus algoritmos para tratar bases desbalanceadas.
 
 \section{ENN}
 
-Edited Nearest Neighbor Rule\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, ela elimina pontos na região de fronteira, região de alta susceptibilidade a erros, eliminando assim, prováveis ruídos.
+Edited Nearest Neighbor Rule\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, eliminando instâncias na região de fronteira, região de alta susceptibilidade a erros.
 
-Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidade de redução, deixando as instâncias que não se encontram na região de fronteira intactas, exceto no caso de instâncias com alta probabilidade de erro.
+Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidade de redução. Seu algoritmo mantém as instâncias que não estão localizadas nesta região, exceto no caso de instâncias com extrema probabilidade de erro.
 
-Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sobre este algoritmo.
+O algoritmo do ENN está demonstrado em Algorithm \ref{alg:enn}.
 
 \begin{algorithm}
 \caption{ENN}
@@ -27,7 +27,7 @@ Segue abaixo o algoritmo da execução do ENN e, logo após, alguns comentários sob
 \end{algorithmic}
 \end{algorithm}
 
-O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se o valor de K=3. Em geral, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1, mas com isso, elimina-se também instâncias não ruidosas.
+O valor de K usado pelo KNN pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se K=3. Em geral, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1, mas com isso, elimina-se também instâncias não ruidosas.
 
 \begin{figure}
 \label{fig:enn}
@@ -35,7 +35,7 @@ O valor de K pode variar de acordo com o tamanho da base de dados, porém, tipica
 \caption{ENN aplicado com K=3}
 \end{figure}
 
-Na Figura \ref{fig:enn} pode-se observar uma base de dados com duas classes. No primeiro gráfico da figura, observar-se a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o ENN, Algorithm \ref{alg:enn}, com K=3 sobre a base de dados, os pontos pretos representam pontos que foram classificados erroneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos. Mesmo um elemento que será posteriormente eliminado pode ser utilizado para eliminar ou manter outra instância, visto que as remoções são feitas apenas no fim da execução.
+Na Figura \ref{fig:enn} pode-se observar uma base de dados com duas classes. No primeiro gráfico da figura, observar-se a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o ENN, Algorithm \ref{alg:enn}, com K=3 sobre a base de dados. Os pontos pretos representam pontos que foram classificados erroneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos do ruído. Mesmo um elemento que será posteriormente eliminado pode ser utilizado para eliminar ou manter outra instância, visto que as remoções são feitas apenas no fim da execução.
 
 O mais interessante do caso acima é que, após a aplicação do ENN, as classes ficaram bem separadas pelos quadrantes pontilhados, mostrando a eficiência do ENN para a base de dados acima.
 
@@ -45,7 +45,7 @@ Porém, o ENN também apresenta desvantagens, ele possui uma baixa capacidade de r
 
 Pelas suas características, normalmente o ENN é utilizado como método de pré-processamento da base de dados, eliminando apenas instâncias que apresentam alta probabilidade de serem ruídos.
 
-No caso de bases desbalanceadas, o ENN pode tratar todas as instâncias da base minoritária como ruídos, caso a base seja altamente desbalanceada (isto será demonstrado posteriormente com exemplos). Uma possível adaptação para o ENN em bases altamente desbalanceadas é eliminar apenas os elementos que sejam da base de dados marjoritária. O algoritmo adaptado está demonstrado em Algorithm \ref{alg:enn_for_unbalanced_datasets}.
+No caso de bases desbalanceadas, o ENN pode tratar todas as instâncias da base minoritária como ruídos, caso a base seja altamente desbalanceada (isto será demonstrado posteriormente com exemplos), aumentando ainda mais o nível de desbalanceamento. Uma possível adaptação para o ENN em bases altamente desbalanceadas é eliminar apenas os elementos que sejam da classe marjoritária. O algoritmo adaptado está demonstrado em Algorithm \ref{alg:enn_for_unbalanced_datasets}.
 
 \begin{algorithm}
 \caption{ENN}
