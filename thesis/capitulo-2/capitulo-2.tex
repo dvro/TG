@@ -128,7 +128,7 @@ Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes
 
 \section{Tomek Links}
 
-Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de ser ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) < dist($e_i$,$e_k$)} e \textit{dist($e_i$,$e_j$) < dist($e_j$,$e_k$)}. Segue o algoritmo detalhado em \ref{alg:select_tomek_links}:
+Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de serem ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) < dist($e_i$,$e_k$)} e \textit{dist($e_i$,$e_j$) < dist($e_j$,$e_k$)}. Segue o algoritmo detalhado em Algorithm \ref{alg:select_tomek_links}:
 
 \begin{algorithm}
 \caption{Seleciona Tomek Links}
@@ -147,10 +147,7 @@ Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipo
 \end{algorithmic}
 \end{algorithm}
 
-
-
-Os Tomek Links representam elementos da região de fronteira e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo da seleção de protótipos Tomek Links é apresentado em \ref{alg:tomek_links}:
-
+Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo Tomek Links é apresentado em \ref{alg:tomek_links}:
 
 \begin{algorithm}
 \caption{Tomek Links}
@@ -169,13 +166,17 @@ Os Tomek Links representam elementos da região de fronteira e prováveis ruídos, 
 
 Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tomek Links remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
 
+\begin{figure}
+\label{fig:tomek_links}
+\includegraphics[scale=0.40]{imagens/tomek_links.eps}
+\caption{Exemplo da aplicação do Tomek Links}
+\end{figure}
 
-%% TODO FIGURA PARA TOMEK LINKS
-%% EXPLICAR FIGURA
+Na Figura \ref{fig:tomek_links} está exemplificada a aplicação do Tomek Links. No primeiro gráfico está a base original, e estão circulados os Tomek Links que, no segundo gráfico, foram removidos. No segundo gráfico, a base de dados foi filtrada e a maioria dos ruídos removidos. No exemplo desta figura, o Tomek Links fez uma separação entre as classes, eliminando parte de intersecção entre as mesmas.
 
+Uma desvantagem do Tomek Links é que esta técnica elimina as duas instâncias presentes no Tomek Link, com isso, instâncias não ruidosas podem estar sendo removidas, instâncias estas que podem representar informação importante para a base de dados.
 
-Observa-se facilmente que os Tomek Links pode remove todas as instâncias da fronteira, inclusive as instâncias da classe minoritária, assim sendo, uma possível adaptação dos Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorreria uma separação entre as classes, mas apenas as instâncias da classe marjoritária seriam removidos, dimunuindo assim o nível de desbalanceamento. Segue abaixo o algoritmo desta adaptação:
-
+Observa-se facilmente que o Tomek Links pode remover todas as instâncias de regiões de indecisão, inclusive as instâncias da classe minoritária. Sendo assim, uma adaptação dos Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorre uma separação entre as classes, mas as instâncias dos Tomek Links que forem das classes minoritárias são mantidas, diminuindo o nível de desbalanceamento. O algoritmo desta adaptação está demonstrado em Algorithm \ref{alg:tomek_liks_for_unbalanced_datasets}.
 
 \begin{algorithm}
 \caption{Tomek Links}
@@ -195,9 +196,8 @@ Observa-se facilmente que os Tomek Links pode remove todas as instâncias da fron
 \end{algorithmic}
 \end{algorithm}
 
-
-
 Com esta adaptação, a classe minoritária é mantida, evitando o aumento do desbalanceamento ou a remoção por alta probabilidade de ruído.
+
 
 \section{OSS}
 
