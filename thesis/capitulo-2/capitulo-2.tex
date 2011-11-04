@@ -68,11 +68,11 @@ Com este algoritmo adaptado, as instâncias da classe minoritária seriam mantidas
 
 \section{CNN}
 
-Condensed Nearest Neighbor \cite{cnn:1968} é uma técnica de seleção de protótipos puramente seletiva que tem como objetivo eliminar informação redundante. Diferentemente do ENN \cite{enn:2011}, o CNN não elimina instâncias nas regiões de fronteira, a técnica mantém estes elementos pois estes que "são importantes" para distinguir entre duas classes.
+Condensed Nearest Neighbor \cite{cnn:1968} é uma técnica de seleção de protótipos puramente seletiva que tem como objetivo eliminar informação redundante. Diferentemente do ENN \cite{enn:2011}, o CNN não elimina instâncias nas regiões de fronteira, a técnica mantém estes elementos pois considera que estes "são os importantes" para distinguir entre duas classes.
 
-A ideia geral do CNN é encontrar o menor subconjunto da base de dados original que, utilizando o 1-NN, classifica todos os padrões da base de dados original corretamente. Fazendo isso, o algoritmo elimina os elementos mais afastados da região de indecisão, da fronteira de classificação.
+A ideia geral do CNN é encontrar o menor subconjunto da base de dados original que, utilizando o 1-NN, classifica todos os padrões da base corretamente. Fazendo isso, o algoritmo elimina os elementos mais afastados da região de indecisão, da fronteira de classificação.
 
-O algoritmo do CNN será mostrado abaixo, e logo após, comentários a respeito do mesmo.
+O algoritmo do CNN está descrito em Algorithm \ref{alg:cnn}.
 
 \begin{algorithm}
 \caption{CNN}
@@ -90,15 +90,22 @@ O algoritmo do CNN será mostrado abaixo, e logo após, comentários a respeito do 
 \end{algorithmic}
 \end{algorithm}
 
-Podemos observar que este algoritmo possui uma abordagem diferente do ENN, por exemplo, pois ele começa com um conjunto mínimo de instâncias (uma de cada classe) e depois adiciona instâncias conforme a necessidade de mantê-las para que todos os elementos da base de dados original sejam classificados corretamente.
+Pode-se observar que este algoritmo possui uma abordagem totalmente diferente do ENN, pois ele começa com um conjunto mínimo de instâncias (uma de cada classe) e depois adiciona instâncias conforme a necessidade de mantê-las para que todos os elementos da base de dados original sejam classificados corretamente.
 
-Uma coisa que pode-se observar no algoritmo, é a palavra $aleatoriamente$, o que significa que o CNN aplicado numa mesma base de dados com um mesmo valor de K para o KNN, nem sempre resulta nos mesmos protótipos. O primeiro fato para que isso ocorra é a seleção aleatória dos protótipos iniciais. Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhidos utilizando técnicas como o SGP\cite{fayed:sgp} para obter as instâncias mais centrais. Modificações no CNN são muito comuns \cite{cnn:1976}, porém, mesmo com estas modificações, o CNN ainda não é determinístico, pois a ordem em que as instâncias são classificadas afeta o resultado final.
+Um ponto importante na descrição do algoritmo, é a palavra $aleatoriamente$, o que significa que o CNN aplicado numa mesma base de dados com um mesmo valor de K para o KNN, nem sempre resulta nos mesmos protótipos. O primeiro fato para que isso ocorra é a seleção aleatória dos protótipos iniciais, a segunda é a ordem em que as instâncias são visitadas pelo algoritmo. 
 
-%% TODO COLOCAR ALGUMA FIGURA PARA EXEMPLIFICAR
-%% TODO EXPLICAR A FIGURA
+Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhidos utilizando técnicas como o SGP\cite{fayed:sgp} para obter as instâncias mais centrais. Modificações no CNN são muito comuns \cite{cnn:1976}, porém, mesmo com estas modificações, o CNN ainda não é determinístico, pois a ordem em que as instâncias são classificadas afeta o resultado final.
+
+\begin{figure}
+\label{fig:cnn}
+\includegraphics[scale=0.40]{imagens/cnn.eps}
+\caption{Exemplo da aplicação do CNN}
+\end{figure}
+
+No primeiro gráfico da figura \ref{fig:cnn} é mostrado uma base de dados qualquer, no segundo gráfico, é mostrado o resultado do CNN aplicado nesta base. Observa-se que uma grande quantidade de instâncias foi eliminada, mas praticamente todas as instâncias próximas da região de fronteira foram mantidas. Ainda existem instâncias redundantes nesta base, mas como citado anteriormente, isto acontece por conta da escolha aleatória dos protótipos iniciais e da ordem em que as instâncias são visitadas pelo algoritmo.
 
 Para o caso de estudo abordado neste trabalho, o CNN pode ser utilizado de forma adaptada. A adaptação consiste em manter todos os elementos da classe minoritária e o mínimo possível da classe marjoritária. O próprio CNN se encarrega de remover os elementos redundantes da classe marjoritária, assim, basta apenas selecionar todos os elementos da classe minoritária aos protótipos iniciais.
-Segue abaixo o algoritmo desta adaptação:
+Segue em Algorithm \ref{alg:cnn_unbalanced}, o algoritmo desta adaptação:
 
 \begin{algorithm}
 \caption{CNN para bases desbalanceadas}
@@ -116,7 +123,7 @@ Segue abaixo o algoritmo desta adaptação:
 \end{algorithmic}
 \end{algorithm}
 
-Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes da classe marjoritária são removidos, e todos os elementos da classe minoritária são mantidos. Esta adaptação do CNN irá reduzir a base de dados, ocasionando as vantagens de redução, e ainda reduzirá o desbalenceamento da base.
+Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes da classe marjoritária são removidos, e todos os elementos da classe minoritária são mantidos. Com esta adaptação, além da redução do número de instâncias, também é reduzido o nível de desbalanceamento da base de dados.
 
 
 \section{Tomek Links}

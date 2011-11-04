@@ -11,13 +11,13 @@
 \contentsline {chapter}{\numberline {2}T\'ecnicas de Sele\c c\~ao de Prot\'otipos}{2}{chapter.2}
 \contentsline {section}{\numberline {2.1}ENN}{2}{section.2.1}
 \contentsline {section}{\numberline {2.2}CNN}{4}{section.2.2}
-\contentsline {section}{\numberline {2.3}Tomek Links}{5}{section.2.3}
+\contentsline {section}{\numberline {2.3}Tomek Links}{6}{section.2.3}
 \contentsline {section}{\numberline {2.4}OSS}{7}{section.2.4}
-\contentsline {section}{\numberline {2.5}LVQ}{7}{section.2.5}
+\contentsline {section}{\numberline {2.5}LVQ}{8}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}LVQ 1}{8}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Optimized-learning-rate LVQ}{8}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Optimized-learning-rate LVQ}{9}{subsection.2.5.2}
 \contentsline {subsection}{\numberline {2.5.3}LVQ 2.1}{9}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}LVQ 3}{10}{subsection.2.5.4}
-\contentsline {section}{\numberline {2.6}SGP}{10}{section.2.6}
-\contentsline {section}{\numberline {2.7}SGP 2}{14}{section.2.7}
-\contentsline {section}{\numberline {2.8}CCNN}{16}{section.2.8}
+\contentsline {subsection}{\numberline {2.5.4}LVQ 3}{11}{subsection.2.5.4}
+\contentsline {section}{\numberline {2.6}SGP}{12}{section.2.6}
+\contentsline {section}{\numberline {2.7}SGP 2}{13}{section.2.7}
+\contentsline {section}{\numberline {2.8}CCNN}{15}{section.2.8}
