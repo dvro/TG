@@ -20,4 +20,4 @@
 \contentsline {subsection}{\numberline {2.5.4}LVQ 3}{10}{subsection.2.5.4}
 \contentsline {section}{\numberline {2.6}SGP}{10}{section.2.6}
 \contentsline {section}{\numberline {2.7}SGP 2}{14}{section.2.7}
-\contentsline {section}{\numberline {2.8}CCNN}{14}{section.2.8}
+\contentsline {section}{\numberline {2.8}CCNN}{16}{section.2.8}

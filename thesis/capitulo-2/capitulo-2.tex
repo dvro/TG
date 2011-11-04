@@ -391,7 +391,7 @@ Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias d
 No final de cada iteração, o centróide de cada grupo é computado novamente. O processo se repete até que não haja alterações em mais nenhum grupo. Uma descrição mais formal do algoritmo é descrita em \ref{alg:sgp1}
 
 \begin{algorithm}
-\caption{SGPS 1}
+\caption{SGP 1}
 \label{alg:sgp1}
 \begin{algorithmic}[1]
 \REQUIRE {$PS$: uma lista para os representantes}
@@ -445,10 +445,65 @@ Apesar das desvantagens citadas, bases desbalanceadas podem ser beneficiadas com
 
 \section{SGP 2}
 
+O Self-Generating Prototypes 2 \cite{fayed:sgp}é uma versão melhorada do SGP1 que reduz ainda mais a quantidade de protótipos e é menos sensível aos ruídos e outliers. Para fazer essas melhorias, o SGP2 possui uma etapa de \textit{merge} e \textit{prunning}.
 
-Após a execução do algoritmo acima, um passo de merging pode ser aplicado para reduzir o número de protótipos. Os Grupos A e B podem ser fundidos se ambos tiverem a mesma classe e se o segundo protótipo mais próximo dos padrões do grupo A for o protótipo (centróide) do grupo B (Pb), e o segundo protótipo mais próximo dos padrões do grupo B for o centróide do grupo A (Pa).
-	Um passo de prunnig (poda) também pode ser utilizado, se o segundo protótipo mais próximo de todos os padrões de um certo grupo possuem a mesma classe, o grupo e seu protótipo são removidos. O algoritmo SGP2 é o algoritmo SGP com as etapas de merging e prunnig. 
-	Para evitar o sobre-ajuste e perda de generalização introduziu-se [Fayed et al. 2007] dois parâmetros ao SGP chamados de Rmin e Rmis.	 O Rmin representa um limite para o tamanho relativo de um grupo em relação ao maior grupo. Por exemplo, se Rmin é 0.1 e o tamanho do maior grupo é 200, todos os grupos com tamanho menor que (0.1 ×200) são descartados. O segundo parâmetro Rmis é um limiar para a taxa de classificações incorretas de um grupo. Se o número de padrões classificados erroneamentes em um grupo dividido pelo tamanho do grupo é menor que Rmis, então o grupo permanece inalterado. Este parâmetros reduzem o número de protótipos e aumentam a capacidade de generalização. Como recomendado em [Pereira e Cavalcanti 2008] em nossos experimentos, os valores do parâmetros foram variados no intervalo [0.01, 0.2].
+Quando dois grupos \textit{A} e \textit{B} são da mesma classe e para todas as instâncias de \textit{A} o segundo protótipo mais próximo é o representante de \textit{B}, e para todas as instâncias de \textit{B} o segundo protótipo mais próximo é o representante de \textit{A}, os grupos \textit{A} e \textit{B} podem ser fundidos, e será computado um novo protótipo para este novo grupo maior. Esta etapa é chamada de \textit{merge}, e ela é responsável por reduzir ainda mais a quantidade de protótipos do SGP1. O \textit{prunnig} consiste em  remover grupos onde o segundo protótipo mais próximo de todos os padrões de um certo grupo possuem a mesma classe, neste caso, tanto as instâncias quanto o representante do grupo são eliminados.
+
+	Para evitar o sobre-ajuste e perda de generalização introduziu-se dois parâmetros ao SGP2 chamados de $R_n$ e $R_s$. O $R_n$ representa um limite para o tamanho relativo de um grupo em relação ao maior grupo. Por exemplo, se $R_n$ é 0.1 e o tamanho do maior grupo é 200, todos os grupos com tamanho menor que $20 (0.1 \times 200)$ são descartados. O segundo parâmetro $R_s$ é um limiar para a taxa de classificações incorretas de um grupo. Se o número de padrões classificados erroneamentes em um grupo dividido pelo tamanho do grupo é menor que $R_s$, então o grupo permanece inalterado. Este parâmetros reduzem o número de protótipos e aumentam a capacidade de generalização. Pereira e Cavalcanti recomendam  $0.01 < R_n < 0.2$ e $0.01 < R_s < 0.2$ \cite{csp:sgp}.
+
+\begin{algorithm}
+\caption{SGP 2}
+\label{alg:sgp2}
+\begin{algorithmic}[1]
+\REQUIRE {$PS$: uma lista para os representantes}
+\REQUIRE {$GS$: uma lista de grupos de instâncias}
+\REQUIRE {$T$: uma lista de duplas de instâncias}
+	\FORALL {classe $C$}
+		\STATE $G$ = $\bigcup$ instâncias da classe $C$
+		\STATE $Adicione(G, GS)$
+		\STATE $Adicione(Centroide(G),PS)$ 
+	\ENDFOR
+	\STATE $count = 1$
+	\WHILE {$count \ne 0$}
+		\STATE $count$ = $Quantidade(GS)$
+		\STATE $Limpe(T)$
+		\FORALL {$G$ em $GS$} 
+			\STATE $P$ = Representante de $G$
+			\FORALL {$e_i$ em $group$}
+				\STATE $NearestP$ = $1NN(e_i, PS)$
+				\STATE $Adicione((e_i,NearestP), T)$
+			\ENDFOR
+			\IF {Quantidade de tuplas em $T$ onde $NearestP \ne P$ $\le$ $R_s$}
+				\STATE $count$ = $count - 1$
+			\ELSIF {$\forall$ $e_i, NearestP$ em $T$, a $Classe(NearestP) \ne Classe(P)$} 
+				\STATE $Vector = PrimeiraComponentePrincipal(G)$
+				\STATE $Hiperplano$ = hiperplano que passa pelo centróide de $G$ e cujo vetor normal é a $Vector$.
+				\STATE Divida $G$ em 2 grupos, instâncias acima e abaixo de $Hiperplano$
+				\STATE Atualize $GS$ e $PS$.
+			\ELSIF {$\exists$ $e_i, NearestP$ em $T$ tal que $NearestP \ne P$ e $Classe(NearestP) = Classe(P)$}
+				\STATE Remova $e_i$ de $G$ e adicione a grupo de $NearestP$.
+				\STATE Atualize $GPS$ e $PS$.
+			\ELSIF {$\exists$ $e_i, NearestP$ em $T$ tal que o $Classe(NearestP) != Classe(P)$}
+				\STATE Remova $e_i$ de $G$.
+				\STATE Crie um novo grupo contendo as instâncias removidas.
+				\STATE Atualize $PS$ e $GS$,
+			\ENDIF
+		\ENDFOR
+	\ENDWHILE
+	\STATE $LargeGroupCount$ = Quantidade de instâncias do maior grupo em $GS$
+	\FORALL {$G$, $P$ in $GS$, $PS$}
+		\STATE $CurrentGroupCount$ = Quantidade de instâncias de $G$.
+		\IF {$CurrentGroupCount / LargeGroupCount \leq R_n$} %Warning Here
+			\STATE Remova $G$ de $GS$ e $P$ de $PS$.
+		\ENDIF	
+	\ENDFOR
+	\RETURN $PS$
+\end{algorithmic}
+\end{algorithm}
+
+O algoritmo SGP2 \ref{alg:sgp2} é mais custoso e demorado que o SGP1, porém, em experimentos práticos, o SGP2 se mostrou mais eficiente, diminuindo a quantidade de protótipos ainda mais que o SGP1 e ainda assim, aumentando a taxa de acerto.
+
+Porém, um defeito do SGP2 é que ele não leva em conta bases desbalanceadas. Dependendo da distribuição das instâncias, pode acontecer de, na fase de \textit{prunning} o SGP2 remover o representante da classe minoritária, podendo até remover todos os protótipos desta classe. Isto é perceptível, considerando o valor de $R_n = 0.15$, bases onde a classe minoritária possui apenas 3\% das instâncias da base, mesmo com a base marjoritária multimodal, provavelmente, após o \textit{prunning}, todos os protótipos serão da classe marjoritária.
 
 \section{CCNN}
 
