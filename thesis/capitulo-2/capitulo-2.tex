@@ -220,8 +220,28 @@ O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN
 
 Observando o algoritmo, é fácil concluir que o One-Sided Selection é uma técnica apropriada para bases desbalanceadas. A aplicação do CNN adaptado elimina as instâncias redundantes da base marjoritária, colaborando para, além de diminuir a quantidade de instâncias longe da fronteira de classificação, diminuir o nível de desbalanceamento entre as classes. Já a aplicação do Tomek Links adaptado, elimina instâncias da classe marjoritária na fronteira de classificação, colaborando para maior delimitação da classe minoritária.
 
-%%TODO colocar figura para exemplificar OSS
-%%TODO explicar figura do OSS
+\begin{figure}
+\label{fig:oss1}
+\includegraphics[scale=0.40]{imagens/oss_1.eps}
+\caption{Base Original antes da aplicação do OSS}
+\end{figure}
+
+\begin{figure}
+\label{fig:oss2}
+\includegraphics[scale=0.40]{imagens/oss_2.eps}
+\caption{Aplicação da primeira etapa do OSS, o CNN}
+\end{figure}
+
+\begin{figure}
+\label{fig:oss3}
+\includegraphics[scale=0.40]{imagens/oss_3.eps}
+\caption{Resultado final do OSS, após aplicação da segunda etapa, o Tomek Links}
+\end{figure}
+
+Nas Figuras \ref{fig:oss1}, \ref{fig:oss2} e \ref{fig:oss3} . 
+
+
+
 
 Uma desvantagem do One-Sided Selection é que ele não é determinístico, o CNN é não-determinístico e como o One-Sided Selection faz a aplicação dele, torna o mesmo não-determinístico. O OSS poderia ser feito aplicando-se outro algoritmo no lugar do CNN, podendo assim, torna-lo determinístico. Este trabalho, porém, não abordará adaptações para o OSS, pois o mesmo já é apropriado para base de dados, e ser ou não determinístico, apesar de ser levado em consideração, não faz parte do escopo deste trabalho.
 
