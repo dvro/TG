@@ -30,6 +30,7 @@ O algoritmo do ENN está demonstrado em Algorithm \ref{alg:enn}.
 O valor de K usado pelo KNN pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se K=3. Em geral, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1, mas com isso, elimina-se também instâncias não ruidosas.
 
 \begin{figure}[H]
+\center
 \label{fig:enn}
 \includegraphics[scale=0.40]{imagens/enn.eps}
 \caption{ENN aplicado com K=3}
@@ -97,6 +98,7 @@ Um ponto importante na descrição do algoritmo, é a palavra $aleatoriamente$, o q
 Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhidos utilizando técnicas como o SGP\cite{fayed:sgp} para obter as instâncias mais centrais. Modificações no CNN são muito comuns \cite{cnn:1976}, porém, mesmo com estas modificações, o CNN ainda não é determinístico, pois a ordem em que as instâncias são classificadas afeta o resultado final.
 
 \begin{figure}[H]
+\center
 \label{fig:cnn}
 \includegraphics[scale=0.40]{imagens/cnn.eps}
 \caption{Exemplo da aplicação do CNN}
@@ -167,6 +169,7 @@ Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, 
 Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tomek Links remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
 
 \begin{figure}[H]
+\center
 \label{fig:tomek_links}
 \includegraphics[scale=0.40]{imagens/tomek_links.eps}
 \caption{Exemplo da aplicação do Tomek Links}
@@ -221,18 +224,21 @@ O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN
 Observando o algoritmo, é fácil concluir que o One-Sided Selection é uma técnica apropriada para bases desbalanceadas. A aplicação do CNN adaptado elimina as instâncias redundantes da base marjoritária, colaborando para, além de diminuir a quantidade de instâncias longe da fronteira de classificação, diminuir o nível de desbalanceamento entre as classes. Já a aplicação do Tomek Links adaptado, elimina instâncias da classe marjoritária na fronteira de classificação, colaborando para maior delimitação da classe minoritária.
 
 \begin{figure}[H]
+\center
 \label{fig:oss1}
 \includegraphics[scale=0.40]{imagens/oss_1.eps}
 \caption{Base Original antes da aplicação do OSS}
 \end{figure}
 
 \begin{figure}[H]
+\center
 \label{fig:oss2}
 \includegraphics[scale=0.40]{imagens/oss_2.eps}
 \caption{Aplicação da primeira etapa do OSS, o CNN}
 \end{figure}
 
 \begin{figure}[H]
+\center
 \label{fig:oss3}
 \includegraphics[scale=0.40]{imagens/oss_3.eps}
 \caption{Resultado final do OSS, após aplicação da segunda etapa, o Tomek Links}
@@ -400,6 +406,7 @@ A ideia principal do SGP é formar um certo número de grupos e eleger representan
 Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias daquela classe. Com os grupos feitos, são obtidos os centróides de cada grupo e estes são chamados representantes do grupo. Depois, para cada grupo, faça os passos abaixo até que não haja mais alterações em nenhum grupo.
 
 \begin{figure}[H]
+\center
 \label{fig:divisaogrupossgp}
 \includegraphics[scale=0.55]{imagens/SGP1.eps}
 \caption{Etapa da divisão de grupos. Figura obtida de \cite{csp:sgp}} 

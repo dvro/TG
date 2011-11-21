@@ -17,7 +17,7 @@ Reconhecimento de padrões ataca principalmente o problema da discriminação, tend
 
 Todo sistema de reconhecimento de padrões utiliza um classificador para discriminar os padrões de teste. O quanto um dado classificador é eficiente é medido pela taxa de acerto média, pela variância, e pela eficiência em termos de custo computacional. Um classificador de aprendizagem baseada em instâncias muito utilizado é o \textit{K-Nearest Neighbor}, KNN \cite{knnrule:1969}. O KNN é muito utilizado por ser um método de aprendizagem supervisionado simples, e por possuir uma taxa de acerto relativamente alta. O conceito básico consiste em, dado um padrão $x$ a ser classificado e um conjunto de padrões conhecidos $T$, obter os $K$ elementos de $T$ mais próximos de $x$, a classe de maior ocorrência, ou peso, entre os $K$ elementos será a classe de $x$.
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{KNN}
 \label{alg:knn}
 \begin{algorithmic}[1]
