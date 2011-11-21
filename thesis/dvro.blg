@@ -7,45 +7,45 @@ The style file: alpha.bst
 Database file #1: bibliografia/bibliografia.bib
 Warning--entry type for "cgm.cs.mcgill.ca.godfried" isn't style-file defined
 --line 247 of file bibliografia/bibliografia.bib
-You've used 14 entries,
+You've used 15 entries,
             2543 wiz_defined-function locations,
-            657 strings with 6507 characters,
-and the built_in function-call counts, 5814 in all, are:
-= -- 587
-> -- 232
+            665 strings with 6745 characters,
+and the built_in function-call counts, 6260 in all, are:
+= -- 631
+> -- 257
 < -- 12
-+ -- 79
-- -- 74
-* -- 393
-:= -- 925
-add.period$ -- 43
-call.type$ -- 14
-change.case$ -- 82
-chr.to.int$ -- 14
-cite$ -- 14
-duplicate$ -- 241
-empty$ -- 453
-format.name$ -- 93
-if$ -- 1235
++ -- 88
+- -- 83
+* -- 431
+:= -- 1002
+add.period$ -- 46
+call.type$ -- 15
+change.case$ -- 89
+chr.to.int$ -- 15
+cite$ -- 15
+duplicate$ -- 255
+empty$ -- 483
+format.name$ -- 103
+if$ -- 1324
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 11
-newline$ -- 71
-num.names$ -- 46
-pop$ -- 76
+missing$ -- 12
+newline$ -- 76
+num.names$ -- 49
+pop$ -- 80
 preamble$ -- 1
-purify$ -- 96
+purify$ -- 104
 quote$ -- 0
-skip$ -- 214
+skip$ -- 225
 stack$ -- 0
-substring$ -- 367
-swap$ -- 56
+substring$ -- 395
+swap$ -- 57
 text.length$ -- 12
 text.prefix$ -- 5
 top$ -- 0
-type$ -- 112
+type$ -- 120
 warning$ -- 0
-while$ -- 55
-width$ -- 18
-write$ -- 182
+while$ -- 59
+width$ -- 20
+write$ -- 195
 (There was 1 warning)

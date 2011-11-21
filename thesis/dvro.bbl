@@ -16,6 +16,13 @@ Andrew Estabrooks, Taeho Jo, and Nathalie Japkowicz.
 \newblock A multiple resampling method for learning from imbalanced data sets.
 \newblock {\em Computational Intelligence}, 20(1):18--36, 2004.
 
+\bibitem[FdJH09]{FJH2009}
+Alberto Fern{\'a}ndez, Mar\'{\i}a~Jos{\'e} del Jes{\'u}s, and Francisco
+  Herrera.
+\newblock Hierarchical fuzzy rule based classification systems with genetic
+  rule selection for imbalanced data-sets.
+\newblock {\em Int. J. Approx. Reasoning}, 50(3):561--577, 2009.
+
 \bibitem[FHA07]{fayed:sgp}
 Hatem~A. Fayed, Sherif Hashem, and Amir~F. Atiya.
 \newblock Self-generating prototypes for pattern classification.

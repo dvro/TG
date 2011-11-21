@@ -43,19 +43,40 @@ A estratégia do KNN, apesar de eficiente, possui algumas desvantagens. A primeir
 
 Para resolver esse problema, surgiu a idéia de utilizar um conjunto menor, gerado a partir da base de dados original (conjunto de treinamento), que representem bem todas as classes, este processo é chamado de seleção de protótipos. A escolha desdes protótipos deve ser feita cuidadosamente, pois, é necessário que estes elementos possuam uma boa representatividade de todo o conjunto de treinamento. É importante também, que os protótipos não seja elementos ruidosos, pois isso aumentaria a taxa de erro do classificador.
 
+Com os protótipos gerados é possível utilizar o \textit{Nearest Prototype Classification}, NPC, que é utilizar protótipos gerados como treinamento do KNN. Assim a base de dados é reduzida, diminuindo o espaço de armazenamento e o tempo de processamento.
 
+Além de possuir vantagens gerais como a diminuição do espaço de armazenamento e redução de esforço computacional para classificação, a seleção de protótipos pode ainda aumentar o desempenho no que se refere a taxa de acerto do classificador com a eliminação de ruídos e outliers, pois os protótipos aumentam a capacidade de generalização do classificador, levando a maiores taxas de acerto.
 
-Com os protótipos gerados
+Algumas técnicas de seleção de protótipos selecionam instâncias que pertecem ao conjunto de treinamento, ou seja, elas escolhem, dentre as instâncias utilizadas, aquelas que julgam ser mais apropriadas para serem protótipos, estas técnicas são chamadas de técnicas puramente seletivas. Exemplos de técnicas seletivas são o \textit{Edited Nearest Neighbor} \cite{enn:2011}, \textit{Condensed Nearest Neighbor} \cite{cnn:1968}, \textit{Tomek Links} e \textit{One-Sided Selection} \cite{conf/icml/KubatM97}.
 
+Outra técnicas criam novos elementos durante o processo de redução, os protótipos são criados através de combinação entre as instâncias do conjunto de treinamento e ajustes relizados por meio de treinamento supervisionado. Entre estas técnicas estão o \textit{Learning Vector Quantization 1, 2.1 e 3} \cite{kohonen:lvq} e o \textit{Self-Generating Prototypes} \cite{fayed:sgp}.
 
+Técnicas de seleção de protótipos também podem ser classificadas como determinísticas ou não deterministicas. Técnicas determinísticas são aquelas que, dada uma base de dados, sempre será gerado o mesmo conjunto de protótipos, independente da ordem em que o conjunto de treinamento é apresentado. Técnicas não determinísticas são aquelas que dependem em que o conjunto de treinamento é apresentado ou depende das instâncias pré-selecionadas para ajuste.
+
+Cada uma das técnicas de seleção de protótipos aprensentam características próprias, sendo necessário uma análise do quanto cada uma destas técnicas é apropriada para uma dada base de dados. Algumas técnicas removem instâncias redundantes, outras, removem instâncias que estão na fronteira de classificação, e outras fazem uma combinação destas técnicas. Detalhes de algumas destas técnicas serão mostrados no próximo capítulo.
 
 \subsection{Bases Desbalanceadas}
+
+Em várias situações do mundo real, os classificadores precisam ser treinados com bases de dados que possue muito mais instâncias de uma de uma classe do que das outras classes, tais bases de dados são chamadas de bases desbalanceadas. Quanto maior a diferença entre a quantidade de instâncias de cada classe, maior o nível de desbalanceamento da base.
+
+Quando treinados com bases de dados desbalanceadas, classificadores sofrem uma redução da performace, e normalmente tendem a classificar mais padrões com as classes marjoritárias. Este é um problema grave, visto que, normalmente, a classificação de instâncias da classe minoritária é que são mais importantes (como exemplo, informações sobre doenças) \cite{conf/icml/HulseKN07}.
+
+Da mesma forma que classificadores podem ser prejudicados por um desbalanceamento, técnicas de seleção de protótipos podem sofrer da mesma forma, selecionando muitas instâncias da classe marjoritária e poucas, ou nenhuma, da classe minoritária.
+
 \section{Objetivo}
+
+O objetivo deste trabalho é expor algumas técnicas de seleção de protótipos e avaliar seu desempenho em bases desbalanceadas. A avaliação de desempenho se refere a taxa de acerto utilizando bases de dados reais, e a disposição dos protótipos por meio de bases artificiais de diferentes níveis de desbalanceamento e sobreposição de classes.
+
+Para que o trabalho seja mais objetivo, apenas os exemplos mais interessante serão citados para cada técnica, citando as maiores vantagens e desvantagens de cada técnica.
+
+No final do trabalho, será possível identificar quais técnicas são mais apropriadas para bases de dados desbalanceadas, e a identificação de suas falhas possibilitará possíveis melhoras nestas técnicas para o caso em questão.
+
 \section{Estrutura do Trabalho}
-\subsection{Sessões}
-\subsection{Metodologia Utilizada}
-\subsection{Bases de dados}
 
+O restante deste trabalho possui uma sessão com detalhes sobre diferentes técnicas de seleção de protótipos, nesta, já serão citadas as características já conhecidas e algumas adaptações conhecidas para tratar de bases desbalanceadas, além de possuir ilustrações e pseudo-código de cada uma das técnicas.
 
+Logo após, segue uma sessão mostrado casos de sucesso e falhas de cada técnica em bases de dados artificiais, e depois uma sessão mostrado os resultados em bases de dados reais.
+
+As análises levarão em conta a disposição e a quantidade dos protótipos resultantes de cada técnica, além disso, a taxa de acerto dos protótipos em relação ao próprio conjunto de treinamento para analisar a representatividade será mostrada. Por fim, cada técnica será executada em bases de dados reais, onde será utilizada \textit{K-Fold Cross-Validation} para calcular a taxa de acerto média de cada técnica.
 
 
