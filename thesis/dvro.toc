@@ -1,5 +1,5 @@
 \select@language {brazil}
-\contentsline {chapter}{\numberline {1}T\'ecnicas de Sele\c c\~ao de Prot\'otipos}{1}{chapter.1}
+\contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motiva\c c\~ao e Contextualiza\c c\~ao}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Sele\c c\~ao de Prot\'otipos}{1}{subsection.1.1.1}
 \contentsline {subsection}{\numberline {1.1.2}Bases Desbalanceadas}{1}{subsection.1.1.2}
@@ -14,10 +14,10 @@
 \contentsline {section}{\numberline {2.3}Tomek Links}{6}{section.2.3}
 \contentsline {section}{\numberline {2.4}OSS}{7}{section.2.4}
 \contentsline {section}{\numberline {2.5}LVQ}{8}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}LVQ 1}{9}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Optimized-learning-rate LVQ}{10}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}LVQ 2.1}{10}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}LVQ 3}{12}{subsection.2.5.4}
-\contentsline {section}{\numberline {2.6}SGP}{13}{section.2.6}
-\contentsline {section}{\numberline {2.7}SGP 2}{14}{section.2.7}
-\contentsline {section}{\numberline {2.8}CCNN}{16}{section.2.8}
+\contentsline {subsection}{\numberline {2.5.1}LVQ 1}{10}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Optimized-learning-rate LVQ}{11}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}LVQ 2.1}{11}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}LVQ 3}{13}{subsection.2.5.4}
+\contentsline {section}{\numberline {2.6}SGP}{14}{section.2.6}
+\contentsline {section}{\numberline {2.7}SGP 2}{15}{section.2.7}
+\contentsline {section}{\numberline {2.8}CCNN}{17}{section.2.8}
