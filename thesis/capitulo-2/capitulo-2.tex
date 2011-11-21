@@ -12,7 +12,7 @@ Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidad
 
 O algoritmo do ENN está demonstrado em Algorithm \ref{alg:enn}.
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{ENN}
 \label{alg:enn}
 \begin{algorithmic}[1]
@@ -29,7 +29,7 @@ O algoritmo do ENN está demonstrado em Algorithm \ref{alg:enn}.
 
 O valor de K usado pelo KNN pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se K=3. Em geral, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1, mas com isso, elimina-se também instâncias não ruidosas.
 
-\begin{figure}
+\begin{figure}[H]
 \label{fig:enn}
 \includegraphics[scale=0.40]{imagens/enn.eps}
 \caption{ENN aplicado com K=3}
@@ -47,7 +47,7 @@ Pelas suas características, normalmente o ENN é utilizado como método de pré-pro
 
 No caso de bases desbalanceadas, o ENN pode tratar todas as instâncias da base minoritária como ruídos, caso a base seja altamente desbalanceada (isto será demonstrado posteriormente com exemplos), aumentando ainda mais o nível de desbalanceamento. Uma possível adaptação para o ENN em bases altamente desbalanceadas é eliminar apenas os elementos que sejam da classe marjoritária. O algoritmo adaptado está demonstrado em Algorithm \ref{alg:enn_for_unbalanced_datasets}.
 
-\begin{algorithm}
+\begin{algorithm}[H][h][h]
 \caption{ENN}
 \label{alg:enn_for_unbalanced_datasets}
 \begin{algorithmic}[1]
@@ -74,7 +74,7 @@ A ideia geral do CNN é encontrar o menor subconjunto da base de dados original q
 
 O algoritmo do CNN está descrito em Algorithm \ref{alg:cnn}.
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{CNN}
 \label{alg:cnn}
 \begin{algorithmic}[1]
@@ -96,7 +96,7 @@ Um ponto importante na descrição do algoritmo, é a palavra $aleatoriamente$, o q
 
 Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhidos utilizando técnicas como o SGP\cite{fayed:sgp} para obter as instâncias mais centrais. Modificações no CNN são muito comuns \cite{cnn:1976}, porém, mesmo com estas modificações, o CNN ainda não é determinístico, pois a ordem em que as instâncias são classificadas afeta o resultado final.
 
-\begin{figure}
+\begin{figure}[H]
 \label{fig:cnn}
 \includegraphics[scale=0.40]{imagens/cnn.eps}
 \caption{Exemplo da aplicação do CNN}
@@ -107,7 +107,7 @@ No primeiro gráfico da figura \ref{fig:cnn} é mostrado uma base de dados qualque
 Para o caso de estudo abordado neste trabalho, o CNN pode ser utilizado de forma adaptada. A adaptação consiste em manter todos os elementos da classe minoritária e o mínimo possível da classe marjoritária. O próprio CNN se encarrega de remover os elementos redundantes da classe marjoritária, assim, basta apenas selecionar todos os elementos da classe minoritária aos protótipos iniciais.
 Segue em Algorithm \ref{alg:cnn_unbalanced}, o algoritmo desta adaptação:
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{CNN para bases desbalanceadas}
 \label{alg:cnn_unbalanced}
 \begin{algorithmic}[1]
@@ -130,7 +130,7 @@ Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes
 
 Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de serem ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) < dist($e_i$,$e_k$)} e \textit{dist($e_i$,$e_j$) < dist($e_j$,$e_k$)}. Segue o algoritmo detalhado em Algorithm \ref{alg:select_tomek_links}:
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{Seleciona Tomek Links}
 \label{alg:select_tomek_links}
 \begin{algorithmic}[1]
@@ -149,7 +149,7 @@ Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipo
 
 Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo Tomek Links é apresentado em \ref{alg:tomek_links}:
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{Tomek Links}
 \label{alg:tomek_links}
 \begin{algorithmic}[1]
@@ -166,7 +166,7 @@ Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, 
 
 Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tomek Links remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
 
-\begin{figure}
+\begin{figure}[H]
 \label{fig:tomek_links}
 \includegraphics[scale=0.40]{imagens/tomek_links.eps}
 \caption{Exemplo da aplicação do Tomek Links}
@@ -176,9 +176,9 @@ Na Figura \ref{fig:tomek_links} está exemplificada a aplicação do Tomek Links. N
 
 Uma desvantagem do Tomek Links é que esta técnica elimina as duas instâncias presentes no Tomek Link, com isso, instâncias não ruidosas podem estar sendo removidas, instâncias estas que podem representar informação importante para a base de dados.
 
-Observa-se facilmente que o Tomek Links pode remover todas as instâncias de regiões de indecisão, inclusive as instâncias da classe minoritária. Sendo assim, uma adaptação dos Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorre uma separação entre as classes, mas as instâncias dos Tomek Links que forem das classes minoritárias são mantidas, diminuindo o nível de desbalanceamento. O algoritmo desta adaptação está demonstrado em Algorithm \ref{alg:tomek_liks_for_unbalanced_datasets}.
+Observa-se facilmente que o Tomek Links pode remover todas as instâncias de regiões de indecisão, inclusive as instâncias da classe minoritária. Sendo assim, uma adaptação dos Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorre uma separação entre as classes, mas as instâncias dos Tomek Links que forem das classes minoritárias são mantidas, diminuindo o nível de desbalanceamento. O algoritmo desta adaptação está demonstrado em Algorithm \ref{alg:tomek_links_for_unbalanced_datasets}.
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{Tomek Links}
 \label{alg:tomek_links_for_unbalanced_datasets}
 \begin{algorithmic}[1]
@@ -205,7 +205,7 @@ One-Sided Selection \cite{conf/icml/KubatM97} é um método seletivo de seleção de
 
 O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN, como monstrado no algoritmo \ref{alg:oss}.
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{One-Sided Selection}
 \label{alg:oss}
 \begin{algorithmic}[1]
@@ -220,19 +220,19 @@ O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN
 
 Observando o algoritmo, é fácil concluir que o One-Sided Selection é uma técnica apropriada para bases desbalanceadas. A aplicação do CNN adaptado elimina as instâncias redundantes da base marjoritária, colaborando para, além de diminuir a quantidade de instâncias longe da fronteira de classificação, diminuir o nível de desbalanceamento entre as classes. Já a aplicação do Tomek Links adaptado, elimina instâncias da classe marjoritária na fronteira de classificação, colaborando para maior delimitação da classe minoritária.
 
-\begin{figure}
+\begin{figure}[H]
 \label{fig:oss1}
 \includegraphics[scale=0.40]{imagens/oss_1.eps}
 \caption{Base Original antes da aplicação do OSS}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \label{fig:oss2}
 \includegraphics[scale=0.40]{imagens/oss_2.eps}
 \caption{Aplicação da primeira etapa do OSS, o CNN}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \label{fig:oss3}
 \includegraphics[scale=0.40]{imagens/oss_3.eps}
 \caption{Resultado final do OSS, após aplicação da segunda etapa, o Tomek Links}
@@ -260,7 +260,7 @@ Os protótipos iniciais podem ser escolhidos de qualquer forma, a idéia é que sej
 LVQ1 é a primeira versão do Learning Vector Quantization proposto por Kohonen. O algoritmo do LVQ1 basicamente seleciona alguns protótipos iniciais e ajusta esses protótipos utilizando a base original. Quando uma instância da base original é classificada erroneamente pelos protótipos, afasta-se o protótipo mais próximo, e quando é classificada corretamente, aproxima-se. O algoritmo detalhado pode ser visto em \ref{alg:lvq1}.
 
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{LVQ 1}
 \label{alg:lvq1}
 \begin{algorithmic}[1]
@@ -323,7 +323,7 @@ $\min{\frac{d_i}{d_j}}{\frac{d_j}{d_i}} > s$, onde $s = \dfrac{1 - w}{1 + w}$
 \item $w$ é a largura relativa
 \end{center}
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{LVQ 2.1}
 \label{alg:lvq21}
 \begin{algorithmic}[1]
@@ -358,7 +358,7 @@ Uma desvantagem do LVQ 2.1 é que além do custo ser maior, a aplicação do mesmo p
 
 A segunda melhora proposta por Kohonen foi o LVQ 3. Este método tenta evitar o sobre-ajuste do LVQ 2.1 atuando também quando o elemento já está sendo classificado corretamente pelos dois protótipos mais próximos, aproximando ambos da instância utilizada para ajuste. Além disso, a terceira versão do LVQ introduz um fator de estabização $\epsilon$.
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{LVQ 3}
 \label{alg:lvq3}
 \begin{algorithmic}[1]
@@ -399,7 +399,7 @@ A ideia principal do SGP é formar um certo número de grupos e eleger representan
 
 Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias daquela classe. Com os grupos feitos, são obtidos os centróides de cada grupo e estes são chamados representantes do grupo. Depois, para cada grupo, faça os passos abaixo até que não haja mais alterações em nenhum grupo.
 
-\begin{figure}
+\begin{figure}[H]
 \label{fig:divisaogrupossgp}
 \includegraphics[scale=0.55]{imagens/SGP1.eps}
 \caption{Etapa da divisão de grupos. Figura obtida de \cite{csp:sgp}} 
@@ -414,7 +414,7 @@ Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias d
 
 No final de cada iteração, o centróide de cada grupo é computado novamente. O processo se repete até que não haja alterações em mais nenhum grupo. Uma descrição mais formal do algoritmo é descrita em \ref{alg:sgp1}
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{SGP 1}
 \label{alg:sgp1}
 \begin{algorithmic}[1]
@@ -475,7 +475,7 @@ Quando dois grupos \textit{A} e \textit{B} são da mesma classe e para todas as i
 
 	Para evitar o sobre-ajuste e perda de generalização introduziu-se dois parâmetros ao SGP2 chamados de $R_n$ e $R_s$. O $R_n$ representa um limite para o tamanho relativo de um grupo em relação ao maior grupo. Por exemplo, se $R_n$ é 0.1 e o tamanho do maior grupo é 200, todos os grupos com tamanho menor que $20 (0.1 \times 200)$ são descartados. O segundo parâmetro $R_s$ é um limiar para a taxa de classificações incorretas de um grupo. Se o número de padrões classificados erroneamentes em um grupo dividido pelo tamanho do grupo é menor que $R_s$, então o grupo permanece inalterado. Este parâmetros reduzem o número de protótipos e aumentam a capacidade de generalização. Pereira e Cavalcanti recomendam  $0.01 < R_n < 0.2$ e $0.01 < R_s < 0.2$ \cite{csp:sgp}.
 
-\begin{algorithm}
+\begin{algorithm}[H][h]
 \caption{SGP 2}
 \label{alg:sgp2}
 \begin{algorithmic}[1]

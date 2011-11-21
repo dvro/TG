@@ -10,11 +10,11 @@
 \contentsline {section}{\numberline {2.1}ENN}{5}{section.2.1}
 \contentsline {section}{\numberline {2.2}CNN}{7}{section.2.2}
 \contentsline {section}{\numberline {2.3}Tomek Links}{9}{section.2.3}
-\contentsline {section}{\numberline {2.4}OSS}{10}{section.2.4}
-\contentsline {section}{\numberline {2.5}LVQ}{11}{section.2.5}
+\contentsline {section}{\numberline {2.4}OSS}{11}{section.2.4}
+\contentsline {section}{\numberline {2.5}LVQ}{13}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}LVQ 1}{13}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}Optimized-learning-rate LVQ}{14}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}LVQ 2.1}{14}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.3}LVQ 2.1}{15}{subsection.2.5.3}
 \contentsline {subsection}{\numberline {2.5.4}LVQ 3}{16}{subsection.2.5.4}
 \contentsline {section}{\numberline {2.6}SGP}{17}{section.2.6}
-\contentsline {section}{\numberline {2.7}SGP 2}{18}{section.2.7}
+\contentsline {section}{\numberline {2.7}SGP 2}{20}{section.2.7}
