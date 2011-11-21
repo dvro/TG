@@ -7,15 +7,45 @@
 Classificadores são (...)
 
 
-\begin{quote}
-\textit{"I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web, the content, links, and transactions between people and computers. A \textbf{Semantic Web} which should make this possible has yet to emerge, but when it does, the day-to-day mechanisms of trade, bureaucracy and our daily lives will be handled by machines talking to machines. The \textbf{intelligent agents} people have touted for ages will finally materialize." Tim Berners-Lee}
-\end{quote}
+\subsection{Histórico}
 
-\begin{quote}
-Tradução literal: \textit{"Eu tenho um sonho para a Web [em que os computadores] tornam-se capazes de analisar todos os dados na Web, o conteúdo, links, e as transações entre pessoas e computadores. A \textbf{Web Semântica} que deve tornar isso possível ainda está para surgir, mas quando isso acontecer, os mecanismos dia-a-dia da burocracia do comércio e nossas vidas diárias serão tratados por máquinas falando com máquinas. Os \textbf{agentes inteligentes} que as pessoas têm falado por anos vão finalmente se concretizar." Tim Berners-Lee}
-\end{quote}
+No final dos anos 50, surgiram os primeiros trabalhos de aprendizagem de máquina. De uma forma geral, elas consistiam em dar ao computador a habilidade de reconhecer formas. A partir daí, surgiram diversos problemas onde a aprendizagem de máquina atuava. 
+
+Um dos problemas que são importantes para esse trabalho, é o problema de classificação, que consiste em agrupar dados de acordo com suas características de forma que seja possível extrair informação útil desdes agrupamentos. Um outro problema é a discriminação, que consiste em achar uma forma de reconhecer um conceito, dado um conjunto de conceitos exemplos. O terceiro e último problema geral é o da generalização, que é o problema de como reduzir uma regra de forma a ser mais abrangente e menos custosa.
+
+Reconhecimento de padrões ataca principalmente o problema da discriminação, tendo por objetivo classificar padrões, podendo ser os padrões pertencentes a qualquer domínio, como reconhecimento de digitais, gestos, escrita, fala, entre outros.
+
+Todo sistema de reconhecimento de padrões utiliza um classificador para discriminar os padrões de teste. O quanto um dado classificador é eficiente é medido pela taxa de acerto média, pela variância, e pela eficiência em termos de custo computacional. Um classificador de aprendizagem baseada em instâncias muito utilizado é o \textit{K-Nearest Neighbor}, KNN \cite{knnrule:1969}. O KNN é muito utilizado por ser um método de aprendizagem supervisionado simples, e por possuir uma taxa de acerto relativamente alta. O conceito básico consiste em, dado um padrão $x$ a ser classificado e um conjunto de padrões conhecidos $T$, obter os $K$ elementos de $T$ mais próximos de $x$, a classe de maior ocorrência, ou peso, entre os $K$ elementos será a classe de $x$.
+
+\begin{algorithm}
+\caption{KNN}
+\label{alg:knn}
+\begin{algorithmic}[1]
+\REQUIRE {$K$: uma lista}
+\REQUIRE {$T$: conjunto de treinamento}
+\REQUIRE {$x$: elemento para ser classificado}
+\REQUIRE {$L$: uma lista}
+\FORALL {$t_i$ $\in$ $T$}
+\STATE  $d_i$ = $distance(t_i, x)$
+\STATE  adicione $(d_i, Classe(t_i))$ em $L$
+\ENDFOR
+\STATE $Ordene(L)$ de acordo com as distâncias
+\STATE obtenha os $K$ primeiros elementos de $L$
+\RETURN a classe de maior ocorrência, ou peso, entre os $K$
+\end{algorithmic}
+\end{algorithm}
+
+Conforme mostrado em Algorithm \ref{alg:knn}, o KNN é muito simples, porém, possui um custo alto, pois precisa visitar todos os elementos da base de dados para realizar uma classificação. Este problema é o mesmo problema de agrupamento (classificação) e generalização. Este problema é tratado na próxima subsessão.
 
 \subsection{Seleção de Protótipos}
+
+A estratégia do KNN, apesar de eficiente, possui algumas desvantagens. A primeira desvantagem é que o KNN é sensível á ruídos, para baixos valores de K. Outra desvantagem é que o KNN é custoso, pois precisa calcular a distância do padrão que se deseja classificar para cada um dos padrões da base de treinamento, com isso, o KNN torna-se lento em relação a outros classificadores.
+
+Para resolver esse problema, surgiu a idéia de utilizar um conjunto menor, gerado a partir da base de dados original (conjunto de treinamento), que representem bem todas as classes, este processo é chamado de seleção de protótipos. A escolha desdes protótipos deve ser feita cuidadosamente, pois, é necessário que estes elementos possuam uma boa representatividade de todo o conjunto de treinamento. É importante também, que os protótipos não seja elementos ruidosos, pois isso aumentaria a taxa de erro do classificador.
+
+
+
+Com os protótipos gerados
 
 
 
