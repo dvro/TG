@@ -2,20 +2,23 @@
 \chapter{Introdução}
 % \label{ch:introducao}
 
+Neste capítulo será dada uma introdução à seleção de protótipos. Para melhor entendimento deste assunto, serão apresentados contexto histórico, motivação do uso de seleção de protótipos, e os desafios atuais.
+
+Logo depois da sessão de motivação e contextualização, seguirá um detalhamento deste trabalho, abordando objetivo e estrutura do mesmo.
+
 \section{Motivação e Contextualização}
-
-Classificadores são (...)
-
 
 \subsection{Histórico}
 
 No final dos anos 50, surgiram os primeiros trabalhos de aprendizagem de máquina. De uma forma geral, elas consistiam em dar ao computador a habilidade de reconhecer formas. A partir daí, surgiram diversos problemas onde a aprendizagem de máquina atuava. 
 
-Um dos problemas que são importantes para esse trabalho, é o problema de classificação, que consiste em agrupar dados de acordo com suas características de forma que seja possível extrair informação útil desdes agrupamentos. Um outro problema é a discriminação, que consiste em achar uma forma de reconhecer um conceito, dado um conjunto de conceitos exemplos. O terceiro e último problema geral é o da generalização, que é o problema de como reduzir uma regra de forma a ser mais abrangente e menos custosa.
+Existem três problemas gerais que a aprendizagem de máquina tenta resolver. Um deles é o problema do agrupamento, que consiste em agrupar dados de acordo com suas características, de forma que seja possível extrair informação útil desdes agrupamentos. Um outro problema é a discriminação, que basicamente é achar uma forma de reconhecer um conceito, dado um conjunto de conceitos exemplos. O terceiro e último problema, é o da generalização, que é o problema de como reduzir uma regra, tornando-a mais abrangente e menos custosa.
 
-Reconhecimento de padrões ataca principalmente o problema da discriminação, tendo por objetivo classificar padrões, podendo ser os padrões pertencentes a qualquer domínio, como reconhecimento de digitais, gestos, escrita, fala, entre outros.
+Reconhecimento de padrões ataca principalmente o problema da discriminação, tendo por objetivo classificar padrões, discriminando-os entre duas ou mais classes. A classificação pode ser feita com padrões pertencentes a qualquer domínio, como reconhecimento de digitais, gestos, escrita, fala, entre outros.
 
-Todo sistema de reconhecimento de padrões utiliza um classificador para discriminar os padrões de teste. O quanto um dado classificador é eficiente é medido pela taxa de acerto média, pela variância, e pela eficiência em termos de custo computacional. Um classificador de aprendizagem baseada em instâncias muito utilizado é o \textit{K-Nearest Neighbor}, KNN \cite{knnrule:1969}. O KNN é muito utilizado por ser um método de aprendizagem supervisionado simples, e por possuir uma taxa de acerto relativamente alta. O conceito básico consiste em, dado um padrão $x$ a ser classificado e um conjunto de padrões conhecidos $T$, obter os $K$ elementos de $T$ mais próximos de $x$, a classe de maior ocorrência, ou peso, entre os $K$ elementos será a classe de $x$.
+Todo sistema de reconhecimento de padrões utiliza um classificador para discriminar os padrões de teste. O quanto um dado classificador é eficiente é medido pela taxa de acerto média, pela variância, e pela eficiência em termos de custo computacional. Um classificador de aprendizagem baseada em instâncias muito utilizado é o \textit{K-Nearest Neighbor}, KNN \cite{knnrule:1969}. 
+
+O KNN é muito usado por ser um método de aprendizagem supervisionado simples, e por possuir uma taxa de acerto relativamente alta. O conceito básico consiste em: Dado um padrão $x$ a ser classificado e um conjunto de padrões conhecidos $T$, obter as classes dos $K$ elementos de $T$ mais próximos de $x$. A classe que obtiver maior ocorrência, ou peso, será a classe de $x$. Pode-se dizer que o KNN utiliza uma abordagem \textit{"Dize-me com quem andas, e direi quem és."}. O algoritmo esta descrito em Algorithm \ref{alg:knn}.
 
 \begin{algorithm}[H]
 \caption{KNN}
@@ -35,25 +38,34 @@ Todo sistema de reconhecimento de padrões utiliza um classificador para discrimi
 \end{algorithmic}
 \end{algorithm}
 
-Conforme mostrado em Algorithm \ref{alg:knn}, o KNN é muito simples, porém, possui um custo alto, pois precisa visitar todos os elementos da base de dados para realizar uma classificação. Este problema é o mesmo problema de agrupamento (classificação) e generalização. Este problema é tratado na próxima subsessão.
+
+Conforme mostrado em Algorithm \ref{alg:knn}, o KNN é muito simples, porém, possui um custo alto, pois precisa visitar todos os elementos da base de dados para realizar uma classificação. Assim sendo, é preciso resolver o problema de agrupamento e generalização. Uma das abordagens utilizadas é a seleção de protótipos, detalhada na próxima subsessão.
+
 
 \subsection{Seleção de Protótipos}
 
 A estratégia do KNN, apesar de eficiente, possui algumas desvantagens. A primeira desvantagem é que o KNN é sensível á ruídos, para baixos valores de K. Outra desvantagem é que o KNN é custoso, pois precisa calcular a distância do padrão que se deseja classificar para cada um dos padrões da base de treinamento, com isso, o KNN torna-se lento em relação a outros classificadores.
 
-Para resolver esse problema, surgiu a idéia de utilizar um conjunto menor, gerado a partir da base de dados original (conjunto de treinamento), que representem bem todas as classes, este processo é chamado de seleção de protótipos. A escolha desdes protótipos deve ser feita cuidadosamente, pois, é necessário que estes elementos possuam uma boa representatividade de todo o conjunto de treinamento. É importante também, que os protótipos não seja elementos ruidosos, pois isso aumentaria a taxa de erro do classificador.
+Para resolver este problema, surgiu a idéia de utilizar um conjunto menor, gerado a partir da base de dados original (conjunto de treinamento), que represente bem todas as classes, este processo é chamado de seleção de protótipos. A escolha dos protótipos deve ser feita cuidadosamente, pois é necessário que estes elementos possuam uma boa representatividade de todo o conjunto de treinamento. É importante também, que os protótipos não sejam elementos ruidosos, pois isso compromete a taxa de acerto do classificador.
 
-Com os protótipos gerados é possível utilizar o \textit{Nearest Prototype Classification}, NPC, que é utilizar protótipos gerados como treinamento do KNN. Assim a base de dados é reduzida, diminuindo o espaço de armazenamento e o tempo de processamento.
+Com os protótipos gerados é possível utilizar o \textit{Nearest Prototype Classification}, NPC, que é utilizar protótipos gerados como treinamento do KNN. Assim a base de dados é reduzida, diminuindo o espaço de armazenamento e o tempo de processamento. Na figura \ref{fig:npc} percebe-se a redução obtida com o uso de seleção de protótipos.
 
-Além de possuir vantagens gerais como a diminuição do espaço de armazenamento e redução de esforço computacional para classificação, a seleção de protótipos pode ainda aumentar o desempenho no que se refere a taxa de acerto do classificador com a eliminação de ruídos e outliers, pois os protótipos aumentam a capacidade de generalização do classificador, levando a maiores taxas de acerto.
+\begin{figure}[H]
+\center
+\label{fig:npc}
+\includegraphics[scale=0.40]{imagens/npc.eps}
+\caption{Exemplo do NPC}
+\end{figure}
 
-Algumas técnicas de seleção de protótipos selecionam instâncias que pertecem ao conjunto de treinamento, ou seja, elas escolhem, dentre as instâncias utilizadas, aquelas que julgam ser mais apropriadas para serem protótipos, estas técnicas são chamadas de técnicas puramente seletivas. Exemplos de técnicas seletivas são o \textit{Edited Nearest Neighbor} \cite{enn:2011}, \textit{Condensed Nearest Neighbor} \cite{cnn:1968}, \textit{Tomek Links} e \textit{One-Sided Selection} \cite{conf/icml/KubatM97}.
+Além de possuir vantagens gerais como a diminuição do espaço de armazenamento e redução de esforço computacional para classificação, a seleção de protótipos pode ainda aumentar o desempenho do classificador. Esta melhora acontece com a eliminação de ruídos e outliers, pois os protótipos aumentam a capacidade de generalização do classificador, levando a maiores taxas de acerto.
 
-Outra técnicas criam novos elementos durante o processo de redução, os protótipos são criados através de combinação entre as instâncias do conjunto de treinamento e ajustes relizados por meio de treinamento supervisionado. Entre estas técnicas estão o \textit{Learning Vector Quantization 1, 2.1 e 3} \cite{kohonen:lvq} e o \textit{Self-Generating Prototypes} \cite{fayed:sgp}.
+Algumas técnicas de seleção de protótipos selecionam instâncias que pertecem ao conjunto de treinamento, ou seja, elas escolhem, dentre as instâncias utilizadas, aquelas que julgam ser mais apropriadas para serem protótipos. Técnicas que utilizam esta abordagem são chamadas de puramente seletivas. Exemplos de técnicas seletivas são \textit{Edited Nearest Neighbor} \cite{enn:2011}, \textit{Condensed Nearest Neighbor} \cite{cnn:1968}, \textit{Tomek Links} e \textit{One-Sided Selection} \cite{conf/icml/KubatM97}.
 
-Técnicas de seleção de protótipos também podem ser classificadas como determinísticas ou não deterministicas. Técnicas determinísticas são aquelas que, dada uma base de dados, sempre será gerado o mesmo conjunto de protótipos, independente da ordem em que o conjunto de treinamento é apresentado. Técnicas não determinísticas são aquelas que dependem em que o conjunto de treinamento é apresentado ou depende das instâncias pré-selecionadas para ajuste.
+Outras técnicas criam novos elementos durante o processo de redução, os protótipos são criados através de combinação entre as instâncias do conjunto de original e ajustes relizados por meio de treinamento supervisionado. Estas técnicas são chamadas de criativas, entre elas estão \textit{Learning Vector Quantization 1, 2.1 e 3} \cite{kohonen:lvq} e \textit{Self-Generating Prototypes}\cite{fayed:sgp}.
 
-Cada uma das técnicas de seleção de protótipos aprensentam características próprias, sendo necessário uma análise do quanto cada uma destas técnicas é apropriada para uma dada base de dados. Algumas técnicas removem instâncias redundantes, outras, removem instâncias que estão na fronteira de classificação, e outras fazem uma combinação destas técnicas. Detalhes de algumas destas técnicas serão mostrados no próximo capítulo.
+Técnicas de seleção de protótipos também podem ser classificadas como determinísticas ou não deterministicas. Técnicas determinísticas são aquelas que, dada uma base de dados, sempre será gera o mesmo conjunto de protótipos, independente da ordem em que as instâncias de treinamento são apresentadas. Técnicas não determinísticas são aquelas que dependem da ordem das instâncias de treinamento, ou dependem de instâncias pré-selecionadas para ajuste posterior.
+
+Cada uma das técnicas de seleção de protótipos aprensentam características próprias, sendo necessário uma análise do quanto cada uma destas técnicas é apropriada para um dado tipo de base de dados. Algumas técnicas removem instâncias redundantes, outras, removem instâncias que estão na fronteira de classificação, e outras fazem uma combinação das duas abordagens. Detalhes de algumas destas técnicas serão mostrados no próximo capítulo.
 
 \subsection{Bases Desbalanceadas}
 
@@ -67,16 +79,14 @@ Da mesma forma que classificadores podem ser prejudicados por um desbalanceament
 
 O objetivo deste trabalho é expor algumas técnicas de seleção de protótipos e avaliar seu desempenho em bases desbalanceadas. A avaliação de desempenho se refere a taxa de acerto utilizando bases de dados reais, e a disposição dos protótipos por meio de bases artificiais de diferentes níveis de desbalanceamento e sobreposição de classes.
 
-Para que o trabalho seja mais objetivo, apenas os exemplos mais interessante serão citados para cada técnica, citando as maiores vantagens e desvantagens de cada técnica.
+Para que o trabalho seja mais objetivo, apenas os exemplos mais interessante de cada técnica de seleção de protótipos serão enfatizados, citando as maiores vantagens e desvantagens de cada uma delas.
 
-No final do trabalho, será possível identificar quais técnicas são mais apropriadas para bases de dados desbalanceadas, e a identificação de suas falhas possibilitará possíveis melhoras nestas técnicas para o caso em questão.
+No final do trabalho, será possível identificar quais técnicas são mais apropriadas para bases de dados desbalanceadas, e possivelmente propor adaptações para otimizar algumas delas.
 
 \section{Estrutura do Trabalho}
 
-O restante deste trabalho possui uma sessão com detalhes sobre diferentes técnicas de seleção de protótipos, nesta, já serão citadas as características já conhecidas e algumas adaptações conhecidas para tratar de bases desbalanceadas, além de possuir ilustrações e pseudo-código de cada uma das técnicas.
+O restante deste trabalho possui um capítulo com detalhes sobre diferentes técnicas de seleção de protótipos. Durante o capítulo, serão citadas as características e adaptações já conhecidas para tratar de bases desbalanceadas, assim como ilustrações e algoritmos.
 
-Logo após, segue uma sessão mostrado casos de sucesso e falhas de cada técnica em bases de dados artificiais, e depois uma sessão mostrado os resultados em bases de dados reais.
+Logo após, segue um capítulo mostrando casos de sucesso e falha de cada técnica em bases de dados artificiais, e por fim, um capítulo mostrado os resultados em bases de dados reais com conclusões.
 
-As análises levarão em conta a disposição e a quantidade dos protótipos resultantes de cada técnica, além disso, a taxa de acerto dos protótipos em relação ao próprio conjunto de treinamento para analisar a representatividade será mostrada. Por fim, cada técnica será executada em bases de dados reais, onde será utilizada \textit{K-Fold Cross-Validation} para calcular a taxa de acerto média de cada técnica.
-
-
+As análises levarão em conta a disposição e a quantidade dos protótipos resultantes de cada técnica. Além disso, será calculada a taxa de acerto dos protótipos em relação ao próprio conjunto de treinamento para analisar a representatividade. Por fim, cada técnica será executada em bases de dados reais, onde será utilizada \textit{K-Fold Cross-Validation} para calcular a taxa de acerto média de cada técnica.
