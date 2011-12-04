@@ -6,28 +6,30 @@ Neste capítulo, serão explicadas as técnicas de seleção de protótipos analisadas
 
 \section{ENN}
 
-Edited Nearest Neighbor Rule\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, eliminando instâncias na região de fronteira, região de alta susceptibilidade a erros.
+\textit{Edited Nearest Neighbor Rule}\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, eliminando instâncias na região de fronteira, região de alta susceptibilidade a erros.
 
 Por atuar apenas na região de fronteira, esta técnica possui uma baixa capacidade de redução. Seu algoritmo mantém as instâncias que não estão localizadas nesta região, exceto no caso de instâncias com extrema probabilidade de erro.
 
 O algoritmo do ENN está demonstrado em Algorithm \ref{alg:enn}.
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{ENN}
 \label{alg:enn}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-\FORALL {instância $e_i$ da base de dados original}
-\STATE Aplique o KNN sobre $e_i$
-\IF {$e_i$ foi classificado erroneamente}
-\STATE salve $e_i$ em $list$
-\ENDIF
-\ENDFOR
-\STATE Remova da base de dados todos os elementos que estão em $list$
+\REQUIRE {$T$: conjunto de treinamento}
+\REQUIRE {$L$: uma lista}
+	\FORALL {instância $e_i$ em $T$}
+		\STATE Aplique o KNN sobre $e_i$ utilizando $T$ como treinamento
+		\IF {$e_i$ foi classificado erroneamente}
+			\STATE salve $e_i$ em $L$
+		\ENDIF
+	\ENDFOR
+	\STATE Remova de $T$ os elementos de $L$
+	\RETURN $T$
 \end{algorithmic}
 \end{algorithm}
 
-O valor de K usado pelo KNN pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se K=3. Em geral, O valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1, mas com isso, elimina-se também instâncias não ruidosas.
+O valor de K usado pelo KNN pode variar de acordo com o tamanho da base de dados, porém, tipicamente, utiliza-se K=3. Em geral, o valor de K é inversamente proporcional a quantidade de instâncias que serão eliminadas, ou seja, para que o filtro elimine todos os possíveis ruídos, deve-se utilizar K=1, mas com isso, elimina-se também instâncias não ruidosas.
 
 \begin{figure}[H]
 \center
@@ -40,7 +42,7 @@ Na Figura \ref{fig:enn} pode-se observar uma base de dados com duas classes. No 
 
 O mais interessante do caso acima é que, após a aplicação do ENN, as classes ficaram bem separadas pelos quadrantes pontilhados, mostrando a eficiência do ENN para a base de dados acima.
 
-Uma vantagem do ENN é que ele independe da ordem que a base de dados foi apresentada, ou seja, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
+Uma vantagem do ENN é que ele é determinístico, ou seja, independe da ordem que a base de dados foi apresentada. Com isso, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
 
 Porém, o ENN também apresenta desvantagens, ele possui uma baixa capacidade de redução, pois elimina apenas ruídos, mantendo instâncias que são desnecessárias, que apresentam apenas redundância de informação. No caso da Figura \ref{fig:enn}, a base poderia ser representada por 4 instâncias bem posicionadas ou, por se tratar de uma técnica seletiva, com 8 instâncias, porém, o ENN manteve 13 instâncias, eliminando apenas 3.
 
@@ -48,20 +50,22 @@ Pelas suas características, normalmente o ENN é utilizado como método de pré-pro
 
 No caso de bases desbalanceadas, o ENN pode tratar todas as instâncias da base minoritária como ruídos, caso a base seja altamente desbalanceada (isto será demonstrado posteriormente com exemplos), aumentando ainda mais o nível de desbalanceamento. Uma possível adaptação para o ENN em bases altamente desbalanceadas é eliminar apenas os elementos que sejam da classe marjoritária. O algoritmo adaptado está demonstrado em Algorithm \ref{alg:enn_for_unbalanced_datasets}.
 
-\begin{algorithm}[H][h][h]
+\begin{algorithm}[H]
 \caption{ENN}
 \label{alg:enn_for_unbalanced_datasets}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-	\FORALL {instância $e_i$ da base de dados original}
-		\STATE Aplique o KNN sobre $e_i$
+\REQUIRE {$T$: conjunto de treinamento}
+\REQUIRE {$L$: uma lista}
+	\FORALL {instância $e_i$ em $T$}
+		\STATE Aplique o KNN sobre $e_i$ usando $T$ como treinamento
 		\IF {$e_i$ foi classificado erroneamente}
 			\IF {$e_i$ for da classe marjoritária}
-				\STATE salve $e_i$ em $list$
+				\STATE salve $e_i$ em $L$
 			\ENDIF
 		\ENDIF
 	\ENDFOR
-	\STATE Remova da base de dados todos os elementos que estão em $list$
+	\STATE Remova de $T$ os elementos de $L$
+	\RETURN $T$
 \end{algorithmic}
 \end{algorithm}
 
@@ -75,19 +79,20 @@ A ideia geral do CNN é encontrar o menor subconjunto da base de dados original q
 
 O algoritmo do CNN está descrito em Algorithm \ref{alg:cnn}.
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{CNN}
 \label{alg:cnn}
 \begin{algorithmic}[1]
-	\REQUIRE {$list$: uma lista}
-	\STATE Escolha um elemento de cada classe $aleatoreamente$ e coloque-os em $list$
-	\FORALL {instância $e_i$ da base de dados original}
-		\STATE $KNN(e_i,list)$
+	\REQUIRE {$L$: uma lista}
+	\REQUIRE {$T$: conjunto de treinamento}
+	\STATE Escolha um elemento de cada classe $aleatoreamente$ e coloque-os em $L$
+	\FORALL {instância $e_i$ de $T$}
+		\STATE Aplique o KNN sobre $e_i$ utilizando $L$ como treinamento
 		\IF {$e_i$ foi classificado erroneamente}
-			\STATE salve $e_i$ em $list$
+			\STATE salve $e_i$ em $L$
 		\ENDIF
 	\ENDFOR
-	\RETURN $list$, os protótipos
+	\RETURN $L$, os protótipos
 \end{algorithmic}
 \end{algorithm}
 
@@ -109,19 +114,21 @@ No primeiro gráfico da figura \ref{fig:cnn} é mostrado uma base de dados qualque
 Para o caso de estudo abordado neste trabalho, o CNN pode ser utilizado de forma adaptada. A adaptação consiste em manter todos os elementos da classe minoritária e o mínimo possível da classe marjoritária. O próprio CNN se encarrega de remover os elementos redundantes da classe marjoritária, assim, basta apenas selecionar todos os elementos da classe minoritária aos protótipos iniciais.
 Segue em Algorithm \ref{alg:cnn_unbalanced}, o algoritmo desta adaptação:
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{CNN para bases desbalanceadas}
 \label{alg:cnn_unbalanced}
 \begin{algorithmic}[1]
-	\REQUIRE {$list$: uma lista}
-	\STATE Coloque todos os elementos da classe minoritária em $list$
-	\FORALL {instância $e_i$ da base de dados original}
-		\STATE Aplique o KNN sobre $e_i$ utilizando os elementos em $list$ para treinamento
+	\REQUIRE {$L$: uma lista}
+	\REQUIRE {$T$: um conjunto de treinamento}
+	\STATE Coloque todos os elementos da classe minoritária em $L$
+	\FORALL {instância $e_i$ de $T$}
+		\STATE Aplique o KNN sobre $e_i$ utilizando os elementos em $L$ para treinamento
 		\IF {$e_i$ foi classificado erroneamente}
-			\STATE salve $e_i$ em $list$
+			\STATE salve $e_i$ em $L$
 		\ENDIF
 	\ENDFOR
-	\RETURN base original - $list$
+	\STATE Remova de $T$ os elementos de $L$
+	\RETURN $T$
 \end{algorithmic}
 \end{algorithm}
 
@@ -130,38 +137,40 @@ Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes
 
 \section{Tomek Links}
 
-Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de serem ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) < dist($e_i$,$e_k$)} e \textit{dist($e_i$,$e_j$) < dist($e_j$,$e_k$)}. Segue o algoritmo detalhado em Algorithm \ref{alg:select_tomek_links}:
+Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de serem ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) > dist($e_i$,$e_k$)}, \textit{dist($e_i$,$e_j$) > dist($e_j$,$e_k$)} e \textit{Classe($e_i$) $\ne$ Classe($e_j$)}. Segue o algoritmo detalhado em Algorithm \ref{alg:select_tomek_links}:
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{Seleciona Tomek Links}
 \label{alg:select_tomek_links}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-	\FORALL {instância $e_i$ da base de dados original}
-		\STATE $e_j$ = instância mais próxima de $e_i$
-		\IF {instância mais p¿oxima de $e_j$ for $e_i$}
-			\IF {classe de $e_i$ for diferente da classe de $e_j$}
-				\STATE salve o par \textit{($e_i$, $e_j$)} em $list$
+	\REQUIRE {$L$: uma lista}
+	\REQUIRE {$T$: um conjunto de treinamento}
+	\FORALL {instância $e_i$ de $T$}
+		\STATE $e_j$ = 1-NN de $e_i$, usando $T$
+		\IF {1-NN de $e_j$ usando $T$ for $e_i$}
+			\IF {$Classe(e_i)$ $\ne$ $Classe(e_j)$}
+				\STATE salve o par \textit{($e_i$, $e_j$)} em $L$
 			\ENDIF
 		\ENDIF
 	\ENDFOR
-	\RETURN $list$, Tomek Links
+	\RETURN $L$, Tomek Links
 \end{algorithmic}
 \end{algorithm}
 
-Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo Tomek Links é apresentado em \ref{alg:tomek_links}:
+Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo Tomek Links é apresentado em Algorithm \ref{alg:tomek_links}:
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{Tomek Links}
 \label{alg:tomek_links}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-	\STATE $list$ = $Seleciona Tomek Links$ da base original
+	\REQUIRE {$L$: uma lista}
+	\REQUIRE {$T$: um conjunto de treinamento}
+	\STATE $L$ = $Seleciona Tomek Links(T)$ 
 	\FORALL {\textit{($e_i$, $e_j$)} em $list$}
-		\STATE remova $e_i$ da base original
-		\STATE remova $e_j$ da base original
+		\STATE remova $e_i$ de $T$
+		\STATE remova $e_j$ da $T$
 	\ENDFOR
-	\RETURN base original filtrada
+	\RETURN $T$, base original filtrada
 \end{algorithmic}
 \end{algorithm}
 
@@ -179,27 +188,28 @@ Na Figura \ref{fig:tomek_links} está exemplificada a aplicação do Tomek Links. N
 
 Uma desvantagem do Tomek Links é que esta técnica elimina as duas instâncias presentes no Tomek Link, com isso, instâncias não ruidosas podem estar sendo removidas, instâncias estas que podem representar informação importante para a base de dados.
 
-Observa-se facilmente que o Tomek Links pode remover todas as instâncias de regiões de indecisão, inclusive as instâncias da classe minoritária. Sendo assim, uma adaptação dos Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorre uma separação entre as classes, mas as instâncias dos Tomek Links que forem das classes minoritárias são mantidas, diminuindo o nível de desbalanceamento. O algoritmo desta adaptação está demonstrado em Algorithm \ref{alg:tomek_links_for_unbalanced_datasets}.
+Observa-se facilmente que o Tomek Links pode remover todas as instâncias de regiões de indecisão, inclusive as instâncias da classe minoritária. Sendo assim, uma adaptação do Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorre uma separação entre as classes, mas as instâncias dos Tomek Links que forem das classes minoritárias são mantidas, diminuindo o nível de desbalanceamento. O algoritmo desta adaptação está demonstrado em Algorithm \ref{alg:tomek_links_for_unbalanced_datasets}.
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{Tomek Links}
 \label{alg:tomek_links_for_unbalanced_datasets}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-	\STATE $list$ = $Seleciona Tomek Links$ da base original
-	\FORALL {\textit{($e_i$, $e_j$)} em $list$}
+	\REQUIRE {$L$: uma lista}
+	\REQUIRE {$T$: um conjunto de treinamento}
+	\STATE $L$ = $Seleciona Tomek Links(T)$ 
+	\FORALL {\textit{($e_i$, $e_j$)} em $L$}
 		\IF {$e_i$ for da classe marjoritária}
-			\STATE remova $e_i$ da base original
+			\STATE remova $e_i$ de $T$
 		\ENDIF
 		\IF {$e_j$ for da classe marjoritária}
-			\STATE remova $e_j$ da base original
+			\STATE remova $e_j$ de $T$
 		\ENDIF
 	\ENDFOR
-	\RETURN base original - $list$
+	\RETURN $T$, base original filtrada
 \end{algorithmic}
 \end{algorithm}
 
-Com esta adaptação, a classe minoritária é mantida, evitando o aumento do desbalanceamento ou a remoção por alta probabilidade de ruído.
+Com esta adaptação, a classe minoritária é mantida, evitando o aumento do desbalanceamento ou mesmo a total remoção desta classe por aparentar ser composta apenas de ruídos.
 
 
 \section{OSS}
