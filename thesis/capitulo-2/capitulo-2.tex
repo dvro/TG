@@ -73,7 +73,7 @@ Com este algoritmo adaptado, as instâncias da classe minoritária seriam mantidas
 
 \section{CNN}
 
-Condensed Nearest Neighbor \cite{cnn:1968} é uma técnica de seleção de protótipos puramente seletiva que tem como objetivo eliminar informação redundante. Diferentemente do ENN \cite{enn:2011}, o CNN não elimina instâncias nas regiões de fronteira, a técnica mantém estes elementos pois considera que estes "são os importantes" para distinguir entre duas classes.
+\textit{Condensed Nearest Neighbor}\cite{cnn:1968} é uma técnica de seleção de protótipos puramente seletiva que tem como objetivo eliminar informação redundante. Diferentemente do ENN \cite{enn:2011}, o CNN não elimina instâncias nas regiões de fronteira, a técnica mantém estes elementos pois considera que estes "são os importantes" para distinguir entre duas classes.
 
 A ideia geral do CNN é encontrar o menor subconjunto da base de dados original que, utilizando o 1-NN, classifica todos os padrões da base corretamente. Fazendo isso, o algoritmo elimina os elementos mais afastados da região de indecisão, da fronteira de classificação.
 
@@ -137,7 +137,7 @@ Com o algoritmo CNN adaptado para bases desbalanceadas, os elementos redundantes
 
 \section{Tomek Links}
 
-Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de serem ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) > dist($e_i$,$e_k$)}, \textit{dist($e_i$,$e_j$) > dist($e_j$,$e_k$)} e \textit{Classe($e_i$) $\ne$ Classe($e_j$)}. Segue o algoritmo detalhado em Algorithm \ref{alg:select_tomek_links}:
+Mantendo a mesma linha do ENN, \textit{Tomek Links} é uma técnica de seleção de protótipos puramente seletiva que elimina os elementos das regiões de fronteiras e instâncias com probabilidade de serem ruído. Tomek Links podem ser definidos da seguinte forma: Dadas duas instâncias $e_i$ e $e_j$, o par \textit{($e_i$, $e_j$)} é chamado de Tomek Link se não existe nenhuma instância $e_k$, tal que, para todo $e_k$ \textit{dist($e_i$,$e_j$) > dist($e_i$,$e_k$)}, \textit{dist($e_i$,$e_j$) > dist($e_j$,$e_k$)} e \textit{Classe($e_i$) $\ne$ Classe($e_j$)}. Segue o algoritmo detalhado em Algorithm \ref{alg:select_tomek_links}:
 
 \begin{algorithm}[H]
 \caption{Seleciona Tomek Links}
@@ -157,7 +157,7 @@ Mantendo a mesma linha do ENN, Tomek Links é uma técnica de seleção de protótipo
 \end{algorithmic}
 \end{algorithm}
 
-Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo Tomek Links é apresentado em Algorithm \ref{alg:tomek_links}:
+Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, e a técnica de seleção de protótipos consiste em remover os Tomek Links da base de dados original. O algoritmo \textit{Tomek Links} é apresentado em Algorithm \ref{alg:tomek_links}:
 
 \begin{algorithm}[H]
 \caption{Tomek Links}
@@ -175,7 +175,7 @@ Os Tomek Links representam elementos da região de indecisão e prováveis ruídos, 
 \end{algorithm}
 
 
-Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tomek Links remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
+Enquanto o CNN remove os elementos que estão longe da região de indecisão, o \textit{Tomek Links} remove os elementos que estão próximos desta região, o que causa uma maior separação entre as classes.
 
 \begin{figure}[H]
 \center
@@ -184,11 +184,11 @@ Enquanto o CNN remove os elementos que estão longe da região de indecisão, o Tom
 \caption{Exemplo da aplicação do Tomek Links}
 \end{figure}
 
-Na Figura \ref{fig:tomek_links} está exemplificada a aplicação do Tomek Links. No primeiro gráfico está a base original, e estão circulados os Tomek Links que, no segundo gráfico, foram removidos. No segundo gráfico, a base de dados foi filtrada e a maioria dos ruídos removidos. No exemplo desta figura, o Tomek Links fez uma separação entre as classes, eliminando parte de intersecção entre as mesmas.
+Na Figura \ref{fig:tomek_links} está exemplificada a aplicação do \textit{Tomek Links}. No primeiro gráfico está a base original, e estão circulados os Tomek Links que, no segundo gráfico, foram removidos. No segundo gráfico, a base de dados foi filtrada e a maioria dos ruídos removidos. No exemplo desta figura, o \textit{Tomek Links} fez uma separação entre as classes, eliminando parte de intersecção entre as mesmas.
 
-Uma desvantagem do Tomek Links é que esta técnica elimina as duas instâncias presentes no Tomek Link, com isso, instâncias não ruidosas podem estar sendo removidas, instâncias estas que podem representar informação importante para a base de dados.
+Uma desvantagem do \textit{Tomek Links} é que esta técnica elimina as duas instâncias presentes no Tomek Link, com isso, instâncias não ruidosas podem estar sendo removidas, instâncias estas que podem representar informação importante para a base de dados.
 
-Observa-se facilmente que o Tomek Links pode remover todas as instâncias de regiões de indecisão, inclusive as instâncias da classe minoritária. Sendo assim, uma adaptação do Tomek Links é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorre uma separação entre as classes, mas as instâncias dos Tomek Links que forem das classes minoritárias são mantidas, diminuindo o nível de desbalanceamento. O algoritmo desta adaptação está demonstrado em Algorithm \ref{alg:tomek_links_for_unbalanced_datasets}.
+Observa-se facilmente que o \textit{Tomek Links} pode remover todas as instâncias de regiões de indecisão, inclusive as instâncias da classe minoritária. Sendo assim, uma adaptação do \textit{Tomek Links} é eliminar apenas os elementos das classes marjoritárias. Nesse caso, ainda ocorre uma separação entre as classes, mas as instâncias dos Tomek Links que forem das classes minoritárias são mantidas, diminuindo o nível de desbalanceamento. O algoritmo desta adaptação está demonstrado em Algorithm \ref{alg:tomek_links_for_unbalanced_datasets}.
 
 \begin{algorithm}[H]
 \caption{Tomek Links}
@@ -214,24 +214,24 @@ Com esta adaptação, a classe minoritária é mantida, evitando o aumento do desbal
 
 \section{OSS}
 
-One-Sided Selection \cite{conf/icml/KubatM97} é um método seletivo de seleção de protótipos, surgido pela combinação das técnicas CNN e Tomek Links. O algoritmo consiste na aplicação do CNN e depois da aplicação do Tomek Links como um filtro. O One-Sided Selection combina características das duas técnicas. A aplicação do CNN é feita para eliminar instâncias desnecessárias, redundantes, ou seja, instâncias que estão longe da fronteira de classificação. Já a aplicação do Tomek Links tem a função de remover elementos na fronteira de classificação, fazendo uma aparente separação das classes e removendo ruídos.
+\textit{One-Sided Selection}\cite{conf/icml/KubatM97} é um método seletivo de seleção de protótipos, surgido pela combinação das técnicas CNN e Tomek Links. O algoritmo consiste na aplicação do CNN e depois da aplicação do Tomek Links como um filtro. O \textit{One-Sided Selection} combina características das duas técnicas. A aplicação do CNN é feita para eliminar instâncias desnecessárias, redundantes, ou seja, instâncias que estão longe da fronteira de classificação. Já a aplicação do Tomek Links tem a função de remover elementos na fronteira de classificação, fazendo uma aparente separação das classes e removendo ruídos.
 
-O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN, como monstrado no algoritmo \ref{alg:oss}.
+O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN, como monstrado em Algorithm \ref{alg:oss}.
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{One-Sided Selection}
 \label{alg:oss}
 \begin{algorithmic}[1]
-\REQUIRE {$list$: uma lista}
-\REQUIRE {$tomek_links_list$: uma lista}
-	\STATE $list$ = ${CNN para bases desbalanceadas}$ sobre a base original
-	\STATE $list$ = ${Tomek Links para bases desbalanceadas}$ sobre $list$
-	\RETURN $list$
+	\REQUIRE {$T$: um conjunto de treinamento}
+	\REQUIRE {$L$: uma lista}
+	\STATE $L$ = ${CNN Para Bases Desbalanceadas(T)}$
+	\STATE $L$ = ${Tomek Links Para Bases Desbalanceadas(L)}$
+	\RETURN $L$
 \end{algorithmic}
 \end{algorithm}
 
 
-Observando o algoritmo, é fácil concluir que o One-Sided Selection é uma técnica apropriada para bases desbalanceadas. A aplicação do CNN adaptado elimina as instâncias redundantes da base marjoritária, colaborando para, além de diminuir a quantidade de instâncias longe da fronteira de classificação, diminuir o nível de desbalanceamento entre as classes. Já a aplicação do Tomek Links adaptado, elimina instâncias da classe marjoritária na fronteira de classificação, colaborando para maior delimitação da classe minoritária.
+Observando o algoritmo, é fácil concluir que o \textit{One-Sided Selection} é uma técnica apropriada para bases desbalanceadas. A aplicação do CNN adaptado elimina as instâncias redundantes da base marjoritária, colaborando para, além de diminuir a quantidade de instâncias longe da fronteira de classificação, diminuir o nível de desbalanceamento entre as classes. Já a aplicação do Tomek Links adaptado, elimina instâncias da classe marjoritária na fronteira de classificação, colaborando para maior delimitação da classe minoritária.
 
 \begin{figure}[H]
 \center
@@ -254,13 +254,10 @@ Observando o algoritmo, é fácil concluir que o One-Sided Selection é uma técnica
 \caption{Resultado final do OSS, após aplicação da segunda etapa, o Tomek Links}
 \end{figure}
 
-Nas Figuras \ref{fig:oss1}, \ref{fig:oss2} e \ref{fig:oss3} . 
+Nas Figuras \ref{fig:oss1}, \ref{fig:oss2} e \ref{fig:oss3} observamos que o OSS apresenta resultado satisfatível. No caso das figuras, não havia um desbalanceamento considerável entre as classes, porém, mas ainda assim, o OSS se mostra visualmente eficiente.
 
 
-
-
-Uma desvantagem do One-Sided Selection é que ele não é determinístico, o CNN é não-determinístico e como o One-Sided Selection faz a aplicação dele, torna o mesmo não-determinístico. O OSS poderia ser feito aplicando-se outro algoritmo no lugar do CNN, podendo assim, torna-lo determinístico. Este trabalho, porém, não abordará adaptações para o OSS, pois o mesmo já é apropriado para base de dados, e ser ou não determinístico, apesar de ser levado em consideração, não faz parte do escopo deste trabalho.
-
+Uma desvantagem do \textit{One-Sided Selection} é que ele não é determinístico, o CNN é não-determinístico e como o OSS faz a aplicação dele, torna o mesmo não-determinístico. O OSS poderia ser feito aplicando-se outro algoritmo no lugar do CNN, podendo assim, torna-lo determinístico. Este trabalho, porém, não abordará adaptações para o OSS, pois o mesmo já é apropriado para base de dados desbalanceados, e ser ou não determinístico, apesar de ser levado em consideração, não faz parte do escopo deste trabalho.
 
 \section{LVQ}
 
