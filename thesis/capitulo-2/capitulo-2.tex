@@ -261,7 +261,7 @@ Uma desvantagem do \textit{One-Sided Selection} é que ele não é determinístico, 
 
 \section{LVQ}
 
-Learning Vector Quantization proposto por Kohonen \cite{kohonen:lvq}. O Learning Vector quantization é um algoritmo supervisionado de síntese de protótipos, ou seja, cria novas instâncias baseadas em instâncias já existentes. A ideia básica do algoritmo é que dado um conjunto inicial de protótipos, o LVQ faz um ajuste dos protótipos, de forma a posicionar cada instância em um ponto que seja possível estabelecer uma função discriminante baseada nestes protótipos.
+\textit{Learning Vector Quantization}, proposto por Kohonen\cite{kohonen:lvq}, é um algoritmo supervisionado de síntese de protótipos, ou seja, cria novas instâncias baseadas em instâncias já existentes. A ideia básica do algoritmo é que, dado um conjunto inicial de protótipos, o LVQ faz um ajuste dos destes, de forma a posicionar cada instância em um ponto que seja possível estabelecer uma função discriminante para as classes.
 
 Uma desvantagem do LVQ é que a ordem das instâncias altera o resultado, ou seja, o algoritmo não é deterministico. Outra desvantagem é que, conforme será mostrado, o LVQ possui vários parâmetros, sendo necessário uma análise empírica dos valores apropriados para esses parâmetros.
 
@@ -270,33 +270,34 @@ Os protótipos iniciais podem ser escolhidos de qualquer forma, a idéia é que sej
 
 \subsection{LVQ 1}
 
-LVQ1 é a primeira versão do Learning Vector Quantization proposto por Kohonen. O algoritmo do LVQ1 basicamente seleciona alguns protótipos iniciais e ajusta esses protótipos utilizando a base original. Quando uma instância da base original é classificada erroneamente pelos protótipos, afasta-se o protótipo mais próximo, e quando é classificada corretamente, aproxima-se. O algoritmo detalhado pode ser visto em \ref{alg:lvq1}.
+LVQ1 é a primeira versão do \textit{Learning Vector Quantization} proposto por Kohonen. O algoritmo do LVQ1 basicamente seleciona alguns protótipos iniciais e ajusta esses protótipos utilizando a base original. Quando uma instância da base original é classificada erroneamente pelos protótipos, afasta-se o protótipo mais próximo, e quando é classificada corretamente, aproxima-se. O algoritmo está detalhado em Algorithm \ref{alg:lvq1}.
 
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{LVQ 1}
 \label{alg:lvq1}
 \begin{algorithmic}[1]
-\REQUIRE {$prototypes$: uma lista para os protótipos}
-\REQUIRE {$selection$: um algorítmo para seleção dos protótipos iniciais}
-	\STATE $prototypes$ = $selection$ (base original)
-	\WHILE{$prototypes$ não estiver sub-ajustado}
-		\STATE $x$ = $ChooseOne$ (base original)
-		\STATE $e_i$ = $SelectNearestFrom$($prototypes$, $x$)
-		\IF {classe de $e_i$ $\neq$ classe de $x$}
+\REQUIRE {$T$: um conjunto de treinamento}
+\REQUIRE {$P$: uma lista para os protótipos}
+\REQUIRE {$Selection$: um algorítmo para seleção dos protótipos iniciais}
+	\STATE $P$ = $Selection(T)$
+	\WHILE{$P$ estiver sub-ajustado}
+		\STATE $x$ = $ChooseOne(T)$
+		\STATE $e_i$ = 1-NN de $x$ sobre $P$
+		\IF {$Classe(e_i)$ $\neq$ $Classe(x)$}
 			\STATE $e_i = e_i + \alpha(t) \times [x - e_i]$
 		\ELSE
 			\STATE $e_i = e_i - \alpha(t) \times [x - e_i]$
 		\ENDIF
 	\ENDWHILE
-	\RETURN  $prototypes$
+	\RETURN  $P$, protótipos ajustados
 \end{algorithmic}
 \end{algorithm}
 
 
 A vantagem do LVQ1 é que ele estabiliza durante o treinamento, porém, ele possui um grande número de passos. Para a maioria dos problemas, o LVQ 1 possui um resultado satisfatório, mas além da demora, é necessário escolher os parâmetros corretamente.
 
-Um dos parâmetros é o $\alpha(t)$, uma constante de ajuste, que serve para aproximar ou afastar os protótipos. Este afastamento ou aproximação é regulado pelo valor de $\alpha(t)$, sendo $0 < \alpha(t) < 1$. Percebe-se que $\alpha(t)$ foi colocado como uma função. Normalmente, essa função é uma exponencial descrescente, e o algoritmo termina quando $\alpha(t)$ se torna insignificante.
+Um dos parâmetros é o $\alpha(t)$, uma função de ajuste, que serve para aproximar ou afastar os protótipos. Este afastamento ou aproximação é regulado pelo valor de $\alpha(t)$, sendo $0 < \alpha(t) < 1$. Percebe-se que $\alpha(t)$ foi colocado como uma função do tempo. Normalmente, essa função é uma exponencial descrescente, e o algoritmo termina quando $\alpha(t)$ se torna insignificante.
 
 Outra questão do LVQ1 é escolher a quantidade de protótipos iniciais adequada, visto que, esta quantidade não é alterada durante toda a execução do algoritmo.
 
@@ -315,7 +316,7 @@ $\alpha(t) = \dfrac{\alpha(t-1)}{1 + s(t) \times \alpha(t-1)}$
 \item
 \end{center}
 
-Com esta alteração do valor de $\alpha(t)$ faz com que o LVQ convirja mais rapidamente, tornando o algoritmo OLVQ mais viável em termos de performace e mantendo as características do LVQ1.
+Esta alteração do valor de $\alpha(t)$ faz com que o LVQ convirja mais rapidamente, tornando o algoritmo OLVQ mais viável em termos de performace e mantendo as características do LVQ1. Neste trabalho, o OLVQ não será abordado, sendo citado apenas nesta sub-sessão.
 
 \subsection{LVQ 2.1}
 
