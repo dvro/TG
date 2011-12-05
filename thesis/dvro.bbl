@@ -1,9 +1,17 @@
-\begin{thebibliography}{dSPC08}
+\begin{thebibliography}{dSdMSF09}
 
 \bibitem[CPZ11]{enn:2011}
 Ruiqin Chang, Zheng Pei, and Chao Zhang.
 \newblock A modified editing k-nearest neighbor rule.
 \newblock {\em JCP}, 6(7):1493--1500, 2011.
+
+\bibitem[dSdMSF09]{conf/icann/SouzaF09}
+Renata M. C.~R. de~Souza and Telmo de~M.~Silva~Filho.
+\newblock Optimized learning vector quantization classifier with an adaptive
+  euclidean distance.
+\newblock In Cesare Alippi, Marios~M. Polycarpou, Christos Panayiotou, and
+  Georgios Ellinas, editors, {\em ICANN (1)}, volume 5768 of {\em Lecture Notes
+  in Computer Science}, pages 799--806. Springer, 2009.
 
 \bibitem[dSPC08]{csp:sgp}
 Cristiano de~Santana~Pereira and George D.~C. Cavalcanti.

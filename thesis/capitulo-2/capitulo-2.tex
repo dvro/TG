@@ -305,7 +305,7 @@ No caso de bases desbalanceadas, pode-se utilizar fatores de ajustes diferenciad
 
 \subsection{Optimized-learning-rate LVQ}
 
-Optimized-learning-rate LVQ [colocar referencia aqui http://www.springerlink.com/content/n72865x1t57q1877/] é uma versão otimizada do LVQ1, proposto para aumentar a velocidade de convergência do LVQ1. O modelo consiste basicamente em cada protótipo ter taxas de aprendizado individuais, a dinâmica da taxa de aprendizado consiste no aumento da mesma caso o protótipo esteja classificando corretamente e na diminuição, caso contrário.
+\textit{Optimized-learning-rate LVQ}\cite{conf/icann/SouzaF09} é uma versão otimizada do LVQ1, proposto para aumentar a velocidade de convergência do LVQ1. O modelo consiste basicamente em cada protótipo ter taxas de aprendizado individuais, a dinâmica da taxa de aprendizado consiste no aumento da mesma caso o protótipo esteja classificando corretamente e na diminuição, caso contrário.
 
 \begin{center}
 $\alpha(t) = \dfrac{\alpha(t-1)}{1 + s(t) \times \alpha(t-1)}$
@@ -320,7 +320,7 @@ Esta alteração do valor de $\alpha(t)$ faz com que o LVQ convirja mais rapidamen
 
 \subsection{LVQ 2.1}
 
-Kohonen propos duas novas versões melhoradas do LVQ, uma delas é o LVQ 2.1. Esta nova versão do LVQ faz atualização nos dois protótipos mais próximos desde que as condições de ajuste sejam atendidas.
+Kohonen propos duas outras versões melhoradas do LVQ, uma delas é o LVQ 2.1. Esta nova versão do LVQ faz atualização nos dois protótipos mais próximos desde que as condições de ajuste sejam atendidas.
 
 A ideia do LVQ 2.1 é ajustar apenas os protótipos próximos das fronteiras de classificação, região de indecisão. Para evitar uma divergência entre estes protótipos, foi introduzida a Regra da Janela.
 
@@ -337,15 +337,17 @@ $\min{\frac{d_i}{d_j}}{\frac{d_j}{d_i}} > s$, onde $s = \dfrac{1 - w}{1 + w}$
 \item $w$ é a largura relativa
 \end{center}
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{LVQ 2.1}
 \label{alg:lvq21}
 \begin{algorithmic}[1]
-\REQUIRE {$prototypes$: uma lista para os protótipos}
-	\STATE $prototypes$ = $LVQ 1$ (base original)
-	\WHILE{$prototypes$ não estiver sub-ajustado}
-		\STATE $x$ = $ChooseOne$ (base original)
-		\STATE $e_i$, $e_j$ = $SelectNearestsFrom$($prototypes$, $x$)
+	\REQUIRE {$T$: um conjunto de treinamento}
+	\REQUIRE {$P$: uma lista para os protótipos}
+	\REQUIRE {$Selection$: um algorítmo para seleção dos protótipos iniciais}
+	\STATE $P$ = $LVQ 1(T, Selection)$
+	\WHILE{$P$ estiver sub-ajustado}
+		\STATE $x$ = $ChooseOne(T)$ 
+		\STATE $e_i$, $e_j$ = 2-NN de $x$, usando $P$ como treinamento
 		\IF {$CaiuNaJanela(x,e_i,e_j)$}
 			\IF {$Classe(e_i) \ne Classe(e_j)$}
 				\IF {$Classe(e_i) = Classe(x)$}
@@ -358,30 +360,32 @@ $\min{\frac{d_i}{d_j}}{\frac{d_j}{d_i}} > s$, onde $s = \dfrac{1 - w}{1 + w}$
 			\ENDIF
 		\ENDIF
 	\ENDWHILE
-	\RETURN  $prototypes$
+	\RETURN  $P$, protótipos ajustados
 \end{algorithmic}
 \end{algorithm}
 
-A algoritmo de LVQ 2.1 é aplicado depois do LVQ 1, mas ele ajusta dois protótipos a cada iteração. Esta técnica não faz ajustes de protótipos se $x$ não estiver na janela, se nenhum dos protótipos forem da classe de $x$ ou se os protótipos forem da mesma classe. Pode-se ver o algoritmo detalhado em \ref{alg:lvq21}.
+A algoritmo de LVQ 2.1 é aplicado depois do LVQ 1, tratando-se de um refinamento dos protótipos já criados. Esta técnica faz ajustes de protótipos apenas se $e_i$ e $e_j$ forem de classes diferentes, e se $x$ obedecer a regra da janela. Pode-se ver o algoritmo detalhado em Algorithm \ref{alg:lvq21}.
 
 Enquanto o LVQ1 provoca o afastamento dos protótipos nas regiões de indecisão, o LVQ 2.1 reduz esse afastamento atuando apenas sobre protótipos vizinhos pertencentes a classes diferentes.
 
-Uma desvantagem do LVQ 2.1 é que além do custo ser maior, a aplicação do mesmo pode sobre-ajustar os protótipos nas regiões de indecisão. Para diminuir esse sobre-ajuste, foi criado o LVQ 3, abordado na próxima sessão.
+Uma desvantagem do LVQ 2.1 é que além do custo ser maior, a aplicação do mesmo pode sobre-ajustar os protótipos nas regiões de indecisão. Para diminuir esse sobre-ajuste, foi criado o LVQ 3, abordado a seguir.
 
 \subsection{LVQ 3}
 
-A segunda melhora proposta por Kohonen foi o LVQ 3. Este método tenta evitar o sobre-ajuste do LVQ 2.1 atuando também quando o elemento já está sendo classificado corretamente pelos dois protótipos mais próximos, aproximando ambos da instância utilizada para ajuste. Além disso, a terceira versão do LVQ introduz um fator de estabização $\epsilon$.
+A segunda melhora proposta por Kohonen foi o LVQ 3. Este método tenta evitar o sobre-ajuste do LVQ 2.1 atuando também quando o elemento já está sendo classificado corretamente pelos dois protótipos mais próximos, aproximando ambos da instância utilizada para ajuste. Além disso, a terceira versão do LVQ introduz um fator de estabização $\epsilon$. O algoritmo do LVQ 3 está detalhando em Algorithm \ref{alg:lvq3}.
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{LVQ 3}
 \label{alg:lvq3}
 \begin{algorithmic}[1]
-\REQUIRE {$prototypes$: uma lista para os protótipos}
-	\STATE $prototypes$ = $LVQ 1$ (base original)
-	\WHILE{$prototypes$ não estiver sub-ajustado}
-		\STATE $x$ = $ChooseOne$ (base original)
-		\STATE $e_i$, $e_j$ = $SelectNearestsFrom$($prototypes$, $x$)
-		\IF {$CaiuNaJanela(x,e_i,e_j)$}
+	\REQUIRE {$T$: um conjunto de treinamento}
+	\REQUIRE {$P$: uma lista para os protótipos}
+	\REQUIRE {$Selection$: um algorítmo para seleção dos protótipos iniciais}
+	\STATE $P$ = $LVQ 1(T, Selection)$
+	\WHILE{$P$ estiver sub-ajustado}
+		\STATE $x$ = $ChooseOne(T)$ 
+		\STATE $e_i$, $e_j$ = 2-NN de $x$, usando $P$ como treinamento
+		\IF {$CaiuNaJanela(x, e_i, e_j)$}
 			\IF {$Classe(e_i) \ne Classe(e_j)$}
 				\IF {$Classe(e_i) = Classe(x)$}
 					\STATE $e_i = e_i + \alpha(t) \times [x - e_i]$
@@ -396,14 +400,14 @@ A segunda melhora proposta por Kohonen foi o LVQ 3. Este método tenta evitar o s
 			\ENDIF
 		\ENDIF
 	\ENDWHILE
-	\RETURN  $prototypes$
+	\RETURN  $P$, os protótipos ajustados
 \end{algorithmic}
 \end{algorithm}
 
 
 O fator de estabilização serve para suavizar o ajuste quando os protótipos já estão classificando corretamente $x$. O valor de $\epsilon$ deve ser tal que $0 < \epsilon < 1$.
 
-Assim como as outras versões do LVQ, o LVQ 3 é robusto, mas seu maior problema é determinar o valor de tantos parâmetros como $\alpha, \epsilon$ e $w$. Porém, a maior desvantagem é não ser possível saber com certeza quando os protótipos foram ou não sobre-ajustados.
+Assim como as outras versões do LVQ, o LVQ 3 é robusto, mas seu maior problema é determinar o valor de tantos parâmetros como $\alpha$, $\epsilon$ e $w$. Porém, o maior problema é saber quando os protótipos foram suficientemente ajustados.
 
 \section{SGP}
 
