@@ -71,6 +71,11 @@ E.~A. Patrick and F.~P.~Fischer II.
 \newblock A generalization of the k-nearest neighbor rule.
 \newblock In {\em IJCAI}, pages 63--64, 1969.
 
+\bibitem[ref10]{reference/ml/X10rd}
+Principal component analysis.
+\newblock In Claude Sammut and Geoffrey~I. Webb, editors, {\em Encyclopedia of
+  Machine Learning}, page 795. Springer, 2010.
+
 \bibitem[Sav]{cgm.cs.mcgill.ca.godfried}
 Sergei Savchenko.
 \newblock http://cgm.cs.mcgill.ca/~.

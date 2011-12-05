@@ -409,9 +409,10 @@ O fator de estabilização serve para suavizar o ajuste quando os protótipos já es
 
 Assim como as outras versões do LVQ, o LVQ 3 é robusto, mas seu maior problema é determinar o valor de tantos parâmetros como $\alpha$, $\epsilon$ e $w$. Porém, o maior problema é saber quando os protótipos foram suficientemente ajustados.
 
-\section{SGP}
+\section{SGP 1}
+\label{sec:sgp1}
 
-Self-Generating Prototypes \cite{fayed:sgp} é uma técnica de síntese de protótipos muito completa. Sua maior vantagem é que, enquanto muitas técnicas de seleção de protótipos dependem da escolha correta do número de protótipos iniciais ou possuem muitos parâmetros, o SGP encontra a quantidade de protótipos e a localização de cada uma em sua fase de treinamento, sem supervisão humana.
+\textit{Self-Generating Prototypes} \cite{fayed:sgp} é uma técnica de síntese de protótipos muito eficiente no que se trata de redução do número de instâncias. Sua maior vantagem é que, enquanto muitas técnicas de seleção de protótipos dependem da escolha correta do número de protótipos iniciais ou possuem muitos parâmetros, o SGP encontra a quantidade de protótipos e a localização de cada uma em sua fase de treinamento, sem supervisão humana.
 
 A ideia principal do SGP é formar um certo número de grupos e eleger representantes para esses grupos. Conforme necessário, o algorítmo divide os grupos ou move instâncias de um grupo para outro.
 
@@ -421,25 +422,26 @@ Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias d
 \center
 \label{fig:divisaogrupossgp}
 \includegraphics[scale=0.55]{imagens/SGP1.eps}
-\caption{Etapa da divisão de grupos. Figura obtida de \cite{csp:sgp}} 
+\caption{Etapa da divisão de grupos \cite{csp:sgp}.} 
 \end{figure}
 
 \begin{itemize}
 \item Se para todos os padrões de um grupo o protótipo mais próximo é o centróide do grupo, então nenhuma operação é realizada.
-\item Se para todos os padrões de um grupo o protótipo mais próximo é de uma classe diferente da do grupo, ele é dividido em dois subgrupos \ref{fig:divisaogrupossgp}. Essa divisão é feita separando os padrões pelo hiperplano que passa pelo centroide do grupo, e cujo vetor normal é a primeira componente principal gerada pelos padrões do grupo.
+\item Se para todos os padrões de um grupo o protótipo mais próximo é de uma classe diferente da do grupo, ele é dividido em dois subgrupos Figura \ref{fig:divisaogrupossgp}. Essa divisão é feita separando os padrões pelo hiperplano que passa pelo centroide do grupo, e cujo vetor normal é a primeira componente principal gerada pelos padrões do grupo.
 \item Se para alguns padrões de um grupo o protótipo mais próximo é diferente do centróide, mas da mesma classe, esses padrões são deslocados do grupo original para o grupo do protótipo mais próximo
 \item Se para alguns padrões de um grupo o protótipo mais próximo não é o centróide e é de uma classe diferente, estes padrões são removidos do grupo original e formam um novo grupo, sendo o centróide computado como um novo protótipo.
 \end{itemize}
 
-No final de cada iteração, o centróide de cada grupo é computado novamente. O processo se repete até que não haja alterações em mais nenhum grupo. Uma descrição mais formal do algoritmo é descrita em \ref{alg:sgp1}
+No final de cada iteração, o centróide de cada grupo é computado novamente. O processo se repete até que não haja alterações em mais nenhum grupo. Uma descrição mais formal do algoritmo é descrita em Algorithm \ref{alg:sgp1}
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{SGP 1}
 \label{alg:sgp1}
 \begin{algorithmic}[1]
+\REQUIRE {$T$: um conjunto de treinamento}
 \REQUIRE {$PS$: uma lista para os representantes}
 \REQUIRE {$GS$: uma lista de grupos de instâncias}
-\REQUIRE {$T$: uma lista de duplas de instâncias}
+\REQUIRE {$TUPLAS$: uma lista de duplas de instâncias}
 	\FORALL {classe $C$}
 		\STATE $G$ = $\bigcup$ instâncias da classe $C$
 		\STATE $Adicione(G, GS)$
@@ -448,16 +450,16 @@ No final de cada iteração, o centróide de cada grupo é computado novamente. O pr
 	\STATE $count = 1$
 	\WHILE {$count \ne 0$}
 		\STATE $count$ = $Quantidade(GS)$
-		\STATE $Limpe(T)$
+		\STATE $Limpe(TUPLAS)$
 		\FORALL {$G$ em $GS$} 
 			\STATE $P$ = Representante de $G$
 			\FORALL {$e_i$ em $group$}
 				\STATE $NearestP$ = $1NN(e_i, PS)$
-				\STATE $Adicione((e_i,NearestP), T)$
+				\STATE $Adicione((e_i,NearestP), TUPLAS)$
 			\ENDFOR
-			\IF {$\forall$ $e_i, NearestP$ em $T$, $NearestPS$ = $P$}
+			\IF {$\forall$ $e_i, NearestP$ em $TUPLAS$, $NearestPS$ = $P$}
 				\STATE $count$ = $count - 1$
-			\ELSIF {$\forall$ $e_i, NearestP$ em $T$, a $Classe(NearestP) \ne Classe(P)$} 
+			\ELSIF {$\forall$ $e_i, NearestP$ em $TUPLAS$, a $Classe(NearestP) \ne Classe(P)$} 
 				\STATE $Vector = PrimeiraComponentePrincipal(G)$
 				\STATE $Hiperplano$ = hiperplano que passa pelo centróide de $G$ e cujo vetor normal é a $Vector$.
 				\STATE Divida $G$ em 2 grupos, instâncias acima e abaixo de $Hiperplano$
@@ -465,7 +467,7 @@ No final de cada iteração, o centróide de cada grupo é computado novamente. O pr
 			\ELSIF {$\exists$ $e_i, NearestP$ em $T$ tal que $NearestP \ne P$ e $Classe(NearestP) = Classe(P)$}
 				\STATE Remova $e_i$ de $G$ e adicione a grupo de $NearestP$.
 				\STATE Atualize $GPS$ e $PS$.
-			\ELSIF {$\exists$ $e_i, NearestP$ em $T$ tal que o $Classe(NearestP) != Classe(P)$}
+			\ELSIF {$\exists$ $e_i, NearestP$ em $TUPLAS$ tal que o $Classe(NearestP) \ne Classe(P)$}
 				\STATE Remova $e_i$ de $G$.
 				\STATE Crie um novo grupo contendo as instâncias removidas.
 				\STATE Atualize $PS$ e $GS$,
@@ -476,47 +478,49 @@ No final de cada iteração, o centróide de cada grupo é computado novamente. O pr
 \end{algorithmic}
 \end{algorithm}
 
-Observando o algoritmo do SGP1 \ref{alg:sgp1}, percebe-se que apesar do conceito ser bem simples, esta técnica possui alguns passos complexos, sendo necessário conhecimentos sobre extração de características [REFERÊNCIA PCA AQUI]. Principal Component Analysis é a técnica utilizada para traçar o vetor perpendicular ao hiperplano \ref{fig:divisaogrupossgp}.
+Observando o algoritmo do SGP1, percebe-se que apesar do conceito ser bem simples, esta técnica possui alguns passos complexos, sendo necessário conhecimentos sobre extração de características. No caso, Principal Component Analysis \cite{reference/ml/X10rd} é a técnica utilizada para traçar o vetor perpendicular ao hiperplano Figura \ref{fig:divisaogrupossgp}.
 
-A maior vantagem do SGP1 é que, conforme citado anteriormente, ele é não depende de parâmetros como quantidade de protótipos iniciais nem valores específicos. Por ser um algoritmo deterministico, o SGP1 executado numa mesma base de dados, sempre gerará os mesmos protótipos. Estes protótipos gerados possuem excelente representatividade do conjunto de treinamento, tanto que, utilizando-se os protótipos gerados como treinamento de um KNN, e classificando-se todas as instâncias de treinamento do SGP1, a taxa de acerto é de 100\%. Claro que o treinamento não pode ser utilizado para teste, mas isto mostra a boa representatividade das instâncias geradas pelo SGP1.
+A maior vantagem do SGP1 é que, conforme citado anteriormente, ele é não depende de parâmetros como quantidade de protótipos iniciais nem valores específicos. Por ser um algoritmo deterministico, o SGP1 executado numa mesma base de dados, sempre gerará os mesmos protótipos. Estes protótipos gerados possuem excelente representatividade do conjunto de treinamento, tanto que, utilizando-se os protótipos gerados como treinamento de um KNN, e classificando-se todas as instâncias de treinamento do SGP1, a taxa de acerto é de 100\%. Apesar de o conjunto de treinamento não ser utilizado para teste, esta é uma forma de medir a representatividade das instâncias geradas por um algoritmo.
 
 Porém, o SGP1 também apresenta desvantagens. Uma delas é que o SGP1 é muito custoso, exigindo, em geral, um treinamento mais longo que outras técnicas.
 
-Outra desvantagem é que o SGP1 é sensível a ruídos, pois, se necessário, o algoritmo criará um grupo com apenas uma instância. No caso de um ruído, isto será muito desvantajoso, considerando que, em experimentos diversos, o SGP1 conseguiu reduzir em mais de 100 vezes o tamanho da base de dados.
+Outra desvantagem é que o SGP1 é sensível a ruídos, pois, se necessário, o algoritmo criará um grupo com apenas uma instância. No caso de um ruído, isto será muito desvantajoso, considerando que, em experimentos diversos, o SGP1 conseguiu reduzir em mais de 100 vezes o tamanho da base de dados. Com tamanha redução, um ruído passa a ter grande influência na classificação de uma instância.
 
 Apesar das desvantagens citadas, bases desbalanceadas podem ser beneficiadas com o SGP1, considerando que ele considera os agrupamentos de classes, e não a quantidade de instâncias em cada classe.
 
 \section{SGP 2}
+\label{sec:sgp2}
 
-O Self-Generating Prototypes 2 \cite{fayed:sgp}é uma versão melhorada do SGP1 que reduz ainda mais a quantidade de protótipos e é menos sensível aos ruídos e outliers. Para fazer essas melhorias, o SGP2 possui uma etapa de \textit{merge} e \textit{prunning}.
+O \textit{Self-Generating Prototypes 2}\cite{fayed:sgp} é uma versão melhorada do SGP1 que reduz ainda mais a quantidade de protótipos e é menos sensível aos ruídos e outliers. Para fazer essas melhorias, o SGP2 possui etapas de \textit{merge} e \textit{prunning}.
 
-Quando dois grupos \textit{A} e \textit{B} são da mesma classe e para todas as instâncias de \textit{A} o segundo protótipo mais próximo é o representante de \textit{B}, e para todas as instâncias de \textit{B} o segundo protótipo mais próximo é o representante de \textit{A}, os grupos \textit{A} e \textit{B} podem ser fundidos, e será computado um novo protótipo para este novo grupo maior. Esta etapa é chamada de \textit{merge}, e ela é responsável por reduzir ainda mais a quantidade de protótipos do SGP1. O \textit{prunnig} consiste em  remover grupos onde o segundo protótipo mais próximo de todos os padrões de um certo grupo possuem a mesma classe, neste caso, tanto as instâncias quanto o representante do grupo são eliminados.
+Quando dois grupos \textit{A} e \textit{B} são da mesma classe, e para todas as instâncias de \textit{A} o segundo protótipo mais próximo é o representante de \textit{B}, e para todas as instâncias de \textit{B} o segundo protótipo mais próximo é o representante de \textit{A}, os grupos \textit{A} e \textit{B} podem ser fundidos, e será computado um novo protótipo para este novo grupo maior. Esta etapa é chamada de \textit{merge}, e ela é responsável por reduzir ainda mais a quantidade de protótipos do SGP1. O \textit{prunning} consiste em  remover grupos onde o segundo protótipo mais próximo de todos os padrões de um certo grupo possuem a mesma classe, neste caso, tanto as instâncias quanto o representante do grupo são eliminados.
 
 	Para evitar o sobre-ajuste e perda de generalização introduziu-se dois parâmetros ao SGP2 chamados de $R_n$ e $R_s$. O $R_n$ representa um limite para o tamanho relativo de um grupo em relação ao maior grupo. Por exemplo, se $R_n$ é 0.1 e o tamanho do maior grupo é 200, todos os grupos com tamanho menor que $20 (0.1 \times 200)$ são descartados. O segundo parâmetro $R_s$ é um limiar para a taxa de classificações incorretas de um grupo. Se o número de padrões classificados erroneamentes em um grupo dividido pelo tamanho do grupo é menor que $R_s$, então o grupo permanece inalterado. Este parâmetros reduzem o número de protótipos e aumentam a capacidade de generalização. Pereira e Cavalcanti recomendam  $0.01 < R_n < 0.2$ e $0.01 < R_s < 0.2$ \cite{csp:sgp}.
 
-\begin{algorithm}[H][h]
+\begin{algorithm}[H]
 \caption{SGP 2}
 \label{alg:sgp2}
 \begin{algorithmic}[1]
+\REQUIRE {$T$: um conjunto de treinamento}
 \REQUIRE {$PS$: uma lista para os representantes}
 \REQUIRE {$GS$: uma lista de grupos de instâncias}
-\REQUIRE {$T$: uma lista de duplas de instâncias}
+\REQUIRE {$TUPLA$: uma lista de duplas de instâncias}
 	\FORALL {classe $C$}
-		\STATE $G$ = $\bigcup$ instâncias da classe $C$
+		\STATE $G$ = $\bigcup$ instâncias de $T$ da classe $C$
 		\STATE $Adicione(G, GS)$
 		\STATE $Adicione(Centroide(G),PS)$ 
 	\ENDFOR
 	\STATE $count = 1$
 	\WHILE {$count \ne 0$}
 		\STATE $count$ = $Quantidade(GS)$
-		\STATE $Limpe(T)$
+		\STATE $Limpe(TUPLAS)$
 		\FORALL {$G$ em $GS$} 
 			\STATE $P$ = Representante de $G$
 			\FORALL {$e_i$ em $group$}
 				\STATE $NearestP$ = $1NN(e_i, PS)$
-				\STATE $Adicione((e_i,NearestP), T)$
+				\STATE $Adicione((e_i,NearestP), TUPLAS)$
 			\ENDFOR
-			\IF {Quantidade de tuplas em $T$ onde $NearestP \ne P$ $\le$ $R_s$}
+			\IF {Quantidade de tuplas em $TUPLAS$ onde $NearestP \ne P$ $\le$ $R_s$}
 				\STATE $count$ = $count - 1$
 			\ELSIF {$\forall$ $e_i, NearestP$ em $T$, a $Classe(NearestP) \ne Classe(P)$} 
 				\STATE $Vector = PrimeiraComponentePrincipal(G)$
@@ -546,7 +550,7 @@ Quando dois grupos \textit{A} e \textit{B} são da mesma classe e para todas as i
 
 O algoritmo SGP2 \ref{alg:sgp2} é mais custoso e demorado que o SGP1, porém, em experimentos práticos, o SGP2 se mostrou mais eficiente, diminuindo a quantidade de protótipos ainda mais que o SGP1 e ainda assim, aumentando a taxa de acerto.
 
-Porém, um defeito do SGP2 é que ele não leva em conta bases desbalanceadas. Dependendo da distribuição das instâncias, pode acontecer de, na fase de \textit{prunning} o SGP2 remover o representante da classe minoritária, podendo até remover todos os protótipos desta classe. Isto é perceptível, considerando o valor de $R_n = 0.15$, bases onde a classe minoritária possui apenas 3\% das instâncias da base, mesmo com a base marjoritária multimodal, provavelmente, após o \textit{prunning}, todos os protótipos serão da classe marjoritária.
+Porém, um defeito do SGP2 é que ele não leva em conta bases desbalanceadas. Dependendo da distribuição das instâncias, pode acontecer de, na fase de \textit{prunning} o SGP2 remover o representante da classe minoritária, podendo até remover todos os protótipos desta classe. Isto é perceptível, considerando o valor de $R_n = 0.15$, bases onde a classe minoritária possui apenas 3\% das instâncias, mesmo com a base marjoritária multimodal, provavelmente todos os protótipos finais serão da classe marjoritária.
 
 
 
