@@ -9,3 +9,8 @@
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Aplica\c c\~ao da primeira etapa do OSS, o CNN}}{12}{figure.2.5}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Resultado final do OSS, ap\'os aplica\c c\~ao da segunda etapa, o Tomek Links}}{13}{figure.2.6}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Etapa da divis\~ao de grupos \cite {csp:sgp}.}}{18}{figure.2.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Base Original com 10\% de desbalanceamento e intersec\c c\~ao m\IeC {\'\i }nima}}{24}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Base Original com 10\% de desbalanceamento e intersec\c c\~ao m\'axima}}{25}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Base Original com 5\% de desbalanceamento e intersec\c c\~ao m\IeC {\'\i }nima}}{25}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Base Original com 5\% de desbalanceamento e intersec\c c\~ao m\'axima}}{26}{figure.3.4}

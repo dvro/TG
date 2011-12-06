@@ -1,0 +1,52 @@
+% !TEX encoding = ISO-8859-1
+\chapter{Análise em Bases Artificiais}
+% \label{ch:introducao}
+
+Neste capítulo será analisado o desempenho das técnicas acima em bases desbalanceadas artificiais. Além da taxa de acerto, será considerada a quantidade de protótipos gerados por cada técnica e a distribuição destes protótipos.
+
+\section{Bases Artificiais}
+
+Para avaliar de forma visual o comportamento de cada algoritmo de seleção de protótipos, foram selecionadas bases artificiais com diferentes níveis de sobrebosição entre a classe marjoritária e a classe minotirária. Também foram selecionados dois diferentes níveis de desbalanceamento, um com aproximadamente 10\% de desbalanceamento e outro com aproximadamente 5\%.
+
+\begin{figure}[H]
+\center
+\label{fig:orig1}
+\includegraphics[scale=0.40]{imagens/outputs/ORIG_10_0.eps}
+\caption{Base Original com 10\% de desbalanceamento e intersecção mínima}
+\end{figure}
+
+\begin{figure}[H]
+\center
+\label{fig:orig2}
+\includegraphics[scale=0.40]{imagens/outputs/ORIG_10_15.eps}
+\caption{Base Original com 10\% de desbalanceamento e intersecção máxima}
+\end{figure}
+
+
+Nas figuras \ref{fig:orig1} e \ref{fig:orig2} estão demonstrados os níveis de intersecção extremos. No primeiro caso, a classe marjoritária está totalmente separada da classe minoritária. No segundo caso, a classe marjoritária engloba toda a classe minoritária. Além destes dois casos, também serão mostrados níveis intermediários de sobreposição. Com estes diferentes níveis de intersecção, será possível avaliar o comportamento de cada técnica diante de diferentes casos de bases desbalanceadas.
+
+\begin{figure}[H]
+\center
+\label{fig:orig3}
+\includegraphics[scale=0.40]{imagens/outputs/ORIG_5_0.eps}
+\caption{Base Original com 5\% de desbalanceamento e intersecção mínima}
+\end{figure}
+
+\begin{figure}[H]
+\center
+\label{fig:orig4}
+\includegraphics[scale=0.40]{imagens/outputs/ORIG_5_15.eps}
+\caption{Base Original com 5\% de desbalanceamento e intersecção máxima}
+\end{figure}
+
+Nas figuras \ref{fig:orig3} e \ref{fig:orig4} observa-se o mesmo caso, sendo que com um nível maior de desbalanceamento. Tendo as mesmas distribuições e intersecções, mas com níveis de desbalanceamentos diferentes, será possível avaliar a relevância dos níveis de desbalanceamento para cada técnica. 
+
+\section{Análise Individual}
+\subsection{ENN}
+\subsection{CNN}
+\subsection{Tomek Links}
+\subsection{OSS}
+\subsection{LVQ 1, 2.1 e 3}
+\subsection{SGP 1}
+\subsection{SGP 2}
+\section{Analise Geral}

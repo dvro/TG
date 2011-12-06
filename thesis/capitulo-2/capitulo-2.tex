@@ -593,6 +593,6 @@ Quando dois grupos \textit{A} e \textit{B} são da mesma classe, e para todas as 
 
 O algoritmo SGP2 \ref{alg:sgp2} é mais custoso e demorado que o SGP1, porém, em experimentos práticos, o SGP2 se mostrou mais eficiente, diminuindo a quantidade de protótipos ainda mais que o SGP1 e ainda assim, aumentando a taxa de acerto.
 
-Porém, um defeito do SGP2 é que ele não leva em conta bases desbalanceadas. Dependendo da distribuição das instâncias, pode acontecer de o SGP2 remover o representante da classe minoritária, podendo até remover todos os protótipos desta classe. Isto é perceptível, considerando o valor de $R_n = 0.15$, bases onde a classe minoritária possui apenas 3\% das instâncias, mesmo com a base marjoritária multimodal, provavelmente todos os protótipos finais serão da classe marjoritária.
+Porém, um defeito do SGP2 é que, assim como o SGP1, o fator de generalização não leva em conta bases desbalanceadas. Dependendo da distribuição das instâncias, pode acontecer de o SGP2 remover o representante da classe minoritária, podendo até remover todos os protótipos desta classe. Isto é perceptível, considerando o valor de $R_n = 0.15$, bases onde a classe minoritária possui apenas 3\% das instâncias, mesmo com a base marjoritária multimodal, provavelmente todos os protótipos finais serão da classe marjoritária.
 
 
