@@ -488,14 +488,55 @@ Outra desvantagem é que o SGP1 é sensível a ruídos, pois, se necessário, o algor
 
 Apesar das desvantagens citadas, bases desbalanceadas podem ser beneficiadas com o SGP1, considerando que ele considera os agrupamentos de classes, e não a quantidade de instâncias em cada classe.
 
+\subsection{Fator de Generalização}
+
+	Para evitar o sobre-ajuste e perda de generalização introduziu-se dois parâmetros ao SGP chamados de $R_n$ e $R_s$. O $R_n$ representa um limite para o tamanho relativo de um grupo em relação ao maior grupo. Por exemplo, se $R_n$ é 0.1 e o tamanho do maior grupo é 200, todos os grupos com tamanho menor que $20 (0.1 \times 200)$ são descartados. O segundo parâmetro $R_s$ é um limiar para a taxa de classificações incorretas de um grupo. Se o número de padrões classificados erroneamentes em um grupo dividido pelo tamanho do grupo é menor que $R_s$, então o grupo permanece inalterado. Este parâmetros reduzem o número de protótipos e aumentam a capacidade de generalização. Pereira e Cavalcanti recomendam  $0.01 < R_n < 0.2$ e $0.01 < R_s < 0.2$ \cite{csp:sgp}.
+	Com o fator de generalização, o SGP reduz ainda mais o número de protótipos, mas pode ser inviável em bases desbalanceadas. O fator de desbalanceamento não leva em conta tais bases, assim o SGP pode remover todas as instâncias da base minoritária. Na próxima sessão será descrito o SGP 2, e o algoritmo descrito fará uso do $R_n$, exemplificando o fator de generalização e mais detalhes sobre vantagens de desvantagens serão abordados.
+
 \section{SGP 2}
 \label{sec:sgp2}
 
-O \textit{Self-Generating Prototypes 2}\cite{fayed:sgp} é uma versão melhorada do SGP1 que reduz ainda mais a quantidade de protótipos e é menos sensível aos ruídos e outliers. Para fazer essas melhorias, o SGP2 possui etapas de \textit{merge} e \textit{prunning}.
+O \textit{Self-Generating Prototypes 2}\cite{fayed:sgp} é uma versão melhorada do SGP1 que reduz ainda mais a quantidade de protótipos e é menos sensível aos ruídos e outliers. Para fazer essas melhorias, o SGP2 possui etapas de \textit{merge} e \textit{pruning}.
 
-Quando dois grupos \textit{A} e \textit{B} são da mesma classe, e para todas as instâncias de \textit{A} o segundo protótipo mais próximo é o representante de \textit{B}, e para todas as instâncias de \textit{B} o segundo protótipo mais próximo é o representante de \textit{A}, os grupos \textit{A} e \textit{B} podem ser fundidos, e será computado um novo protótipo para este novo grupo maior. Esta etapa é chamada de \textit{merge}, e ela é responsável por reduzir ainda mais a quantidade de protótipos do SGP1. O \textit{prunning} consiste em  remover grupos onde o segundo protótipo mais próximo de todos os padrões de um certo grupo possuem a mesma classe, neste caso, tanto as instâncias quanto o representante do grupo são eliminados.
+Quando dois grupos \textit{A} e \textit{B} são da mesma classe, e para todas as instâncias de \textit{A} o segundo protótipo mais próximo é o representante de \textit{B}, e para todas as instâncias de \textit{B} o segundo protótipo mais próximo é o representante de \textit{A}, os grupos \textit{A} e \textit{B} podem ser fundidos, e será computado um novo protótipo para este novo grupo maior. Esta etapa é chamada de \textit{merge}, e ela é responsável por reduzir ainda mais a quantidade de protótipos do SGP1. O \textit{pruning} consiste em  remover grupos onde o segundo protótipo mais próximo de todos os padrões de um certo grupo possuem a mesma classe, neste caso, tanto as instâncias quanto o representante do grupo são eliminados.
 
-	Para evitar o sobre-ajuste e perda de generalização introduziu-se dois parâmetros ao SGP2 chamados de $R_n$ e $R_s$. O $R_n$ representa um limite para o tamanho relativo de um grupo em relação ao maior grupo. Por exemplo, se $R_n$ é 0.1 e o tamanho do maior grupo é 200, todos os grupos com tamanho menor que $20 (0.1 \times 200)$ são descartados. O segundo parâmetro $R_s$ é um limiar para a taxa de classificações incorretas de um grupo. Se o número de padrões classificados erroneamentes em um grupo dividido pelo tamanho do grupo é menor que $R_s$, então o grupo permanece inalterado. Este parâmetros reduzem o número de protótipos e aumentam a capacidade de generalização. Pereira e Cavalcanti recomendam  $0.01 < R_n < 0.2$ e $0.01 < R_s < 0.2$ \cite{csp:sgp}.
+
+\begin{algorithm}[H]
+\caption{Merge}
+\label{alg:sgpmerge}
+\begin{algorithmic}[1]
+	\REQUIRE {$PS$: uma lista para os representantes}
+	\REQUIRE {$GS$: uma lista de grupos de instâncias}
+	\FORALL {$G$ em $GS$}
+		\IF {$\forall$ $e_i$ em $G$, $2-Nearest(e_i,PS)$ = $P$, $P \in PS$}
+			\IF {$\forall$ $e_j$ em $Group(P)$, $2-Nearest(e_j, PS)$ = $Prototype(G)$}
+				\STATE Remova $G$ de $GS$ e $P$ de $PS$.
+			\ENDIF
+		\ENDIF	
+	\ENDFOR
+	\IF {Houve merge}
+		\STATE $Merge(GS,PS)$
+	\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Pruning}
+\label{alg:sgppruning}
+\begin{algorithmic}[1]
+	\REQUIRE {$PS$: uma lista para os representantes}
+	\REQUIRE {$GS$: uma lista de grupos de instâncias}
+	\FORALL {$G$ em $GS$}
+		\IF {$\forall$ $e_i$ em $G$, $Classe(2-Nearest(e_i,PS)) = Classe(G)$}
+				\STATE Remova $G$ de $GS$ e $P$ de $PS$.
+		\ENDIF	
+	\ENDFOR
+	\IF {Houve pruning}
+		\STATE $Pruning(GS,PS)$
+	\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
 
 \begin{algorithm}[H]
 \caption{SGP 2}
@@ -504,7 +545,7 @@ Quando dois grupos \textit{A} e \textit{B} são da mesma classe, e para todas as 
 \REQUIRE {$T$: um conjunto de treinamento}
 \REQUIRE {$PS$: uma lista para os representantes}
 \REQUIRE {$GS$: uma lista de grupos de instâncias}
-\REQUIRE {$TUPLA$: uma lista de duplas de instâncias}
+\REQUIRE {$TUPLAS$: uma lista de duplas de instâncias}
 	\FORALL {classe $C$}
 		\STATE $G$ = $\bigcup$ instâncias de $T$ da classe $C$
 		\STATE $Adicione(G, GS)$
@@ -544,13 +585,14 @@ Quando dois grupos \textit{A} e \textit{B} são da mesma classe, e para todas as 
 			\STATE Remova $G$ de $GS$ e $P$ de $PS$.
 		\ENDIF	
 	\ENDFOR
+	\STATE $Merge(GS,PS)$
+	\STATE $Pruning(GS,PS)$
 	\RETURN $PS$
 \end{algorithmic}
 \end{algorithm}
 
 O algoritmo SGP2 \ref{alg:sgp2} é mais custoso e demorado que o SGP1, porém, em experimentos práticos, o SGP2 se mostrou mais eficiente, diminuindo a quantidade de protótipos ainda mais que o SGP1 e ainda assim, aumentando a taxa de acerto.
 
-Porém, um defeito do SGP2 é que ele não leva em conta bases desbalanceadas. Dependendo da distribuição das instâncias, pode acontecer de, na fase de \textit{prunning} o SGP2 remover o representante da classe minoritária, podendo até remover todos os protótipos desta classe. Isto é perceptível, considerando o valor de $R_n = 0.15$, bases onde a classe minoritária possui apenas 3\% das instâncias, mesmo com a base marjoritária multimodal, provavelmente todos os protótipos finais serão da classe marjoritária.
-
+Porém, um defeito do SGP2 é que ele não leva em conta bases desbalanceadas. Dependendo da distribuição das instâncias, pode acontecer de o SGP2 remover o representante da classe minoritária, podendo até remover todos os protótipos desta classe. Isto é perceptível, considerando o valor de $R_n = 0.15$, bases onde a classe minoritária possui apenas 3\% das instâncias, mesmo com a base marjoritária multimodal, provavelmente todos os protótipos finais serão da classe marjoritária.
 
 

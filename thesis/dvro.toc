@@ -17,4 +17,5 @@
 \contentsline {subsection}{\numberline {2.5.3}LVQ 2.1}{15}{subsection.2.5.3}
 \contentsline {subsection}{\numberline {2.5.4}LVQ 3}{16}{subsection.2.5.4}
 \contentsline {section}{\numberline {2.6}SGP 1}{17}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Fator de Generaliza\c c\~ao}{20}{subsection.2.6.1}
 \contentsline {section}{\numberline {2.7}SGP 2}{20}{section.2.7}
