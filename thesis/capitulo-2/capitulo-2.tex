@@ -33,9 +33,9 @@ O valor de K usado pelo KNN pode variar de acordo com o tamanho da base de dados
 
 \begin{figure}[H]
 \center
-\label{fig:enn}
 \includegraphics[scale=0.40]{imagens/enn.eps}
 \caption{ENN aplicado com K=3}
+\label{fig:enn}
 \end{figure}
 
 Na Figura \ref{fig:enn} pode-se observar uma base de dados com duas classes. No primeiro gráfico da figura, observar-se a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o ENN, Algorithm \ref{alg:enn}, com K=3 sobre a base de dados. Os pontos pretos representam pontos que foram classificados erroneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos do ruído. Mesmo um elemento que será posteriormente eliminado pode ser utilizado para eliminar ou manter outra instância, visto que as remoções são feitas apenas no fim da execução.
@@ -104,9 +104,9 @@ Existem algumas adaptações para o CNN, onde os protótipos iniciais são escolhido
 
 \begin{figure}[H]
 \center
-\label{fig:cnn}
 \includegraphics[scale=0.40]{imagens/cnn.eps}
 \caption{Exemplo da aplicação do CNN}
+\label{fig:cnn}
 \end{figure}
 
 No primeiro gráfico da figura \ref{fig:cnn} é mostrado uma base de dados qualquer, no segundo gráfico, é mostrado o resultado do CNN aplicado nesta base. Observa-se que uma grande quantidade de instâncias foi eliminada, mas praticamente todas as instâncias próximas da região de fronteira foram mantidas. Ainda existem instâncias redundantes nesta base, mas como citado anteriormente, isto acontece por conta da escolha aleatória dos protótipos iniciais e da ordem em que as instâncias são visitadas pelo algoritmo.
@@ -179,9 +179,9 @@ Enquanto o CNN remove os elementos que estão longe da região de indecisão, o \te
 
 \begin{figure}[H]
 \center
-\label{fig:tomek_links}
 \includegraphics[scale=0.40]{imagens/tomek_links.eps}
 \caption{Exemplo da aplicação do Tomek Links}
+\label{fig:tomek_links}
 \end{figure}
 
 Na Figura \ref{fig:tomek_links} está exemplificada a aplicação do \textit{Tomek Links}. No primeiro gráfico está a base original, e estão circulados os Tomek Links que, no segundo gráfico, foram removidos. No segundo gráfico, a base de dados foi filtrada e a maioria dos ruídos removidos. No exemplo desta figura, o \textit{Tomek Links} fez uma separação entre as classes, eliminando parte de intersecção entre as mesmas.
@@ -235,23 +235,23 @@ Observando o algoritmo, é fácil concluir que o \textit{One-Sided Selection} é um
 
 \begin{figure}[H]
 \center
-\label{fig:oss1}
 \includegraphics[scale=0.40]{imagens/oss_1.eps}
 \caption{Base Original antes da aplicação do OSS}
+\label{fig:oss1}
 \end{figure}
 
 \begin{figure}[H]
 \center
-\label{fig:oss2}
 \includegraphics[scale=0.40]{imagens/oss_2.eps}
 \caption{Aplicação da primeira etapa do OSS, o CNN}
+\label{fig:oss2}
 \end{figure}
 
 \begin{figure}[H]
 \center
-\label{fig:oss3}
 \includegraphics[scale=0.40]{imagens/oss_3.eps}
 \caption{Resultado final do OSS, após aplicação da segunda etapa, o Tomek Links}
+\label{fig:oss3}
 \end{figure}
 
 Nas Figuras \ref{fig:oss1}, \ref{fig:oss2} e \ref{fig:oss3} observamos que o OSS apresenta resultado satisfatível. No caso das figuras, não havia um desbalanceamento considerável entre as classes, porém, mas ainda assim, o OSS se mostra visualmente eficiente.
@@ -420,9 +420,9 @@ Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias d
 
 \begin{figure}[H]
 \center
-\label{fig:divisaogrupossgp}
 \includegraphics[scale=0.55]{imagens/SGP1.eps}
 \caption{Etapa da divisão de grupos \cite{csp:sgp}.} 
+\label{fig:divisaogrupossgp}
 \end{figure}
 
 \begin{itemize}

@@ -21,12 +21,12 @@
 \contentsline {section}{\numberline {2.7}SGP 2}{20}{section.2.7}
 \contentsline {chapter}{\numberline {3}An\'alise em Bases Artificiais}{24}{chapter.3}
 \contentsline {section}{\numberline {3.1}Bases Artificiais}{24}{section.3.1}
-\contentsline {section}{\numberline {3.2}An\'alise Individual}{26}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}ENN}{26}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}CNN}{26}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Tomek Links}{26}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}OSS}{26}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}LVQ 1, 2.1 e 3}{26}{subsection.3.2.5}
-\contentsline {subsection}{\numberline {3.2.6}SGP 1}{26}{subsection.3.2.6}
-\contentsline {subsection}{\numberline {3.2.7}SGP 2}{26}{subsection.3.2.7}
-\contentsline {section}{\numberline {3.3}Analise Geral}{26}{section.3.3}
+\contentsline {section}{\numberline {3.2}An\'alise Individual}{27}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}ENN}{27}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}CNN}{29}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Tomek Links}{29}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}OSS}{30}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}LVQ 1, 2.1 e 3}{30}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}SGP 1}{32}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}SGP 2}{32}{subsection.3.2.7}
+\contentsline {section}{\numberline {3.3}Analise Geral}{32}{section.3.3}

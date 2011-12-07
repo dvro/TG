@@ -1,0 +1,594 @@
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 1
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   97.68*    #   94.74*   #   94.74*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   99.00*    #   98.33*   #   100.00*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   74.00*    #   30.00*   #   0.00*   ||
+\hline
+Tamanho resultante      #   100.00*   #   100.00*   #   95.79*    #   90.53*   #   90.00*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 1 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 1
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   95.80*    #   90.00*   #   90.00*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   97.89*    #   95.56*   #   100.00*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   77.00*    #   40.00*   #   0.00*   ||
+\hline
+Tamanho resultante      #   100.00*   #   100.00*   #   92.00*    #   82.00*   #   81.00*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 1 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 2
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   94.74*   #   99.26*   #   97.47*    #   94.74*   #   94.11*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   98.67*    #   97.56*   #   95.89*   ||
+\hline
+Acerto minoritária      #   0.00*   #   86.00*   #   76.00*    #   44.00*   #   62.00*   ||
+\hline
+Tamanho resultante      #   0.32*   #   0.63*   #   4.32*    #   7.68*   #   7.47*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 2 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 2
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   90.00*   #   99.30*   #   94.70*    #   91.00*   #   90.40*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   99.44*   #   96.22*    #   94.44*   #   95.00*   ||
+\hline
+Acerto minoritária      #   0.00*   #   98.00*   #   81.00*    #   60.00*   #   49.00*   ||
+\hline
+Tamanho resultante      #   0.50*   #   1.20*   #   7.50*    #   13.30*   #   13.90*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 2 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 3
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   98.42*    #   97.47*   #   97.05*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   99.33*    #   98.67*   #   99.00*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   82.00*    #   76.00*   #   62.00*   ||
+\hline
+Tamanho resultante      #   100.00*   #   100.00*   #   96.84*    #   94.32*   #   94.32*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 3 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 3
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   97.30*    #   94.60*   #   93.90*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   98.56*    #   97.00*   #   97.56*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   86.00*    #   73.00*   #   61.00*   ||
+\hline
+Tamanho resultante      #   100.00*   #   100.00*   #   94.60*    #   89.60*   #   89.60*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 3 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 4
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   98.74*   #   99.58*   #   97.05*    #   93.37*   #   93.89*   ||
+\hline
+Acerto marjoritária     #   98.67*   #   99.56*   #   97.11*    #   93.44*   #   94.22*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   96.00*    #   92.00*   #   88.00*   ||
+\hline
+Tamanho resultante      #   5.58*   #   5.89*   #   7.16*    #   8.63*   #   9.68*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 4 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 4
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   97.50*   #   98.80*   #   95.20*    #   85.90*   #   87.50*   ||
+\hline
+Acerto marjoritária     #   97.22*   #   98.67*   #   95.22*    #   85.78*   #   88.00*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   95.00*    #   87.00*   #   83.00*   ||
+\hline
+Tamanho resultante      #   10.40*   #   11.10*   #   13.60*    #   15.50*   #   17.40*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 4 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 5
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   93.47*   #   91.79*   #   84.84*    #   74.74*   #   77.68*   ||
+\hline
+Acerto marjoritária     #   93.11*   #   91.33*   #   84.00*    #   73.33*   #   76.44*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   100.00*    #   100.00*   #   100.00*   ||
+\hline
+Tamanho resultante      #   1.05*   #   1.05*   #   1.05*    #   1.05*   #   1.05*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 5 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 5
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   95.30*   #   87.40*   #   80.80*    #   77.00*   #   71.90*   ||
+\hline
+Acerto marjoritária     #   94.78*   #   86.00*   #   78.67*    #   74.44*   #   68.78*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   100.00*    #   100.00*   #   100.00*   ||
+\hline
+Tamanho resultante      #   1.00*   #   1.00*   #   1.00*    #   1.00*   #   1.00*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 5 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 6
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   90.84*   #   89.68*   #   83.89*    #   80.11*   #   76.84*   ||
+\hline
+Acerto marjoritária     #   90.33*   #   89.11*   #   83.00*    #   79.00*   #   75.56*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   100.00*    #   100.00*   #   100.00*   ||
+\hline
+Tamanho resultante      #   1.05*   #   1.05*   #   1.05*    #   1.05*   #   1.05*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 6 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 6
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   95.80*   #   90.40*   #   81.60*    #   80.70*   #   76.20*   ||
+\hline
+Acerto marjoritária     #   95.33*   #   89.33*   #   79.56*    #   78.56*   #   73.56*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   100.00*    #   100.00*   #   100.00*   ||
+\hline
+Tamanho resultante      #   1.00*   #   1.00*   #   1.00*    #   1.00*   #   1.00*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 6 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 7
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   95.79*   #   92.32*   #   83.68*    #   78.32*   #   74.53*   ||
+\hline
+Acerto marjoritária     #   95.56*   #   91.89*   #   82.78*    #   77.11*   #   73.11*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   100.00*    #   100.00*   #   100.00*   ||
+\hline
+Tamanho resultante      #   1.05*   #   1.05*   #   1.05*    #   1.05*   #   1.05*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 7 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 7
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   94.70*   #   88.10*   #   89.40*    #   75.60*   #   73.50*   ||
+\hline
+Acerto marjoritária     #   94.11*   #   86.78*   #   88.22*    #   72.89*   #   70.56*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   100.00*    #   100.00*   #   100.00*   ||
+\hline
+Tamanho resultante      #   1.00*   #   1.00*   #   1.00*    #   1.00*   #   1.00*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 7 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 8
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   97.68*    #   94.74*   #   94.74*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   98.89*    #   100.00*   #   100.00*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   76.00*    #   0.00*   #   0.00*   ||
+\hline
+Tamanho resultante      #   0.53*   #   2.74*   #   5.26*    #   5.16*   #   5.68*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 8 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 8
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   95.40*    #   90.70*   #   90.00*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   97.89*    #   95.78*   #   100.00*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   73.00*    #   45.00*   #   0.00*   ||
+\hline
+Tamanho resultante      #   0.40*   #   3.50*   #   5.80*    #   8.20*   #   5.90*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 8 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
+------- 5, 0 --------
+------- 5, 1 --------
+------- 5, 5 --------
+------- 5, 10 --------
+------- 5, 15 --------
+
+
+
+
+TECNICA 9
+DESBALA 5
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   97.58*    #   94.74*   #   94.74*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   98.78*    #   100.00*   #   100.00*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   76.00*    #   0.00*   #   0.00*   ||
+\hline
+Tamanho resultante      #   0.21*   #   1.26*   #   2.42*    #   2.63*   #   2.63*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 9 com nível de desbalanceamento 5*}
+\end{table}
+
+
+
+
+------- 10, 0 --------
+------- 10, 1 --------
+------- 10, 5 --------
+------- 10, 10 --------
+------- 10, 15 --------
+
+
+
+
+TECNICA 9
+DESBALA 10
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    #   I   #   II  #   III #   IV  #   V   ||
+\hline %----- linha horizontal
+Acerto total            #   100.00*   #   100.00*   #   95.50*    #   90.00*   #   90.20*   ||
+\hline
+Acerto marjoritária     #   100.00*   #   100.00*   #   98.22*    #   100.00*   #   95.56*   ||
+\hline
+Acerto minoritária      #   100.00*   #   100.00*   #   71.00*    #   0.00*   #   42.00*   ||
+\hline
+Tamanho resultante      #   0.30*   #   1.90*   #   2.90*    #   2.70*   #   4.40*   ||
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tabela de taxa de acerto do 9 com nível de desbalanceamento 10*}
+\end{table}
+
+
+
+
