@@ -345,7 +345,7 @@ A figura \ref{fig:lvq155} mostra que, em baixo nível de sobreposição, os protóti
 \begin{figure}[H]
 \center
 \includegraphics[scale=0.40]{imagens/outputs/LVQ1_5_15.eps}
-\caption{LVQ 1 com sobreposição de classes IV e 5\% de desbalanceamento}
+\caption{LVQ 1 com sobreposição de classes V e 5\% de desbalanceamento}
 \label{fig:lvq1515}
 \end{figure}
 
@@ -402,8 +402,9 @@ Na tabela \ref{tab:lvq110}, a classe minoritária é composta de 10\% das instânci
 
 O LVQ1 se mostra eficiente para bases desbalanceadas, principalmente no que se refere a classificar bem instâncias da classe minoritária. Uma grande vantege é que a quantidade de protótipos resultante pode ser pré-definida, com isso, o desbalanceamento pode ser reduzido ou até mesmo eliminado. É recomendado também que a quantidade de protótipos seja proporcional ao nível de espalhamento de cada classe, quanto mais espalhada, mais protótipos são necessários para definir a classe.
 
+\subsubsection{LVQ 2.1}
 
-\subsubsection{LVQ 2}
+O LVQ 2.1 também teve uma boa taxa de acerto média, e assim como o LVQ 1, teve taxa de acerto máxima para classe minoritária em todos os níveis de sobreposição de classes. Esses dados podem ser observados na tabela \ref{tab:lvq25} e \ref{tab:lvq210}.
 
 \begin{table}[H]
 \begin{center}
@@ -421,7 +422,8 @@ Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &  
 \hline
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
-\caption{LVQ 2 com nível de desbalanceamento 5\%}
+\caption{LVQ 2.1 com nível de desbalanceamento 5\%}
+\label{tab:lvq25}
 \end{table}
 
 \begin{table}[H]
@@ -440,8 +442,34 @@ Tamanho resultante      &   1.00\%   &   1.00\%   &   1.00\%    &   1.00\%   &  
 \hline
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
-\caption{LVQ 2 com nível de desbalanceamento 10\%}
+\caption{LVQ 2.1 com nível de desbalanceamento 10\%}
+\label{tab:lvq210}
 \end{table}
+
+
+
+Conforme citado anteriormente, o LVQ 2.1 evita uma divergência entre os protótipos, isto pode ser observado em leves diferenças entre a figura \ref{fig:lvq2100} e a figura \ref{fig:lvq1100}. 
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ2.1_10_0.eps}
+\caption{LVQ 2.1 sem sobreposição de classes e 10\% de desbalanceamento}
+\label{fig:lvq2100}
+\end{figure}
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ1_10_0.eps}
+\caption{LVQ 1 sem sobreposição de classes e 10\% de desbalanceamento}
+\label{fig:lvq1100}
+\end{figure}
+
+Observa-se que os protótipos do LVQ 2.1 estão levemente menos espalhados que o LVQ 1, isso afeta a taxa de acerto da classe marjoritária (comparar tabela \ref{tab:lvq110} e \ref{tab:lvq210}. Assim, é interessante utilizar o LVQ 2.1 quando se deseja um menor espalhamento das instâncias, normalmente, quando existe uma distribuição uniforme das classes.
+
+\subsubsection{LVQ 3}
+
+
+
 
 \begin{table}[H]
 \begin{center}
