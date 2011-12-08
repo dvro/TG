@@ -118,6 +118,14 @@ Uma possível adaptação do ENN seria remover instâncias apenas da classe marjorit
 
 \subsection{CNN}
 
+O CNN, diferentemente do ENN, possui a abordagem de remover instâncias redundantes, e não ruídos. O comportamento esperado é que o CNN remova muitas instâncias da classe marjoritária e poucas instâncias da classe minoritária. Dependendo do nível de sobreposição das classes, porém, o CNN pode gerar diferentes resultados. Para os experimentos abaixo foi utilizado o valor de K = 3, pois com K = 1 a taxa de acerto seria de 100\%.
+
+Observando a tabela \ref{tab:cnn5} percebe-se que o CNN obteve uma boa taxa de acerto total, mesmo no caso de bases desbalanceadas. O CNN também teve um alto nível de redução de instâncias. Quando não houve sobreposição, o CNN reduziu a base para 0.32\% do tamanho original, aumentando para 7.47\% quando com nível máximo de sobreposição.
+
+O resultado da tabela não é uniforme pelo fato de o CNN não ser determinístico, dependendo da ordem em que os dados são apresentados. Porém, pode-se observar que, no geral, o CNN obteve uma boa taxa de acerto para a classe minoritária.
+
+Diminuindo o nível de desbalanceamento (10\%), houve uma melhora na taxa de acerto da classe minoritária em todos os níveis de sobreposição. Isso se deve a quantidade de instâncias adicionadas pelo CNN. Com mais instâncias da classe minoritária, a região delimitada por esta classe é maior, com isso, mais instâncias desta classe são mantidas pelo CNN. Pode-se observar isso na tabela \ref{tab:cnn10}.
+
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
@@ -135,6 +143,7 @@ Tamanho resultante      &   0.32\%   &   0.63\%   &   4.32\%    &   7.68\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{CNN com nível de desbalanceamento 5\%}
+\label{tab:cnn5}
 \end{table}
 
 \begin{table}[H]
@@ -154,9 +163,40 @@ Tamanho resultante      &   0.50\%   &   1.20\%   &   7.50\%    &   13.30\%   & 
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{CNN com nível de desbalanceamento 10\%}
+\label{tab:cnn10}
 \end{table}
 
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/CNN_5_0.eps}
+\caption{CNN sobre sobre base sem sobreposição de classes e 5\% de desbalanceamento}
+\label{fig:cnn50}
+\end{figure}
+
+
+Pode-se observar que o CNN reduz muito a base de dados quando não há sobreposição entre as classes, porém, garante que, com K=1, a taxa de acerto sobre o próprio treinamento será de 100\%. Neste experimento, porém, a taxa de acerto foi mínima pois foi utilizado K=3, e o CNN deixou apenas 1 instância da classe minoritária, assim, todas as instâncias desta classe foram classificadas erroneamente. O caso pode ser visto na figura \ref{fig:cnn50}.
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/CNN_5_5.eps}
+\caption{CNN sobreposição III de classes e 5\% de desbalanceamento}
+\label{fig:cnn55}
+\end{figure}
+
+Observando a figura \ref{fig:cnn55}, também é possível concluir que o CNN remove instâncias redundantes, então, a região de sobreposição é praticamente mantida. Isso mostra que, o CNN colabora para diminuir o nível de desbalanceamento, principalmente diante de classes sobrepostas. Todavia, em casos onde é importante identificar a classe minoritária, é necessário utilizar uma técnica de pré-processamento para melhor delimitar esta classe na região.
+
+
 \subsection{Tomek Links}
+
+O Tomek Links é uma técnica de seleção de protótipos determinística que atua na região de fronteira. Esta técnica é muito utilizada como pré-processamento de dados, visto que ela remove instâncias que podem ser tratadas como ruídos, mas não tem alto nível de redução de instâncias.
+
+Observando a tabela \ref{tab:tl5}, percebe-se que o Tomek Links não reduziu a base de dados quando não há sobreposição de classes, assim, a taxa de acerto é a máxima. Porém, conforme a região de sobreposição aumenta, mais instâncias são removidas, e com isso, a taxa de acerto começa a ser afetada.
+
+Esta técnica possui uma boa taxa de acerto média, mas, conforme o nível de sobreposição aumenta, menor fica a taxa de acerto da classe minoritária. Isso acontece porque com a eliminação de um Tomek Link o nível de desbalanceamento aumenta, dificultando a classficação correta da classe minoritária.
+
+A tabela \ref{tab:tl10} mostra que, com o mesmo nível de desbalanceamento, quando menor o nível de desbalanceamento (quanto mais instâncias da classe minoritária) mais Tomek Links são feitos, e mais instâncias são removidas. Assim, existe uma redução maior da base de dados.
+
+Com um nível de desbalanceamento menor, mais instâncias da classe minoritária são mantidas em regiões onde não há sobreposição.
 
 \begin{table}[H]
 \begin{center}
@@ -175,6 +215,7 @@ Tamanho resultante      &   100.00\%   &   100.00\%   &   96.84\%    &   94.32\%
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{Tomek Links com nível de desbalanceamento 5\%}
+\label{tab:tl5}
 \end{table}
 
 
@@ -195,11 +236,34 @@ Tamanho resultante      &   100.00\%   &   100.00\%   &   94.60\%    &   89.60\%
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{Tomek Links com nível de desbalanceamento 10\%}
+\label{tab:tl10}
 \end{table}
 
 
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/TomekLinks_10_5.eps}
+\caption{Tomek Links sobreposição III de classes e 10\% de desbalanceamento}
+\label{fig:tomeklinks105}
+\end{figure}
+
+Na figura \ref{fig:tomeklinks105}, está mostrado o resultado do \textit{Tomek Links} aplicado numa base de dados com 10\% da classe minoritária e 90\% da classe marjoritária. O nível de sobreposição é o nível III, ou seja, a classe minoritária está parcialmente imersa na classe marjoritária. Observando a figura, percebe-se que o \textit{Tomek Links} remove instâncias da região de sobreposição, e mantém instâncias redundantes.
+
+Com isso, conclui-se que o Tomek Links deve ser utilizado como uma técnica de pré-processamento, pois ainda existe muitos dados redundantes, principalmente da classe marjoritária. 
+
+Uma opção é utilizar o Tomek Links alternativo apresentado em Algorithm \ref{alg:tomek_links_for_unbalanced_datasets}, pois com isso, o nível de desbalanceamento seria reduzido. Outra vantagem é que a região de sobreposição seria classificada como da classe minoritária, caso de interesse na maioria das bases de dados.
+
 
 \subsection{OSS}
+
+Conforme dito anteriormente, o \textit{One-Sided Selection} é uma técnica muito utilizada como pré-processamento e é apropriada para bases desbalanceadas. Inicialmente, com a aplicação do CNN adaptado para bases desbalanceadas, instâncias redundantes da classe marjoritária são removidas. Depois, com a aplicação do Tomek Links adaptado para bases desbalanceadas, as instâncias da classe marjoritária que estão na fronteira são removidas.
+
+O OSS mantém as instâncias da classe minoritária, e com isso ele favorece a identificação desta classe. Observando a tabela \ref{tab:oss5}, observa-se que a taxa de acerto total é alta, tendo 93.89\% no pior caso, e isso independe do nível de intersecção. Para a classe minoritária, vê-se que a taxa de acerto foi alta, especialmente quando existe um baixo nível de sobreposição de classes.
+
+O poder de redução do OSS também é alto, indo para 9.68\% da base original no pior caso de redução. Neste mesmo caso, o nível de desbalanceamento é reduzido, chegando a ter praticamente a mesma quantidade de instâncias em cada classe.
+
+Observando a tabela \ref{tab:oss10}, percebe-se que com a diminuição do nível de desbalanceamento para 10\% não houve ganho de desepenho nem de redução. Com isso, conclui-se que o OSS é uma técnica eficiente independentemente do nível de desbalanceamento da base.
+
 
 \begin{table}[H]
 \begin{center}
@@ -218,6 +282,7 @@ Tamanho resultante      &   5.58\%   &   5.89\%   &   7.16\%    &   8.63\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{OSS com nível de desbalanceamento 5\%}
+\label{tab:oss5}
 \end{table}
 
 \begin{table}[H]
@@ -237,9 +302,53 @@ Tamanho resultante      &   10.40\%   &   11.10\%   &   13.60\%    &   15.50\%  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{OSS com nível de desbalanceamento 10\%}
+\label{tab:oss10}
 \end{table}
 
-\subsection{LVQ 1, 2.1 e 3}
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/OSS_5_5.eps}
+\caption{OSS com sobreposição III de classes e 5\% de desbalanceamento}
+\label{fig:oss55}
+\end{figure}
+
+A figura \ref{fig:oss55} exemplifica a aplicação do \textit{One-Sided Selection} sobre uma base de dados onde a classe minoritária possui apenas 5\% das instâncias e metade das instâncias desta classe estão na região de indecisão. Observa-se que as instâncias da classe marjoritária redudantes foram eliminadas, o que aumenta a capacidade de generalização dos protótipos. Outro detalhe perceptível é que a região de indecisão é tomada pela classe minoritária.
+
+Por estas caracterísitcas, o OSS é uma técnica muito apropriada para bases desbalanceadas, além de ser eficiente no que se refere a redução de instâncias. Porém, uma desvantagem é que a classe minoritária fica com instâncias redudantes após a aplicação, por isso, o OSS é muito utilizado como técnica de pré-processamento de dados para outras técnicas de seleção de protótipos.
+
+\subsection{LVQ}
+
+O \textit{Learning Vector Quantization} é uma técnica seletiva de seleção de protótipos. Diferentemente das técnicas examinadas nas subsessões anteriores, esta é uma técnica seletiva, ou seja, ela cria novas instâncias a partir do conjunto de treinamento.
+
+Para os experimentos das versões do LVQ, foram utilizados 1000 iterações, $\alpha(t)= 0.02 \times e^{(-t/200)}$, sendo $t$ o número da iteração, $w = 0.70$ e $\epsilon = 0.30$. Os protótipos iniciais utilizados foram 5 protótipos para cada classe, sendo eles próximos da mediana da classe correspondente.
+
+
+\subsubsection{LVQ 1}
+
+O LVQ 1 obteve uma boa taxa de acerto geral, sendo sempre acima de 77.68\%. Observa-se também que o taxa de acerto tende a decrescer conforme o nível de sobreposição de classes aumenta. observando a tabela \ref{tab:lvq15}, percebe-se que a taxa de acerto total decresce conforme o nível de sobreposição aumenta por conta da classe marjoritária, enquanto a classe minoritária se manteve com alto nível de acerto (neste experimento 100\%).
+
+A taxa de acerto da classe minoritária é alta porque as instâncias desta classe estão muito próximas, então, durante o ajuste de protótipos, os mesmos ficam bem ajustados, em posições estratégicas. 
+
+A figura \ref{fig:lvq155} mostra que, em baixo nível de sobreposição, os protótipos ficam em torno do centróide, e o seu espalhamento depende totalmente do nível de espalhamento das classes. Já a figura \ref{fig:lvq1515} mostra que o mesmo acontece, porém, o LVQ 1 tende a dividir as classes. Neste caso, os protótipos da classe marjoritária ficaram mais espalhados, porém, afastados da região de indecisão, por isso, a taxa de acerto da classe minoritária é alta.
+
+
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ1_5_5.eps}
+\caption{LVQ 1 com sobreposição de classes III e 5\% de desbalanceamento}
+\label{fig:lvq155}
+\end{figure}
+
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ1_5_15.eps}
+\caption{LVQ 1 com sobreposição de classes IV e 5\% de desbalanceamento}
+\label{fig:lvq1515}
+\end{figure}
+
 
 \begin{table}[H]
 \begin{center}
@@ -258,6 +367,7 @@ Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{LVQ1 com nível de desbalanceamento 5\%}
+\label{tab:lvq15}
 \end{table}
 
 \begin{table}[H]
@@ -276,8 +386,24 @@ Tamanho resultante      &   1.00\%   &   1.00\%   &   1.00\%    &   1.00\%   &  
 \hline
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
-\caption{LVQ 1 acerto do 5 com nível de desbalanceamento 10\%}
+\caption{LVQ 1 com nível de desbalanceamento 10\%}
+\label{tab:lvq110}
 \end{table}
+
+
+Na tabela \ref{tab:lvq110}, a classe minoritária é composta de 10\% das instâncias, mas ainda assim, as características se mantiveram as mesmas, a taxa de acerto da classe minoritária permaneceu alta, enquanto a taxa da classe marjoritária descresceu conforme o nível de sobreposição aumentou. Porém, a figura \ref{fig:lvq11015} mostra que, conforme a quantidade de instâncias da classe minoritária aumenta, mais espalhados ficam os protótipos desta classe, ocasionando numa maior delimitação da região da mesma.
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ1_10_15.eps}
+\caption{LVQ 1 com sobreposição de classes V e 10\% de desbalanceamento}
+\label{fig:lvq11015}
+\end{figure}
+
+O LVQ1 se mostra eficiente para bases desbalanceadas, principalmente no que se refere a classificar bem instâncias da classe minoritária. Uma grande vantege é que a quantidade de protótipos resultante pode ser pré-definida, com isso, o desbalanceamento pode ser reduzido ou até mesmo eliminado. É recomendado também que a quantidade de protótipos seja proporcional ao nível de espalhamento de cada classe, quanto mais espalhada, mais protótipos são necessários para definir a classe.
+
+
+\subsubsection{LVQ 2}
 
 \begin{table}[H]
 \begin{center}
