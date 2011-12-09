@@ -1,0 +1,19 @@
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+TECNI		    &KNN\%&ENN\%&CNN\%&Tomek Links\%&OSS\%&LVQ 1\%&LVQ 2.1\%&LVQ 3\%&SGP\%&SGP 2\% ||
+\hline %----- linha horizontal
+Acerto Total		    & 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 67.39 $\pm$ 2.31 \%& 100.00 $\pm$ 0.00 \%& 84.18 $\pm$ 27.88 \%& 99.31 $\pm$ 1.54 \%& 99.31 $\pm$ 1.54 \%& 99.31 $\pm$ 1.54 \%& 98.64 $\pm$ 1.86 \%& 98.64 $\pm$ 1.86 \% ||
+\hline
+Acerto Marjoritária		   & 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 76.00 $\pm$ 42.63 \%& 98.95 $\pm$ 2.35 \%& 98.95 $\pm$ 2.35 \%& 98.95 $\pm$ 2.35 \%& 97.95 $\pm$ 2.81 \%& 97.95 $\pm$ 2.81 \% ||
+\hline
+Acerto Minoritária		    & 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 0.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \% ||
+\hline
+Tamanho Resultante		     & 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 2.55 $\pm$ 0.02 \%& 100.00 $\pm$ 0.00 \%& 34.18 $\pm$ 0.79 \%& 8.50 $\pm$ 0.06 \%& 8.50 $\pm$ 0.06 \%& 8.50 $\pm$ 0.06 \%& 1.70 $\pm$ 0.01 \%& 1.70 $\pm$ 0.01 \% ||
+\hline
+\end{tabular}%--- fechaoento do aobiente tabular
+\end{center}   %fio da centralização da tabela
+\caption{Tabela do iris0-5-}
+\end{table}
+

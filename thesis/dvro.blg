@@ -3,6 +3,7 @@ The top-level auxiliary file: dvro.aux
 A level-1 auxiliary file: introducao/introducao.aux
 A level-1 auxiliary file: capitulo-2/capitulo-2.aux
 A level-1 auxiliary file: capitulo-3/capitulo-3.aux
+A level-1 auxiliary file: capitulo-4/capitulo-4.aux
 A level-1 auxiliary file: conclusao/conclusao.aux
 The style file: alpha.bst
 Database file #1: bibliografia/bibliografia.bib
@@ -12,7 +13,7 @@ Warning--to sort, need author or key in reference/ml/X10rd
 Warning--empty author in reference/ml/X10rd
 You've used 17 entries,
             2543 wiz_defined-function locations,
-            683 strings with 7236 characters,
+            684 strings with 7261 characters,
 and the built_in function-call counts, 7267 in all, are:
 = -- 729
 > -- 299

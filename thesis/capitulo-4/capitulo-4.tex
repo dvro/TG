@@ -1,0 +1,69 @@
+% !TEX encoding = ISO-8859-1
+\chapter{Bases Reais}
+\label{ch:experimentobasesreais}
+
+Neste capítulo serão mostrados experimentos feitos com bases reais. As bases utilizadas foram algumas das utilizadas por Fernández em seu estudo \textit{Sistemas de classificação baseados em fuzzy hierárquico com regra de seleção genética para bases desbalanceadas}\cite{FJH2009}.
+
+Estas bases reais foram obtidas como parte do software KEEL, que contém um módulo de experimentos em bases desbalanceadas. Para todos os experimentos foi utilizado \textit{K-Fold Cross-Validation}, com 5 folds, respeitando a proporção das classes em todas as divisões, formato já fornecido junto com o software.
+
+
+\section{Iris 0}
+
+A base Iris0 é uma base com baixo desbalanceamento. Esta base contém 150 instâncias, cada uma contendo quatro atributos, sendo 33.33\% destas instâncias da classe minoritária, \textit{Iris-Setosa}, e 66.66\% da classe marjoritária, \textit{reminder}.
+
+
+\begin{table}[H]\tiny
+\begin{center}
+\begin{tabular}{|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|}
+\hline
+Técnica		   				&	KNN		&	ENN		&		CNN		&	Tomek Links		&	OSS	&	LVQ 1	&	LVQ 2.1	&	LVQ 3	&	SGP	&	SGP 2 	\\
+\hline %----- linha horizontal
+Acerto Total				& 100.00 $\pm$ 0.00 \%	& 100.00 $\pm$ 0.00 \%& 67.39 $\pm$ 2.31 \%& 100.00 $\pm$ 0.00 \%& 84.18 $\pm$ 27.88 \%& 99.31 $\pm$ 1.54 \%& 99.31 $\pm$ 1.54 \%& 99.31 $\pm$ 1.54 \%& 98.64 $\pm$ 1.86 \%& 98.64 $\pm$ 1.86 \% \\
+\hline
+Acerto Marjoritária			& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 76.00 $\pm$ 42.63 \%& 98.95 $\pm$ 2.35 \%& 98.95 $\pm$ 2.35 \%& 98.95 $\pm$ 2.35 \%& 97.95 $\pm$ 2.81 \%& 97.95 $\pm$ 2.81 \% \\
+\hline
+Acerto Minoritária		    & 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 0.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \% \\
+\hline
+Tamanho Resultante			& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 2.55 $\pm$ 0.02 \%& 100.00 $\pm$ 0.00 \%& 34.18 $\pm$ 0.79 \%& 8.50 $\pm$ 0.06 \%& 8.50 $\pm$ 0.06 \%& 8.50 $\pm$ 0.06 \%& 1.70 $\pm$ 0.01 \%& 1.70 $\pm$ 0.01 \% \\
+\hline
+\end{tabular}%--- fechaoento do aobiente tabular
+\end{center}   %fio da centralização da tabela
+\caption{Tabela do iris0}
+\label{tab:iris}
+\end{table}
+
+
+
+\section{Glass 5}
+
+A base Glass5 é uma base com alto desbalanceamento. Esta base contém 214 instâncias, cada uma contendo nove atributos. Apenas 4.20\% das instâncias são da classe minoritária, \textit{tableware}, e 95.80\% da classe marjoritária, \textit{reminder}.
+
+
+\begin{table}[H]\tiny
+\begin{center}
+\begin{tabular}{|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|}
+\hline
+Técnica		    &KNN\%&ENN\%&CNN\%&Tomek Links\%&OSS\%&LVQ 1\%&LVQ 2.1\%&LVQ 3\%&SGP\%&SGP 2\% \\
+\hline %----- linha horizontal
+TOTAL		    & 96.28 $\pm$ 3.53 \%& 95.81 $\pm$ 2.55 \%& 95.80 $\pm$ 1.02 \%& 96.28 $\pm$ 3.53 \%& 85.53 $\pm$ 15.62 \%& 80.35 $\pm$ 4.65 \%& 81.28 $\pm$ 5.81 \%& 81.30 $\pm$ 5.98 \%& 95.80 $\pm$ 1.93 \%& 95.80 $\pm$ 1.93 \% \\
+\hline
+Acerto Marjoritária		   & 98.05 $\pm$ 3.18 \%& 99.02 $\pm$ 2.18 \%& 100.00 $\pm$ 0.00 \%& 98.05 $\pm$ 3.18 \%& 86.83 $\pm$ 16.60 \%& 80.98 $\pm$ 5.56 \%& 81.95 $\pm$ 6.36 \%& 81.46 $\pm$ 6.59 \%& 99.51 $\pm$ 1.09 \%& 99.51 $\pm$ 1.09 \% \\
+	\hline
+Acerto Minoritária		    & 60.00 $\pm$ 41.83 \%& 30.00 $\pm$ 44.72 \%& 0.00 $\pm$ 0.00 \%& 60.00 $\pm$ 41.83 \%& 60.00 $\pm$ 41.83 \%& 60.00 $\pm$ 54.77 \%& 60.00 $\pm$ 54.77 \%& 70.00 $\pm$ 44.72 \%& 10.00 $\pm$ 22.36 \%& 10.00 $\pm$ 22.36 \% \\
+\hline
+Tamanho Resultante		     & 100.00 $\pm$ 0.00 \%& 95.78 $\pm$ 1.13 \%& 7.86 $\pm$ 1.24 \%& 99.30 $\pm$ 0.64 \%& 10.67 $\pm$ 0.88 \%& 5.86 $\pm$ 0.03 \%& 5.86 $\pm$ 0.03 \%& 5.86 $\pm$ 0.03 \%& 3.17 $\pm$ 1.59 \%& 1.64 $\pm$ 1.46 \% \\
+\hline
+\end{tabular}%--- fechaoento do aobiente tabular
+\end{center}   %fio da centralização da tabela
+\caption{Tabela do glass5}
+\end{table}
+
+
+
+\section{Yeast 6}
+
+A base Yesat 6 é a base de mais alto nível de desbalanceamento estudada neste trabalho. Esta base contém 1484 instâncias, cada uma contendo 8 atributos. Apenas 2.49\% das instâncias são da classe minoritária, \textit{exc}, e 97.51\% da classe marjoritária, \textit{reminder}.
+
+
+
+
