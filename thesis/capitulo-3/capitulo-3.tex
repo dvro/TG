@@ -464,11 +464,11 @@ Conforme citado anteriormente, o LVQ 2.1 evita uma divergência entre os protótip
 \label{fig:lvq1100}
 \end{figure}
 
-Observa-se que os protótipos do LVQ 2.1 estão levemente menos espalhados que o LVQ 1, isso afeta a taxa de acerto da classe marjoritária (comparar tabela \ref{tab:lvq110} e \ref{tab:lvq210}. Assim, é interessante utilizar o LVQ 2.1 quando se deseja um menor espalhamento das instâncias, normalmente, quando existe uma distribuição uniforme das classes.
+Observa-se que os protótipos do LVQ 2.1 estão levemente menos espalhados que o LVQ 1, isso afeta a taxa de acerto da classe marjoritária (comparar tabela \ref{tab:lvq110} e \ref{tab:lvq210}). Assim, é interessante utilizar o LVQ 2.1 quando se deseja um menor espalhamento das instâncias, normalmente, quando existe uma distribuição uniforme das classes.
 
 \subsubsection{LVQ 3}
 
-
+O LVQ 3 tem o objetivo de evitar o sobreajuste do LVQ 2.1. Observando as tabelas \ref{tab:lvq35} e \ref{tab:lvq310}, percebe-se que o LVQ 3 manteve em média o mesmo desempenho que o LVQ 2.1, porém, a diferença de desempenho está em bases de baixo nível de sobreposição entre as classes.
 
 
 \begin{table}[H]
@@ -488,6 +488,7 @@ Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{LVQ 3 com nível de desbalanceamento 5\%}
+\label{tab:lvq35}
 \end{table}
 
 \begin{table}[H]
@@ -507,10 +508,32 @@ Tamanho resultante      &   1.00\%   &   1.00\%   &   1.00\%    &   1.00\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{LVQ 3 com nível de desbalanceamento 10\%}
+\label{tab:lvq310}
 \end{table}
 
 
+Comparando a figura \ref{fig:lvq3100} com a figura \ref{fig:lvq2100} e a \ref{fig:lvq1100}, observa-se que o LVQ 3 é o meio termo entre o LVQ 1 e o LVQ 2.1. Assim, recomenda-se o uso do LVQ 3 em bases desbalanceadas em casos onde o nível de sobreposição de classes é baixo e deseja-se conter o nível de espalhamento entre as classes.
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ3_10_0.eps}
+\caption{LVQ 3 sem sobreposição de classes e 10\% de desbalanceamento}
+\label{fig:lvq3100}
+\end{figure}
+
+A escolhe da versão do \textit{Learning Vector Quantization} é tão importante quanto a escolha dos parâmetros de forma apropriada. Nestes experimentos foram utilizados os mesmos valores para parâmetros em comum, então, as conclusões se restrigem ao uso de cada uma em bases desbalanceadas, mas, experimentalmente, verifica-se que a escolha adequada de parâmetros é tão importante quanto a escolha da versão do LVQ.
+
+
 \subsection{SGP 1}
+
+A primeira versão do \textit{Self-Generating Prototypes} é uma técnica de alto poder de redução muito completa para bases com distribuições multi-modais de classes. Porém, após os experimentos realizados, foi possível identificar uma série de falhas nesta técnica.
+
+Conforme citado no capítulo anterior, o SGP possui um fator de generalização. Neste experimento, foi utilizado $R_n = 0.05$ e $R_s = 0.05$, a escolha de valores foi feita de acordo com o proposto em trabalhos relacionados\cite{csp:sgp}.
+
+O poder de redução desta técnica é muito alto, observa-se na tabela \ref{tab:sgp15} que, mesmo em alto nível de sobreposição, a quantidade de protótipos não pasou de 5.68\% da base original no caso de alto nível de desbalanceamento.
+
+O SGP, sem fator de generalização, apresenta uma taxa de 100\% de acerto sobre o conjunto de treinamento\cite{fayed:sgp}. Porém, ao introduzir o fator de generalização o SGP perde esta propriedade. Observando a tabela \ref{tab:sgp15}, percebe-se que, mesmo com fator de generalização, o SGP 1 obteve boas taxas de acerto para baixo nível de sobreposição. Porém, para um alto nível de sobreposição (níveis IV e V), a classe minoritária obteve 0.00\% de taxa de acerto, enquanto que a classe marjoritária obteve 100\%. O mesmo acontece na tabela \ref{tab:sgp110}, porém, este comportamento ocorreu apenas no nível máximo de sobreposição.
+
 
 \begin{table}[H]
 \begin{center}
@@ -529,6 +552,7 @@ Tamanho resultante      &   0.53\%   &   2.74\%   &   5.26\%    &   5.16\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{SGP 1 com nível de desbalanceamento 5\%}
+\label{tab:sgp15}
 \end{table}
 
 \begin{table}[H]
@@ -548,10 +572,33 @@ Tamanho resultante      &   0.40\%   &   3.50\%   &   5.80\%    &   8.20\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{SGP 1 com nível de desbalanceamento 10\%}
+\label{tab:sgp110}
 \end{table}
 
 
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/SGP_5_15.eps}
+\caption{SGP 1 com total sobreposição de classes e 5\% de desbalanceamento}
+\label{fig:sgp1515}
+\end{figure}
+
+Observando a figura \ref{fig:sgp1515}, conclui-se que o fator de generalização fez com que todas as instâncias da classe minoritária fossem eliminadas. Em baixo nível de sobreposição isso não acontece pois as instâncias da classe minoritária são representadas por um mesmo protótipo, porém, conforme o nível de sobreposição aumenta, mais protótipos são necessários para representar esta classe, assim, menos instâncias por protótipos. Quando o algoritmo principal termina, o fator de generalização elimina os grupos que possuem menos que $R_s \times S$, sendo $S$ a quantidade de instâncias do maior grupo. Assim, as instâncias vão sendo removidas independentemente de classe.
+
+Observa-se também que, quando o nível de desbalanceamento é mais acentuado, este efeito ocorre mais rapidamente, pois são menos instâncias para dividir entre os protótipos necessários. Assim, em bases desbalanceadas onde a classe minoritária representa 1\%, por exemplo, provavelmente todas as instâncias destas classes seriam eliminadas, independente do nível de sobreposição. Caso não seja utilizado o fator de generalização, estas instâncias são mantidas, porém, o SGP 1 manterá todos os ruídos, levando a erros de classificação.
+
+Esta é uma falha muito grave, porque apesar de ter uma alta taxa de acerto geral e capacidade de redução, o SGP possui péssimas taxas de acerto para a classe minoritária, chegando até a errar em todos os casos.
+
+Uma solução para o SGP é que o fator de generalização seja mantido, porém, com uma alteração. o $R_n$ eliminaria grupos com poucas instâncias dependendo, não da quantidade de instâncias do maior grupo, mas sim, da quantidade de instâncias do maior grupo da mesma classe. Com esta alteração, a classe minoritária não seria extinta e a taxa de acerto da mesma seria beneficiada.
+
 \subsection{SGP 2}
+
+A segunda versão do \textit{Self-Generating Prototypes} apresenta os mesmos defeitos da primeira versão. Porém, ela apresenta algumas caracterísitcas interessantes que serão abordadas.
+
+Observando as tabelas \ref{tab:sgp25} e \ref{tab:sgp210}, percebe-se que o SGP 2 obteve uma excelente taxa de acerto geral, porém, a taxa de acerto da classe minoritária é altamente prejudicada no momento da generalização. As possíveis adaptações para este problema já foram citados na sub-sessão anterior.
+
+Quanto a quantidade de protótipos, observase que o SGP 2 tem um poder de redução muito maior que o SGP 1, isso acontece devido ao acrescimo do \textit{Pruning} e \textit{Merge}. Em geral o SGP 2 obteve uma taxa de acerto semelhante ao SGP 1, porém, em geral apenas metade dos protótipos foram necessários.
+
 
 \begin{table}[H]
 \begin{center}
@@ -570,6 +617,7 @@ Tamanho resultante      &   0.21\%   &   1.26\%   &   2.42\%    &   2.63\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{SGP 2 com nível de desbalanceamento 5\%}
+\label{tab:sgp25}
 \end{table}
 
 \begin{table}[H]
@@ -589,7 +637,18 @@ Tamanho resultante      &   0.30\%   &   1.90\%   &   2.90\%    &   2.70\%   &  
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
 \caption{SGP 2 com nível de desbalanceamento 10\%}
+\label{tab:sgp210}
 \end{table}
 
 
-\section{Analise Geral}
+Comparando-se a figura \ref{fig:sgp2515} com a figura \ref{fig:sgp1515}, observa-se que o SGP 2 manteve a mesma região representada com uma quantidade menor de instâncias. O $Merge$ é um algoritmo determinístico e muito eficiente, já o $Pruning$ não é determinístico, e é necessário um limite de poda para que não aconteça um sobreajuste.
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/SGP2_5_15.eps}
+\caption{SGP 2 com total sobreposição de classes e 5\% de desbalanceamento}
+\label{fig:sgp2515}
+\end{figure}
+
+Conclui-se que o SGP 2 é superior ao SGP 1 no que se refere a generalização e redução de protótipos. Porém, esta técnica apresenta os mesmos defeitos do SGP 1, sendo necessária a mesma adaptação citada anteriormente para que a classe minoritária, comumente o caso de maior interesse, possa ser identificada.
+

@@ -28,8 +28,7 @@
 \contentsline {subsection}{\numberline {3.2.4}OSS}{32}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}LVQ}{34}{subsection.3.2.5}
 \contentsline {subsubsection}{\numberline {3.2.5.1}LVQ 1}{34}{subsubsection.3.2.5.1}
-\contentsline {subsubsection}{\numberline {3.2.5.2}LVQ 2}{37}{subsubsection.3.2.5.2}
-\contentsline {subsubsection}{\numberline {3.2.5.3}LVQ 2}{39}{subsubsection.3.2.5.3}
-\contentsline {subsection}{\numberline {3.2.6}SGP 1}{39}{subsection.3.2.6}
-\contentsline {subsection}{\numberline {3.2.7}SGP 2}{40}{subsection.3.2.7}
-\contentsline {section}{\numberline {3.3}Analise Geral}{40}{section.3.3}
+\contentsline {subsubsection}{\numberline {3.2.5.2}LVQ 2.1}{37}{subsubsection.3.2.5.2}
+\contentsline {subsubsection}{\numberline {3.2.5.3}LVQ 3}{39}{subsubsection.3.2.5.3}
+\contentsline {subsection}{\numberline {3.2.6}SGP 1}{40}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}SGP 2}{42}{subsection.3.2.7}
