@@ -28,3 +28,9 @@
 \contentsline {figure}{\numberline {3.16}{\ignorespaces SGP 1 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{41}{figure.3.16}
 \contentsline {figure}{\numberline {3.17}{\ignorespaces SGP 2 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{43}{figure.3.17}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Iris}}{45}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Iris}}{46}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Glass}}{48}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Glass}}{49}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Yeast}}{51}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Yeast}}{52}{figure.4.6}

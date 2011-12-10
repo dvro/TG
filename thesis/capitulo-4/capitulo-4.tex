@@ -32,6 +32,22 @@ Tamanho Resultante			& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 2.55 $\pm$ 0.
 \label{tab:iris}
 \end{table}
 
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico1_iris.eps}
+\caption{Taxa de acerto da classe minoritária por técnica na base Iris}
+\label{fig:iris1}
+\end{figure}
+
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico2_iris.eps}
+\caption{Tamanho a base de dados após seleção de protótipos na base Iris}
+\label{fig:iris2}
+\end{figure}
+
+
 Observando a tabela \ref{tab:iris}, pode-se observar que o KNN obteve 100\% de acerto, isso mostra que as classes tem um baixo nível de sobreposição. Se tratando de uma base com baixo nível de desbalanceamento e com agrupamentos bem definidos, é de se esperar que as técnicas gerem poucos protótipos para representar esta base. 
 
 No caso do ENN, a taxa de acerto foi a mesma do KNN porque o seu algoritmo selecionou todas as instâncias, assim, quando as classes estão bem separadas, o ENN não é uma técnica apropriada, por conta do seu baixo poder de redução. Já o CNN, de alto poder de redução, reduziu demais a classe minoritária, levando a uma taxa de acerto média de 0.00\% para esta classe, enquanto a marjoritária obteve 100\% de acerto.
@@ -71,6 +87,21 @@ Tamanho Resultante		     & 100.00 $\pm$ 0.00 \%& 95.78 $\pm$ 1.13 \%& 7.86 $\pm$
 \caption{Tabela do Glass 5}
 \label{tab:glass}
 \end{table}
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico1_glass.eps}
+\caption{Taxa de acerto da classe minoritária por técnica na base Glass}
+\label{fig:glass1}
+\end{figure}
+
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico2_glass.eps}
+\caption{Tamanho a base de dados após seleção de protótipos na base Glass}
+\label{fig:glass2}
+\end{figure}
 
 
 Observando a tabela \ref{tab:glass}, percebe-se que, neste exemplo, além de a base ser mais desbalanceada, existe uma maior sobreposição de classes que o exemplo anterior. Em geral, as técnicas obtiveram uma boa taxa de acerto geral, mas a taxa de acerto da classe minoritária variou muito de acordo com a técnica.
@@ -118,8 +149,23 @@ Tamanho Resultante		     & 100.00 $\pm$ 0.00 \%& 97.94 $\pm$ 0.30 \%& 6.44 $\pm$
 \label{tab:yeast}
 \end{table}
 
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico1_yeast.eps}
+\caption{Taxa de acerto da classe minoritária por técnica na base Yeast}
+\label{fig:yeast1}
+\end{figure}
 
-A base Yast 6 é de mais alto nível de desbalanceamento e será o referencial para casos extremos neste trabalho.
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico2_yeast.eps}
+\caption{Tamanho a base de dados após seleção de protótipos na base Yeast}
+\label{fig:yeast2}
+\end{figure}
+
+
+A base Yeast 6 é de mais alto nível de desbalanceamento e será o referencial para casos extremos neste trabalho.
 
 Observando a tabela \ref{tab:yeast} percebe-se que o KNN teve uma taxa de acerto alta, porém, a taxa de acerto da classe minoritária foi em média apenas 42.86\%.
 
