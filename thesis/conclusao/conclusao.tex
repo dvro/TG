@@ -1,0 +1,33 @@
+% !TEX encoding = ISO-8859-1
+\chapter{Conclusão}
+% \label{ch:introducao}
+
+\section{Considerações Finais}
+
+	Com os experimentos realizados conclui-se que técnicas como o \textit{Edited Nearest Neighbor} e \textit{Tomek Links} em suas versões originais são eficientes para remoção de ruídos, porém, para bases desbalanceadas ela pode remover todas as instâncias da classe minoritária, tornando a base inviável para qualquer classificador. Para uso destas técnicas, recomenda-se uma adaptação para não remover instâncias da classe minoritária.
+
+	O \textit{Condensed-Nearest Neighbor} pode ser eficiente, dependendo da sobreposição de classes. Em casos onde as classes estão bem separadas, o uso do CNN só deve ser feito caso o classificador considere apenas a instância mais próxima. Caso o classificador seja um 3-NN, esta técnica pode deixar apenas um protótipo da classe minoritária, tornando-a inviável, mesmo para pré-processamento. Para o CNN uma boa opção é utilizar sua versão adaptada.
+
+	A técnica que se mostrou muito eficiente foi o \textit{One-Sided Selection}. Esta técnica foi eficiente em identificar a classe minoritária em todos os experimentos, independente do nível de sobreposição e desbalanceamento. Porém, esta técnica possui um baixo poder de redução de instâncias, sendo recomendado utilizar o OSS como técnica de pré-seleção de protótipos.
+
+	Assim como o OSS, as versões do \textit{Learning Vector Quantization}, ao reduzir o nível de desbalanceamento favorece a classe minoritária. Independente do nível de sobreposição, esta técnica se mostrou eficiente. Um defeito desta técnica é que ela possui muitos parâmetros, então, a escolha dos valores adequados pode tornar o processo de treinamento lento.
+
+	As duas versões do \textit{Self-Generating Prototypes} são muito eficientes para bases com baixo nível de desbalanceamento e sobreposição. Mas ambas as versões possuem um péssimo desempenho em classificar instâncias da classe minoritária quando existe um alto desbalanceamento e sobreposição de classes. Recomenda-se não utilizar esta técnicas com fator de generalização para evitar a eliminação da classe minoritária em bases desbalanceadas.
+
+	Após analisar todas as técnicas, percebe-se que aquelas que tratam a classe minoritária de forma especial possuem um melhor desempenho em identificar esta classe do que técnicas que tratam todas as classes igualmente. Então, recomenda-se o uso de técnicas que diminuam o desbalanceamento antes de aplicar técnicas tradicionais de seleção de protótipos, para que haja eficiência em identificar a classe minoritária.
+
+\section{Trabalhos Futuros}
+
+	Percebendo que técnicas adaptadas para classes desbalanceadas com o \textit{One-Sided Selection} possuem um bom desempenho, é de se esperar que o \textit{Self-Generating Prototypes} que trate as classes marjoritária e miniritária de formas distintas seja também eficiente.
+
+	O SGP 1 e 2 possuem um alto poder de redução de instâncias e se mostraram muito eficiente em bases com baixo nível de desbalanceamento. Para trabalhos futuros, uma adaptação no SGP pode gerar uma técnica que mantenha as características de representação de classes, mas que promova uma redução no desbalanceamento, pode ser muito eficiente.
+
+	Uma adaptação perceptível através dos experimentos deste trabalho é utilizar fatores de generalização diferentes para a classe marjoritária e para minoritária. Isso pode ser feito utilizando o maior grupo de uma classe $C$ para eliminar um grupo da classe $C$, e não o maior grupo da base. Para o SGP 2, as fases de $Merge$ e $Pruning$ podem ser feitas apenas com grupos da classe marjoritária.
+
+	Com estas adaptações sugeridas, o SGP terá as mesmas características de redução de instâncias e representatividade das classes, mas favorecerá a identificação da classe minoritária, assim como o OSS.
+
+
+
+
+
+
