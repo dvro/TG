@@ -33,7 +33,7 @@ No experimentos desta sessão, foi utilizado o próprio conjunto de treinamento co
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   100.00\%   &   100.00\%   &   95.80\%    &   90.00\%   &   90.00\%   \\
 \hline
@@ -53,7 +53,7 @@ Tamanho resultante      &   100.00\%   &   100.00\%   &   92.00\%    &   82.00\%
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   100.00\%   &   100.00\%   &   97.68\%    &   94.74\%   &   94.74\%   \\
 \hline
@@ -99,7 +99,7 @@ O resultado da tabela não é uniforme pelo fato de o CNN não ser determinístico, 
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   90.00\%   &   99.30\%   &   94.70\%    &   91.00\%   &   90.40\%   \\
 \hline
@@ -119,7 +119,7 @@ Tamanho resultante      &   0.50\%   &   1.20\%   &   7.50\%    &   13.30\%   & 
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   94.74\%   &   99.26\%   &   97.47\%    &   94.74\%   &   94.11\%   \\
 \hline
@@ -161,29 +161,48 @@ Outra opção é utilizar a versão do CNN utilizada pelo \textit{One-Sided Selectio
 
 \subsection{Tomek Links}
 
-O Tomek Links é uma técnica de seleção de protótipos determinística que atua na região de fronteira. Esta técnica é muito utilizada como pré-processamento de dados, visto que ela remove instâncias que podem ser tratadas como ruídos, mas não tem alto nível de redução de instâncias.
+O Tomek Links é uma técnica de seleção de protótipos determinística que atua na região de fronteira. Esta técnica é muito utilizada como pré-processamento de dados, visto que ela remove instâncias duvidosas, mas, normalmente, não tem alto nível de redução.
 
-Observando a tabela \ref{tab:tl5}, percebe-se que o Tomek Links não reduziu a base de dados quando não há sobreposição de classes, assim, a taxa de acerto é a máxima. Porém, conforme a região de sobreposição aumenta, mais instâncias são removidas, e com isso, a taxa de acerto começa a ser afetada.
+Observando a tabela \ref{tab:tl10}, percebe-se que o Tomek Links não reduziu a base de dados quando não há sobreposição de classes, assim, a taxa de acerto é a máxima. Porém, conforme a região de sobreposição aumenta, mais instâncias são removidas, e com isso, a taxa de acerto começa a ser afetada.
 
-Esta técnica possui uma boa taxa de acerto média, mas, conforme o nível de sobreposição aumenta, menor fica a taxa de acerto da classe minoritária. Isso acontece porque com a eliminação de um Tomek Link o nível de desbalanceamento aumenta, dificultando a classficação correta da classe minoritária.
-
-A tabela \ref{tab:tl10} mostra que, com o mesmo nível de desbalanceamento, quando menor o nível de desbalanceamento (quanto mais instâncias da classe minoritária) mais Tomek Links são feitos, e mais instâncias são removidas. Assim, existe uma redução maior da base de dados.
+Esta técnica possui uma boa taxa de acerto média, mas a taxa de acerto da classe minoritária diminui conforme o nível de sobreposição aumenta. Isso acontece porque com a eliminação de um Tomek Link uma instância de cada classe é eliminada, e a classe minoritária diminui ainda mais, dificultando a classificação correta desta classe.
 
 Com um nível de desbalanceamento menor, mais instâncias da classe minoritária são mantidas em regiões onde não há sobreposição.
+
 
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
-Acerto total            &   100.00\%   &   100.00\%   &   98.42\%    &   97.47\%   &   97.05\%   \\
+Acerto total            &   100.00\%   &   100.00\%   &   97.10\%    &   95.30\%   &   94.00\%   \\
 \hline
-Acerto marjoritária     &   100.00\%   &   100.00\%   &   99.33\%    &   98.67\%   &   99.00\%   \\
+Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.33\%    &   97.11\%   &   97.33\%   \\
 \hline
-Acerto minoritária      &   100.00\%   &   100.00\%   &   82.00\%    &   76.00\%   &   62.00\%   \\
+Acerto minoritária      &   100.00\%   &   100.00\%   &   86.00\%    &   79.00\%   &   64.00\%   \\
 \hline
-Tamanho resultante      &   100.00\%   &   100.00\%   &   96.84\%    &   94.32\%   &   94.32\%   \\
+Tamanho resultante      &   100.00\%   &   100.00\%   &   94.20\%    &   90.40\%   &   89.00\%   \\
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{Tomek Links com nível de desbalanceamento 10\%}
+\label{tab:tl10}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
+\hline %----- linha horizontal
+Acerto total            &   100.00\%   &   100.00\%   &   98.21\%    &   96.21\%   &   97.26\%   \\
+\hline
+Acerto marjoritária     &   100.00\%   &   100.00\%   &   99.22\%    &   98.00\%   &   99.00\%   \\
+\hline
+Acerto minoritária      &   100.00\%   &   100.00\%   &   80.00\%    &   64.00\%   &   66.00\%   \\
+\hline
+Tamanho resultante      &   100.00\%   &   100.00\%   &   97.68\%    &   94.53\%   &   94.32\%   \\
 \hline
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
@@ -191,26 +210,9 @@ Tamanho resultante      &   100.00\%   &   100.00\%   &   96.84\%    &   94.32\%
 \label{tab:tl5}
 \end{table}
 
+A tabela \ref{tab:tl5} mostra que, com o mesmo nível de sobreposição, quando maior o nível de desbalanceamento (quanto menos instâncias da classe minoritária) menos Tomek Links são feitos, e menos instâncias são eliminadas. Assim, existe uma menor redução de instâncias.
 
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
-\hline %----- linha horizontal
-Acerto total            &   100.00\%   &   100.00\%   &   97.30\%    &   94.60\%   &   93.90\%   \\
-\hline
-Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.56\%    &   97.00\%   &   97.56\%   \\
-\hline
-Acerto minoritária      &   100.00\%   &   100.00\%   &   86.00\%    &   73.00\%   &   61.00\%   \\
-\hline
-Tamanho resultante      &   100.00\%   &   100.00\%   &   94.60\%    &   89.60\%   &   89.60\%   \\
-\hline
-\end{tabular}%--- fechamento do ambiente tabular
-\end{center}   %fim da centralização da tabela
-\caption{Tomek Links com nível de desbalanceamento 10\%}
-\label{tab:tl10}
-\end{table}
+Com relação a taxa de acerto da classe minoritária, em média, quanto menos instâncias desta classe, menor a taxa de acerto dela. Isso ocorre porque quanto menor a percentagem de instâncias da classe minoritária, maior é a importancia de uma instância para a representação da classe.
 
 
 \begin{figure}[H]
@@ -222,7 +224,7 @@ Tamanho resultante      &   100.00\%   &   100.00\%   &   94.60\%    &   89.60\%
 
 Na figura \ref{fig:tomeklinks105}, está mostrado o resultado do \textit{Tomek Links} aplicado numa base de dados com 10\% da classe minoritária e 90\% da classe marjoritária. O nível de sobreposição é o nível III, ou seja, a classe minoritária está parcialmente imersa na classe marjoritária. Observando a figura, percebe-se que o \textit{Tomek Links} remove instâncias da região de sobreposição, e mantém instâncias redundantes.
 
-Com isso, conclui-se que o Tomek Links deve ser utilizado como uma técnica de pré-processamento, pois ainda existe muitos dados redundantes, principalmente da classe marjoritária. 
+Com isso, conclui-se que o Tomek Links pode ser utilizado como uma técnica de pré-processamento, pois ainda existe muitos dados redundantes, principalmente da classe marjoritária. 
 
 Uma opção é utilizar o Tomek Links alternativo apresentado em Algorithm \ref{alg:tomek_links_for_unbalanced_datasets}, pois com isso, o nível de desbalanceamento seria reduzido. Outra vantagem é que a região de sobreposição seria classificada como da classe minoritária, caso de interesse na maioria das bases de dados.
 
@@ -242,7 +244,7 @@ Observando a tabela \ref{tab:oss10}, percebe-se que com a diminuição do nível de
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   98.74\%   &   99.58\%   &   97.05\%    &   93.37\%   &   93.89\%   \\
 \hline
@@ -262,7 +264,7 @@ Tamanho resultante      &   5.58\%   &   5.89\%   &   7.16\%    &   8.63\%   &  
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   97.50\%   &   98.80\%   &   95.20\%    &   85.90\%   &   87.50\%   \\
 \hline
@@ -327,7 +329,7 @@ A figura \ref{fig:lvq155} mostra que, em baixo nível de sobreposição, os protóti
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   93.47\%   &   91.79\%   &   84.84\%    &   74.74\%   &   77.68\%   \\
 \hline
@@ -347,7 +349,7 @@ Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &  
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   95.30\%   &   87.40\%   &   80.80\%    &   77.00\%   &   71.90\%   \\
 \hline
@@ -383,7 +385,7 @@ O LVQ 2.1 também teve uma boa taxa de acerto média, e assim como o LVQ 1, teve t
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   90.84\%   &   89.68\%   &   83.89\%    &   80.11\%   &   76.84\%   \\
 \hline
@@ -403,7 +405,7 @@ Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &  
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   95.80\%   &   90.40\%   &   81.60\%    &   80.70\%   &   76.20\%   \\
 \hline
@@ -448,7 +450,7 @@ O LVQ 3 tem o objetivo de evitar o sobreajuste do LVQ 2.1. Observando as tabelas
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   95.79\%   &   92.32\%   &   83.68\%    &   78.32\%   &   74.53\%   \\
 \hline
@@ -468,7 +470,7 @@ Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &  
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   94.70\%   &   88.10\%   &   89.40\%    &   75.60\%   &   73.50\%   \\
 \hline
@@ -512,7 +514,7 @@ O SGP, sem fator de generalização, apresenta uma taxa de 100\% de acerto sobre o
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   100.00\%   &   100.00\%   &   97.68\%    &   94.74\%   &   94.74\%   \\
 \hline
@@ -532,7 +534,7 @@ Tamanho resultante      &   0.53\%   &   2.74\%   &   5.26\%    &   5.16\%   &  
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   100.00\%   &   100.00\%   &   95.40\%    &   90.70\%   &   90.00\%   \\
 \hline
@@ -577,7 +579,7 @@ Quanto a quantidade de protótipos, observase que o SGP 2 tem um poder de redução
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   100.00\%   &   100.00\%   &   97.58\%    &   94.74\%   &   94.74\%   \\
 \hline
@@ -597,7 +599,7 @@ Tamanho resultante      &   0.21\%   &   1.26\%   &   2.42\%    &   2.63\%   &  
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
 Acerto total            &   100.00\%   &   100.00\%   &   95.50\%    &   90.00\%   &   90.20\%   \\
 \hline
