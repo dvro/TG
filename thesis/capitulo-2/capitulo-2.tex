@@ -216,7 +216,7 @@ Com esta adaptação, a classe minoritária é mantida, evitando o aumento do desbal
 
 \textit{One-Sided Selection}\cite{conf/icml/KubatM97} é um método seletivo de seleção de protótipos, surgido pela combinação das técnicas CNN e Tomek Links. O algoritmo consiste na aplicação do CNN e depois da aplicação do Tomek Links como um filtro. O \textit{One-Sided Selection} combina características das duas técnicas. A aplicação do CNN é feita para eliminar instâncias desnecessárias, redundantes, ou seja, instâncias que estão longe da fronteira de classificação. Já a aplicação do Tomek Links tem a função de remover elementos na fronteira de classificação, fazendo uma aparente separação das classes e removendo ruídos.
 
-O OSS é muito utilizado para bases desbalanceadas, utilizando a adaptação do CNN, como monstrado em Algorithm \ref{alg:oss}.
+O OSS é muito utilizado para bases desbalanceadas, e seu algoritmo está descrito em Algorithm \ref{alg:oss}.
 
 \begin{algorithm}[H]
 \caption{One-Sided Selection}

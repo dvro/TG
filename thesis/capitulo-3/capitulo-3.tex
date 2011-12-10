@@ -231,34 +231,12 @@ Uma opção é utilizar o Tomek Links alternativo apresentado em Algorithm \ref{alg
 
 \subsection{OSS}
 
-Conforme dito anteriormente, o \textit{One-Sided Selection} é uma técnica muito utilizada como pré-processamento e é apropriada para bases desbalanceadas. Inicialmente, com a aplicação do CNN adaptado para bases desbalanceadas, instâncias redundantes da classe marjoritária são removidas. Depois, com a aplicação do Tomek Links adaptado para bases desbalanceadas, as instâncias da classe marjoritária que estão na fronteira são removidas.
+Conforme dito anteriormente, o \textit{One-Sided Selection} é uma técnica muito utilizada como pré-processamento e é apropriada para bases desbalanceadas. Inicialmente, com a aplicação do CNN adaptado para bases desbalanceadas, instâncias redundantes da classe marjoritária são removidas. Depois, com a aplicação do Tomek Links, também adaptado para bases desbalanceadas, as instâncias da classe marjoritária que estão na fronteira são removidas.
 
-O OSS mantém as instâncias da classe minoritária, e com isso ele favorece a identificação desta classe. Observando a tabela \ref{tab:oss5}, observa-se que a taxa de acerto total é alta, tendo 93.89\% no pior caso, e isso independe do nível de intersecção. Para a classe minoritária, vê-se que a taxa de acerto foi alta, especialmente quando existe um baixo nível de sobreposição de classes.
+O OSS mantém as instâncias da classe minoritária, com isso ele favorece a identificação desta classe. Observando a tabela \ref{tab:oss10}, percebe-se que a taxa de acerto total é alta, tendo 87.50\% no pior caso, e isso independe do nível de intersecção. Para a classe minoritária, vê-se que a taxa de acerto foi alta, especialmente quando existe um baixo nível de sobreposição de classes.
 
-O poder de redução do OSS também é alto, indo para 9.68\% da base original no pior caso de redução. Neste mesmo caso, o nível de desbalanceamento é reduzido, chegando a ter praticamente a mesma quantidade de instâncias em cada classe.
+O poder de redução do OSS também é alto, indo para 17.40\% da base original no pior caso de redução. Neste mesmo caso, o nível de desbalanceamento é reduzido, chegando a ter praticamente a mesma quantidade de instâncias em cada classe.
 
-Observando a tabela \ref{tab:oss10}, percebe-se que com a diminuição do nível de desbalanceamento para 10\% não houve ganho de desepenho nem de redução. Com isso, conclui-se que o OSS é uma técnica eficiente independentemente do nível de desbalanceamento da base.
-
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
-\hline %----- linha horizontal
-Acerto total            &   98.74\%   &   99.58\%   &   97.05\%    &   93.37\%   &   93.89\%   \\
-\hline
-Acerto marjoritária     &   98.67\%   &   99.56\%   &   97.11\%    &   93.44\%   &   94.22\%   \\
-\hline
-Acerto minoritária      &   100.00\%   &   100.00\%   &   96.00\%    &   92.00\%   &   88.00\%   \\
-\hline
-Tamanho resultante      &   5.58\%   &   5.89\%   &   7.16\%    &   8.63\%   &   9.68\%   \\
-\hline
-\end{tabular}%--- fechamento do ambiente tabular
-\end{center}   %fim da centralização da tabela
-\caption{OSS com nível de desbalanceamento 5\%}
-\label{tab:oss5}
-\end{table}
 
 \begin{table}[H]
 \begin{center}
@@ -280,6 +258,27 @@ Tamanho resultante      &   10.40\%   &   11.10\%   &   13.60\%    &   15.50\%  
 \label{tab:oss10}
 \end{table}
 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
+\hline %----- linha horizontal
+Acerto total            &   98.74\%   &   99.58\%   &   97.05\%    &   93.37\%   &   93.89\%   \\
+\hline
+Acerto marjoritária     &   98.67\%   &   99.56\%   &   97.11\%    &   93.44\%   &   94.22\%   \\
+\hline
+Acerto minoritária      &   100.00\%   &   100.00\%   &   96.00\%    &   92.00\%   &   88.00\%   \\
+\hline
+Tamanho resultante      &   5.58\%   &   5.89\%   &   7.16\%    &   8.63\%   &   9.68\%   \\
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{OSS com nível de desbalanceamento 5\%}
+\label{tab:oss5}
+\end{table}
+
+Observando a tabela \ref{tab:oss5}, percebe-se que houve um maior nível de redução, e a taxa de acerto da classe minoritária foi ainda maior, mostrando que, para bases altamente desbalanceadas, o OSS é uma técnica ainda mais eficiente. 
 
 \begin{figure}[H]
 \center
@@ -288,7 +287,7 @@ Tamanho resultante      &   10.40\%   &   11.10\%   &   13.60\%    &   15.50\%  
 \label{fig:oss55}
 \end{figure}
 
-A figura \ref{fig:oss55} exemplifica a aplicação do \textit{One-Sided Selection} sobre uma base de dados onde a classe minoritária possui apenas 5\% das instâncias e metade das instâncias desta classe estão na região de indecisão. Observa-se que as instâncias da classe marjoritária redudantes foram eliminadas, o que aumenta a capacidade de generalização dos protótipos. Outro detalhe perceptível é que a região de indecisão é tomada pela classe minoritária.
+A figura \ref{fig:oss55} exemplifica a aplicação do \textit{One-Sided Selection} sobre uma base de dados onde a classe minoritária possui apenas 5\% das instâncias e metade das instâncias desta classe estão na região de indecisão. As instâncias da classe marjoritária redudantes foram eliminadas, o que aumenta a capacidade de generalização dos protótipos. Outro detalhe perceptível é que a região de indecisão é tomada pela classe minoritária.
 
 Por estas caracterísitcas, o OSS é uma técnica muito apropriada para bases desbalanceadas, além de ser eficiente no que se refere a redução de instâncias. Porém, uma desvantagem é que a classe minoritária fica com instâncias redudantes após a aplicação, por isso, o OSS é muito utilizado como técnica de pré-processamento de dados para outras técnicas de seleção de protótipos.
 
