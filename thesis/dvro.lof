@@ -10,30 +10,26 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Resultado final do OSS, ap\'os aplica\c c\~ao da segunda etapa, o Tomek Links}}{13}{figure.2.6}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Etapa da divis\~ao de grupos \cite {csp:sgp}.}}{18}{figure.2.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Base Original com 10\% de desbalanceamento e intersec\c c\~ao m\IeC {\'\i }nima}}{24}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Base Original com 10\% de desbalanceamento e intersec\c c\~ao m\'axima}}{25}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Base Original com 5\% de desbalanceamento e intersec\c c\~ao m\IeC {\'\i }nima}}{25}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Base Original com 5\% de desbalanceamento e intersec\c c\~ao m\'axima}}{26}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces ENN sobre sobre base com total sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{28}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces CNN sobre sobre base sem sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{29}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces CNN sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{30}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Tomek Links sobreposi\c c\~ao III de classes e 10\% de desbalanceamento}}{32}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces OSS com sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{33}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes III e 5\% de desbalanceamento}}{35}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes V e 5\% de desbalanceamento}}{35}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes V e 10\% de desbalanceamento}}{36}{figure.3.12}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces LVQ 2.1 sem sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{38}{figure.3.13}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces LVQ 1 sem sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{38}{figure.3.14}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces LVQ 3 sem sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{40}{figure.3.15}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces SGP 1 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{41}{figure.3.16}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces SGP 2 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{43}{figure.3.17}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces ENN sobre sobre base com total sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{26}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces CNN sobre sobre base sem sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{27}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces CNN sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{28}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Tomek Links sobreposi\c c\~ao III de classes e 10\% de desbalanceamento}}{29}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces OSS com sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{31}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes III e 5\% de desbalanceamento}}{32}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes V e 5\% de desbalanceamento}}{33}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes V e 10\% de desbalanceamento}}{34}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces LVQ 2.1 sem sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{35}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces LVQ 1 sem sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{36}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces LVQ 3 sem sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{37}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces SGP 1 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{39}{figure.3.12}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces SGP 2 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{41}{figure.3.13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Iris}}{45}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Iris}}{46}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Glass}}{48}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Glass}}{49}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Yeast}}{51}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Yeast}}{52}{figure.4.6}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Iris}}{43}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Iris}}{44}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Glass}}{46}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Glass}}{47}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Yeast}}{49}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Yeast}}{50}{figure.4.6}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {A.1}{\ignorespaces Bases artificiais com 10\% da classe minorit\'aria}}{56}{figure.A.1}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{56}{figure.A.1}
