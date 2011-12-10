@@ -27,20 +27,20 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Iris}}{43}{figure.4.1}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Iris}}{44}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Glass}}{46}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Glass}}{47}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Yeast}}{49}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Yeast}}{50}{figure.4.6}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Glass}}{45}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Glass}}{46}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Yeast}}{48}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Yeast}}{49}{figure.4.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Bases artificiais com 10\% da classe minorit\'aria}}{56}{figure.A.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{56}{figure.A.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{56}{figure.A.1}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{56}{figure.A.1}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{56}{figure.A.1}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{56}{figure.A.1}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Bases artificiais com 5\% da classe minorit\'aria}}{58}{figure.A.2}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{58}{figure.A.2}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{58}{figure.A.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{58}{figure.A.2}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{58}{figure.A.2}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{58}{figure.A.2}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Bases artificiais com 10\% da classe minorit\'aria}}{55}{figure.A.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{55}{figure.A.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{55}{figure.A.1}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{55}{figure.A.1}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{55}{figure.A.1}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{55}{figure.A.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Bases artificiais com 5\% da classe minorit\'aria}}{57}{figure.A.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{57}{figure.A.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{57}{figure.A.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{57}{figure.A.2}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{57}{figure.A.2}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{57}{figure.A.2}

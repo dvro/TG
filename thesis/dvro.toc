@@ -35,7 +35,7 @@
 \contentsline {chapter}{\numberline {4}Bases Reais}{42}{chapter.4}
 \contentsline {section}{\numberline {4.1}Iris 0}{42}{section.4.1}
 \contentsline {section}{\numberline {4.2}Glass 5}{45}{section.4.2}
-\contentsline {section}{\numberline {4.3}Yeast 6}{48}{section.4.3}
-\contentsline {chapter}{\numberline {A}Figuras das Bases Artificiais}{54}{appendix.A}
-\contentsline {section}{\numberline {A.1}Figuras com 10\% da classe minorit\'aria}{56}{section.A.1}
-\contentsline {section}{\numberline {A.2}Figuras com 5\% da classe minorit\'aria}{58}{section.A.2}
+\contentsline {section}{\numberline {4.3}Yeast 6}{47}{section.4.3}
+\contentsline {chapter}{\numberline {A}Figuras das Bases Artificiais}{53}{appendix.A}
+\contentsline {section}{\numberline {A.1}Figuras com 10\% da classe minorit\'aria}{55}{section.A.1}
+\contentsline {section}{\numberline {A.2}Figuras com 5\% da classe minorit\'aria}{57}{section.A.2}
