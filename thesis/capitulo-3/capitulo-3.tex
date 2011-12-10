@@ -89,31 +89,11 @@ Uma possível adaptação do ENN seria remover apenas instâncias da classe marjorit
 
 O CNN, diferentemente do ENN, possui a abordagem de remover instâncias redundantes, e não ruídos. O comportamento esperado é que o CNN remova muitas instâncias da classe marjoritária e poucas instâncias da classe minoritária. Dependendo do nível de sobreposição das classes, porém, o CNN pode gerar diferentes resultados. Para os experimentos abaixo foi utilizado o valor de K = 3, pois com K = 1 a taxa de acerto seria de 100\%.
 
-Observando a tabela \ref{tab:cnn5} percebe-se que o CNN obteve uma boa taxa de acerto total, mesmo no caso de bases desbalanceadas. O CNN também teve um alto nível de redução de instâncias. Quando não houve sobreposição, o CNN reduziu a base para 0.32\% do tamanho original, aumentando para 7.47\% quando com nível máximo de sobreposição.
+Observando a tabela \ref{tab:cnn10} percebe-se que o CNN obteve uma boa taxa de acerto total, mesmo no caso de bases desbalanceadas. O CNN também teve um alto nível de redução de instâncias. Quando não houve sobreposição, o CNN reduziu a base para 0.50\% do tamanho original, e para 13.90\% quando houve nível máximo de sobreposição.
 
-O resultado da tabela não é uniforme pelo fato de o CNN não ser determinístico, dependendo da ordem em que os dados são apresentados. Porém, pode-se observar que, no geral, o CNN obteve uma boa taxa de acerto para a classe minoritária.
+O resultado da tabela não é uniforme pelo fato de o CNN não ser determinístico, ou seja, depende da ordem em que os dados são apresentados. Porém, pode-se observar que, no geral, o CNN obteve uma boa taxa de acerto para a classe minoritária.
 
-Diminuindo o nível de desbalanceamento (10\%), houve uma melhora na taxa de acerto da classe minoritária em todos os níveis de sobreposição. Isso se deve a quantidade de instâncias adicionadas pelo CNN. Com mais instâncias da classe minoritária, a região delimitada por esta classe é maior, com isso, mais instâncias desta classe são mantidas pelo CNN. Pode-se observar isso na tabela \ref{tab:cnn10}.
 
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
-\hline %----- linha horizontal
-Acerto total            &   94.74\%   &   99.26\%   &   97.47\%    &   94.74\%   &   94.11\%   \\
-\hline
-Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.67\%    &   97.56\%   &   95.89\%   \\
-\hline
-Acerto minoritária      &   0.00\%   &   86.00\%   &   76.00\%    &   44.00\%   &   62.00\%   \\
-\hline
-Tamanho resultante      &   0.32\%   &   0.63\%   &   4.32\%    &   7.68\%   &   7.47\%   \\
-\hline
-\end{tabular}%--- fechamento do ambiente tabular
-\end{center}   %fim da centralização da tabela
-\caption{CNN com nível de desbalanceamento 5\%}
-\label{tab:cnn5}
-\end{table}
 
 \begin{table}[H]
 \begin{center}
@@ -135,6 +115,31 @@ Tamanho resultante      &   0.50\%   &   1.20\%   &   7.50\%    &   13.30\%   & 
 \label{tab:cnn10}
 \end{table}
 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Intersecção    &   I   &   II  &   III &   IV  &   V   \\
+\hline %----- linha horizontal
+Acerto total            &   94.74\%   &   99.26\%   &   97.47\%    &   94.74\%   &   94.11\%   \\
+\hline
+Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.67\%    &   97.56\%   &   95.89\%   \\
+\hline
+Acerto minoritária      &   0.00\%   &   86.00\%   &   76.00\%    &   44.00\%   &   62.00\%   \\
+\hline
+Tamanho resultante      &   0.32\%   &   0.63\%   &   4.32\%    &   7.68\%   &   7.47\%   \\
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{CNN com nível de desbalanceamento 5\%}
+\label{tab:cnn5}
+\end{table}
+
+Aumentando o nível de desbalanceamento (ver tabela \ref{tab:cnn5}), houve uma melhora na taxa de acerto da classe minoritária em todos os níveis de sobreposição. Isso se deve ao maior agrupamento das instâncias desta classe.
+
+
+Pode-se observar que o CNN reduz muito a base de dados quando não há sobreposição entre as classes, pois garante que as instâncias selecionadas são suficiente para classificar corretamente todo o conjunto de treinamento quando K = 1. Porém, neste experimento, a taxa de acerto da classe minoritária quando não houve sobreposição foi mínima. Isso aconteceu porque foi utilizado K = 3, e CNN deixou apenas 1 instância da classe minoritária, assim, todas as instâncias desta classe foram classificadas erroneamente. O caso pode ser visto na figura \ref{fig:cnn50}.
+
 \begin{figure}[H]
 \center
 \includegraphics[scale=0.40]{imagens/outputs/CNN_5_0.eps}
@@ -143,8 +148,6 @@ Tamanho resultante      &   0.50\%   &   1.20\%   &   7.50\%    &   13.30\%   & 
 \end{figure}
 
 
-Pode-se observar que o CNN reduz muito a base de dados quando não há sobreposição entre as classes, porém, garante que, com K=1, a taxa de acerto sobre o próprio treinamento será de 100\%. Neste experimento, porém, a taxa de acerto foi mínima pois foi utilizado K=3, e o CNN deixou apenas 1 instância da classe minoritária, assim, todas as instâncias desta classe foram classificadas erroneamente. O caso pode ser visto na figura \ref{fig:cnn50}.
-
 \begin{figure}[H]
 \center
 \includegraphics[scale=0.40]{imagens/outputs/CNN_5_5.eps}
@@ -152,8 +155,9 @@ Pode-se observar que o CNN reduz muito a base de dados quando não há sobreposiçã
 \label{fig:cnn55}
 \end{figure}
 
-Observando a figura \ref{fig:cnn55}, também é possível concluir que o CNN remove instâncias redundantes, então, a região de sobreposição é praticamente mantida. Isso mostra que, o CNN colabora para diminuir o nível de desbalanceamento, principalmente diante de classes sobrepostas. Todavia, em casos onde é importante identificar a classe minoritária, é necessário utilizar uma técnica de pré-processamento para melhor delimitar esta classe na região.
+Observando a figura \ref{fig:cnn55}, também é possível ver que o CNN remove instâncias redundantes, então, a região de sobreposição é praticamente mantida. Isso mostra que, o CNN colabora para diminuir o nível de desbalanceamento, principalmente diante de classes sobrepostas. Todavia, em casos onde é importante identificar a classe minoritária, é necessário utilizar uma técnica de pré-processamento para melhor delimitar esta classe na região.
 
+Outra opção é utilizar a versão do CNN utilizada pelo \textit{One-Sided Selection}, assim, as instâncias da classe minoritária são priorizadas.
 
 \subsection{Tomek Links}
 
