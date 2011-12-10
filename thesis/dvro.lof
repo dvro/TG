@@ -12,10 +12,10 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Base Original com 10\% de desbalanceamento e intersec\c c\~ao m\IeC {\'\i }nima}}{24}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Base Original com 10\% de desbalanceamento e intersec\c c\~ao m\'axima}}{25}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Base Original com 5\% de desbalanceamento e intersec\c c\~ao m\IeC {\'\i }nima}}{26}{figure.3.3}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Base Original com 5\% de desbalanceamento e intersec\c c\~ao m\IeC {\'\i }nima}}{25}{figure.3.3}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Base Original com 5\% de desbalanceamento e intersec\c c\~ao m\'axima}}{26}{figure.3.4}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces ENN sobre sobre base com total sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{28}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces CNN sobre sobre base sem sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{30}{figure.3.6}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces CNN sobre sobre base sem sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{29}{figure.3.6}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces CNN sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{30}{figure.3.7}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Tomek Links sobreposi\c c\~ao III de classes e 10\% de desbalanceamento}}{32}{figure.3.8}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces OSS com sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{33}{figure.3.9}
@@ -34,3 +34,16 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Glass}}{49}{figure.4.4}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Yeast}}{51}{figure.4.5}
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Yeast}}{52}{figure.4.6}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Bases artificiais com 10\% da classe minorit\'aria}}{56}{figure.A.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{56}{figure.A.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{56}{figure.A.1}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{56}{figure.A.1}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{56}{figure.A.1}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{56}{figure.A.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Bases artificiais com 5\% da classe minorit\'aria}}{58}{figure.A.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{58}{figure.A.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{58}{figure.A.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{58}{figure.A.2}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{58}{figure.A.2}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{58}{figure.A.2}
