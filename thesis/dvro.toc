@@ -29,7 +29,7 @@
 \contentsline {subsection}{\numberline {3.2.5}LVQ}{32}{subsection.3.2.5}
 \contentsline {subsubsection}{\numberline {3.2.5.1}LVQ 1}{32}{subsubsection.3.2.5.1}
 \contentsline {subsubsection}{\numberline {3.2.5.2}LVQ 2.1}{35}{subsubsection.3.2.5.2}
-\contentsline {subsubsection}{\numberline {3.2.5.3}LVQ 3}{37}{subsubsection.3.2.5.3}
+\contentsline {subsubsection}{\numberline {3.2.5.3}LVQ 3}{36}{subsubsection.3.2.5.3}
 \contentsline {subsection}{\numberline {3.2.6}SGP 1}{38}{subsection.3.2.6}
 \contentsline {subsection}{\numberline {3.2.7}SGP 2}{40}{subsection.3.2.7}
 \contentsline {chapter}{\numberline {4}Bases Reais}{42}{chapter.4}

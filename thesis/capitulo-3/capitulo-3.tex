@@ -293,56 +293,16 @@ Por estas caracterísitcas, o OSS é uma técnica muito apropriada para bases desba
 
 \subsection{LVQ}
 
-O \textit{Learning Vector Quantization} é uma técnica seletiva de seleção de protótipos. Diferentemente das técnicas examinadas nas subsessões anteriores, esta é uma técnica seletiva, ou seja, ela cria novas instâncias a partir do conjunto de treinamento.
+O \textit{Learning Vector Quantization} é uma técnica criativa de seleção de protótipos. Diferentemente das técnicas examinadas nas subsessões anteriores, esta técnica cria novas instâncias a partir do conjunto de treinamento.
 
 Para os experimentos das versões do LVQ, foram utilizados 1000 iterações, $\alpha(t)= 0.02 \times e^{(-t/200)}$, sendo $t$ o número da iteração, $w = 0.70$ e $\epsilon = 0.30$. Os protótipos iniciais utilizados foram 5 protótipos para cada classe, sendo eles próximos da mediana da classe correspondente.
 
 
 \subsubsection{LVQ 1}
 
-O LVQ 1 obteve uma boa taxa de acerto geral, sendo sempre acima de 77.68\%. Observa-se também que o taxa de acerto tende a decrescer conforme o nível de sobreposição de classes aumenta. observando a tabela \ref{tab:lvq15}, percebe-se que a taxa de acerto total decresce conforme o nível de sobreposição aumenta por conta da classe marjoritária, enquanto a classe minoritária se manteve com alto nível de acerto (neste experimento 100\%).
+O LVQ 1 obteve uma boa taxa de acerto geral, sendo sempre acima de 70\%. Observa-se também que o taxa de acerto tende a decrescer conforme o nível de sobreposição de classes aumenta. Observando a tabela \ref{tab:lvq110}, percebe-se que a taxa de acerto total decresce conforme o nível de sobreposição aumenta. Isso acontece porque a taxa de acerto da classe marjoritária decresce, enquanto a taxa de acerto da classe minoritária se mantém alta (neste experimento 100\%).
 
 A taxa de acerto da classe minoritária é alta porque as instâncias desta classe estão muito próximas, então, durante o ajuste de protótipos, os mesmos ficam bem ajustados, em posições estratégicas. 
-
-A figura \ref{fig:lvq155} mostra que, em baixo nível de sobreposição, os protótipos ficam em torno do centróide, e o seu espalhamento depende totalmente do nível de espalhamento das classes. Já a figura \ref{fig:lvq1515} mostra que o mesmo acontece, porém, o LVQ 1 tende a dividir as classes. Neste caso, os protótipos da classe marjoritária ficaram mais espalhados, porém, afastados da região de indecisão, por isso, a taxa de acerto da classe minoritária é alta.
-
-
-
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.40]{imagens/outputs/LVQ1_5_5.eps}
-\caption{LVQ 1 com sobreposição de classes III e 5\% de desbalanceamento}
-\label{fig:lvq155}
-\end{figure}
-
-
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.40]{imagens/outputs/LVQ1_5_15.eps}
-\caption{LVQ 1 com sobreposição de classes V e 5\% de desbalanceamento}
-\label{fig:lvq1515}
-\end{figure}
-
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
-\hline %----- linha horizontal
-Acerto total            &   93.47\%   &   91.79\%   &   84.84\%    &   74.74\%   &   77.68\%   \\
-\hline
-Acerto marjoritária     &   93.11\%   &   91.33\%   &   84.00\%    &   73.33\%   &   76.44\%   \\
-\hline
-Acerto minoritária      &   100.00\%   &   100.00\%   &   100.00\%    &   100.00\%   &   100.00\%   \\
-\hline
-Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &   1.05\%   \\
-\hline
-\end{tabular}%--- fechamento do ambiente tabular
-\end{center}   %fim da centralização da tabela
-\caption{LVQ1 com nível de desbalanceamento 5\%}
-\label{tab:lvq15}
-\end{table}
 
 \begin{table}[H]
 \begin{center}
@@ -364,8 +324,45 @@ Tamanho resultante      &   1.00\%   &   1.00\%   &   1.00\%    &   1.00\%   &  
 \label{tab:lvq110}
 \end{table}
 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
+\hline %----- linha horizontal
+Acerto total            &   93.47\%   &   91.79\%   &   84.84\%    &   74.74\%   &   77.68\%   \\
+\hline
+Acerto marjoritária     &   93.11\%   &   91.33\%   &   84.00\%    &   73.33\%   &   76.44\%   \\
+\hline
+Acerto minoritária      &   100.00\%   &   100.00\%   &   100.00\%    &   100.00\%   &   100.00\%   \\
+\hline
+Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &   1.05\%   \\
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{LVQ1 com nível de desbalanceamento 5\%}
+\label{tab:lvq15}
+\end{table}
 
-Na tabela \ref{tab:lvq110}, a classe minoritária é composta de 10\% das instâncias, mas ainda assim, as características se mantiveram as mesmas, a taxa de acerto da classe minoritária permaneceu alta, enquanto a taxa da classe marjoritária descresceu conforme o nível de sobreposição aumentou. Porém, a figura \ref{fig:lvq11015} mostra que, conforme a quantidade de instâncias da classe minoritária aumenta, mais espalhados ficam os protótipos desta classe, ocasionando numa maior delimitação da região da mesma.
+A tabela \ref{tab:lvq15} confirma que, mesmo com um maior nível de desbalanceamento, a taxa de acerto teve uma melhora em relação a menos desbalanceada. Isso aconteceu porque a região da classe minoritária está mais compacta, assim, o espalhamento da classe marjoritária foi maior, garantindo uma melhor taxa de acerto para esta.
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ1_5_5.eps}
+\caption{LVQ 1 com sobreposição de classes III e 5\% de desbalanceamento}
+\label{fig:lvq155}
+\end{figure}
+
+A figura \ref{fig:lvq155} mostra que, em baixo nível de sobreposição, os protótipos ficam em torno do centróide, e o seu espalhamento depende totalmente do nível de espalhamento das classes. Já a figura \ref{fig:lvq1515} mostra que o mesmo acontece quando há total sobreposição, porém, o LVQ 1 tende a dividir as classes. Neste caso, os protótipos da classe marjoritária ficaram mais espalhados, porém, afastados da região de indecisão, por isso, a taxa de acerto da classe minoritária é alta.
+
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.40]{imagens/outputs/LVQ1_5_15.eps}
+\caption{LVQ 1 com sobreposição de classes V e 5\% de desbalanceamento}
+\label{fig:lvq1515}
+\end{figure}
+
+Comparando a figura \ref{fig:lvq11015} com a figura \ref{fig:lvq1515}, percebe-se que, quanto maior a quantidade de instâncias da classe minoritária, mais espalhados ficam os protótipos, e melhor delimitada fica a região desta classe.
 
 \begin{figure}[H]
 \center
@@ -374,31 +371,12 @@ Na tabela \ref{tab:lvq110}, a classe minoritária é composta de 10\% das instânci
 \label{fig:lvq11015}
 \end{figure}
 
-O LVQ1 se mostra eficiente para bases desbalanceadas, principalmente no que se refere a classificar bem instâncias da classe minoritária. Uma grande vantege é que a quantidade de protótipos resultante pode ser pré-definida, com isso, o desbalanceamento pode ser reduzido ou até mesmo eliminado. É recomendado também que a quantidade de protótipos seja proporcional ao nível de espalhamento de cada classe, quanto mais espalhada, mais protótipos são necessários para definir a classe.
+O LVQ1 se mostra eficiente para bases desbalanceadas, principalmente no que se refere a classificar bem instâncias da classe minoritária. Uma grande vantagem é que a quantidade de protótipos resultante pode ser pré-definida, com isso, o desbalanceamento pode ser reduzido ou até mesmo eliminado. É recomendado também que a quantidade de protótipos seja proporcional ao nível de espalhamento de cada classe, quanto mais espalhada, mais protótipos são necessários para definir a classe.
 
 \subsubsection{LVQ 2.1}
 
 O LVQ 2.1 também teve uma boa taxa de acerto média, e assim como o LVQ 1, teve taxa de acerto máxima para classe minoritária em todos os níveis de sobreposição de classes. Esses dados podem ser observados na tabela \ref{tab:lvq25} e \ref{tab:lvq210}.
 
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
-\hline %----- linha horizontal
-Acerto total            &   90.84\%   &   89.68\%   &   83.89\%    &   80.11\%   &   76.84\%   \\
-\hline
-Acerto marjoritária     &   90.33\%   &   89.11\%   &   83.00\%    &   79.00\%   &   75.56\%   \\
-\hline
-Acerto minoritária      &   100.00\%   &   100.00\%   &   100.00\%    &   100.00\%   &   100.00\%   \\
-\hline
-Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &   1.05\%   \\
-\hline
-\end{tabular}%--- fechamento do ambiente tabular
-\end{center}   %fim da centralização da tabela
-\caption{LVQ 2.1 com nível de desbalanceamento 5\%}
-\label{tab:lvq25}
-\end{table}
 
 \begin{table}[H]
 \begin{center}
@@ -421,39 +399,15 @@ Tamanho resultante      &   1.00\%   &   1.00\%   &   1.00\%    &   1.00\%   &  
 \end{table}
 
 
-
-Conforme citado anteriormente, o LVQ 2.1 evita uma divergência entre os protótipos, isto pode ser observado em leves diferenças entre a figura \ref{fig:lvq2100} e a figura \ref{fig:lvq1100}. 
-
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.40]{imagens/outputs/LVQ2.1_10_0.eps}
-\caption{LVQ 2.1 sem sobreposição de classes e 10\% de desbalanceamento}
-\label{fig:lvq2100}
-\end{figure}
-
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.40]{imagens/outputs/LVQ1_10_0.eps}
-\caption{LVQ 1 sem sobreposição de classes e 10\% de desbalanceamento}
-\label{fig:lvq1100}
-\end{figure}
-
-Observa-se que os protótipos do LVQ 2.1 estão levemente menos espalhados que o LVQ 1, isso afeta a taxa de acerto da classe marjoritária (comparar tabela \ref{tab:lvq110} e \ref{tab:lvq210}). Assim, é interessante utilizar o LVQ 2.1 quando se deseja um menor espalhamento das instâncias, normalmente, quando existe uma distribuição uniforme das classes.
-
-\subsubsection{LVQ 3}
-
-O LVQ 3 tem o objetivo de evitar o sobreajuste do LVQ 2.1. Observando as tabelas \ref{tab:lvq35} e \ref{tab:lvq310}, percebe-se que o LVQ 3 manteve em média o mesmo desempenho que o LVQ 2.1, porém, a diferença de desempenho está em bases de baixo nível de sobreposição entre as classes.
-
-
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
 Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
 \hline %----- linha horizontal
-Acerto total            &   95.79\%   &   92.32\%   &   83.68\%    &   78.32\%   &   74.53\%   \\
+Acerto total            &   90.84\%   &   89.68\%   &   83.89\%    &   80.11\%   &   76.84\%   \\
 \hline
-Acerto marjoritária     &   95.56\%   &   91.89\%   &   82.78\%    &   77.11\%   &   73.11\%   \\
+Acerto marjoritária     &   90.33\%   &   89.11\%   &   83.00\%    &   79.00\%   &   75.56\%   \\
 \hline
 Acerto minoritária      &   100.00\%   &   100.00\%   &   100.00\%    &   100.00\%   &   100.00\%   \\
 \hline
@@ -461,9 +415,30 @@ Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &  
 \hline
 \end{tabular}%--- fechamento do ambiente tabular
 \end{center}   %fim da centralização da tabela
-\caption{LVQ 3 com nível de desbalanceamento 5\%}
-\label{tab:lvq35}
+\caption{LVQ 2.1 com nível de desbalanceamento 5\%}
+\label{tab:lvq25}
 \end{table}
+
+Conforme citado anteriormente, o LVQ 2.1 evita uma divergência entre os protótipos, isto pode ser observado em leves diferenças entre a figura \ref{fig:lvq2100} e a figura \ref{fig:lvq1100}. 
+
+\begin{figure}[H]
+\center
+	\mbox{%
+		\subfigure[LVQ 1]{\label{fig:lvq1100}%
+			\includegraphics[scale=0.30]{imagens/outputs/LVQ1_10_0.eps}}
+		\subfigure[LVQ 2.1]{\label{fig:lvq2100}%
+			\includegraphics[scale=0.30]{imagens/outputs/LVQ2.1_10_0.eps}}
+	}
+  \caption{LVQ 1 e 2.1 com 10\% da classe minoritária e nível I de sobreposição}
+  \label{fig:lvqcomp}
+\end{figure}
+
+
+Observa-se que os protótipos do LVQ 2.1 estão levemente menos espalhados que o LVQ 1, isso afeta a taxa de acerto da classe marjoritária (comparar tabela \ref{tab:lvq110} e \ref{tab:lvq210}). Assim, é interessante utilizar o LVQ 2.1 quando se deseja um menor espalhamento das instâncias, normalmente, quando existe uma distribuição uniforme das classes.
+
+\subsubsection{LVQ 3}
+
+O LVQ 3 tem o objetivo de evitar o sobreajuste do LVQ 2.1. Observando as tabelas \ref{tab:lvq310} e \ref{tab:lvq35}, percebe-se que o LVQ 3 manteve em média o mesmo desempenho que o LVQ 2.1, porém, a diferença de desempenho está em bases de baixo nível de sobreposição entre as classes.
 
 \begin{table}[H]
 \begin{center}
@@ -485,6 +460,25 @@ Tamanho resultante      &   1.00\%   &   1.00\%   &   1.00\%    &   1.00\%   &  
 \label{tab:lvq310}
 \end{table}
 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
+\hline %----- linha horizontal
+Acerto total            &   95.79\%   &   92.32\%   &   83.68\%    &   78.32\%   &   74.53\%   \\
+\hline
+Acerto marjoritária     &   95.56\%   &   91.89\%   &   82.78\%    &   77.11\%   &   73.11\%   \\
+\hline
+Acerto minoritária      &   100.00\%   &   100.00\%   &   100.00\%    &   100.00\%   &   100.00\%   \\
+\hline
+Tamanho resultante      &   1.05\%   &   1.05\%   &   1.05\%    &   1.05\%   &   1.05\%   \\
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{LVQ 3 com nível de desbalanceamento 5\%}
+\label{tab:lvq35}
+\end{table}
 
 Comparando a figura \ref{fig:lvq3100} com a figura \ref{fig:lvq2100} e a \ref{fig:lvq1100}, observa-se que o LVQ 3 é o meio termo entre o LVQ 1 e o LVQ 2.1. Assim, recomenda-se o uso do LVQ 3 em bases desbalanceadas em casos onde o nível de sobreposição de classes é baixo e deseja-se conter o nível de espalhamento entre as classes.
 
@@ -495,39 +489,18 @@ Comparando a figura \ref{fig:lvq3100} com a figura \ref{fig:lvq2100} e a \ref{fi
 \label{fig:lvq3100}
 \end{figure}
 
-A escolhe da versão do \textit{Learning Vector Quantization} é tão importante quanto a escolha dos parâmetros de forma apropriada. Nestes experimentos foram utilizados os mesmos valores para parâmetros em comum, então, as conclusões se restrigem ao uso de cada uma em bases desbalanceadas, mas, experimentalmente, verifica-se que a escolha adequada de parâmetros é tão importante quanto a escolha da versão do LVQ.
-
+A escolha da versão do \textit{Learning Vector Quantization} é tão importante quanto a escolha dos parâmetros de forma apropriada. Nestes experimentos foram utilizados os mesmos valores para os parâmetros em comum, então, as conclusões se restrigem ao uso de cada técnica em bases desbalanceadas, mas, experimentalmente, verifica-se que a escolha adequada de parâmetros é tão importante quanto a escolha da versão do LVQ.
 
 \subsection{SGP 1}
 
 A primeira versão do \textit{Self-Generating Prototypes} é uma técnica de alto poder de redução muito completa para bases com distribuições multi-modais de classes. Porém, após os experimentos realizados, foi possível identificar uma série de falhas nesta técnica.
 
-Conforme citado no capítulo anterior, o SGP possui um fator de generalização. Neste experimento, foi utilizado $R_n = 0.05$ e $R_s = 0.05$, a escolha de valores foi feita de acordo com o proposto em trabalhos relacionados\cite{csp:sgp}.
+Conforme citado no capítulo anterior, o SGP possui um fator de generalização. Neste experimento, foi utilizado $R_n = 0.05$ e $R_s = 0.05$, a escolha de valores foi feita de acordo com o proposto em trabalhos relacionados\cite{csp:sgp}. Para classificar, foi utilizado o KNN com K=1, pois a ideia é que haja uma única instância que represente um grande conjunto de instâncias.
 
-O poder de redução desta técnica é muito alto, observa-se na tabela \ref{tab:sgp15} que, mesmo em alto nível de sobreposição, a quantidade de protótipos não pasou de 5.68\% da base original no caso de alto nível de desbalanceamento.
+O poder de redução desta técnica é muito alto, observa-se nas tabelas \ref{tab:sgp110} e \ref{tab:sgp15} que, mesmo em alto nível de sobreposição, a quantidade de protótipos não pasou de 5.9\% da base original.
 
-O SGP, sem fator de generalização, apresenta uma taxa de 100\% de acerto sobre o conjunto de treinamento\cite{fayed:sgp}. Porém, ao introduzir o fator de generalização o SGP perde esta propriedade. Observando a tabela \ref{tab:sgp15}, percebe-se que, mesmo com fator de generalização, o SGP 1 obteve boas taxas de acerto para baixo nível de sobreposição. Porém, para um alto nível de sobreposição (níveis IV e V), a classe minoritária obteve 0.00\% de taxa de acerto, enquanto que a classe marjoritária obteve 100\%. O mesmo acontece na tabela \ref{tab:sgp110}, porém, este comportamento ocorreu apenas no nível máximo de sobreposição.
+O SGP, sem fator de generalização, apresenta uma taxa de 100\% de acerto sobre o conjunto de treinamento\cite{fayed:sgp}. Porém, ao introduzir o fator de generalização o SGP perde esta propriedade. Observando a tabela \ref{tab:sgp110}, percebe-se que, mesmo com fator de generalização, o SGP 1 obteve boas taxas de acerto para baixo nível de sobreposição. Porém, para um alto nível de sobreposição (nível V), a classe minoritária obteve 0.00\% de taxa de acerto, enquanto que a classe marjoritária obteve 100\%. O mesmo acontece na tabela \ref{tab:sgp15}, porém, como o desbalanceamento é mais acentuado, a taxa de acerto da classe minoritária foi 0\% nos níveis IV e V de sobreposição.
 
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
-\hline %----- linha horizontal
-Acerto total            &   100.00\%   &   100.00\%   &   97.68\%    &   94.74\%   &   94.74\%   \\
-\hline
-Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.89\%    &   100.00\%   &   100.00\%   \\
-\hline
-Acerto minoritária      &   100.00\%   &   100.00\%   &   76.00\%    &   0.00\%   &   0.00\%   \\
-\hline
-Tamanho resultante      &   0.53\%   &   2.74\%   &   5.26\%    &   5.16\%   &   5.68\%   \\
-\hline
-\end{tabular}%--- fechamento do ambiente tabular
-\end{center}   %fim da centralização da tabela
-\caption{SGP 1 com nível de desbalanceamento 5\%}
-\label{tab:sgp15}
-\end{table}
 
 \begin{table}[H]
 \begin{center}
@@ -549,6 +522,26 @@ Tamanho resultante      &   0.40\%   &   3.50\%   &   5.80\%    &   8.20\%   &  
 \label{tab:sgp110}
 \end{table}
 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
+\hline %----- linha horizontal
+Acerto total            &   100.00\%   &   100.00\%   &   97.68\%    &   94.74\%   &   94.74\%   \\
+\hline
+Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.89\%    &   100.00\%   &   100.00\%   \\
+\hline
+Acerto minoritária      &   100.00\%   &   100.00\%   &   76.00\%    &   0.00\%   &   0.00\%   \\
+\hline
+Tamanho resultante      &   0.53\%   &   2.74\%   &   5.26\%    &   5.16\%   &   5.68\%   \\
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{SGP 1 com nível de desbalanceamento 5\%}
+\label{tab:sgp15}
+\end{table}
+
 
 \begin{figure}[H]
 \center
@@ -559,7 +552,7 @@ Tamanho resultante      &   0.40\%   &   3.50\%   &   5.80\%    &   8.20\%   &  
 
 Observando a figura \ref{fig:sgp1515}, conclui-se que o fator de generalização fez com que todas as instâncias da classe minoritária fossem eliminadas. Em baixo nível de sobreposição isso não acontece pois as instâncias da classe minoritária são representadas por um mesmo protótipo, porém, conforme o nível de sobreposição aumenta, mais protótipos são necessários para representar esta classe, assim, menos instâncias por protótipos. Quando o algoritmo principal termina, o fator de generalização elimina os grupos que possuem menos que $R_s \times S$, sendo $S$ a quantidade de instâncias do maior grupo. Assim, as instâncias vão sendo removidas independentemente de classe.
 
-Observa-se também que, quando o nível de desbalanceamento é mais acentuado, este efeito ocorre mais rapidamente, pois são menos instâncias para dividir entre os protótipos necessários. Assim, em bases desbalanceadas onde a classe minoritária representa 1\%, por exemplo, provavelmente todas as instâncias destas classes seriam eliminadas, independente do nível de sobreposição. Caso não seja utilizado o fator de generalização, estas instâncias são mantidas, porém, o SGP 1 manterá todos os ruídos, levando a erros de classificação.
+Observa-se também que, quando o nível de desbalanceamento é mais acentuado, este efeito ocorre mais rapidamente, pois são menos instâncias por protótipos gerados. Assim, em bases desbalanceadas onde a classe minoritária representa 1\%, por exemplo, provavelmente todas as instâncias destas classes seriam eliminadas, independente do nível de sobreposição. Caso não seja utilizado o fator de generalização, estas instâncias são mantidas, porém, o SGP 1 manterá todos os ruídos, levando a erros de classificação.
 
 Esta é uma falha muito grave, porque apesar de ter uma alta taxa de acerto geral e capacidade de redução, o SGP possui péssimas taxas de acerto para a classe minoritária, chegando até a errar em todos os casos.
 
@@ -569,30 +562,9 @@ Uma solução para o SGP é que o fator de generalização seja mantido, porém, com u
 
 A segunda versão do \textit{Self-Generating Prototypes} apresenta os mesmos defeitos da primeira versão. Porém, ela apresenta algumas caracterísitcas interessantes que serão abordadas.
 
-Observando as tabelas \ref{tab:sgp25} e \ref{tab:sgp210}, percebe-se que o SGP 2 obteve uma excelente taxa de acerto geral, porém, a taxa de acerto da classe minoritária é altamente prejudicada no momento da generalização. As possíveis adaptações para este problema já foram citados na sub-sessão anterior.
+Observando as tabelas \ref{tab:sgp210} e \ref{tab:sgp5}, percebe-se que o SGP 2 obteve uma excelente taxa de acerto geral, porém, a taxa de acerto da classe minoritária é altamente prejudicada no momento da generalização. As possíveis adaptações para este problema já foram citados na sub-sessão anterior.
 
-Quanto a quantidade de protótipos, observase que o SGP 2 tem um poder de redução muito maior que o SGP 1, isso acontece devido ao acrescimo do \textit{Pruning} e \textit{Merge}. Em geral o SGP 2 obteve uma taxa de acerto semelhante ao SGP 1, porém, em geral apenas metade dos protótipos foram necessários.
-
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
-\hline %----- linha horizontal
-Acerto total            &   100.00\%   &   100.00\%   &   97.58\%    &   94.74\%   &   94.74\%   \\
-\hline
-Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.78\%    &   100.00\%   &   100.00\%   \\
-\hline
-Acerto minoritária      &   100.00\%   &   100.00\%   &   76.00\%    &   0.00\%   &   0.00\%   \\
-\hline
-Tamanho resultante      &   0.21\%   &   1.26\%   &   2.42\%    &   2.63\%   &   2.63\%   \\
-\hline
-\end{tabular}%--- fechamento do ambiente tabular
-\end{center}   %fim da centralização da tabela
-\caption{SGP 2 com nível de desbalanceamento 5\%}
-\label{tab:sgp25}
-\end{table}
+Quanto a quantidade de protótipos, observa-se que o SGP 2 tem um poder de redução muito maior que o SGP 1, isso acontece devido ao acrescimo do \textit{Pruning} e \textit{Merge}. Em geral o SGP 2 obteve uma taxa de acerto semelhante ao SGP 1, porém, em média, apenas metade dos protótipos foram necessários.
 
 \begin{table}[H]
 \begin{center}
@@ -614,6 +586,26 @@ Tamanho resultante      &   0.30\%   &   1.90\%   &   2.90\%    &   2.70\%   &  
 \label{tab:sgp210}
 \end{table}
 
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+Nível de Sobreposição    &   I   &   II  &   III &   IV  &   V   \\
+\hline %----- linha horizontal
+Acerto total            &   100.00\%   &   100.00\%   &   97.58\%    &   94.74\%   &   94.74\%   \\
+\hline
+Acerto marjoritária     &   100.00\%   &   100.00\%   &   98.78\%    &   100.00\%   &   100.00\%   \\
+\hline
+Acerto minoritária      &   100.00\%   &   100.00\%   &   76.00\%    &   0.00\%   &   0.00\%   \\
+\hline
+Tamanho resultante      &   0.21\%   &   1.26\%   &   2.42\%    &   2.63\%   &   2.63\%   \\
+\hline
+\end{tabular}%--- fechamento do ambiente tabular
+\end{center}   %fim da centralização da tabela
+\caption{SGP 2 com nível de desbalanceamento 5\%}
+\label{tab:sgp25}
+\end{table}
+
 
 Comparando-se a figura \ref{fig:sgp2515} com a figura \ref{fig:sgp1515}, observa-se que o SGP 2 manteve a mesma região representada com uma quantidade menor de instâncias. O $Merge$ é um algoritmo determinístico e muito eficiente, já o $Pruning$ não é determinístico, e é necessário um limite de poda para que não aconteça um sobreajuste.
 
@@ -624,5 +616,5 @@ Comparando-se a figura \ref{fig:sgp2515} com a figura \ref{fig:sgp1515}, observa
 \label{fig:sgp2515}
 \end{figure}
 
-Conclui-se que o SGP 2 é superior ao SGP 1 no que se refere a generalização e redução de protótipos. Porém, esta técnica apresenta os mesmos defeitos do SGP 1, sendo necessária a mesma adaptação citada anteriormente para que a classe minoritária, comumente o caso de maior interesse, possa ser identificada.
+Conclui-se que o SGP 2 é superior ao SGP 1 no que se refere a generalização e redução de protótipos. Porém, esta técnica apresenta os mesmos defeitos do SGP 1, sendo necessária a mesma adaptação citada anteriormente para que a classe minoritária, normalmente o caso de maior interesse, possa ser identificada.
 
