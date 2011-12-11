@@ -9,60 +9,71 @@ Estas bases reais foram obtidas do software KEEL, que contém um módulo de experi
 
 \section{Iris 0}
 
-A base Iris 0 é uma base com baixo desbalanceamento. Esta base contém 150 instâncias, cada uma contendo quatro atributos, sendo 33.33\% destas instâncias da classe minoritária, \textit{Iris-Setosa}, e 66.66\% da classe marjoritária, \textit{reminder}.
+	A base Iris 0 é uma base com baixo desbalanceamento. Esta base contém 150 instâncias, cada uma contendo quatro atributos, sendo 33.33\% destas instâncias da classe minoritária, \textit{Iris-Setosa}, e 66.66\% da classe marjoritária, \textit{reminder}.
 
 
-\begin{table}[H]\tiny
+\begin{table}[H]
 \begin{center}
-\begin{tabular}{|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|}
+\begin{tabular}{|l|l|l|l|l|}
 \hline
-Técnica		   				&	KNN		&	ENN		&		CNN		&	Tomek Links		&	OSS	&	LVQ 1	&	LVQ 2.1	&	LVQ 3	&	SGP	&	SGP 2 	\\
-\hline %----- linha horizontal
-Acerto Total				& 100.00 $\pm$ 0.00 \%	& 100.00 $\pm$ 0.00 \%& 67.39 $\pm$ 2.31 \%& 100.00 $\pm$ 0.00 \%& 84.18 $\pm$ 27.88 \%& 99.31 $\pm$ 1.54 \%& 99.31 $\pm$ 1.54 \%& 99.31 $\pm$ 1.54 \%& 98.64 $\pm$ 1.86 \%& 98.64 $\pm$ 1.86 \% \\
+Técnica     &  Acerto Total &  Acerto Marjoritária &  Acerto Minoritária  &  Tamanho Resultante  \\
 \hline
-Acerto Marjoritária			& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 76.00 $\pm$ 42.63 \%& 98.95 $\pm$ 2.35 \%& 98.95 $\pm$ 2.35 \%& 98.95 $\pm$ 2.35 \%& 97.95 $\pm$ 2.81 \%& 97.95 $\pm$ 2.81 \% \\
+ KNN   &      100.00 $\pm$ 0.00 \%   &    100.00 $\pm$ 0.00 \%   &    100.00 $\pm$ 0.00 \%    &    100.00 $\pm$ 0.00 \%  \\
 \hline
-Acerto Minoritária		    & 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 0.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \% \\
+ ENN   &     100.00 $\pm$ 0.00 \%   &    100.00 $\pm$ 0.00 \%   &    100.00 $\pm$ 0.00 \%    &    100.00 $\pm$ 0.00 \%  \\
 \hline
-Tamanho Resultante			& 100.00 $\pm$ 0.00 \%& 100.00 $\pm$ 0.00 \%& 2.55 $\pm$ 0.02 \%& 100.00 $\pm$ 0.00 \%& 34.18 $\pm$ 0.79 \%& 8.50 $\pm$ 0.06 \%& 8.50 $\pm$ 0.06 \%& 8.50 $\pm$ 0.06 \%& 1.70 $\pm$ 0.01 \%& 1.70 $\pm$ 0.01 \% \\
+ CNN   &     45.94 $\pm$ 19.05 \%   &    40.00 $\pm$ 54.77 \%   &    60.00 $\pm$ 54.77 \%    &    2.04 $\pm$ 0.48 \%  \\
 \hline
-\end{tabular}%--- fechaoento do aobiente tabular
-\end{center}   %fio da centralização da tabela
+ Tomek Links   &     100.00 $\pm$ 0.00 \%   &    100.00 $\pm$ 0.00 \%   &    100.00 $\pm$ 0.00 \%    &    100.00 $\pm$ 0.00 \%  \\
+\hline
+ OSS   &     56.33 $\pm$ 33.73 \%   &    35.89 $\pm$ 49.15 \%   &    100.00 $\pm$ 0.00 \%    &    33.84 $\pm$ 0.50 \%  \\
+\hline
+ LVQ 1   &     99.31 $\pm$ 1.54 \%   &    98.95 $\pm$ 2.35 \%   &    100.00 $\pm$ 0.00 \%    &    8.50 $\pm$ 0.06 \%  \\
+\hline
+ LVQ 2.1   &     99.31 $\pm$ 1.54 \%   &    98.95 $\pm$ 2.35 \%   &    100.00 $\pm$ 0.00 \%    &    8.50 $\pm$ 0.06 \%  \\
+\hline
+ LVQ 3   &     99.31 $\pm$ 1.54 \%   &    98.95 $\pm$ 2.35 \%   &    100.00 $\pm$ 0.00 \%    &    8.50 $\pm$ 0.06 \%  \\
+\hline
+ SGP   &     98.64 $\pm$ 1.86 \%   &    97.95 $\pm$ 2.81 \%   &    100.00 $\pm$ 0.00 \%    &    1.70 $\pm$ 0.01 \%  \\
+\hline
+ SGP 2   &     98.64 $\pm$ 1.86 \%   &    97.95 $\pm$ 2.81 \%   &    100.00 $\pm$ 0.00 \%    &    1.70 $\pm$ 0.01 \%  \\
+\hline
+\end{tabular}%%--- fechamento do ambiente tabular
+\end{center}   %%fim da centralização da tabela
 \caption{Tabela do Iris 0}
 \label{tab:iris}
 \end{table}
-
 
 Observando a tabela \ref{tab:iris}, percebe-se que o KNN obteve 100\% de acerto, isso mostra que as classes tem um baixo nível de sobreposição. Se tratando de uma base com baixo nível de desbalanceamento e com agrupamentos bem definidos, é de se esperar que as técnicas gerem poucos protótipos para representar esta base. 
 
 No caso do ENN, a taxa de acerto foi a mesma do KNN porque o seu algoritmo selecionou todas as instâncias, assim, quando as classes estão bem separadas, o ENN não é uma técnica apropriada, por conta do seu baixo poder de redução. 
 
-Por sua vez o CNN, de alto poder de redução, reduziu demais a classe minoritária (ver figura \ref{fig:iris2}), mas como foi utilizado o 3-NN, obteve taxa de acerto média de 0.00\% para esta classe (ver figura \ref{fig:iris1}), enquanto a marjoritária obteve 100\% de acerto.
+Por sua vez o CNN, de alto poder de redução, reduziu demais a classe minoritária, mas como foi utilizado o 3-NN, obteve taxa de acerto média de 0.00\% para esta classe, enquanto a marjoritária obteve 100\% de acerto.
 
 O Tomek Links, assim como o ENN, não fez diferença nesta base, pois, conforme citado e comprovado anteriormente, o Tomek Links atua apenas nas regiões de indecisão, e a base Iris 0 não apresenta esta região.
 
 
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.80]{imagens/graficos/grafico1_iris.eps}
-\caption{Taxa de acerto da classe minoritária por técnica na base Iris}
-\label{fig:iris1}
-\end{figure}
+%\begin{figure}[H]
+%\center
+%\includegraphics[scale=0.80]{imagens/graficos/grafico1_iris.eps}
+%\caption{Taxa de acerto da classe minoritária por técnica na base Iris}
+%\label{fig:iris1}
+%\end{figure}
 
-O OSS, técnica utilizada para bases desbalanceadas, obteve uma taxa de acerto total de 84.18\% em média, uma taxa de acerto baixa em relação as outras técnicas. A redução também não foi tão alta, a quantidade de protótipos resultantes foi em média 34.18\% da baso original. Porém, como o \textit{One-Sided Selection} dá prioridade a classe minoritária, pode-se observar que a taxa de acerto desta classe foi de 100\%, o que torna esta uma técnica eficiente quando o caso de interesse é a classe minoritária.
+O OSS, técnica utilizada para bases desbalanceadas, obteve uma taxa de acerto total de 56.33\% em média, uma taxa de acerto baixa em relação as outras técnicas. A redução também não foi tão alta, a quantidade de protótipos resultantes foi em média 33.84\% da baso original. Porém, como o \textit{One-Sided Selection} dá prioridade a classe minoritária, pode-se observar que a taxa de acerto desta classe foi de 100\%, o que torna esta uma técnica eficiente quando o caso de interesse é a classe minoritária.
 
-O LVQ 1, 2.1 e 3 não tiveram diferença entre si, provavelmente isso se deve ao fato de as classes estarem bem separadas. Uma característica interessante é que as versões do \textit{Learning-Vector Quantization} obtiveram quase 99.31\% de acerto total, sendo a taxa de acerto para classe minoritária de 100\%. Isso comprova o que foi dito no capítulo anterior, o LVQ é eficiente para bases desbalanceadas, principalmente quando as classes estão bem separadas. O poder de redução desta classe também tem um bom desempenho, visto que é possível escolher a quantidade de protótipos finais, assim como corrigir o desbalanceamento.
+O LVQ 1, 2.1 e 3 não tiveram diferença entre si, provavelmente isso se deve ao fato de as classes estarem bem separadas. Uma característica interessante é que as versões do \textit{Learning-Vector Quantization} obtiveram 99.31\% de acerto total, sendo a taxa de acerto para classe minoritária de 100\%. Isso comprova o que foi dito no capítulo anterior, o LVQ é eficiente para bases desbalanceadas, principalmente quando as classes estão bem separadas. O poder de redução desta classe também tem um bom desempenho, visto que é possível escolher a quantidade de protótipos finais, assim como corrigir o desbalanceamento.
 
 Como a base Iris 0 possui baixo nível de desbalanceamento, as duas versões do \textit{Self-Generating Prototypes} obtiveram um excelente desempenho. A taxa de acerto geral para ambas foi de 98.64\%, uma excelente taxa, considerando que a quantidade de protótipos resultante foi de 1.70\% do conjunto de treinamento original. Esta técnica possui um alto poder de redução, e nesta base, a taxa de acerto da classe minoritária foi de 100\%.
 
 Não houve diferença entre o SGP1 e SGP2, pois a separação entre as classes tornou os passos de $Merge$ e $Pruning$ desnecessários.
 
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.80]{imagens/graficos/grafico2_iris.eps}
-\caption{Tamanho a base de dados após seleção de protótipos na base Iris}
-\label{fig:iris2}
-\end{figure}
+%\begin{figure}[H]
+%\center
+%\includegraphics[scale=0.80]{imagens/graficos/grafico2_iris.eps}
+%\caption{Tamanho a base de dados após seleção de protótipos na base Iris}
+%\label{fig:iris2}
+%\end{figure}
 
 Nesta base, com baixa sobreposição de classes, o ENN e o Tomek Links foram inúteis, pois não apresentaram redução de dados. Já o CNN se mostrou altamente ineficiente, pois reduziu tanto a classe minoritária (para uma instâncias) que tornou a taxa de acerto desta classe nula, pois foi utilizado K=3.
 
@@ -75,62 +86,69 @@ Outra técnica apropriada para este tipo de base foi o \textit{One-Sided Selectio
 
 A base Glass 5 é uma base com alto desbalanceamento. Esta base contém 214 instâncias, cada uma contendo nove atributos. Apenas 4.20\% das instâncias são da classe minoritária, \textit{tableware}, e 95.80\% da classe marjoritária, \textit{reminder}.
 
-\begin{table}[H]\tiny
+\begin{table}[H]
 \begin{center}
-\begin{tabular}{|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|@{}l@{}|}
+\begin{tabular}{|l|l|l|l|l|}
 \hline
-Técnica		    &KNN&ENN&CNN&Tomek Links&OSS&LVQ 1&LVQ 2.1&LVQ 3&SGP&SGP 2 \\
-\hline %----- linha horizontal
-Acerto Total		    & 96.28 $\pm$ 3.53 \%& 95.81 $\pm$ 2.55 \%& 95.80 $\pm$ 1.02 \%& 96.28 $\pm$ 3.53 \%& 85.53 $\pm$ 15.62 \%& 80.35 $\pm$ 4.65 \%& 81.28 $\pm$ 5.81 \%& 81.30 $\pm$ 5.98 \%& 95.80 $\pm$ 1.93 \%& 95.80 $\pm$ 1.93 \% \\
+Técnica     &  Acerto Total &  Acerto Marjoritária &  Acerto Minoritária  &  Tamanho Resultante  \\
 \hline
-Acerto Marjoritária		   & 98.05 $\pm$ 3.18 \%& 99.02 $\pm$ 2.18 \%& 100.00 $\pm$ 0.00 \%& 98.05 $\pm$ 3.18 \%& 86.83 $\pm$ 16.60 \%& 80.98 $\pm$ 5.56 \%& 81.95 $\pm$ 6.36 \%& 81.46 $\pm$ 6.59 \%& 99.51 $\pm$ 1.09 \%& 99.51 $\pm$ 1.09 \% \\
-	\hline
-Acerto Minoritária		    & 60.00 $\pm$ 41.83 \%& 30.00 $\pm$ 44.72 \%& 0.00 $\pm$ 0.00 \%& 60.00 $\pm$ 41.83 \%& 60.00 $\pm$ 41.83 \%& 60.00 $\pm$ 54.77 \%& 60.00 $\pm$ 54.77 \%& 70.00 $\pm$ 44.72 \%& 10.00 $\pm$ 22.36 \%& 10.00 $\pm$ 22.36 \% \\
+ KNN   &      96.28 $\pm$ 3.53 \%   &    98.05 $\pm$ 3.18 \%   &    60.00 $\pm$ 41.83 \%    &    100.00 $\pm$ 0.00 \%  \\
 \hline
-Tamanho Resultante		     & 100.00 $\pm$ 0.00 \%& 95.78 $\pm$ 1.13 \%& 7.86 $\pm$ 1.24 \%& 99.30 $\pm$ 0.64 \%& 10.67 $\pm$ 0.88 \%& 5.86 $\pm$ 0.03 \%& 5.86 $\pm$ 0.03 \%& 5.86 $\pm$ 0.03 \%& 3.17 $\pm$ 1.59 \%& 1.64 $\pm$ 1.46 \% \\
+ ENN   &     95.81 $\pm$ 2.55 \%   &    99.02 $\pm$ 2.18 \%   &    30.00 $\pm$ 44.72 \%    &    95.78 $\pm$ 1.13 \%  \\
 \hline
-\end{tabular}%--- fechaoento do aobiente tabular
-\end{center}   %fio da centralização da tabela
+ CNN   &     93.94 $\pm$ 5.83 \%   &    97.56 $\pm$ 5.45 \%   &    10.00 $\pm$ 22.36 \%    &    7.62 $\pm$ 1.19 \%  \\
+\hline
+ Tomek Links   &     96.28 $\pm$ 3.53 \%   &    98.05 $\pm$ 3.18 \%   &    60.00 $\pm$ 41.83 \%    &    99.30 $\pm$ 0.64 \%  \\
+\hline
+ OSS   &     78.58 $\pm$ 20.54 \%   &    79.02 $\pm$ 22.79 \%   &    70.00 $\pm$ 44.72 \%    &    10.43 $\pm$ 1.35 \%  \\
+\hline
+ LVQ 1   &     80.82 $\pm$ 6.55 \%   &    81.95 $\pm$ 6.36 \%   &    50.00 $\pm$ 50.00 \%    &    5.86 $\pm$ 0.03 \%  \\
+\hline
+ LVQ 2.1   &     80.82 $\pm$ 6.55 \%   &    81.95 $\pm$ 6.36 \%   &    50.00 $\pm$ 50.00 \%    &    5.86 $\pm$ 0.03 \%  \\
+\hline
+ LVQ 3   &     81.30 $\pm$ 6.20 \%   &    82.44 $\pm$ 6.07 \%   &    50.00 $\pm$ 50.00 \%    &    5.86 $\pm$ 0.03 \%  \\
+\hline
+ SGP   &     95.80 $\pm$ 1.93 \%   &    99.51 $\pm$ 1.09 \%   &    10.00 $\pm$ 22.36 \%    &    3.17 $\pm$ 1.59 \%  \\
+\hline
+ SGP 2   &     95.80 $\pm$ 1.93 \%   &    99.51 $\pm$ 1.09 \%   &    10.00 $\pm$ 22.36 \%    &    1.64 $\pm$ 1.46 \%  \\
+\hline
+\end{tabular}%%--- fechamento do ambiente tabular
+\end{center}   %%fim da centralização da tabela
 \caption{Tabela do Glass 5}
 \label{tab:glass}
 \end{table}
 
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.80]{imagens/graficos/grafico1_glass.eps}
-\caption{Taxa de acerto da classe minoritária por técnica na base Glass}
-\label{fig:glass1}
-\end{figure}
+%\begin{figure}[H]
+%\center
+%\includegraphics[scale=0.80]{imagens/graficos/grafico1_glass.eps}
+%\caption{Taxa de acerto da classe minoritária por técnica na base Glass 5}
+%\label{fig:glass1}
+%\end{figure}
 
 
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.80]{imagens/graficos/grafico2_glass.eps}
-\caption{Tamanho a base de dados após seleção de protótipos na base Glass}
-\label{fig:glass2}
-\end{figure}
+%\begin{figure}[H]
+%\center
+%\includegraphics[scale=0.80]{imagens/graficos/grafico2_glass.eps}
+%\caption{Tamanho a base de dados após seleção de protótipos na base Glass 5}
+%\label{fig:glass2}
+%\end{figure}
 
 
 Observando a tabela \ref{tab:glass}, percebe-se que, neste exemplo, além de a base ser mais desbalanceada, existe uma maior sobreposição de classes que o exemplo anterior. Em geral, as técnicas obtiveram uma boa taxa de acerto total, mas a taxa de acerto da classe minoritária variou muito de acordo com a técnica.
 
-Como a base Glass 5 apresenta sobreposição de classes, o ENN gerou uma pequena redução de instâncias, reduzindo para 95.78\% em média. Porém, a taxa de acerto da classe minoritária foi muito pequena em relação a marjoritária. o ENN obteve uma taxa média de 30\% de acerto e desvio padrão foi de 44.72\% na classe minoritária, assim, conforme comprovado nas bases artificiais, quando existe uma maior sobreposição, a classe minoritária é muito reduzida, compromentendo grandemente o desempenho do classificador para esta classe.
+Como a base Glass 5 apresenta sobreposição de classes, o ENN gerou uma pequena redução de instâncias, reduzindo para 95.81\% em média. Porém, a taxa de acerto da classe minoritária foi muito pequena em relação a marjoritária. O ENN obteve uma taxa média de 30\% de acerto e desvio padrão foi de 44.72\% na classe minoritária, assim, conforme comprovado nas bases artificiais, quando existe uma maior sobreposição, a classe minoritária é muito reduzida, compromentendo grandemente o desempenho do classificador para esta classe.
 
 Já o CNN conseguiu reduzir consideravelmente o número de instâncias, mas sua taxa de acerto para bases desbalanceadas foi praticamente nula. Isso confirma o que foi visto na base Iris 0, o CNN não é uma técnica eficiente para bases desbalanceadas, principalmente com alto nível de desbalanceamento. Com a modificação do CNN usada pelo OSS, a taxa de acerto seria melhorada, mas a técnica tradicional mais uma vez não se mostrou apropriada para o caso de estudo.
 
 O Tomek Links conseguiu uma boa taxa de acerto média, 96.28\%, se comparado com as técnicas anteriores. A taxa de acerto da classe minoritária foi de 60\%. Se comparado com o KNN, observa-se que o Tomek Links foi eficiente para classificar bases desbalanceadas, mas isso aconteceu porque o Tomek Links praticamente não alterou a base de dados, sendo a quantidade de protótipos selecionados 99.30\% do conjunto de treinamento original. Com isso, conclui-se que o Tomek Links é eficiente na remoção de instâncias na região de indecisão, porém, nem sempre a região de indecisão é significativa em relação a original, assim, recomenda-se o uso de sua versão adaptada como pré-processamento.
 
-O OSS, obteve uma taxa de acerto total inferior as técnicas citadas anteriormente, sendo 85.53\% em média. Todavia, observa-se que a taxa de acerto da base minoritária foi de 60\%, a mesma taxa do KNN e, diferentemente do Tomek Links, a quantidade de protótipos selecionados pelo OSS foi em média apenas 10.67\% do conjunto de treinamento original. Isso mostra que, mesmo com um nível de desbalanceamento maior, \textit{One-Sided Selection} tem um alto poder de redução e prioriza a classe minoritária.
+O OSS, obteve uma taxa de acerto total inferior as técnicas citadas anteriormente, sendo 78.58\% em média. Todavia, observa-se que a taxa de acerto da base minoritária foi de 70\%, maior que a do KNN. A quantidade de protótipos selecionados pelo OSS foi em média apenas 10.43\% do conjunto de treinamento original. Isso mostra que, mesmo com um nível de desbalanceamento maior, \textit{One-Sided Selection} tem um alto poder de redução e prioriza a classe minoritária.
 
-As versões do LVQ tiveram desempenho parecido, porém, o LVQ 3 se mostrou mais eficiente para a classe minoritária. Observando os experimentos do capítulo anterior, percebe-se que, neste experimento, o espalhamento controlado dos protótipos resultou em um aumento percentual da taxa de acerto da classe minoritária de 10\% em relação as outras versões do LVQ.
-
-Comparando o LVQ 3 com as técnicas anteriores, percebe-se que ele teve um alto nível de redução da base, apenas 5.86\% de instâncias foram necessárias para ter a mesma taxa de acerto da classe minoritária que o próprio KNN.
-
-O \textit{Learning Vector Quantization} é uma técnica eficiente, e percebe-se que, ao diminuir o desbalanceamento de classes, esta técnica beneficia casos onde a classe minoritária é o caso de interesse e, ainda assim, não compromete, consideravelmente, a taxa de acerto da classe marjoritária.
+As versões do \textit{Learning Vector Quantization} foram eficientes em alguns folds. Analisando detalhandamente, Percebe-se que, ao diminuir o desbalanceamento de classes, esta técnica beneficia casos onde a classe minoritária é o caso de interesse e, ainda assim, não compromete, consideravelmente, a taxa de acerto da classe marjoritária.
 
 O \textit{Self-Generating Prototypes 1} foi altamente ineficiente em classificar a classe minoritária. A tabela \ref{tab:glass} mostra que o SGP 1 reduziu a base de dados para 3.17\% do conjunto de treinamento original, mas o custo disso foi uma taxa de acerto média de apenas 10\% para classe minoritária. No caso da Iris 0, como existia um baixo nível de desbalanceamento o SGP foi eficiente, porém, com uma base mais desbalanceada, esta técnica removeu a maioria das instâncias da classe minoritária, tornando os protótipos resultantes inviáveis para qualquer classificador.
 
 A segunda versão do SGP teve o mesmo comportamento que o SGP 1, porém, o reduziu a base para 1.64\%. Esta redução seria interessante, caso o SGP 1 tivesse tido um bom desempenho, mas, como não foi o caso, o SGP 2 também se mostrou inviável.
-
 
 Assim, conclui-se que, em bases com alto nível de desbalanceamento e com sobreposição de classes, as versões do SGP são inviáveis, principalmente quando o caso de interesse é a classe minoritária. Já o LVQ, mais uma vez se mostrou eficiente para identificação da classe minoritária, mostrando que a eliminação do desbalanceamento é uma estratégia interessante para este caso.
 
@@ -161,23 +179,23 @@ Tamanho Resultante		     & 100.00 $\pm$ 0.00 \%& 97.94 $\pm$ 0.30 \%& 6.44 $\pm$
 \label{tab:yeast}
 \end{table}
 
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.80]{imagens/graficos/grafico1_yeast.eps}
-\caption{Taxa de acerto da classe minoritária por técnica na base Yeast}
-\label{fig:yeast1}
-\end{figure}
+%\begin{figure}[H]
+%\center
+%\includegraphics[scale=0.80]{imagens/graficos/grafico1_yeast.eps}
+%\caption{Taxa de acerto da classe minoritária por técnica na base Yeast}
+%\label{fig:yeast1}
+%\end{figure}
 
 A base Yeast 6 é de mais alto nível de desbalanceamento e será o referencial para casos extremos neste trabalho.
 
 Observando a tabela \ref{tab:yeast} percebe-se que o KNN teve uma taxa de acerto alta, porém, a taxa de acerto da classe minoritária foi em média apenas 42.86\%.
 
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.80]{imagens/graficos/grafico2_yeast.eps}
-\caption{Tamanho a base de dados após seleção de protótipos na base Yeast}
-\label{fig:yeast2}
-\end{figure}
+%\begin{figure}[H]
+%\center
+%\includegraphics[scale=0.80]{imagens/graficos/grafico2_yeast.eps}
+%\caption{Tamanho a base de dados após seleção de protótipos na base Yeast}
+%\label{fig:yeast2}
+%\end{figure}
 
 O ENN reduziu a base de dados para 97.94\% e aumentou a taxa de acerto geral para 98.04\%, mas o custo disso foi a redução da taxa de acerto da classe minoritária em 2.86\% em média. 
 

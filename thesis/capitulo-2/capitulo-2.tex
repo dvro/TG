@@ -4,6 +4,8 @@
 
 Neste capítulo, serão explicadas as técnicas de seleção de protótipos analisadas neste trabalho. Cada uma das sessões abaixo aborda conceitos básicos, pseudo-código e características de cada técnica, assim como possíveis adaptações nos seus algoritmos para tratar bases desbalanceadas.
 
+Para as figuras exemplo, foram utilizadas como base as figuras dos slides das aulas da disciplina de Aprendizagem de Máquina, CIn-UFPE \cite{aulas}.
+
 \section{ENN}
 
 \textit{Edited Nearest Neighbor Rule}\cite{enn:2011} é uma técnica de seleção de protótipos puramente seletiva proposta por Wilson em 1976. De uma forma geral, esta técnica foi projetada para funcionar como um filtro de ruídos, eliminando instâncias na região de fronteira, região de alta susceptibilidade a erros.
@@ -38,13 +40,13 @@ O valor de K usado pelo KNN pode variar de acordo com o tamanho da base de dados
 \label{fig:enn}
 \end{figure}
 
-Na Figura \ref{fig:enn} pode-se observar uma base de dados com duas classes. No primeiro gráfico da figura, observar-se a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o ENN, Algorithm \ref{alg:enn}, com K=3 sobre a base de dados. Os pontos pretos representam pontos que foram classificados erroneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos do ruído. Mesmo um elemento que será posteriormente eliminado pode ser utilizado para eliminar ou manter outra instância, visto que as remoções são feitas apenas no fim da execução.
+Na figura \ref{fig:enn} pode-se observar uma base de dados com duas classes. No primeiro gráfico da figura, observar-se a base de dados original, antes da aplicação do ENN. No segundo gráfico, foi aplicado o ENN, Algorithm \ref{alg:enn}, com K=3 sobre a base de dados. Os pontos pretos representam pontos que foram classificados erroneamente com a aplicação do KNN, a região circulada engloba os K elementos mais próximos do ruído. Mesmo um elemento que será posteriormente eliminado pode ser utilizado para eliminar ou manter outra instância, visto que as remoções são feitas apenas no fim da execução.
 
 O mais interessante do caso acima é que, após a aplicação do ENN, as classes ficaram bem separadas pelos quadrantes pontilhados, mostrando a eficiência do ENN para a base de dados acima.
 
 Uma vantagem do ENN é que ele é determinístico, ou seja, independe da ordem que a base de dados foi apresentada. Com isso, o ENN aplicado a uma base de dados, com o mesmo valor de K, sempre terá o mesmo resultado.
 
-Porém, o ENN também apresenta desvantagens, ele possui uma baixa capacidade de redução, pois elimina apenas ruídos, mantendo instâncias que são desnecessárias, que apresentam apenas redundância de informação. No caso da Figura \ref{fig:enn}, a base poderia ser representada por 4 instâncias bem posicionadas ou, por se tratar de uma técnica seletiva, com 8 instâncias, porém, o ENN manteve 13 instâncias, eliminando apenas 3.
+Porém, o ENN também apresenta desvantagens, ele possui uma baixa capacidade de redução, pois elimina apenas ruídos, mantendo instâncias que são desnecessárias, que apresentam apenas redundância de informação. No caso da figura \ref{fig:enn}, a base poderia ser representada por 4 instâncias bem posicionadas ou, por se tratar de uma técnica seletiva, com 8 instâncias, porém, o ENN manteve 13 instâncias, eliminando apenas 3.
 
 Pelas suas características, normalmente o ENN é utilizado como método de pré-processamento da base de dados, eliminando apenas instâncias que apresentam alta probabilidade de serem ruídos.
 
@@ -184,7 +186,7 @@ Enquanto o CNN remove os elementos que estão longe da região de indecisão, o \te
 \label{fig:tomek_links}
 \end{figure}
 
-Na Figura \ref{fig:tomek_links} está exemplificada a aplicação do \textit{Tomek Links}. No primeiro gráfico está a base original, e estão circulados os Tomek Links que, no segundo gráfico, foram removidos. No segundo gráfico, a base de dados foi filtrada e a maioria dos ruídos removidos. No exemplo desta figura, o \textit{Tomek Links} fez uma separação entre as classes, eliminando parte de intersecção entre as mesmas.
+Na figura \ref{fig:tomek_links} está exemplificada a aplicação do \textit{Tomek Links}. No primeiro gráfico está a base original, e estão circulados os Tomek Links que, no segundo gráfico, foram removidos. No segundo gráfico, a base de dados foi filtrada e a maioria dos ruídos removidos. No exemplo desta figura, o \textit{Tomek Links} fez uma separação entre as classes, eliminando parte de intersecção entre as mesmas.
 
 Uma desvantagem do \textit{Tomek Links} é que esta técnica elimina as duas instâncias presentes no Tomek Link, com isso, instâncias não ruidosas podem estar sendo removidas, instâncias estas que podem representar informação importante para a base de dados.
 
@@ -254,7 +256,7 @@ Observando o algoritmo, é fácil concluir que o \textit{One-Sided Selection} é um
 \label{fig:oss3}
 \end{figure}
 
-Nas Figuras \ref{fig:oss1}, \ref{fig:oss2} e \ref{fig:oss3} observamos que o OSS apresenta resultado satisfatível. No caso das figuras, não havia um desbalanceamento considerável entre as classes, porém, mas ainda assim, o OSS se mostra visualmente eficiente.
+Nas figuras \ref{fig:oss1}, \ref{fig:oss2} e \ref{fig:oss3} observamos que o OSS apresenta resultado satisfatível. No caso das figuras, não havia um desbalanceamento considerável entre as classes, porém, mas ainda assim, o OSS se mostra visualmente eficiente.
 
 
 Uma desvantagem do \textit{One-Sided Selection} é que ele não é determinístico, o CNN é não-determinístico e como o OSS faz a aplicação dele, torna o mesmo não-determinístico. O OSS poderia ser feito aplicando-se outro algoritmo no lugar do CNN, podendo assim, torna-lo determinístico. Este trabalho, porém, não abordará adaptações para o OSS, pois o mesmo já é apropriado para base de dados desbalanceados, e ser ou não determinístico, apesar de ser levado em consideração, não faz parte do escopo deste trabalho.
@@ -427,7 +429,7 @@ Inicialmente, para cada classe, é criado um grupo contendo todas as instâncias d
 
 \begin{itemize}
 \item Se para todos os padrões de um grupo o protótipo mais próximo é o centróide do grupo, então nenhuma operação é realizada.
-\item Se para todos os padrões de um grupo o protótipo mais próximo é de uma classe diferente da do grupo, ele é dividido em dois subgrupos Figura \ref{fig:divisaogrupossgp}. Essa divisão é feita separando os padrões pelo hiperplano que passa pelo centroide do grupo, e cujo vetor normal é a primeira componente principal gerada pelos padrões do grupo.
+\item Se para todos os padrões de um grupo o protótipo mais próximo é de uma classe diferente da do grupo, ele é dividido em dois subgrupos (figura \ref{fig:divisaogrupossgp}). Essa divisão é feita separando os padrões pelo hiperplano que passa pelo centroide do grupo, e cujo vetor normal é a primeira componente principal gerada pelos padrões do grupo.
 \item Se para alguns padrões de um grupo o protótipo mais próximo é diferente do centróide, mas da mesma classe, esses padrões são deslocados do grupo original para o grupo do protótipo mais próximo
 \item Se para alguns padrões de um grupo o protótipo mais próximo não é o centróide e é de uma classe diferente, estes padrões são removidos do grupo original e formam um novo grupo, sendo o centróide computado como um novo protótipo.
 \end{itemize}
@@ -478,7 +480,7 @@ No final de cada iteração, o centróide de cada grupo é computado novamente. O pr
 \end{algorithmic}
 \end{algorithm}
 
-Observando o algoritmo do SGP1, percebe-se que apesar do conceito ser bem simples, esta técnica possui alguns passos complexos, sendo necessário conhecimentos sobre extração de características. No caso, Principal Component Analysis \cite{reference/ml/X10rd} é a técnica utilizada para traçar o vetor perpendicular ao hiperplano Figura \ref{fig:divisaogrupossgp}.
+Observando o algoritmo do SGP1, percebe-se que apesar do conceito ser bem simples, esta técnica possui alguns passos complexos, sendo necessário conhecimentos sobre extração de características. No caso, Principal Component Analysis \cite{reference/ml/X10rd} é a técnica utilizada para traçar o vetor perpendicular ao hiperplano (figura \ref{fig:divisaogrupossgp}).
 
 A maior vantagem do SGP1 é que, conforme citado anteriormente, ele é não depende de parâmetros como quantidade de protótipos iniciais nem valores específicos. Por ser um algoritmo deterministico, o SGP1 executado numa mesma base de dados, sempre gerará os mesmos protótipos. Estes protótipos gerados possuem excelente representatividade do conjunto de treinamento, tanto que, utilizando-se os protótipos gerados como treinamento de um KNN, e classificando-se todas as instâncias de treinamento do SGP1, a taxa de acerto é de 100\%. Apesar de o conjunto de treinamento não ser utilizado para teste, esta é uma forma de medir a representatividade das instâncias geradas por um algoritmo.
 

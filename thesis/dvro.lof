@@ -1,6 +1,5 @@
 \select@language {brazil}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Exemplo do NPC}}{3}{figure.1.1}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces ENN aplicado com K=3}}{6}{figure.2.1}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Exemplo da aplica\c c\~ao do CNN}}{8}{figure.2.2}
@@ -10,37 +9,32 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Resultado final do OSS, ap\'os aplica\c c\~ao da segunda etapa, o Tomek Links}}{13}{figure.2.6}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Etapa da divis\~ao de grupos \cite {csp:sgp}.}}{18}{figure.2.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces ENN sobre sobre base com total sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{26}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces CNN sobre sobre base sem sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{28}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces CNN sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{28}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Tomek Links sobreposi\c c\~ao III de classes e 10\% de desbalanceamento}}{30}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces OSS com sobreposi\c c\~ao III de classes e 5\% de desbalanceamento}}{32}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes III e 5\% de desbalanceamento}}{34}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes V e 5\% de desbalanceamento}}{34}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces LVQ 1 com sobreposi\c c\~ao de classes V e 10\% de desbalanceamento}}{35}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces LVQ 1 e 2.1 com 10\% da classe minorit\'aria e n\IeC {\'\i }vel I de sobreposi\c c\~ao}}{36}{figure.3.9}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces ENN sobre base com total sobreposi\c c\~ao de classes e 10\% da classe minorit\'aria}}{26}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces CNN sobre base sem sobreposi\c c\~ao de classes e 5\% da classe minorit\'aria}}{28}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces CNN sobre base com sobreposi\c c\~ao III de classes e 5\% da classe minorit\'aria}}{28}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Tomek Links sobre base com sobrep. III de classes e 10\% da minorit\'aria}}{30}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces OSS com sobreposi\c c\~ao III de classes e 10\% da classe minorit\'aria}}{32}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces LVQ 1 com sobreposi\c c\~ao III de classes e 5\% da classe minorit\'aria}}{34}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces LVQ 1 com sobreposi\c c\~ao V de classes e 5\% da classe minorit\'aria}}{34}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces LVQ 1 com sobreposi\c c\~ao V de classes e 10\% da classe minorit\'aria}}{35}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces LVQ 1 e 2.1 com sobreposi\c c\~ao I de classes e 10\% da classe minorit\'aria}}{36}{figure.3.9}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {LVQ 1}}}{36}{figure.3.9}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {LVQ 2.1}}}{36}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces LVQ 3 sem sobreposi\c c\~ao de classes e 10\% de desbalanceamento}}{37}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces SGP 1 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{39}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces SGP 2 com total sobreposi\c c\~ao de classes e 5\% de desbalanceamento}}{41}{figure.3.12}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces LVQ 3 sem sobreposi\c c\~ao de classes e 10\% da classe minorit\'aria}}{37}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces SGP 1 com total sobreposi\c c\~ao de classes e 5\% da classe minorit\'aria}}{39}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces SGP 2 com total sobreposi\c c\~ao de classes e 5\% da classe minorit\'aria}}{41}{figure.3.12}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Iris}}{43}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Iris}}{44}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Glass}}{45}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Glass}}{46}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Taxa de acerto da classe minorit\'aria por t\'ecnica na base Yeast}}{48}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Tamanho a base de dados ap\'os sele\c c\~ao de prot\'otipos na base Yeast}}{49}{figure.4.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Bases artificiais com 10\% da classe minorit\'aria}}{55}{figure.A.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{55}{figure.A.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{55}{figure.A.1}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{55}{figure.A.1}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{55}{figure.A.1}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{55}{figure.A.1}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Bases artificiais com 5\% da classe minorit\'aria}}{57}{figure.A.2}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{57}{figure.A.2}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{57}{figure.A.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{57}{figure.A.2}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{57}{figure.A.2}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{57}{figure.A.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Bases artificiais com 10\% da classe minorit\'aria}}{54}{figure.A.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{54}{figure.A.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{54}{figure.A.1}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{54}{figure.A.1}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{54}{figure.A.1}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{54}{figure.A.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Bases artificiais com 5\% da classe minorit\'aria}}{56}{figure.A.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {N\IeC {\'\i }vel I de sobreposi\c c\~ao}}}{56}{figure.A.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {N\IeC {\'\i }vel II de sobreposi\c c\~ao}}}{56}{figure.A.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {N\IeC {\'\i }vel III de sobreposi\c c\~ao}}}{56}{figure.A.2}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {N\IeC {\'\i }vel IV de sobreposi\c c\~ao}}}{56}{figure.A.2}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {N\IeC {\'\i }vel V de sobreposi\c c\~ao}}}{56}{figure.A.2}

@@ -19,6 +19,9 @@ Cristiano de~Santana~Pereira and George D.~C. Cavalcanti.
   gaussian mixtures for pattern classification.
 \newblock In {\em IJCNN}, pages 3505--3510. IEEE, 2008.
 
+\bibitem[dSPC11]{aulas}
+Cristiano de~Santana~Pereira and George D.~C. Cavalcanti, 2011.
+
 \bibitem[EJJ04]{journals/ci/EstabrooksJJ04}
 Andrew Estabrooks, Taeho Jo, and Nathalie Japkowicz.
 \newblock A multiple resampling method for learning from imbalanced data sets.

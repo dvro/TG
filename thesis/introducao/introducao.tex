@@ -48,14 +48,7 @@ A estratégia do KNN, apesar de eficiente, possui algumas desvantagens. A primeir
 
 Para resolver este problema, surgiu a idéia de utilizar um conjunto menor, gerado a partir da base de dados original (conjunto de treinamento), que represente bem todas as classes, este processo é chamado de seleção de protótipos. A escolha dos protótipos deve ser feita cuidadosamente, pois é necessário que estes elementos possuam uma boa representatividade de todo o conjunto de treinamento. É importante também, que os protótipos não sejam elementos ruidosos, pois isso compromete a taxa de acerto do classificador.
 
-Com os protótipos gerados é possível utilizar o \textit{Nearest Prototype Classification}, NPC, que é utilizar protótipos gerados como treinamento do KNN. Assim a base de dados é reduzida, diminuindo o espaço de armazenamento e o tempo de processamento. Na figura \ref{fig:npc} percebe-se a redução obtida com o uso de seleção de protótipos.
-
-\begin{figure}[H]
-\center
-\includegraphics[scale=0.40]{imagens/npc.eps}
-\caption{Exemplo do NPC}
-\label{fig:npc}
-\end{figure}
+Com os protótipos gerados é possível utilizar o \textit{Nearest Prototype Classification}, NPC, que é utilizar protótipos gerados como treinamento do KNN. Assim a base de dados é reduzida, diminuindo o espaço de armazenamento e o tempo de processamento. 
 
 Além de possuir vantagens gerais como a diminuição do espaço de armazenamento e redução de esforço computacional para classificação, a seleção de protótipos pode ainda aumentar o desempenho do classificador. Esta melhora acontece com a eliminação de ruídos e outliers, pois os protótipos aumentam a capacidade de generalização do classificador, levando a maiores taxas de acerto.
 

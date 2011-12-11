@@ -12,45 +12,45 @@ Warning--entry type for "cgm.cs.mcgill.ca.godfried" isn't style-file defined
 --line 247 of file bibliografia/bibliografia.bib
 Warning--to sort, need author or key in reference/ml/X10rd
 Warning--empty author in reference/ml/X10rd
-You've used 17 entries,
+You've used 18 entries,
             2543 wiz_defined-function locations,
-            685 strings with 7286 characters,
-and the built_in function-call counts, 7267 in all, are:
-= -- 729
-> -- 299
+            686 strings with 7291 characters,
+and the built_in function-call counts, 7569 in all, are:
+= -- 755
+> -- 318
 < -- 15
-+ -- 100
-- -- 95
-* -- 505
-:= -- 1144
-add.period$ -- 53
-call.type$ -- 17
-change.case$ -- 99
-chr.to.int$ -- 17
-cite$ -- 20
-duplicate$ -- 307
-empty$ -- 567
-format.name$ -- 116
-if$ -- 1557
++ -- 106
+- -- 101
+* -- 522
+:= -- 1192
+add.period$ -- 54
+call.type$ -- 18
+change.case$ -- 104
+chr.to.int$ -- 18
+cite$ -- 21
+duplicate$ -- 317
+empty$ -- 592
+format.name$ -- 123
+if$ -- 1619
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 14
-newline$ -- 85
-num.names$ -- 56
-pop$ -- 94
+newline$ -- 88
+num.names$ -- 59
+pop$ -- 105
 preamble$ -- 1
-purify$ -- 116
+purify$ -- 123
 quote$ -- 0
-skip$ -- 268
+skip$ -- 283
 stack$ -- 0
-substring$ -- 444
-swap$ -- 78
+substring$ -- 451
+swap$ -- 79
 text.length$ -- 15
 text.prefix$ -- 5
 top$ -- 0
-type$ -- 136
+type$ -- 144
 warning$ -- 2
-while$ -- 67
-width$ -- 23
-write$ -- 222
+while$ -- 70
+width$ -- 24
+write$ -- 230
 (There were 3 warnings)

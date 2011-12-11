@@ -23,7 +23,7 @@
 % \department{<NOME DO DEPARTAMENTO>} não se aplica
 \program{Graduação em Engenharia da Computação}
 \majorfield{Engenharia da Computação}
-\title{Análise comparativa de técnicas de seleção de protótipos}
+\title{Análise comparativa de técnicas de seleção de protótipos em bases desbalanceadas}
 \date{22 de novembro de 2011}
 
 \author{Dayvid Victor Rodrigues de Oliveira}
@@ -41,33 +41,41 @@
 
 % Dedicatória
 \begin{dedicatory}
-Eu dedico este trabalho a João Rodrigues de Silva, meu avô.
+Eu dedico este trabalho a Israel Rodrigues, meu pai.
 \end{dedicatory}
 
 % Agradecimentos
 \acknowledgements
-Agradeço a Deus.
-% \input{agradecimentos/agradecimentos}
+\input{agradecimentos/agradecimentos}
 
-\begin{epigraph}[Boston, 2001]{Bono}
-What can I give back to God, for the blessings You pour out on me?
+\begin{epigraph}[Psamls 20]{King David}
+Some trust in chariots, and some in horses: but we will remember the name of the LORD our God.
 \end{epigraph}
 
 % Resumo em Português
 % Se preferir, crie um arquivo à parte e o inclua via \include{}
 \resumo
-RESUMO
+Em várias situações do mundo real, classificadores precisam utilizar bases muito grandes, causando um alto consumo de memória e tempo de processamento. Para diminuir esses consumos, surgiu a seleção de protótipos, que seleciona um conjunto menor de instâncias que podem representar bem toda a base de dados original. Todavia, técnicas de seleção de protótipos possuem características diferentes, sendo cada uma apropriada para um tipo específico de base de dados. 
+
+O objetivo deste trabalho é expor diferentes técnicas de seleção de protótipos e identificar o suas vantagens e desvantagens em bases desbalaceadas, assim como propor adaptações para melhor tratar este tipo de base.
+%\include{resumo/resumo}
 % Palavras-chave do resumo em Português
 \begin{keywords}
-PORTUGUES
+Seleção de Protótipos, Bases Desbalanceadas, Análise de Base de Dados, Técnicas de Seleção de Protótipos, Algorítmos de Seleção de Protótipos, ENN, CNN, Tomek Links, OSS, LVQ, SGP
 \end{keywords}
 
 % Resumo em Inglês
 % Se preferir, crie um arquivo à parte e o inclua via \include{}
 \abstract
-ABSTRACT
+
+In many real-world situations, classifiers need to use very large databases, causing a high consumption of memory and processing time. The prototype selection reduces these intakes, selecting a smaller set of instances that can represent well the entire original dataset. However, prototype selection techniques have different characteristics, each one appropriate for a specific type of database.
+
+The objective of this work is to expose different prototype selection techniques and to identify the advantages and disadvantages of each one when working with unbalanced datasets, as well as suggesting ways to better treat this type of base.
+
+
+%\include{resumo/abstract}
 \begin{keywords}
-INGLES
+Prototype Selection, Unbalanced Datasets, Dataset Analysis, Prototype Selection Techniques, Prototype Selection Algorithms, ENN, CNN, Tomek Links, OSS, LVQ, SGP
 \end{keywords}
 
 \tableofcontents
