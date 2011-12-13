@@ -53,12 +53,12 @@ Por sua vez o CNN, de alto poder de redução, reduziu demais a classe minoritária
 O Tomek Links, assim como o ENN, não fez diferença nesta base, pois, conforme citado e comprovado anteriormente, o Tomek Links atua apenas nas regiões de indecisão, e a base Iris 0 não apresenta esta região.
 
 
-%\begin{figure}[H]
-%\center
-%\includegraphics[scale=0.80]{imagens/graficos/grafico1_iris.eps}
-%\caption{Taxa de acerto da classe minoritária por técnica na base Iris}
-%\label{fig:iris1}
-%\end{figure}
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico1_iris.eps}
+\caption{Taxa de acerto da classe minoritária por técnica na base Iris}
+\label{fig:iris1}
+\end{figure}
 
 O OSS, técnica utilizada para bases desbalanceadas, obteve uma taxa de acerto total de 56.33\% em média, uma taxa de acerto baixa em relação as outras técnicas. A redução também não foi tão alta, a quantidade de protótipos resultantes foi em média 33.84\% da baso original. Porém, como o \textit{One-Sided Selection} dá prioridade a classe minoritária, pode-se observar que a taxa de acerto desta classe foi de 100\%, o que torna esta uma técnica eficiente quando o caso de interesse é a classe minoritária.
 
@@ -68,12 +68,12 @@ Como a base Iris 0 possui baixo nível de desbalanceamento, as duas versões do \t
 
 Não houve diferença entre o SGP1 e SGP2, pois a separação entre as classes tornou os passos de $Merge$ e $Pruning$ desnecessários.
 
-%\begin{figure}[H]
-%\center
-%\includegraphics[scale=0.80]{imagens/graficos/grafico2_iris.eps}
-%\caption{Tamanho a base de dados após seleção de protótipos na base Iris}
-%\label{fig:iris2}
-%\end{figure}
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico2_iris.eps}
+\caption{Tamanho a base de dados após seleção de protótipos na base Iris}
+\label{fig:iris2}
+\end{figure}
 
 Nesta base, com baixa sobreposição de classes, o ENN e o Tomek Links foram inúteis, pois não apresentaram redução de dados. Já o CNN se mostrou altamente ineficiente, pois reduziu tanto a classe minoritária (para uma instâncias) que tornou a taxa de acerto desta classe nula, pois foi utilizado K=3.
 
@@ -118,20 +118,20 @@ Técnica     &  Acerto Total &  Acerto Marjoritária &  Acerto Minoritária  &  Tam
 \label{tab:glass}
 \end{table}
 
-%\begin{figure}[H]
-%\center
-%\includegraphics[scale=0.80]{imagens/graficos/grafico1_glass.eps}
-%\caption{Taxa de acerto da classe minoritária por técnica na base Glass 5}
-%\label{fig:glass1}
-%\end{figure}
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico1_glass.eps}
+\caption{Taxa de acerto da classe minoritária por técnica na base Glass 5}
+\label{fig:glass1}
+\end{figure}
 
 
-%\begin{figure}[H]
-%\center
-%\includegraphics[scale=0.80]{imagens/graficos/grafico2_glass.eps}
-%\caption{Tamanho a base de dados após seleção de protótipos na base Glass 5}
-%\label{fig:glass2}
-%\end{figure}
+\begin{figure}[H]
+\center
+\includegraphics[scale=0.80]{imagens/graficos/grafico2_glass.eps}
+\caption{Tamanho a base de dados após seleção de protótipos na base Glass 5}
+\label{fig:glass2}
+\end{figure}
 
 
 Observando a tabela \ref{tab:glass}, percebe-se que, neste exemplo, além de a base ser mais desbalanceada, existe uma maior sobreposição de classes que o exemplo anterior. Em geral, as técnicas obtiveram uma boa taxa de acerto total, mas a taxa de acerto da classe minoritária variou muito de acordo com a técnica.
