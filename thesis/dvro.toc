@@ -41,4 +41,4 @@
 \contentsline {section}{\numberline {5.2}Trabalhos Futuros}{53}{section.5.2}
 \contentsline {chapter}{\numberline {A}Figuras das Bases Artificiais}{56}{appendix.A}
 \contentsline {section}{\numberline {A.1}Figuras com 10\% da classe minorit\'aria}{58}{section.A.1}
-\contentsline {section}{\numberline {A.2}Figuras com 5\% da classe minorit\'aria}{59}{section.A.2}
+\contentsline {section}{\numberline {A.2}Figuras com 5\% da classe minorit\'aria}{60}{section.A.2}

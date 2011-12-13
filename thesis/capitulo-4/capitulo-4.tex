@@ -2,7 +2,7 @@
 \chapter{Bases Reais}
 \label{ch:experimentobasesreais}
 
-Neste capítulo serão mostrados experimentos feitos com bases reais. As bases utilizadas foram algumas das utilizadas por Fernández em seu estudo \textit{Sistemas de classificação baseados em fuzzy hierárquico com regra de seleção genética para bases desbalanceadas}\cite{FJH2009}.
+Neste capítulo serão mostrados experimentos feitos com bases reais. As bases selecionadas foram algumas das utilizadas por Fernández em seu estudo \textit{Sistemas de classificação baseados em fuzzy hierárquico com regra de seleção genética para bases desbalanceadas}\cite{FJH2009}.
 
 Estas bases reais foram obtidas do software KEEL, que contém um módulo de experimentos em bases desbalanceadas. Para todos os experimentos foi utilizado \textit{K-Fold Cross-Validation}, com 5 folds, formato já fornecido pelo software.
 
@@ -48,7 +48,7 @@ Observando a tabela \ref{tab:iris}, percebe-se que o KNN obteve 100\% de acerto,
 
 No caso do ENN, a taxa de acerto foi a mesma do KNN porque o seu algoritmo selecionou todas as instâncias, assim, quando as classes estão bem separadas, o ENN não é uma técnica apropriada, por conta do seu baixo poder de redução. 
 
-Por sua vez o CNN, de alto poder de redução, reduziu demais a classe minoritária, mas como foi utilizado o 3-NN, obteve taxa de acerto média de 0.00\% para esta classe, enquanto a marjoritária obteve 100\% de acerto.
+Por sua vez o CNN, de alto poder de redução, reduziu demais a classe minoritária, mas como foi utilizado o 3-NN, obteve taxa de acerto média de 60.00\%, com casos de quase 0.00\% para esta classe.
 
 O Tomek Links, assim como o ENN, não fez diferença nesta base, pois, conforme citado e comprovado anteriormente, o Tomek Links atua apenas nas regiões de indecisão, e a base Iris 0 não apresenta esta região.
 
@@ -75,11 +75,11 @@ Não houve diferença entre o SGP1 e SGP2, pois a separação entre as classes torno
 \label{fig:iris2}
 \end{figure}
 
-Nesta base, com baixa sobreposição de classes, o ENN e o Tomek Links foram inúteis, pois não apresentaram redução de dados. Já o CNN se mostrou altamente ineficiente, pois reduziu tanto a classe minoritária (para uma instâncias) que tornou a taxa de acerto desta classe nula, pois foi utilizado K=3.
+Nesta base, com baixa sobreposição de classes, o ENN e o Tomek Links foram inúteis, pois não apresentaram redução de dados. Já o CNN se mostrou altamente ineficiente (ver figura \ref{fig:iris1}), pois reduziu tanto a classe minoritária que tornou a taxa de acerto desta classe baixa, pois foi utilizado K=3, e houve casos em que apenas 1 protótipo foi selecionado.
 
 Com este experimento, conclui-se também que, em bases com baixo nível de desbalanceamento e boa separação entre as classes, as versões do \textit{Self-Generating Prototypes} são eficientes e possuem um alto poder de redução. Porém, técnicas como o \textit{Learning-Vector Quantization} podem ser ainda mais eficientes, principalmente com a escolha adequada de parâmetros, além de não correr risco de eliminação da classe minoritária.
 
-Outra técnica apropriada para este tipo de base foi o \textit{One-Sided Selection}. Por priorizar a classe minoritária, o OSS garante uma boa taxa de acerto para esta classe. Porém, comparando esta técnica como o SGP e LVQ, percebe-se que ela tem um baixo nível de redução, sendo recomendado a aplicação de outra técnica após o OSS.
+Outra técnica apropriada para este tipo de base foi o \textit{One-Sided Selection}. Por priorizar a classe minoritária, o OSS garante uma boa taxa de acerto para esta classe. Porém, comparando esta técnica como o SGP e LVQ, percebe-se que ela tem um baixo nível de redução (ver figura \ref{fig:iris2}), sendo recomendado a aplicação de outra técnica após o OSS.
 
 
 \section{Glass 5}
