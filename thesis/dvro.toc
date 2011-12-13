@@ -36,9 +36,9 @@
 \contentsline {section}{\numberline {4.1}Iris 0}{42}{section.4.1}
 \contentsline {section}{\numberline {4.2}Glass 5}{44}{section.4.2}
 \contentsline {section}{\numberline {4.3}Yeast 6}{45}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclus\~ao}{48}{chapter.5}
-\contentsline {section}{\numberline {5.1}Considera\c c\~oes Finais}{48}{section.5.1}
-\contentsline {section}{\numberline {5.2}Trabalhos Futuros}{49}{section.5.2}
-\contentsline {chapter}{\numberline {A}Figuras das Bases Artificiais}{52}{appendix.A}
-\contentsline {section}{\numberline {A.1}Figuras com 10\% da classe minorit\'aria}{54}{section.A.1}
-\contentsline {section}{\numberline {A.2}Figuras com 5\% da classe minorit\'aria}{56}{section.A.2}
+\contentsline {chapter}{\numberline {5}Conclus\~ao}{49}{chapter.5}
+\contentsline {section}{\numberline {5.1}Considera\c c\~oes Finais}{49}{section.5.1}
+\contentsline {section}{\numberline {5.2}Trabalhos Futuros}{50}{section.5.2}
+\contentsline {chapter}{\numberline {A}Figuras das Bases Artificiais}{53}{appendix.A}
+\contentsline {section}{\numberline {A.1}Figuras com 10\% da classe minorit\'aria}{55}{section.A.1}
+\contentsline {section}{\numberline {A.2}Figuras com 5\% da classe minorit\'aria}{57}{section.A.2}
