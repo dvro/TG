@@ -86,6 +86,8 @@ Outra técnica apropriada para este tipo de base foi o \textit{One-Sided Selectio
 
 A base Glass 5 é uma base com alto desbalanceamento. Esta base contém 214 instâncias, cada uma contendo nove atributos. Apenas 4.20\% das instâncias são da classe minoritária, \textit{tableware}, e 95.80\% da classe marjoritária, \textit{reminder}.
 
+Observando a tabela \ref{tab:glass}, percebe-se que, neste exemplo, além de a base possuir um maior deslanceamento, existe uma maior sobreposição de classes que o exemplo anterior. Em geral, as técnicas obtiveram uma boa taxa de acerto total, mas a taxa de acerto da classe minoritária variou muito de acordo com a técnica.
+
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|}
@@ -118,12 +120,27 @@ Técnica     &  Acerto Total &  Acerto Marjoritária &  Acerto Minoritária  &  Tam
 \label{tab:glass}
 \end{table}
 
+
+Como a base Glass 5 apresenta sobreposição de classes, o ENN gerou uma pequena redução de instâncias, reduzindo para 95.81\% em média. Porém, a taxa de acerto da classe minoritária foi muito pequena em relação a marjoritária. O ENN obteve uma taxa média de 30\% de acerto e desvio padrão foi de 44.72\% na classe minoritária, assim, conforme comprovado nas bases artificiais, quando existe uma maior sobreposição, a classe minoritária é muito reduzida, compromentendo grandemente o desempenho do classificador para esta classe.
+
+Já o CNN conseguiu reduzir consideravelmente o número de instâncias, mas sua taxa de acerto para a classe minoritária foi de apenas 10\%, havendo casos onde foi praticamente nula. Isso confirma o que foi visto na base Iris 0, o CNN não é uma técnica eficiente para bases desbalanceadas, principalmente com alto nível de desbalanceamento. Com a modificação do CNN usada pelo OSS, a taxa de acerto seria melhorada, mas a técnica tradicional mais uma vez não se mostrou apropriada para o caso de estudo. Se fosse utilizado K=1 para o KNN, a taxa de acerto seria superior, mas isso deixaria o classificador mais sensível a ruídos.
+
+
 \begin{figure}[H]
 \center
 \includegraphics[scale=0.80]{imagens/graficos/grafico1_glass.eps}
 \caption{Taxa de acerto da classe minoritária por técnica na base Glass 5}
 \label{fig:glass1}
 \end{figure}
+
+
+O Tomek Links conseguiu uma boa taxa de acerto média, 96.28\%, se comparado com as técnicas anteriores. A taxa de acerto da classe minoritária foi de 60\%. Ao comparar com o KNN, observa-se que o Tomek Links foi eficiente para classificar bases desbalanceadas, mas isso aconteceu porque seu algoritmo praticamente não alterou a base de dados, sendo a quantidade de protótipos selecionados 99.30\% do conjunto de treinamento original. 
+
+Neste caso, o Tomek Links teve um bom desempenho, removendo a região de indecisão, mas pode acontecer de seu algoritmo remover todas as instâncias da classe minoritária. Assim, recomenda-se o uso de sua versão adaptada como pré-processamento, para evitar a extinção desta classe.
+
+O OSS, obteve uma taxa de acerto total inferior as demais técnicas, sendo 78.58\% em média. Todavia, observa-se que a taxa de acerto da base minoritária foi de 70\%, o melhor desempenho nesta base (ver figura \ref{fig:glass1}). 
+
+A quantidade de protótipos selecionados pelo OSS foi em média apenas 10.43\% do conjunto de treinamento original. Isso mostra que, mesmo com um alto nível de desbalanceamento, o \textit{One-Sided Selection} tem um poder de redução relativamente eficiente, priorizando a classe minoritária.
 
 
 \begin{figure}[H]
@@ -134,30 +151,22 @@ Técnica     &  Acerto Total &  Acerto Marjoritária &  Acerto Minoritária  &  Tam
 \end{figure}
 
 
-Observando a tabela \ref{tab:glass}, percebe-se que, neste exemplo, além de a base ser mais desbalanceada, existe uma maior sobreposição de classes que o exemplo anterior. Em geral, as técnicas obtiveram uma boa taxa de acerto total, mas a taxa de acerto da classe minoritária variou muito de acordo com a técnica.
+As versões do \textit{Learning Vector Quantization} foram eficientes em alguns folds. Analisando detalhandamente, Percebe-se que, ao diminuir o desbalanceamento de classes, esta técnica beneficia casos onde a classe minoritária é o caso de interesse e, ainda assim, não compromete consideravelmente a taxa de acerto da classe marjoritária.
 
-Como a base Glass 5 apresenta sobreposição de classes, o ENN gerou uma pequena redução de instâncias, reduzindo para 95.81\% em média. Porém, a taxa de acerto da classe minoritária foi muito pequena em relação a marjoritária. O ENN obteve uma taxa média de 30\% de acerto e desvio padrão foi de 44.72\% na classe minoritária, assim, conforme comprovado nas bases artificiais, quando existe uma maior sobreposição, a classe minoritária é muito reduzida, compromentendo grandemente o desempenho do classificador para esta classe.
+O \textit{Self-Generating Prototypes 1} foi altamente ineficiente em classificar a classe minoritária. A tabela \ref{tab:glass} mostra que o SGP 1 reduziu a base de dados para 3.17\% do conjunto de treinamento original (ver figura \ref{fig:glass2}), mas o custo disso foi uma taxa de acerto média de apenas 10\% para classe minoritária (ver figura \ref{fig:glass1}). No caso da Iris 0, como existia um baixo nível de desbalanceamento o SGP foi eficiente, porém, com uma base mais desbalanceada, esta técnica removeu a maioria das instâncias da classe minoritária, tornando os protótipos resultantes inviáveis para qualquer classificador.
 
-Já o CNN conseguiu reduzir consideravelmente o número de instâncias, mas sua taxa de acerto para bases desbalanceadas foi praticamente nula. Isso confirma o que foi visto na base Iris 0, o CNN não é uma técnica eficiente para bases desbalanceadas, principalmente com alto nível de desbalanceamento. Com a modificação do CNN usada pelo OSS, a taxa de acerto seria melhorada, mas a técnica tradicional mais uma vez não se mostrou apropriada para o caso de estudo.
+A segunda versão do SGP teve o mesmo comportamento que o SGP 1, porém, o reduziu a base para 1.64\%. Esta redução seria interessante, caso o SGP 1 tivesse tido um bom desempenho, mas como não foi o caso, o SGP 2 também se mostrou inviável.
 
-O Tomek Links conseguiu uma boa taxa de acerto média, 96.28\%, se comparado com as técnicas anteriores. A taxa de acerto da classe minoritária foi de 60\%. Se comparado com o KNN, observa-se que o Tomek Links foi eficiente para classificar bases desbalanceadas, mas isso aconteceu porque o Tomek Links praticamente não alterou a base de dados, sendo a quantidade de protótipos selecionados 99.30\% do conjunto de treinamento original. Com isso, conclui-se que o Tomek Links é eficiente na remoção de instâncias na região de indecisão, porém, nem sempre a região de indecisão é significativa em relação a original, assim, recomenda-se o uso de sua versão adaptada como pré-processamento.
+Assim, conclui-se que, em bases com alto nível de desbalanceamento e com sobreposição de classes, as versões do SGP são inviáveis, principalmente quando o caso de interesse é a classe minoritária. Isso acontece porque o SGP não faz distinção entre classes. As demais técnicas se mostraram indiferentes ou inviáveis, dependendo do fold, exceto pelo OSS.
 
-O OSS, obteve uma taxa de acerto total inferior as técnicas citadas anteriormente, sendo 78.58\% em média. Todavia, observa-se que a taxa de acerto da base minoritária foi de 70\%, maior que a do KNN. A quantidade de protótipos selecionados pelo OSS foi em média apenas 10.43\% do conjunto de treinamento original. Isso mostra que, mesmo com um nível de desbalanceamento maior, \textit{One-Sided Selection} tem um alto poder de redução e prioriza a classe minoritária.
-
-As versões do \textit{Learning Vector Quantization} foram eficientes em alguns folds. Analisando detalhandamente, Percebe-se que, ao diminuir o desbalanceamento de classes, esta técnica beneficia casos onde a classe minoritária é o caso de interesse e, ainda assim, não compromete, consideravelmente, a taxa de acerto da classe marjoritária.
-
-O \textit{Self-Generating Prototypes 1} foi altamente ineficiente em classificar a classe minoritária. A tabela \ref{tab:glass} mostra que o SGP 1 reduziu a base de dados para 3.17\% do conjunto de treinamento original, mas o custo disso foi uma taxa de acerto média de apenas 10\% para classe minoritária. No caso da Iris 0, como existia um baixo nível de desbalanceamento o SGP foi eficiente, porém, com uma base mais desbalanceada, esta técnica removeu a maioria das instâncias da classe minoritária, tornando os protótipos resultantes inviáveis para qualquer classificador.
-
-A segunda versão do SGP teve o mesmo comportamento que o SGP 1, porém, o reduziu a base para 1.64\%. Esta redução seria interessante, caso o SGP 1 tivesse tido um bom desempenho, mas, como não foi o caso, o SGP 2 também se mostrou inviável.
-
-Assim, conclui-se que, em bases com alto nível de desbalanceamento e com sobreposição de classes, as versões do SGP são inviáveis, principalmente quando o caso de interesse é a classe minoritária. Já o LVQ, mais uma vez se mostrou eficiente para identificação da classe minoritária, mostrando que a eliminação do desbalanceamento é uma estratégia interessante para este caso.
-
-Da mesma forma que o experimento anterior, o OSS teve um bom desempenho para classificar instâncias da classe minoritária, sendo recomendado mesmo com alto nível de desbalanceamento.
+Da mesma forma que o experimento anterior, o OSS teve um excelente desempenho para classificar instâncias da classe minoritária, sendo recomendado mesmo com alto nível de desbalanceamento.
 
 
 \section{Yeast 6}
 
-A base Yesat 6 é a base de mais alto nível de desbalanceamento estudada neste trabalho. Esta base contém 1484 instâncias, cada uma contendo 8 atributos. Apenas 2.49\% das instâncias são da classe minoritária, \textit{exc}, e 97.51\% da classe marjoritária, \textit{reminder}.
+A base Yesat 6 é a base de mais alto nível de desbalanceamento estudada neste trabalho. Esta base contém 1484 instâncias, cada uma contendo 8 atributos. Apenas 2.49\% das instâncias são da classe minoritária, \textit{exc}, e 97.51\% da classe marjoritária, \textit{reminder}. Esta base será o referencial de casos de extremo desbalanceamento neste trabalho.
+
+Observando a tabela \ref{tab:yeast} percebe-se que o KNN teve uma taxa de acerto alta, porém, a taxa de acerto da classe minoritária foi em média apenas 42.86\%.
 
 \begin{table}[H]
 \begin{center}
@@ -191,6 +200,12 @@ SGP 2 &	 97.36 $\pm$ 0.80 \%&	 98.54 $\pm$ 0.45 \%&	 48.57 $\pm$ 32.89 \%&	 4.66
 \label{tab:yeast}
 \end{table}
 
+O ENN reduziu a base de dados para 97.94\% e aumentou a taxa de acerto geral para 98.04\%, mas o custo disso foi a redução da taxa de acerto da classe minoritária em 2.86\% em média. 
+
+Já o CNN, por manter instâncias da região de fronteira e, neste caso foi eficiente. Os protótipos selecionados por esta técnica foram apenas 6.44\% do conjunto de treinamento, ou seja, diminuiu consideravelmente o custo e o tempo de processamento. Além desta redução, o CNN teve um aumento de 8.57\% na taxa de acerto da classe minoritária em relação ao KNN. Isso aconteceu por conta da disposição da classe minoritária em regiões de indecisão.
+
+O Tomek Links, apesar de também remover instâncias da classe minoritária, apresentou uma melhora em relação ao KNN. Esta técnica apresentou um ganho de 5.71\% na taxa de acerto da classe minoritária em média. O desvio padrão, porém, mostra que houve casos onde a taxa de acerto foi inferior a 30\%, ou seja, o Tomek Links deve ser utilizado apenas quando a quantidade de instâncias removidas não será significativa para a classificação, ou seja, quando os Links não contém grande parte da classe minoritária.
+
 \begin{figure}[H]
 \center
 \includegraphics[scale=0.80]{imagens/graficos/grafico1_yeast.eps}
@@ -198,9 +213,9 @@ SGP 2 &	 97.36 $\pm$ 0.80 \%&	 98.54 $\pm$ 0.45 \%&	 48.57 $\pm$ 32.89 \%&	 4.66
 \label{fig:yeast1}
 \end{figure}
 
-A base Yeast 6 é de mais alto nível de desbalanceamento e será o referencial para casos extremos neste trabalho.
+O OSS se mostrou a técnica seletiva mais eficiente. Por utilizar o CNN modificado o nível de desbalanceamento foi reduzido e o Tomek Links modificado deixou a classe minoritária bem definida, assim, a taxa de acerto da classe minoritária foi de 65.71\%, o que representa um aumento de 22.85\% em relação ao KNN. Mais uma vez, o OSS se mostrou eficiente independente do nível de desbalanceamento e sobreposição de classes.
 
-Observando a tabela \ref{tab:yeast} percebe-se que o KNN teve uma taxa de acerto alta, porém, a taxa de acerto da classe minoritária foi em média apenas 42.86\%.
+Entre as versões do LVQ não houve diferença relevante. Mesmo neste caso extremo o LVQ teve uma taxa de acerto média de 88.57\%, sendo superior ao OSS. Isso mostra que, como o LVQ elimina o desbalanceamento, a classe minoritária é extremamente beneficiada. Outra vantagem do LVQ é a redução de instâncias. A quantidade de protótipos criados para esta base foi apenas 0.86\% do conjunto de treinamento.
 
 \begin{figure}[H]
 \center
@@ -209,17 +224,8 @@ Observando a tabela \ref{tab:yeast} percebe-se que o KNN teve uma taxa de acerto
 \label{fig:yeast2}
 \end{figure}
 
-O ENN reduziu a base de dados para 97.94\% e aumentou a taxa de acerto geral para 98.04\%, mas o custo disso foi a redução da taxa de acerto da classe minoritária em 2.86\% em média. 
 
-Já o CNN, por manter instâncias da região de fronteira e, neste caso, praticamente todas as instâncias da classe minoritária, foi eficiente. Os protótipos selecionados por esta técnica foram apenas 6.44\% do conjunto de treinamento, ou seja, diminuiu consideravelmente o custo e o tempo de processamento. Além desta redução, o CNN teve um aumento de 8.57\% na taxa de acerto da classe minoritária em relação ao KNN.
-
-O Tomek Links, apesar de também remover instâncias da classe minoritária, apresentou uma melhora em relação ao KNN. Esta técnica apresentou um ganho de 5.71\% na taxa de acerto da classe minoritária em média. O desvio padrão, porém, mostra que houve casos onde a taxa de acerto foi inferior a 30\%, ou seja, o Tomek Links deve ser utilizado apenas quando a quantidade de instâncias removidas não será significativa para a classificação.
-
-O OSS se mostrou a técnica seletiva mais eficiente. Por utilizar o CNN modificado o nível de desbalanceamento foi reduzido e o Tomek Links modificado deixou a classe minoritária bem definida, assim, a taxa de acerto da classe minoritária foi de 65.71\%, o que representa um aumento de 22.85\% em relação ao KNN. Mais uma vez, o OSS se mostrou eficiente independente do nível de desbalanceamento e sobreposição de classes.
-
-Entre as versões do LVQ não houve diferença relevante. Mesmo neste caso extremo o LVQ teve uma taxa de acerto média de 88.57\%, sendo superior ao OSS. Isso mostra que, como o LVQ elimina o desbalanceamento, a classe minoritária é extremamente beneficiada. Outra vantagem do LVQ é a redução de instâncias. A quantidade de protótipos criados para esta base foi apenas 0.86\% do conjunto de treinamento.
-
-O SGP 1 teve um bom desempenho médio, se comparado com o KNN. A taxa de acerto da classe minoritária foi de 48.57\%, isso é, um aumento de 5.71\% em relação ao KNN. Além disso, os protótipos criados por esta técnica foram apenas 9.24\% do conjunto original. Porém, se comparado com o LVQ, percebe-se que o SGP teve uma redução baixa e não priorizou a classe minoritária.
+O SGP 1 teve um bom desempenho médio, se comparado com o KNN. A taxa de acerto da classe minoritária foi de 48.57\%, isso é, um aumento de 5.71\% em relação ao KNN. Além disso, os protótipos criados por esta técnica foram apenas 9.24\% do conjunto original. Porém, se comparado com o LVQ, percebe-se que o SGP teve uma redução baixa e não priorizou a classe minoritária, pois houveram folds onde a taxa de acerto desta classe foi inferior a 25\%.
 
 Na base Yast 6, o SGP 2 teve o mesmo desempenho que o SGP no que se refere a taxa de acerto. Porém, o SGP 2 teve uma maior capacidade de redução, reduziu a base para apenas 4.66\% do conjunto de treinamento original.
 
